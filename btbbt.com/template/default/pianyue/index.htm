@@ -1,0 +1,20 @@
+{template portal/new_header}
+
+<table cellspacing="1" cellpadding="1" class="tfm">
+<tr><th width="80">编号</th><th width="300">艺人信息</th><th width="400">剧组信息</th><th>发送时间</th></tr>
+<!--{loop $pianyue $row}-->
+<tr>
+	<td>$row[id]</td>
+	<td><a href="home.php?mod=space&uid=$row[uid]" target="_blank" c="1">$row['username']</a></td>
+	<td>
+		<p>剧组名称:$row[name]</p>
+		<p>联系人:$row[linkman]</p>
+		<p>联系电话:$row[telnum]</p>
+		<p>剧组介绍:$row[desc]</p>
+	</td>
+	<td>$row[dateline]</td>
+</tr>
+<!--{/loop}-->
+</table>
+$multi
+{template portal/new_footer}

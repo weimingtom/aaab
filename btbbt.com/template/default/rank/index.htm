@@ -1,0 +1,59 @@
+{template new/header}
+
+{template rank/header}
+
+<div class="rankList" style="margin-top:8px;">
+	<h3>
+		<p style="width:68px">&nbsp;</p>
+		<p style="width:478px">基本信息</p>
+		<p style="width:92px">点灯</p>
+		<p style="width:92px">粉丝</p>
+		<p style="width:92px">点击</p>
+	</h3>
+	<ul style="width:100%">
+	<!--{loop $data $i $row}-->
+	<li>
+		<div class="num{if $i < 3} top{/if}">{echo $i + 1}</div>
+		<div class="avatar">
+			<a href="http://www.yingkong.net/space-uid-{$row[uid]}.html">
+				<img src="{UC_API}/avatar.php?uid={$row[uid]}&size=small" width="48" height="48" />
+			</a>
+        </div>
+        <div class="info">
+        	<h6>
+        		<a href="http://www.yingkong.net/space-uid-{$row[uid]}.html">
+        		{$row[username]}
+        		<span class="vipLevel">{if $row[field7]}$row[field7]{else}VIP{/if}</span>
+        		</a>
+        	</h6>
+        	<p>
+        		{$row[resideprovince]} |
+        		{$row[occupation]} |
+        		{if $row['birthyear']}{echo 2011 - $row['birthyear']}岁 | {/if}
+        		身高：$row[height]
+        	</p>
+        </div>
+        <div class="stats">$row[albums]</div>
+        <div class="stats">$row[friends]</div>
+    	<div class="stats">$row[views]</div>
+    	<div class="operate">
+            <a href="http://www.yingkong.net/home.php?mod=spacecp&ac=friend&op=add&uid={$row[uid]}&handlekey=addfriendhk_{$row[uid]}">
+                <img src="indexNew/image/icon_hy.gif" width="51" height="25" />
+            </a>
+            <a href="###8203315">
+                <img src="indexNew/image/icon_gz.gif" width="52" height="25" />
+            </a>
+        </div>
+    </li>
+	<!--{/loop}-->
+	</ul>
+</div>
+<div class="cb"></div>
+
+<div class="backTop">
+	<a href="./" class="goHome">首 页</a>
+	<a href="javascript:;" onclick="window.scrollTo(0,0);this.blur();return false;" class="goTop">到顶部</a>
+</div>
+
+
+{template new/footer}

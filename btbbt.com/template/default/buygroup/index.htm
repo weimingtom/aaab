@@ -1,0 +1,16 @@
+{template common/header}
+
+<h2>购买用户组 {$_G['cache']['usergroups'][$groupid]['grouptitle']}</h2>
+<form method="post" action="buygroup.php">
+<input type="hidden" name="formhash" value="{FORMHASH}" />
+<table cellspacing="1" cellpadding="1" class="tfm">
+<!--{loop $prices $k $row}-->
+<tr>
+	<td><label><input type="radio" name="type" value="{$k}"{if $default_buy == $k} checked="checked"{/if} />$row[name] 价格：$row[price]</label></td>
+</tr>
+<!--{/loop}-->
+<tr><td><input type="submit" name="buygroupbtn" value="确定购买" class="pn" /></td></tr>
+</table>
+</form>
+
+{template common/footer}

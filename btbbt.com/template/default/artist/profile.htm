@@ -1,0 +1,62 @@
+{template new/header}
+
+{template artist/header}
+
+<div id="artistProfile">
+	<div class="video">
+		<div class="header">视频资料</div>
+		<div class="player">
+		<!--{if $user['field3']}-->
+			{eval $tmp = explode("\n", $user['field3']);}
+			<!--{loop $tmp $row}-->
+			{eval $row = trim($row);}
+			<embed src="{$row}" height="182" width="247"></embed>
+			<!--{/loop}-->
+		<!--{else}-->
+			<!--{if $user['uid'] == $_G['uid']}-->
+				<a href="home.php?mod=spacecp&ac=profile">添加视频</a>
+			<!--{else}-->
+				暂无视频
+			<!--{/if}-->
+		<!--{/if}-->	
+		</div>
+	</div>
+	<div class="baseInfo">
+		<div class="header">基本资料</div>
+		<ul>
+			<li><div class="title">真实姓名</div><div class="info">$user[realname]</div></li>
+			<li><div class="title">身高</div><div class="info">$user[height]</div></li>
+			<li><div class="title">出生日期</div><div class="info">$user[birthyear]/$user[birthmonth]/$user[birthday]</div></li>
+			<li><div class="title">体重</div><div class="info">$user[weight]</div></li>
+			<li><div class="title">毕业学校</div><div class="info">$user[graduateschool]</div></li>
+			<li><div class="title">出生城市</div><div class="info">$user[birthcity]</div></li>
+			<li><div class="title">职业</div><div class="info">$user[occupation]</div></li>
+			<li><div class="title">现住城市</div><div class="info">$user[residecity]</div></li>
+			<li><div class="title">性别</div><div class="info">{if $user[gender] == 1}男{else}女{/if}</div></li>
+			<li><div class="title">血型</div><div class="info">$user[bloodtype]</div></li>
+			<!--
+			<li><div class="title">生肖</div><div class="info">$user[realname]</div></li>
+			<li><div class="title">三围</div><div class="info">$user[realname]</div></li>
+			<li><div class="title">星座</div><div class="info">$user[realname]</div></li>
+			<li><div class="title">档期</div><div class="info">$user[realname]</div></li>
+			-->
+		</ul>
+	</div>
+	<div class="intro">
+		<div class="header">个人经历</div>
+		<div class="body">
+			<pre>
+			$user[bio]
+			</pre>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $("#head").find("div.ms").find("div.m").find("ul li").eq(1).addClass('cr');
+    $("#artistNav").find("li").eq(1).addClass('cr');
+});
+</script>
+
+{template new/footer}
