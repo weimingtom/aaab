@@ -1,0 +1,54 @@
+{template new/header}
+
+{template artist/header}
+
+<div id="albumListBox">
+	<div class="list">
+		<ul>
+		<!--{loop $albums $key $row}-->
+		<li>
+			<div class="date">{echo date('Y-m-d', $row['updatetime'])}</div>
+			<div class="img">
+				<a href="?do=pic&albumid={$row[albumid]}&uid={$uid}">
+					<img src="{$row[image]}" title="{$row[albumname]}" />
+				</a>
+			</div>
+			<div class="name">
+				<a href="?do=pic&albumid={$row[albumid]}&uid={$uid}">{$row[albumname]}</a>
+			</div>
+			<div class="stats">
+				<span class="lights">{$row[lights]}</span>
+				<span class="views">{$row[picnum]}</span>
+				<span class="replies">36</span>
+			</div>
+		</li>
+		<!--{/loop}-->
+		</ul>
+	</div>
+	<div class="slide">
+		<div class="left"></div>
+		<ul>
+		<!--{loop $newPics $key $row}-->
+		<li>
+			<div class="img">
+				<a href="?do=pic&albumid={$row[albumid]}&uid={$uid}">
+					<img src="{$row[image]}" title="{$row[filename]}" />
+				</a>
+			</div>
+		</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="right"></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $("#head").find("div.ms").find("div.m").find("ul li").eq(1).addClass('cr');
+    $("#artistNav").find("li").eq(0).addClass('cr');
+    $("#albumListBox").find(".list .img img").imgReSize({'w' : 166, 'h' : 166});
+    $("#albumListBox").find(".slide .img img").imgReSize({'w' : 111, 'h' : 111});
+});
+</script>
+
+{template new/footer}

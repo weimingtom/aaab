@@ -1,0 +1,107 @@
+{template new/header}
+
+{template artist/header}
+
+<div id="picListBox">
+	<div class="h">
+		<h3>$album[albumname]</h3>
+		<span>{echo date('Y-m-d H:i:s', $album['updatetime'])}</span>
+	</div>
+	<div class="s">
+		<span>点灯（<em>$click[2]</em>）</span>
+		<span>评论（<em>{echo count($comments)}</em>）</span>
+		<span>转发（<em>$album[sharetimes]</em>）</span>
+		<span>收藏（<em>$album[favtimes]</em>）</span>
+		<span>举报</span>
+	</div>
+	<div class="pics">
+		<ul>
+		<!--{loop $pics $key $row}-->
+		<li>
+			<img src="{$row[image]}" />
+		</li>
+		<!--{/loop}-->
+		</ul>
+	</div>
+	<div class="s">
+		<span>点灯（<em>$click[2]</em>）</span>
+		<span>评论（<em>{echo count($comments)}</em>）</span>
+		<span>转发（<em>$album[sharetimes]</em>）</span>
+		<span>收藏（<em>$album[favtimes]</em>）</span>
+		<span>举报</span>
+	</div>
+	<div class="slide">
+		<div class="left"></div>
+		<ul>
+		<!--{loop $newAlbums $key $row}-->
+		<li>
+			<div class="img">
+				<a href="?do=pic&albumid={$row[albumid]}&uid={$uid}">
+					<img src="{$row[image]}" title="{$row[filename]}" />
+				</a>
+			</div>
+		</li>
+		<!--{/loop}-->
+		</ul>
+		<div class="right"></div>
+	</div>
+
+	<div class="coments">
+		<ul>
+			<!--{loop $comments $row}-->
+			<li>
+				<div class="avatar">{echo avatar($row['authorid'], 'small')}</div>
+				<div class="content">
+					<div class="author">
+						<a href="space-uid-{$row[authorid]}.html" target="_blank">$row[author]</a>
+						<span>{echo date('Y-m-d', $row['dateline'])}</span>
+					</div>
+					<div class="c">
+						$row['message']
+					</div>
+				</div>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	</div>
+
+	<div class="docomment">
+	<form action="home.php?mod=spacecp&ac=comment&handlekey=qcpic_{$commentId}" method="post">
+		<input type="hidden" value="{$commentId}" name="id">
+		<input type="hidden" value="picid" name="idtype">
+		<input type="hidden" value="true" name="commentsubmit">
+		<input type="hidden" value="true" name="quickcomment">
+		<button class="pn" id="commentsubmit_btn" value="true" name="commentsubmit_btn" type="submit"><strong>评论</strong></button>
+		<input type="hidden" value="{FORMHASH}" name="formhash">
+		<!--{if $_G['uid']}-->
+		<textarea name="message"></textarea>
+		<!--{else}-->
+		<div class="notice">
+			您需要登录后才可以留言
+			<a href="http://www.yingkong.net/member.php?mod=logging&action=login">登录</a>
+			<a href="http://www.yingkong.net/member.php?mod=register">注册</a>
+		</div>
+		<!--{/if}-->
+	</form>
+	</div>
+
+	<div class="back">
+		<a href="artist.php?do=album&uid={$uid}">
+			<img src="indexNew/image/icon_album.gif" />
+		</a>
+		<a href="javascript:window.scrollTo('0','0');">
+			<img src="indexNew/image/icon_top.gif" />
+		</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(function() {
+    $("#head").find("div.ms").find("div.m").find("ul li").eq(1).addClass('cr');
+    $("#artistNav").find("li").eq(0).addClass('cr');
+    $("#albumListBox").find(".list .img img").imgReSize({'w' : 166, 'h' : 166});
+    $("#albumListBox").find(".slide .img img").imgReSize({'w' : 111, 'h' : 111});
+});
+</script>
+
+{template new/footer}

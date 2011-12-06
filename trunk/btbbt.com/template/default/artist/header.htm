@@ -1,0 +1,48 @@
+<div id="artistHead">
+	<div class="avatar">
+		{echo avatar($uid)}
+	</div>
+	<div class="info">
+		<h6>{$user[username]} <span class="level {$user[field7]}">$user[field7]</span></h6>
+		<div class="url">
+			<!--{if $user[field8]}-->
+			www.yingkong.com/{$user[field8]}
+			<!--{else}-->
+				<!--{if $_G['uid'] == $uid}-->
+					www.yingkong.com/<input type="text" name="domain" value="" />
+				<!--{else}-->
+					www.yingkong.net/?{$uid}
+				<!--{/if}-->
+			<!--{/if}-->
+		</div>
+		<div class="baseInfo">$user[resideprovince] $user[residecity] | $user[occupation] | 年龄：{echo 2011 - $user['birthyear']} | 身高：$user[height]</div>
+		<div class="operate">
+			<a href="home.php?mod=spacecp&ac=friend&op=add&uid={$uid}&handlekey=addfriendhk_{$uid}" class="addFriend">
+                <img src="indexNew/image/icon_hy.gif" width="51" height="25" />
+            </a>
+			<a href="###" class="addWeibo"><img src="indexNew/image/icon_gz.gif" width="52" height="25" /></a>
+			<a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_{$uid}&touid={$uid}&pmid=0&daterange=2" class="sendPm">
+				<img src="indexNew/image/icon_pm.gif" />
+			</a>
+			<a href="home.php?mod=space&uid={$uid}&do=pianyue" class="pianyue">
+				<img src="indexNew/image/icon_py.gif" />	
+			</a>
+		</div>
+	</div>
+	<div class="stats">
+		<ul>
+			<li class="noLast"><p class="num">$user[click4Sum]</p><p class="title">点灯数</p></li>
+			<li class="noLast"><p class="num">$user[click4Sum]</p><p class="title">粉丝数</p></li>
+			<li><p class="num">$user[views]</p><p class="title">点击数</p></li>
+		</ul>
+	</div>
+</div>
+<div id="artistNav">
+	<ul>
+		<li><a href="artist.php?do=album&uid={$uid}">展示</a></li>
+		<li><a href="artist.php?uid={$uid}">档案</a></li>
+		<li><a href="http://t.yingkong.net/{$uid}">微博</a></li>
+		<li><a href="###">关注</a></li>
+		<li><a href="artist.php?do=friend&uid={$uid}">留言</a></li>
+	</ul>
+</div>

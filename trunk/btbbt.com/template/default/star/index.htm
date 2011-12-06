@@ -1,0 +1,56 @@
+{template portal/new_header}
+
+<script type="text/javascript">
+function imgReSize(img, dst_w, dst_h) {
+	w = img.width;
+	h = img.height;
+	if(w / h > dst_w / dst_h) {
+		img.width = dst_w;
+		jQuery(img).css('margin-top', (160 - img.height) / 2);
+	} else {
+		img.height = dst_h;
+	}
+}
+</script>
+<div id="starlist" class="s_clear">
+<div class="leftmenu">
+	<ul>
+		<li><a href="star.php"{if $type == 'lady'} class="current"{/if}>最牛靓女</a></li>
+		<li><a href="star.php?type=man"{if $type == 'man'} class="current"{/if}>最牛型男</a></li>
+		<li><a href="star.php?type=actor"{if $type == 'actor'} class="current"{/if}>演 员</a></li>
+		<li><a href="star.php?type=model"{if $type == 'model'} class="current"{/if}>模 特</a></li>
+		<li><a href="star.php?type=singer"{if $type == 'singer'} class="current"{/if}>歌 手</a></li>
+		<li><a href="star.php?type=industry"{if $type == 'industry'} class="current"{/if}>业 内</a></li>
+		<li><a href="star.php?type=newvip"{if $type == 'newvip'} class="current"{/if}>最新VIP</a></li>
+	</ul>
+</div>
+
+<div class="rightarea">
+	<div class="topoperate box">
+		{$tips}
+	</div>
+	<div class="mainarea star s_clear" id="starLi">
+		<ul>
+		<!--{loop $data $row}-->
+		<li class="box">
+			<a href="home.php?mod=space&uid={$row[uid]}" class="starAvatar"><img src="{UC_API}/avatar.php?uid={$row[uid]}&size=big" onload="imgReSize(this, 143, 158)" /></a>
+			<h6><a href="home.php?mod=space&uid={$row[uid]}">{$row[realname]}</a></h6>
+			<p>{$row[occupation]}</p>
+			<p><span class="views" title="点击数:{$row[views]}">{$row[views]}</span><span class="photos" title="记录数:{$row[doings]}">{$row[doings]}</span></p>
+		</li>
+		<!--{/loop}-->
+		</ul>
+	</div>
+	<div class="multipage">
+		{$multi}
+	</div>
+</div>
+</div>
+<script type="text/javascript">
+jQuery(function() {
+	//starImgReSize();	
+});
+//starImgReSize();
+</script>
+
+{template portal/new_footer}

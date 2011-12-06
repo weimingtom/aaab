@@ -1,0 +1,26 @@
+<!--{template common/header}-->
+
+<div>
+<h3 class="flb" style="cursor:move;">
+	<em id="returnmessage_pianyue" fwin="login">给 $space[username] 发送片约</em>
+	<span><a title="关闭" onclick="hideWindow('stonephp_pianyue', 0, 1);" class="flbc" href="javascript:;">关闭</a></span>
+</h3>
+<form id="form_pianyue" action="home.php?mod=space&uid={$_G['gp_uid']}&do=pianyue&" method="post" style="padding:10px;" onsubmit="ajaxpost('form_pianyue', 'returnmessage_pianyue', 'returnmessage_pianyue', 'onerror');return false;" action="home.php?mod=space&do=pianyue&uid=$span[uid]&pianyue_submit=yes{if !empty($_G['gp_handlekey'])}&handlekey=$_G[gp_handlekey]{/if}{if !empty($_G['gp_infloat'])}&floatlogin=yes{/if}{if isset($_G['gp_frommessage'])}&frommessage{/if}">
+<input type="hidden" value="{FORMHASH}" name="formhash">
+<input type="hidden" value="yes" name="pianyue_submit">
+<table cellspacing="0" cellpadding="0" class="tfm">
+<tr><td width="80">剧组名称：</td><td><input type="text" value="" class="px z" name="name"></td></tr>
+<tr><td>联系人：</td><td><input type="text" value="" class="px z" name="linkman"></td></tr>
+<tr><td>联系电话：</td><td><input type="text" value="" class="px z" name="telnum"></td></tr>
+<tr><td colspan="2">剧组描述：</td></tr>
+<tr><td colspan="2"><textarea name="desc" style="width:375px;height:130px;"></textarea></td></tr>
+<tr><td colspan="2" align="center">
+	<input type="submit" name="submit" class="pn" value="提 交" /> &nbsp;
+	<input type="reset" onclick="hideWindow('stonephp_pianyue', 0, 1);" class="pn" value="取 消" />
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<!--{template common/footer}-->
