@@ -1,0 +1,48 @@
+{template new/header}
+
+{template stars/header}
+
+	<div class="artistsList" id="artistListBox" style="margin-top:8px;">
+		<ul style="width:100%">
+		<!--{loop $data $row}-->
+		<li>
+	        <div class="img">
+	        	<a href="http://www.yingkong.net/space-uid-{$row['uid']}.html">
+	        		<img src="{UC_API}/avatar.php?uid={$row[uid]}&size=big" />
+	        	</a>
+	        </div>
+	        <div class="name">
+	            <a href="http://www.yingkong.net/space-uid-8203315.html" class="n">{$row[realname]}</a>
+	            <span class="oi">{$row[occupation]}/{$row[resideprovince]}</span>
+	        </div>
+	        <div class="other">
+	            <span class="l">{if $row[field7]}$row[field7]{else}VIP{/if}</span>
+	            <span class="n1">{$row[doings]}</span>
+	            <span class="n2">{$row[views]}</span>
+	
+	        </div>
+	        <div class="operate">
+	            <a href="http://www.yingkong.net/home.php?mod=spacecp&ac=friend&op=add&uid={$row[uid]}&handlekey=addfriendhk_{$row[uid]}">
+	                <img src="indexNew/image/icon_hy.gif" width="51" height="25" />
+	            </a>
+	            <a href="###8203315">
+	                <img src="indexNew/image/icon_gz.gif" width="52" height="25" />
+	            </a>
+	        </div>
+	
+	    </li>
+		<!--{/loop}-->
+		</ul>
+	</div>
+	<div class="cb"></div>
+	<div class="multipage">
+		{$multi}
+	</div>
+
+<script type="text/javascript">
+jQuery(function() {
+	jQuery("#artistListBox").find(".img img").imgReSize({'w' : 154, 'h' : 112});
+});
+</script>
+
+{template new/footer}
