@@ -5,7 +5,7 @@ include(ROOT_PATH.'/db.php');
 $db = new db();
 $db->connect('localhost', 'root', 'root', 'ultrax');
 
-// 用户表 pre_ucenter_members
+// 用户表 pre_ucenter_members  pre_common_member pre_common_member_status
 
 $db->query("pre_ucenter_members");
 
