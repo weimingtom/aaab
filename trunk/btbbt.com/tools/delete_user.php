@@ -12,6 +12,73 @@ $db->connect('61.55.142.29', 'btbbt', 'btbbt', 'btbbt', 'gbk');
 // 循环次数
 $maxNum = 2000000;
 
+//1年没登陆用户全部删除。
+$page = 1;
+$usersLog = ROOT_PATH.'/users.log';
+if (file_exists($usersLog)) {
+ 	$page = file_get_contents($usersLog);
+ } 
+
+$pagesize = 50;
+for ($i=$page; $i<$maxNum; $i++)
+{
+	$startNum = ($i-1) * $pagesize;
+	$time = strtotime('-1 year'); // 一年前的时间戳
+	
+	$userTables = array(
+	// 用户相关
+	'pre_common_member',
+	'pre_common_member_action_log',
+	'pre_common_member_connect',
+	'pre_common_member_count',
+	'pre_common_member_field_forum',
+	'pre_common_member_field_home',
+	'pre_common_member_grouppm',
+	'pre_common_member_log',
+	'pre_common_member_magic',
+	'pre_common_member_profile',
+	'pre_common_member_status',
+	'pre_common_member_validate',
+	'pre_common_member_verify',
+	'pre_common_member_verify_info',
+
+	// 家园相关
+	'pre_home_album',
+	'pre_home_appcreditlog',
+	'pre_home_blog',
+	'pre_home_blogfield',
+	'pre_home_class',
+	);
+	
+	// 帖子相关
+	$bbsTables = array(
+	'pre_forum_post',
+	'pre_forum_thread',
+	);
+
+	$rows = $db->fetch_all("SELECT uid FROM pre_common_member_status WHERE lastactivity<'$time' LIMIT $startNum, $pagesize");
+	if ($rows) {
+		foreach ($rows as $row)
+		{
+			$uid = $row['uid'];
+
+			echo 'uid-'.$uid."\r\n";
+
+			foreach ($userTables as $table) {
+				$db->query("DELETE FROM $table WHERE uid='$uid'");
+			}
+
+			foreach ($bbsTables as $table) {
+				$db->query("DELETE FROM $table WHERE authorid='$uid'");
+			}
+		}
+	} else {
+		break;
+	}
+	file_put_contents($usersLog, $i);
+}
+
+
 //=======================================================
 //半年以上的回帖全部删除，只删除回帖
 $page = 1;
