@@ -9,23 +9,14 @@ $db->connect('61.55.142.29', 'btbbt', 'btbbt', 'btbbt', 'gbk');
 
 // 用户表 pre_ucenter_members  pre_common_member pre_common_member_status
 
-// 循环次数
-$maxNum = 2000000;
-
 //1年没登陆用户全部删除。
 $page = 1;
 $usersLog = ROOT_PATH.'/users.log';
 if (file_exists($usersLog)) {
  	$page = file_get_contents($usersLog);
  } 
-
-$pagesize = 50;
-for ($i=$page; $i<$maxNum; $i++)
-{
-	$startNum = ($i-1) * $pagesize;
-	$time = strtotime('-1 year'); // 一年前的时间戳
-	
-	$userTables = array(
+ 
+ $userTables = array(
 	// 用户相关
 	'pre_common_member',
 	'pre_common_member_action_log',
@@ -41,21 +32,27 @@ for ($i=$page; $i<$maxNum; $i++)
 	'pre_common_member_validate',
 	'pre_common_member_verify',
 	'pre_common_member_verify_info',
-
+	
 	// 家园相关
 	'pre_home_album',
 	'pre_home_appcreditlog',
 	'pre_home_blog',
 	'pre_home_blogfield',
 	'pre_home_class',
-	);
-	
-	// 帖子相关
-	$bbsTables = array(
+);
+
+// 帖子相关
+$bbsTables = array(
 	'pre_forum_post',
 	'pre_forum_thread',
-	);
+);
 
+$pagesize = 50;
+while (TRUE) 
+{
+	$startNum = ($page-1) * $pagesize;
+	$time = strtotime('-1 year'); // 一年前的时间戳
+	
 	$rows = $db->fetch_all("SELECT uid FROM pre_common_member_status WHERE lastactivity<'$time' LIMIT $startNum, $pagesize");
 	if ($rows) {
 		foreach ($rows as $row)
@@ -63,24 +60,28 @@ for ($i=$page; $i<$maxNum; $i++)
 			$uid = $row['uid'];
 
 			echo 'uid-'.$uid."\r\n";
-
+			
 			foreach ($userTables as $table) {
 				$db->query("DELETE FROM $table WHERE uid='$uid'");
 			}
 
-			foreach ($bbsTables as $table) {
-				$db->query("DELETE FROM $table WHERE authorid='$uid'");
+			$threads = $db->fetch_all("SELECT tid FROM pre_forum_thread WHERE dateline<'$time' AND replies<'5'");
+			foreach ($threads as $thread) {
+				$db->query("DELETE FROM pre_forum_thread WHERE tid='{$thread['tid']}'");
+				$db->query("DELETE FROM pre_forum_post WHERE tid='{$thread['tid']}'");
 			}
 		}
 	} else {
 		break;
 	}
-	file_put_contents($usersLog, $i);
+	
+	file_put_contents($usersLog, $page);
+	$page++;
 }
 
 
 //=======================================================
-//半年以上的回帖全部删除，只删除回帖
+/* 半年以上的回帖全部删除，只删除回帖
 $page = 1;
 $threadLog = ROOT_PATH.'/thread.log';
 if (file_exists($threadLog)) {
@@ -146,7 +147,7 @@ for ($i=$page; $i<$maxNum; $i++)
 		break;
 	}
 	file_put_contents($thread2Log, $i);
-}
+}*/
 
 //$db->query("pre_ucenter_members");
 //
