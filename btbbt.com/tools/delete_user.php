@@ -35,10 +35,12 @@ if (file_exists($usersLog)) {
 	
 	// 家园相关
 	'pre_home_album',
-	'pre_home_appcreditlog',
-	'pre_home_blog',
-	'pre_home_blogfield',
-	'pre_home_class',
+	'pre_home_favorite',	// 收藏
+	'pre_home_blog',	// 日志
+	'pre_home_blogfield',	
+	'pre_home_class',	// 分类
+	'pre_home_friend', 	// 用户好友
+	'pre_home_share',	// 用享
 );
 
 // 帖子相关
@@ -58,14 +60,22 @@ while (TRUE)
 		foreach ($rows as $row)
 		{
 			$uid = $row['uid'];
-
 			echo 'uid-'.$uid."\r\n";
+			
+			// 删除相册图片
+			$pics = $db->fetch_all("SELECT * FROM pre_home_pic WHERE uid='$uid'");
+			foreach ($pics as $pic) {
+				$filepath = $pic['filepath'];
+				echo $filepath;
+				exit;
+			}
+			exit;
 			
 			foreach ($userTables as $table) {
 				$db->query("DELETE FROM $table WHERE uid='$uid'");
 			}
 
-			$threads = $db->fetch_all("SELECT tid FROM pre_forum_thread WHERE dateline<'$time' AND replies<'5'");
+			$threads = $db->fetch_all("SELECT tid FROM pre_forum_thread WHERE authorid='$uid' AND dateline<'$time' AND replies<'5'");
 			foreach ($threads as $thread) {
 				$db->query("DELETE FROM pre_forum_thread WHERE tid='{$thread['tid']}'");
 				$db->query("DELETE FROM pre_forum_post WHERE tid='{$thread['tid']}'");
