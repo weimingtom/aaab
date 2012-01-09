@@ -2,12 +2,12 @@ function showBlockLayerAd() {
 	// 百分率
 	var randnum = Math.floor(Math.random()*100); //随机取一个位置 
 	if(randnum > 20) {
-		return null;	
+		//return null;	
 	}
 	
 	var isshow = getcookiead('isshowcenterad');
 	if(isshow == 1) {
-		return null;
+		//return null;
 	}
 	
 	// 加载CSS
@@ -27,7 +27,7 @@ function showBlockLayerAd() {
 	addiv.id = 'layerCenterAd';
 	addiv.className = "layer_center_ad";
 	addiv.style.position = "absolute";
-	var strIMG = "<img src='test.jpg' />";
+	var strIMG = "<script type=\"text/javascript\">/*格子间*/ var cpro_id = 'u696232';</script><script src=\"http://cpro.baidu.com/cpro/ui/c.js\" type=\"text/javascript\"></script>";
 	addiv.innerHTML = "<p style=\"font-size:12px;width:100%;text-align:right;\"><a href=\"###\" onclick=\"closeCenterAd('layerCenterAd')\">关闭</a></p><p>"+strIMG+"</p>";
 	
 	// 定位
