@@ -1,13 +1,13 @@
 function showBlockLayerAd() {
 	// 百分率
 	var randnum = Math.floor(Math.random()*100); //随机取一个位置 
-	if(randnum > 20) {
-		//return null;	
+	if(randnum > 5) {
+		return null;	
 	}
 	
 	var isshow = getcookiead('isshowcenterad');
 	if(isshow == 1) {
-		//return null;
+		return null;
 	}
 	
 	// 加载CSS
@@ -17,18 +17,23 @@ function showBlockLayerAd() {
 	//style.rel = 'stylesheet';
 	//style.type = 'text/css';
 	style = document.createElement('link');
-    style.setAttribute('rel', 'stylesheet');
-    style.setAttribute('type', 'text/css');
-    style.setAttribute('href', 'center_ad_show.css');
+	style.setAttribute('rel', 'stylesheet');
+	style.setAttribute('type', 'text/css');
+	style.setAttribute('href', 'http://www.btbbt.com/static/ad/page_center_show_ad/center_ad_show.css');
 	head.appendChild(style);
 	
-	// 创建DIV
+	
+	/* 创建DIV
 	var addiv = document.createElement('div');
 	addiv.id = 'layerCenterAd';
 	addiv.className = "layer_center_ad";
 	addiv.style.position = "absolute";
-	var strIMG = "<script type=\"text/javascript\">/*格子间*/ var cpro_id = 'u696232';</script><script src=\"http://cpro.baidu.com/cpro/ui/c.js\" type=\"text/javascript\"></script>";
-	addiv.innerHTML = "<p style=\"font-size:12px;width:100%;text-align:right;\"><a href=\"###\" onclick=\"closeCenterAd('layerCenterAd')\">关闭</a></p><p>"+strIMG+"</p>";
+
+	var strIMG = "";
+	addiv.innerHTML = "<p style=\"font-size:12px;width:100%;text-align:right;\"><a href=\"###\" onclick=\"closeCenterAd('layerCenterAd')\">关闭</a></p><p>"+strIMG+"</p>";*/
+	var addiv = document.getElementById('layerCenterAd');
+	addiv.style.position = "absolute";
+	addiv.style.display = '';
 	
 	// 定位
 	position = 2;
