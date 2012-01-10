@@ -1,7 +1,7 @@
 function showBlockLayerAd() {
 	// 百分率
 	var randnum = Math.floor(Math.random()*100); //随机取一个位置 
-	if(randnum > 5) {
+	if(randnum > 10) {
 		return null;	
 	}
 	
@@ -48,11 +48,12 @@ function showBlockLayerAd() {
 	addiv.style.marginTop = scrolltop - parseFloat(addiv.offsetHeight/2) + 'px';
 	
 	setcookiead('isshowcenterad', 1, 86400);
+	
+	setTimeout("closeCenterAd()", 20000);	// 30秒
 }
 
-function closeCenterAd(strid) {
-	document.getElementById(strid).style.display='none';
-	return false;
+function closeCenterAd() {
+	document.getElementById('layerCenterAd').style.display='none';
 }
 
 function getcookiead(name) {
