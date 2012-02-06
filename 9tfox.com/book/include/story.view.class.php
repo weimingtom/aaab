@@ -636,6 +636,7 @@ class BookView
 		$ndtp = new DedeTagParse();
 		$ndtp->SetNameSpace("in","{","}");
 		$ch = 0;
+				
 		while($row = $this->dsql->GetArray())
 		{
 			$ch++;
@@ -645,7 +646,6 @@ class BookView
 				foreach($ndtp->CTags as $tagid=>$ctag)
 				{
 					$tagname = $ctag->GetTagName();
-
 					//field类型
 					if($tagname=='field')
 					{
