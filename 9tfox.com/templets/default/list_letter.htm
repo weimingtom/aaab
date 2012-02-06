@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={dede:global.cfg_soft_lang/}" />
+<title>{dede:field.title/}_{dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field name='keywords'/}" />
+<meta name="description" content="{dede:field name='description' function='html2text(@me)'/}" />
+<link href="{dede:global.cfg_templeturl/}/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+</head>
+<body class="articlelist">
+{dede:include filename="head.htm"/}
+<!-- /header -->
+
+<div style="margin:10px auto; width 100%; width:960px; height 34px;border:1px #ace772 solid;height:36px;">
+	<div class="paixu1">
+		<div style="FLOAT: left; width 100px; height: 34px; color:#217604;line-height:36px;padding-left:20px; ">按字母检索</div>
+		<div style="FLOAT: left; WIDTH: 810px; FONT-FAMILY: Verdana;">
+		<ul>
+			{dede:letter currentstyle="<li style='FLOAT: left;BORDER-COLLAPSE: collapse;line-height:36px;padding:0 10px;'><a href='~letterurl~' ~rel~ style='color:#fff;background:#71a60c;padding:0 4px 2px 3px;display:block;'>~lettername~</a></li>"}
+				<li style="FLOAT: left;BORDER-COLLAPSE: collapse;line-height:36px;padding:0 10px;"><a href='[field:letterurl/]' [field:rel/]>[field:lettername/]</a></li>
+			{/dede:letter}
+		</ul>
+		</div>
+	</div>
+</div>
+
+<div class="w960 center clear mt1">
+	<div class="pleft">
+		<div class="place">
+			<strong>当前位置:</strong> 按字母索引 -> {dede:field name='letter'/} 总计 ({dede:field name='totalnum'/}) 更新时间( {dede:tagname runphp='yes'}@me = GetDateMk(time());{/dede:tagname} )
+		</div><!-- /place -->
+		<div class="listbox">
+			<ul class="e2">
+ {dede:letterlist/}
+			</ul>
+		</div><!-- /listbox -->
+		<div class="dede_pages">
+			<ul class="pagelist">
+             {dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}
+			</ul>
+		</div><!-- /pages -->
+	</div><!-- /pleft -->
+	
+	<div class="pright">
+		<div class="commend">
+			<dl class="tbox">
+				<dt><strong>推荐内容</strong></dt>
+				<dd>
+					<ul class="d4">
+           {dede:arclist flag='c' titlelen=42 row=6}
+          	<li><a href="[field:arcurl/]">[field:title/]</a>
+            	<p>[field:description function='cn_substr(@me,80)'/]...</p>
+            </li>{/dede:arclist}
+					</ul>
+				</dd>
+			</dl>
+		</div><!-- /commend -->
+		
+		<div class="hot mt1">
+			<dl class="tbox">
+				<dt><strong>热点内容</strong></dt>
+				<dd>
+					<ul class="c1 ico2">
+                    {dede:arclist row=10 orderby=click}
+                    	<li><a href="[field:arcurl/]">[field:title/]</a></li>
+                    {/dede:arclist}
+					</ul>
+				</dd>
+			</dl>
+		</div>
+
+
+	</div><!-- /pright -->
+</div>
+
+{dede:include filename="footer.htm"/}
+<!-- /footer -->
+
+</body>
+</html>

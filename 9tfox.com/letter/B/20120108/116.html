@@ -1,0 +1,689 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>B.A.D - 漫画天下</title>
+<meta name="keywords" content="" />
+<meta name="description" content="B.A.D漫画 ，残酷而痛苦，丑恶而美丽，神秘的幻想。 你爱她吗？" />
+<link href="/templets/default/images/photo/album.css" rel="stylesheet" media="screen" type="text/css">
+<link href="/templets/default/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="/include/dedeajax2.js"></script>
+<SCRIPT language="javascript" type="text/javascript" src="/templets/default/images/photo/sinaflash.js"></SCRIPT>
+<SCRIPT language="javascript" type="text/javascript" src="/templets/default/images/photo/heiphoto.js"></SCRIPT>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("/plus/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "/plus/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+-->
+</script>
+<LINK rel=stylesheet type=text/css href="/images/home.css">
+<STYLE type=text/css media=print>
+.secondaryHeader {
+	DISPLAY: none! important
+}
+.eControl {
+	DISPLAY: none! important;
+	border:#000 solid 1px;
+	width:300px;
+}
+#efpTxt .others {
+	DISPLAY: none! important
+}
+#efpPicList {
+	DISPLAY: none! important
+}
+.footer {
+	DISPLAY: none! important
+}
+#efpClew {
+	DISPLAY: none! important
+}
+#CommFormBottomBox {
+	DISPLAY: none! important
+}
+#efpLeftArea {
+	DISPLAY: none! important
+}
+#efpRightArea {
+	DISPLAY: none! important
+}
+.eTitle H1 {
+	MARGIN: 0px
+}
+</STYLE>
+<link href="images/photo/album.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<DIV class=top><A href="#"><IMG 
+src="/images/top.gif"></A></DIV>
+<DIV id=hd>
+<DIV id=header>
+<DIV class="hds bai_lj">本站共有漫画 <B class=yellow>：22 部</B> ，为了方便您阅读，请 <SPAN class=h_bai><A onclick="window.external.AddFavorite('#','漫画天下')" href="javascript:;">收藏本站</A> 　　　</B></SPAN></DIV>
+<DIV class=logo><A href="#"><IMG src="/images/logo.gif"></A></DIV>
+<DIV class=logor>
+<DIV class=logor1><A href="#" target=_blank><IMG src="/images/imgad.jpg"></A></DIV>
+<DIV class=logor2>
+<UL class=dm_nav>
+ </UL></DIV></DIV></DIV>
+<DIV id=header class=ff>
+<DIV style="TEXT-ALIGN: center; FONT-SIZE: 14px; FONT-WEIGHT: bold" 
+class=nav_wz><A href="/">网站首页</A> | 
+
+<a href='/shaonianrexue/'>少年热血</a> | 
+
+<a href='/wuxiagedou/'>武侠格斗</a> | 
+
+<a href='/shaonvaiqing/'>少女爱情</a> | 
+
+<a href='/kehuanmohuan/'>科幻魔幻</a> | 
+
+<a href='/jingjitiyu/'>竞技体育</a> | 
+
+<a href='/gaoxiaoxiju/'>搞笑喜剧</a> | 
+
+<a href='/zhentantuili/'>侦探推理</a> | 
+
+<a href='/kongbulingyi/'>恐怖灵异</a> | 
+
+<a href='/danmeiweiniang/'>耽美伪娘</a> | 
+
+<a href='/baihehougong/'>百合后宫</a> | 
+
+<a href='/qitaleixing/'>其他类型</a> | 
+ 
+</DIV>
+<DIV id=nav_fl1></DIV>
+<DIV id=nav_fl2><SPAN class="hong_lj matoa"><A 
+href="/cartoon/">今日新卷</A> | <A 
+href="/hot/">热门连载</A> | <A 
+href="/over/">完结漫画</A></SPAN> | <SPAN class=nav_zm><A 
+href="/plus/list.php?tid=13"><SPAN>A</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>B</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>C</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>D</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>E</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>F</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>G</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>H</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>I</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>J</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>K</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>L</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>M</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>N</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>O</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>P</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>Q</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>R</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>S</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>T</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>U</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>V</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>W</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>X</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>Y</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>Z</SPAN></A> <A 
+href="/plus/list.php?tid=13"><SPAN>0-9</SPAN></A> </SPAN></DIV>
+<DIV id=nav_fl3></DIV></DIV></DIV>
+<div class="w960 center clear mt1">
+  <div class="place"> <strong>当前位置:</strong> <a href='http://127.0.0.1/'>主页</a> > <a href='/plus/list.php?tid=12'>字母索引</a> > <a href='/plus/list.php?tid=14'>B</a> > B.A.D </div>
+  <div id="wrap">
+    <div class="pic">
+      <!-- /place -->
+      <!--相册代码开始-->
+      <DIV class=eTitle>
+        <H1><SPAN id=txtTitle>B.A.D</SPAN><SPAN id=total>(<SPAN class=cC00>0</SPAN>/0)</SPAN></H1>
+      </DIV>
+      <DIV class=eControl>
+        <DIV class=ecCont>
+          <DIV id=ecbSpeed>
+            <DIV class=buttonCont id=ecbSpeedInfo>5秒</DIV>
+          </DIV>
+          <DIV id=ecbPre title=上一张>
+            <DIV class=buttonCont></DIV>
+          </DIV>
+          <DIV id=ecbPlay>
+            <DIV class=play id=ecpPlayStatus></DIV>
+          </DIV>
+          <DIV id=ecbNext title=下一张>
+            <DIV class=buttonCont></DIV>
+          </DIV>
+          <DIV id=ecbLine>
+            <DIV class=buttonCont></DIV>
+          </DIV>
+          <DIV id=ecbMode title=列表模式(tab)>
+            <DIV class=buttonCont></DIV>
+          </DIV>
+          <DIV id=ecbModeReturn title=返回幻灯模式(tab)>
+            <DIV class=buttonCont></DIV>
+          </DIV>
+          <DIV id=ecbFullScreen title=全屏浏览>
+            <DIV class=buttonCont id=fullScreenFlash></DIV>
+          </DIV>
+          <!-- 速度条 begin -->
+          <DIV id=SpeedBox>
+            <DIV id=SpeedCont>
+              <DIV id=SpeedSlide></DIV>
+              <DIV id=SpeedNonius></DIV>
+            </DIV>
+          </DIV>
+          <!-- 速度条 end -->
+        </DIV>
+      </DIV>
+      <DIV id=eFramePic>
+        <DIV id=efpBigPic>
+          <DIV id=efpClew></DIV>
+          <DIV id=d_BigPic></DIV>
+          <DIV class=arrLeft id=efpLeftArea title=上一张></DIV>
+          <DIV class=arrRight id=efpRightArea title=下一张></DIV>
+          <DIV id=endSelect>
+            <DIV id=endSelClose></DIV>
+            <DIV class=bg></DIV>
+            <DIV class=E_Cont>
+              <P>您已经浏览完所有图片</P>
+              <P><A id=rePlayBut href="javascript:void(0)"></A><A id=nextPicsBut href="javascript:void(0)"></A></P>
+            </DIV>
+          </DIV>
+          <!-- endSelect end -->
+        </DIV>
+        <DIV id=efpTxt>
+        	<H2 id=d_picTit></H2>
+        	<DIV id=d_picTime></DIV>
+        	<DIV id=d_picIntro></DIV>
+        	<DIV class=others>
+       		时间:2012-01-08 18:29 | 浏览<script src="/plus/count.php?view=yes&aid=116&mid=1" type='text/javascript' language="javascript"></script>次 | 已有<SPAN class=cC00 
+        id=commAObjNum><A href="/plus/feedback.php?aid=116" target="_blank">0</A></SPAN>条评论</DIV> 
+        </DIV>
+        <DIV id=efpTxt style="display:none">
+          <H2 id=d_picTit></H2>
+          <DIV id=d_picTime></DIV>
+          <DIV id=d_picIntro></DIV>
+        </DIV>
+        <DIV id=efpContent><a href="javascript:dPlayNext();" style="text-align: center; padding-bottom: 0px; widows: 2; text-transform: none; list-style-type: none; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font: 12px Arial, Helvetica, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; word-spacing: 0px; text-decoration: none; padding-top: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><img alt="本站支持点击图片翻页" border="0" id="bigimg" src="http://img.read.hi.cn/manhua/20111129/B.A.D/B.A.D%202%E8%AF%9D/001.jpg" style="border-bottom: rgb(102,102,102) 1px solid; border-left: rgb(102,102,102) 1px solid; padding-bottom: 2px; overflow-x: hidden; overflow-y: hidden; list-style-type: none; margin: 0px; padding-left: 2px; padding-right: 2px; font-family: Arial, Helvetica, sans-serif; max-width: 998px; height: auto; font-size: 12px; border-top: rgb(102,102,102) 1px solid; border-right: rgb(102,102,102) 1px solid; padding-top: 2px; border-image: initial" /></a><a href="javascript:dPlayNext();" style="text-align: center; padding-bottom: 0px; widows: 2; text-transform: none; list-style-type: none; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font: 12px Arial, Helvetica, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; word-spacing: 0px; text-decoration: none; padding-top: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><img alt="本站支持点击图片翻页" border="0" id="bigimg" src="http://img.read.hi.cn/manhua/20111129/B.A.D/B.A.D%202%E8%AF%9D/002.jpg" style="border-bottom: rgb(102,102,102) 1px solid; border-left: rgb(102,102,102) 1px solid; padding-bottom: 2px; overflow-x: hidden; overflow-y: hidden; list-style-type: none; margin: 0px; padding-left: 2px; padding-right: 2px; font-family: Arial, Helvetica, sans-serif; max-width: 998px; height: auto; font-size: 12px; border-top: rgb(102,102,102) 1px solid; border-right: rgb(102,102,102) 1px solid; padding-top: 2px; border-image: initial" /></a><a href="javascript:dPlayNext();" style="text-align: center; padding-bottom: 0px; widows: 2; text-transform: none; list-style-type: none; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font: 12px Arial, Helvetica, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; word-spacing: 0px; text-decoration: none; padding-top: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><img alt="本站支持点击图片翻页" border="0" id="bigimg" src="http://img.read.hi.cn/manhua/20111129/B.A.D/B.A.D%202%E8%AF%9D/003.jpg" style="border-bottom: rgb(102,102,102) 1px solid; border-left: rgb(102,102,102) 1px solid; padding-bottom: 2px; overflow-x: hidden; overflow-y: hidden; list-style-type: none; margin: 0px; padding-left: 2px; padding-right: 2px; font-family: Arial, Helvetica, sans-serif; max-width: 998px; height: auto; font-size: 12px; border-top: rgb(102,102,102) 1px solid; border-right: rgb(102,102,102) 1px solid; padding-top: 2px; border-image: initial" /></a><a href="javascript:dPlayNext();" style="text-align: center; padding-bottom: 0px; widows: 2; text-transform: none; list-style-type: none; text-indent: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; font: 12px Arial, Helvetica, sans-serif; white-space: normal; orphans: 2; letter-spacing: normal; word-spacing: 0px; text-decoration: none; padding-top: 0px; -webkit-text-size-adjust: auto; -webkit-text-stroke-width: 0px"><img alt="本站支持点击图片翻页" border="0" id="bigimg" src="http://img.read.hi.cn/manhua/20111129/B.A.D/B.A.D%202%E8%AF%9D/004.jpg" style="border-bottom: rgb(102,102,102) 1px solid; border-left: rgb(102,102,102) 1px solid; padding-bottom: 2px; overflow-x: hidden; overflow-y: hidden; list-style-type: none; margin: 0px; padding-left: 2px; padding-right: 2px; font-family: Arial, Helvetica, sans-serif; max-width: 998px; height: auto; font-size: 12px; border-top: rgb(102,102,102) 1px solid; border-right: rgb(102,102,102) 1px solid; padding-top: 2px; border-image: initial" /></a><div style="clear:both"></div></DIV>
+        <DIV id=efpPicList>
+          <DIV id=efpPreGroup>
+            <DIV id=efpPrePic onmouseover="this.className='selected'" 
+onmouseout="this.className=''">
+              <TABLE cellSpacing=0>
+                <TR>
+                  <TD><a href='/letter/B/20120108/115.html'><img src="http://www.read.hi.cn/uploads/allimg/111202/1-1112020550190-L.jpg" alt="不笑童子108宗罪"/></a> </TD>
+                </TR>
+              </TABLE>
+            </DIV>
+            <DIV id=efpPreTxt><< 上一图集</DIV>
+          </DIV>
+          <DIV id=efpListLeftArr onMouseOver="this.className='selected'" onmouseout="this.className=''"></DIV>
+          <DIV id=efpPicListCont></DIV>
+          <DIV id=efpListRightArr onMouseOver="this.className='selected'" onmouseout="this.className=''"></DIV>
+          <DIV id=efpNextGroup>
+            <DIV id=efpNextPic onmouseover="this.className='selected'" 
+onmouseout="this.className=''">
+              <TABLE cellSpacing=0>
+                <TR>
+                  <TD><a href='/letter/B/20120108/117.html'><img src="http://www.read.hi.cn/uploads/allimg/111126/1-1111261146040-L.jpg" alt="百合铁"/></a> </TD>
+                </TR>
+              </TABLE>
+            </DIV>
+            <DIV id=efpPreTxt>下一图集 >></DIV>
+          </DIV>
+        </DIV>
+      </DIV>
+      <DIV id=ePicList></DIV>
+      <DIV id=eData style="DISPLAY: none">  </DIV>
+      <SCRIPT language=javascript type="text/javascript">
+          <!--//--><![CDATA[//><!--
+          var dataInfo = {
+              title : "B.A.D"
+          };
+          function echoFocus(){
+              var flashPic = "",flashTxt = "";
+              var newHref;
+              var datas = sina.$('eData').getElementsByTagName('dl');
+              for(var i=0;i<datas.length;i++){
+                  //try{
+                      var title,pic,middlePic,smallPic,datetime,intro,commUrl;
+                      title = datas[i].getElementsByTagName('dt');
+                      if(title){
+                          title = title[0].innerHTML;
+                      }else{
+                          title = 'null';
+                      };
+                      var info = datas[i].getElementsByTagName('dd');
+                      if(info){
+                          pic = info[0].innerHTML;
+                          middlePic = info[1].innerHTML;
+                          smallPic = info[2].innerHTML;
+                          datetime = info[3].innerHTML;
+                          intro = info[4].innerHTML;
+                          commUrl = info[5].getElementsByTagName('a');
+                          imageId = info[6].innerHTML;
+                          commUrl = '';
+          
+                      };
+                      epidiascope.add({
+                                      src : pic,
+                                      lowsrc_b : middlePic,
+                                      lowsrc_s : smallPic,
+                                      date : datetime,
+                                      title : title,
+                                      text : intro,
+                                      comment : commUrl,
+                                      id : imageId
+                                  });
+                      if(flashPic != ""){flashPic += "|"};
+                      flashPic += encodeURIComponent(pic);
+                      
+                      if(flashTxt != ""){flashTxt += "|"};
+                      flashTxt += encodeURIComponent(title) + "#" + encodeURIComponent(intro.replace(/<.*?>/g,'')); 
+                  //}catch(e){}
+              };
+              epidiascope.autoPlay = false;
+              epidiascope.init();
+              fullFlash(flashTxt,flashPic);
+              
+              if(Math.random()<=0.01){
+                  epidiascope.stop();
+              };
+          };
+          function fullFlash(txt,pic){	
+              var flashurl = "/templets/default/images/photo/photo.swf";
+              var fullScreen = new sinaFlash(flashurl, "fullScreenObj", "100%", "100%", "8", "#000000");
+              fullScreen.addParam("quality", "best");
+              fullScreen.addParam("wmode", "transparent");
+              fullScreen.addParam("allowFullScreen", "true");
+              fullScreen.addParam("allowScriptAccess","always");
+              fullScreen.addVariable("mylinkpic", pic);		
+              fullScreen.addVariable("infotxt",dataInfo.title);
+              fullScreen.addVariable("mytxt",txt);
+              fullScreen.addVariable("fulls_btnx","0");
+              fullScreen.addVariable("fulls_btny","0");
+              fullScreen.addVariable("fulls_btnalpha","0")
+              fullScreen.write("fullScreenFlash");
+          };
+          function flash_to_js(name){
+              name = new String(name);
+              var status = name.split("|");
+              epidiascope.speedBar.setGrade(status[1]);
+              epidiascope.select(parseInt(status[0]));
+          };
+          function js_to_flash(){
+              epidiascope.stop();
+              return epidiascope.selectedIndex + "|" + epidiascope.speedBar.grade;
+          };
+          var sendT = {
+              getHeader : function(){
+                  return document.getElementById("txtTitle").innerHTML + '-' + document.getElementById("d_picTit").innerHTML;
+              },
+              getFirstImgSrc : function(){
+                  if (document.getElementById("d_BigPic").getElementsByTagName("img")[0]){
+                      return document.getElementById("d_BigPic").getElementsByTagName("img")[0].src;
+                  }else{
+                      return null;
+                  }
+              }
+          }
+          
+          echoFocus();
+          //--><!]]>
+          </SCRIPT>
+      <div style="clear:both "></div>
+    </div>
+    <!-- /pleft -->
+  </div>
+  <div class="pleft"> <!-- //主模板必须要引入/include/dedeajax2.js -->
+<a name='postform'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>发表评论</strong> <span class="more"></span> </dt>
+    <dd>
+      <div class="dede_comment_post">
+        <form action="#" method="post" name="feedback" onsubmit="return false;">
+          <input type="hidden" name="dopost" value="send" />
+          <input type="hidden" name="comtype" value="comments">
+          <input type="hidden" name="aid" value="116" />
+          <input type="hidden" name="fid" id='feedbackfid' value="0" />
+          <div class="dcmp-title"> <small>请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。</small> </div>
+          <!-- /dcmp-title -->
+          <div class="dcmp-stand"> <strong>评价:</strong>
+            <input type="radio" name="feedbacktype" checked="1" value="feedback" id="dcmp-stand-neu" />
+            <label for="dcmp-stand-neu"><img src="/templets/default/images/cmt-neu.gif" />中立</label>
+            <input type="radio" name="feedbacktype" value="good" id="dcmp-stand-good" />
+            <label for="dcmp-stand-good"><img src="/templets/default/images/cmt-good.gif" />好评</label>
+            <input type="radio" name="feedbacktype" value="bad" id="dcmp-stand-bad" />
+            <label for="dcmp-stand-bad"><img src="/templets/default/images/cmt-bad.gif" />差评</label>
+          </div>
+          <!-- /dcmp-stand -->
+          <div class="clr"></div>
+          <div class="dcmp-content">
+            <script type="text/javascript">
+					//<![CDATA[
+					window.CKEDITOR_BASEPATH='/include/ckeditor/';
+					//]]>
+                    </script>
+            <script type="text/javascript" src="/include/ckeditor/ckeditor.js?t=B8DJ5M3"></script>
+            <script type="text/javascript">//<![CDATA[
+CKEDITOR.config.ubb_smiley = {"高兴":"{s:1}","撇嘴":"{s:2}","抓狂":"{s:3}","汗":"{s:4}","惊恐":"{s:5}","奋斗":"{s:6}","疑问":"{s:7}","晕":"{s:8}","偷笑":"{s:9}","可爱":"{s:10}","疑惑":"{s:11}","酷":"{s:12}","暴汗":"{s:13}","呕吐":"{s:14}","大笑":"{s:15}","色":"{s:16}"}
+//]]></script>
+<textarea name="msg" rows="8" cols="60"></textarea>
+<script type="text/javascript">//<![CDATA[
+CKEDITOR.replace('msg', {"extraPlugins":"dedepage,multipic,addon,bbcode","fontSize_sizes":"30\/30%;50\/50%;100\/100%;120\/120%;150\/150%;200\/200%;300\/300%","disableObjectResizing":"true","smiley_path":"\/images\/smiley\/","smiley_images":["1.gif","2.gif","3.gif","4.gif","5.gif","6.gif","7.gif","8.gif","9.gif","10.gif","11.gif","12.gif","13.gif","14.gif","15.gif","16.gif"],"smiley_descriptions":["高兴","撇嘴","抓狂","汗","惊恐","奋斗","疑问","晕","偷笑","可爱","疑惑","酷","暴汗","呕吐","大笑","色"],"toolbar":[["Source","-","Bold","Italic","Underline","-"],["FontSize","TextColor"],["Link","Unlink","Smiley"]],"height":100,"skin":"kama"});
+//]]></script>
+ </div>
+          <!-- /dcmp-content -->
+          <div class="dcmp-post">
+            <!--未登陆-->
+            <div class="dcmp-userinfo" id="_ajax_feedback"> 用户名:
+              <input type="text" name="username" size="16" class="ipt-txt" style="text-transform: uppercase;"/>
+              
+              验证码:
+              <input type="text" name="validate" size="4" class="ipt-txt" style="text-transform:uppercase;"/>
+              <img src= "/include/vdimgck.php" id="validateimg" style="cursor:pointer" onclick="this.src=this.src+'?'" title="点击我更换图片" alt="点击我更换图片"  class="vdimg"/>
+              <input type="checkbox" name="notuser" id="dcmp-submit-guest" />
+              <label for="dcmp-submit-guest" />
+              匿名?
+              </label>
+            </div>
+            
+            <script language="javascript" type="text/javascript">CheckLogin();</script>
+            
+            <div class="dcmp-submit">
+              <button type="button" onClick='PostComment()'>发表评论</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dd>
+  </dl>
+</div>
+<!-- //评论表单区结束 -->
+<!-- //评论内容区 -->
+<a name='commettop'></a>
+<div class="mt1">
+  <dl class="tbox">
+    <dt> <strong>最新评论</strong> <span class="more"><a href="/plus/feedback.php?aid=116">进入详细评论页&gt;&gt;</a></span> </dt>
+    <!-- //这两个ID的区块必须存在，否则JS会出错 -->
+    <dd id='commetcontentNew'></dd>
+    <dd id='commetcontent'></dd>
+  </dl>
+</div>
+<!--
+//由于评论载入时使用异步传输，因此必须在最后一步加载（DIGG和评论框须放在评论内容前面）
+//如果一定需要提前的把myajax.SendGet改为myajax.SendGet2，但可能会引起页面阻滞
+-->
+<script language='javascript'>
+function LoadCommets(page)
+{
+		var taget_obj = document.getElementById('commetcontent');
+		var waithtml = "<div style='line-height:50px'><img src='/images/loadinglit.gif' />评论加载中...</div>";
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x', waithtml);
+		myajax.SendGet2("/plus/feedback_ajax.php?dopost=getlist&aid=116&page="+page);
+		DedeXHTTP = null;
+}
+function PostComment()
+{
+		var f = document.feedback;
+		var msg = CKEDITOR.instances.msg.getData();
+		var nface = '6';
+		var nfeedbacktype = 'feedback';
+		var nvalidate = '';
+		var nnotuser = '';
+		var nusername = '';
+		var npwd = '';
+		var taget_obj = $DE('commetcontentNew');
+		var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+		if(msg=='')
+		{
+			alert("评论内容不能为空！");
+			return;
+		}
+		if(f.validate)
+		{
+			if(f.validate.value=='') {
+				alert("请填写验证码！");
+				return;
+			}
+			else {
+				nvalidate = f.validate.value;
+			}
+		}
+		if(msg.length > 500)
+		{
+			alert("你的评论是不是太长了？请填写500字以内的评论。");
+			return;
+		}
+		if(f.feedbacktype) {
+			for(var i=0; i < f.feedbacktype.length; i++)
+				if(f.feedbacktype[i].checked) nfeedbacktype = f.feedbacktype[i].value;
+		}
+		/*
+		if(f.face) {
+			for(var j=0; j < f.face.length; j++)
+				if(f.face[j].checked) nface = f.face[j].value;
+		}
+		*/
+		if(f.notuser.checked) nnotuser = '1';
+		if(f.username) nusername = f.username.value;
+		if(f.pwd) npwd = f.pwd.value;
+		
+		var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+		myajax.sendlang = 'utf-8';
+		myajax.AddKeyN('dopost', 'send');
+		myajax.AddKeyN('aid', '116');
+		myajax.AddKeyN('fid', f.fid.value);
+		myajax.AddKeyN('face', nface);
+		myajax.AddKeyN('feedbacktype', nfeedbacktype);
+		myajax.AddKeyN('validate', nvalidate);
+		myajax.AddKeyN('notuser', nnotuser);
+		myajax.AddKeyN('username', nusername);
+		myajax.AddKeyN('pwd', npwd);
+		myajax.AddKeyN('msg', msg);
+		myajax.SendPost2('/plus/feedback_ajax.php');
+		//msg = '';
+		CKEDITOR.instances.msg.setData('');
+		//taget_obj.removeAttribute('id');
+		f.fid.value = 0;
+		if(f.validate)
+		{
+			if($DE('validateimg')) $DE('validateimg').src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+}
+function quoteCommet(fid)
+{
+	    document.feedback.fid.value = fid;
+}
+  
+function ajaxFeedback(aid, fid, type)
+{
+	
+	var taget_obj = $DE('ajaxfeedback_'+fid);
+	if(taget_obj.innerHTML == '')
+	{
+		var myajax = new DedeAjax(taget_obj, true, true, '', 'x');
+		myajax.SendGet2("/plus/feedback.php?aid="+aid+"&fid="+fid+"&action=quote&type=ajax");
+		eval('var result = typeof CKEDITOR.instances.msg_'+fid);
+		if(result != 'undefined')
+		{
+			// 删除实例
+			eval('var edit = CKEDITOR.instances.msg_'+fid);
+			CKEDITOR.remove(edit);
+		}
+		CKEDITOR.replace(document.getElementById('msg_'+fid) , CKEDITOR.instances.msg.config);
+		scroll(0, taget_obj.offsetTop - 120);
+		var formname = 'f = document.ajaxfeedback_'+fid;
+		eval(formname);
+		if(f.validate)
+		{
+			if($DE('vdimg_'+fid)) $DE('vdimg_'+fid).src = "/include/vdimgck.php?"+f.validate.value;
+			f.validate.value = '';
+		}
+		
+		DedeXHTTP = null;
+	}
+}
+
+
+
+function ajaxQuotePost(fid)
+{
+	var formname = 'f = document.ajaxfeedback_'+fid;
+	eval(formname);
+	//var f = document.formname;
+	//var f = f[0];
+	var nvalidate = '';
+	var nnotuser = '';
+	var nusername = '';
+	var npwd = '';
+	var taget_obj = $DE('commetcontentNew');
+	var waithtml = "<div style='line-height:30px'><img src='/images/loadinglit.gif' />正在发送中...</div>";
+	eval('var msg = CKEDITOR.instances.msg_'+fid+'.getData()');
+
+	if(f.validate)
+	{
+		if(f.validate.value=='') {
+			alert("请填写验证码！");
+			return;
+		}
+		else {
+			nvalidate = f.validate.value;
+		}
+	}
+	var myajax = new DedeAjax(taget_obj, false, true, '', '', waithtml);
+	
+	if(f.notuser.checked) nnotuser = '1';
+	if(f.username) nusername = f.username.value;
+	if(f.pwd) npwd = f.pwd.value;
+	
+	myajax.sendlang = 'utf-8';
+	myajax.AddKeyN('dopost', 'send');
+	myajax.AddKeyN('aid', '116');
+	myajax.AddKeyN('fid', f.fid.value);
+	myajax.AddKeyN('type', 'ajax');
+	myajax.AddKeyN('comtype', f.comtype.value);
+	myajax.AddKeyN('isconfirm','yes');
+	
+	myajax.AddKeyN('typeid', f.typeid.value);
+	myajax.AddKeyN('quotemsg', f.quotemsg.value);
+	myajax.AddKeyN('validate', nvalidate);
+	myajax.AddKeyN('notuser', nnotuser);
+	myajax.AddKeyN('username', nusername);
+	myajax.AddKeyN('pwd', npwd);
+	myajax.AddKeyN('msg', msg);
+	myajax.SendPost2('/plus/feedback_ajax.php');
+	//alert(f.quotemsg.value);
+	if($DE('ajaxfeedback_'+fid).innerHTML != null)
+	{
+		$DE('ajaxfeedback_'+fid).innerHTML = '';
+	}
+	scroll(0, taget_obj.offsetTop);
+}
+LoadCommets(1);
+</script>
+<!-- //评论内容区结束 -->
+ </div>
+  <div class="pright" style="padding-top: 8px;"></div>
+ <DIV id=header>
+<DIV class=yq_top></DIV>
+<DIV class=yq_bot>
+<DIV class=yq_img></DIV>
+<DIV class=yq_zi>
+		
+  
+		
+  
+		
+  
+		
+  
+		
+  
+		
+  
+		
+  
+		
+  
+		
+    </DIV></DIV></DIV>
+<DIV style="HEIGHT: 10px" class=ff></DIV><!-- by -->
+<DIV 
+style="MARGIN: 0px auto; WIDTH: 970px; BACKGROUND: #eaeaea; HEIGHT: 6px; BORDER-TOP: #cccccc 1px solid" 
+class=ff></DIV>﻿
+<DIV 
+style="TEXT-ALIGN: center; LINE-HEIGHT: 28px; MARGIN: 10px auto">广告联系QQ:28101686 
+联系站长:28101686@qq.com 联系客服:28101686<BR><SPAN id=oDiv></SPAN>Copyright (C) 
+2005-2010 漫画天下 All rights reserved
+
+ </DIV><br />
+</body>
+</html>

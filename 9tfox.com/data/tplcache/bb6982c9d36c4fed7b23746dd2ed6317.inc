@@ -1,0 +1,2 @@
+<li class="red_lj">
+<a href="[field:arcurl/]"><img  src="[field:litpic/]"></a><br><a href="[field:arcurl/]">[field:title/]</a>(<span style="color: red;">[field:comic/]</span>)<br><a href="[field:typeurl/]" target="_blank">[field:typename/]</a><br>更新时间：[field:stime/]</li>

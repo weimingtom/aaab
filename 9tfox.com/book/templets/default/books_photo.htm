@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset={dede:global.cfg_soft_lang/}" />
+<title>{dede:field.title/} - {dede:global.cfg_webname/}</title>
+<meta name="keywords" content="{dede:field.keywords/}" />
+<meta name="description" content="{dede:field.description function='html2text(@me)'/}" />
+<link href="{dede:global.cfg_templets_skin/}/images/photo/album.css" rel="stylesheet" media="screen" type="text/css">
+<link href="{dede:global.cfg_templets_skin/}/style/dedecms.css" rel="stylesheet" media="screen" type="text/css" />
+<script language="javascript" type="text/javascript" src="{dede:global.cfg_cmsurl/}/include/dedeajax2.js"></script>
+<SCRIPT language="javascript" type="text/javascript" src="{dede:global.cfg_templets_skin/}/images/photo/sinaflash.js"></SCRIPT>
+<SCRIPT language="javascript" type="text/javascript" src="{dede:global.cfg_templets_skin/}/images/photo/heiphoto.js"></SCRIPT>
+<script language="javascript" type="text/javascript">
+<!--
+function CheckLogin(){
+	  var taget_obj = document.getElementById('_ajax_feedback');
+	  myajax = new DedeAjax(taget_obj,false,false,'','','');
+	  myajax.SendGet2("{dede:global.cfg_cmsurl/}/member/ajax_feedback.php");
+	  DedeXHTTP = null;
+}
+function postBadGood(ftype,fid)
+{
+	var taget_obj = document.getElementById(ftype+fid);
+	var saveid = GetCookie('badgoodid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==fid && hasid) continue;
+			else {
+				if(saveids[i]==fid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==10 && hasid) break;
+				if(j==9 && !hasid) break;
+			}
+		}
+		if(hasid) { alert('您刚才已表决过了喔！'); return false;}
+		else saveid += ','+fid;
+		SetCookie('badgoodid',saveid,1);
+	}
+	else
+	{
+		SetCookie('badgoodid',fid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	myajax.SendGet2("{dede:field name='phpurl'/}/feedback.php?aid="+fid+"&action="+ftype+"&fid="+fid);
+}
+function postDigg(ftype,aid)
+{
+	var taget_obj = document.getElementById('newdigg');
+	var saveid = GetCookie('diggid');
+	if(saveid != null)
+	{
+		var saveids = saveid.split(',');
+		var hasid = false;
+		saveid = '';
+		j = 1;
+		for(i=saveids.length-1;i>=0;i--)
+		{
+			if(saveids[i]==aid && hasid) continue;
+			else {
+				if(saveids[i]==aid && !hasid) hasid = true;
+				saveid += (saveid=='' ? saveids[i] : ','+saveids[i]);
+				j++;
+				if(j==20 && hasid) break;
+				if(j==19 && !hasid) break;
+			}
+		}
+		if(hasid) { alert("您已经顶过该帖，请不要重复顶帖 ！"); return; }
+		else saveid += ','+aid;
+		SetCookie('diggid',saveid,1);
+	}
+	else
+	{
+		SetCookie('diggid',aid,1);
+	}
+	myajax = new DedeAjax(taget_obj,false,false,'','','');
+	var url = "{dede:global.cfg_phpurl/}/digg_ajax.php?action="+ftype+"&id="+aid;
+	myajax.SendGet2(url);
+}
+-->
+</script>
+<LINK rel=stylesheet type=text/css href="/images/home.css">
+<STYLE type=text/css media=print>
+.secondaryHeader {
+	DISPLAY: none! important
+}
+.eControl {
+	DISPLAY: none! important;
+	border:#000 solid 1px;
+	width:300px;
+}
+#efpTxt .others {
+	DISPLAY: none! important
+}
+#efpPicList {
+	DISPLAY: none! important
+}
+.footer {
+	DISPLAY: none! important
+}
+#efpClew {
+	DISPLAY: none! important
+}
+#CommFormBottomBox {
+	DISPLAY: none! important
+}
+#efpLeftArea {
+	DISPLAY: none! important
+}
+#efpRightArea {
+	DISPLAY: none! important
+}
+.eTitle H1 {
+	MARGIN: 0px
+}
+</STYLE>
+<link href="images/photo/album.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+{dede:include filename="aabbccdd_head.htm"/}
+<div class="w960 center clear mt1">
+  <div class="place"> <strong>当前位置:</strong> <a href="/book/list.php?id=2">字母索引</a> > <a href="/book/list.php?id={dede:field name='id'/}">{dede:field name='classname'/}</a> >
+        <a href='{dede:field name='bookurl'/}'>{dede:field name='bookname'/}</a> >
+        第 {dede:field name='chapnum'/} 章 {dede:field name='chaptername'/} </div>
+  <div id="wrap">
+    <div align="center"><a href="{dede:prenext get='nexturl'/}">
+                      <img name="bigpic" id="bigpic" src="{dede:field name='bigpic'/}" alt="{dede:field name='title'/}" border="0" /></a>
+                            <script language="javascript">
+	var myimg = new Image();
+	myimg.src = document.getElementById("bigpic").src;
+	if(myimg.width > screen.width) document.getElementById("bigpic").width = screen.width * 0.96;
+	                    </script>
+                        </div>
+                         <div class="book_middle_text_next" style="text-align:center"><a href="{dede:prenext get='preurl'/}">上一篇</a>    <a href="book.php?id={dede:field name='bookid'/}">回目录</a>    <a href="{dede:prenext get='nexturl'/}">下一篇</a>
+            </div>
+  </div>
+  
+  <div class="pright" style="padding-top: 8px;"></div>
+ {dede:include filename="aabbccdd_foot.htm"/}<br />
+</body>
+</html>

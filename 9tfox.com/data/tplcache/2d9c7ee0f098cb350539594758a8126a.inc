@@ -1,0 +1,1 @@
+<DL><SPAN class=flr>[field:pubdate function="MyDate('m-d',@me)"/]</SPAN><A href="[field:bookurl/]" target=_blank>[field:title/]</A></DL>

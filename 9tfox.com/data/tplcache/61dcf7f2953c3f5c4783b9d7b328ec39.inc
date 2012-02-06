@@ -1,0 +1,1 @@
+<DL><SPAN class=flr>[field:addtime function="MyDate('m-d',@me)"/]</SPAN><a href="/book/show-photo.php?id=[field:id/]" >[field:title/]</A></DL>

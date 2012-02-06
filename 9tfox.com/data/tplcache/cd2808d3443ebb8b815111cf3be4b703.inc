@@ -1,0 +1,1 @@
+<LI id=bb_[field:global.autoindex/] class=in1 onmouseover=in2([field:global.autoindex/]);>[field:typename/]</LI>
