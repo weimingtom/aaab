@@ -71,5 +71,22 @@ if($freenum > -1)
         }
     }
 }
+
+// huyao+ 2012.02.06
+$photo = $bv->dsql->getOne("Select chapterid From #@__story_content where id='{$id}'");
+$photoArr = array();
+if ($photo) {
+	$bv->dsql->SetQuery("Select id From #@__story_content where chapterid='{$photo['chapterid']}' order by id asc ");
+	$bv->dsql->Execute();
+	$i=1;
+	while ($row = $bv->dsql->getArray()) {
+		$photoArr[$i] = $row['id'];
+		$i++;
+	}
+}
+$bv->dtp->Assign('photoArr', $photoArr);
+// huyao end
+//print_r($photoArr);
+
 $bv->Display();
 $bv->Close();
