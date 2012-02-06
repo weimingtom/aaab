@@ -137,7 +137,7 @@ function postDigg(ftype,aid)
 	if(myimg.width > screen.width) document.getElementById("bigpic").width = screen.width * 0.96;
 	                    </script>
                         </div>
-			<div class="book_middle_text_next" style="text-align:center"><a href="{dede:prenext get='preurl'/}">上一篇</a>    <a href="book.php?id={dede:field name='bookid'/}">回目录</a>    <a href="{dede:prenext get='nexturl'/}">下一篇</a>
+			<div class="book_middle_text_next" style="text-align:center"><a href="{dede:prenext get='preurl'/}">上一篇</a>    <a href="book.php?bid={dede:field name='bookid'/}">回目录</a>    <a href="{dede:prenext get='nexturl'/}">下一篇</a>
 			跳转到<select name="photoPage" onchange="location.href='?id='+this.value">
 			{dede:foreach array="photoArr"}
 			<option value="[field:value /]">[field:key /]</option>
