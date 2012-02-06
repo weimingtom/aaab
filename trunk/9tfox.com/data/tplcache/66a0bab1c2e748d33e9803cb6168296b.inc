@@ -1,0 +1,1 @@
+<DIV class=innr72><A href="[field:arcurl/]" target=_blank>[field:title/]</A></DIV>

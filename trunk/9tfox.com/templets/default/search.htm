@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<LINK rel=stylesheet type=text/css href="/images/home.css">
+</HEAD>
+<BODY>
+{dede:include filename="aabbccdd_head.htm"/}
+<DIV id=header>
+<DIV class=index_l>
+  <DIV class="inkk ">
+  <DIV class=inbt>最新章节</DIV>
+<DIV class=innr4>
+{dede:arclist row='24'  titlelen=20} 
+<DL><SPAN class=flr>[field:pubdate function="MyDate('m-d',@me)"/]</SPAN><A href="[field:arcurl/]" target=_blank>[field:title/]</A></DL>
+{/dede:arclist}
+</DIV></DIV>
+<DIV class="inkk mato10">
+<DIV class=inbt>推荐漫画</DIV>
+{dede:arclist  row='10'  att='c' } 
+<DIV class=innr8>
+<UL>
+  <LI><A href="[field:arcurl/]"><IMG 
+  src="[field:litpic/]"></A></LI></UL>
+<DL>
+  <DT class=red_lj><STRONG><A href="[field:arcurl/]" >[field:title/]</A></STRONG></DT>
+  <DT>状态：[field:comic/]</DT>
+  <DT>作者：[field:author/]</DT>
+  <DT>人气：[field:click /]</DT></DL></DIV>
+<DIV class=ff></DIV>
+{/dede:arclist}
+</DIV></DIV>
+<DIV class=index_r>
+<DIV class="ssk red_lj matoa">
+<FORM name=formsearch action=/plus/search.php ><INPUT value=0 type=hidden name=kwtype> 
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD height=30 width="11%"><FONT class=redzic>漫画搜索：</FONT></TD>
+    <TD width="35%"><INPUT id=search-keyword class=sos2 size=55 type=text 
+      name=keyword></TD>
+    <TD width="10%" align=middle><INPUT src="/images/dmss.gif" type=image 
+      name=""></TD>
+    <TD width="44%">
+
+    <A href="#" target=_blank>火影忍者</A><A href="#" >海贼王</A><A href="#" >死神</A><A href="#" >银魂</A><A href="#" 
+      target=_blank>不迷羊/不迷途的羔羊</A></TD></TR></TBODY></TABLE></FORM></DIV>
+
+<DIV class=ff></DIV>
+<div class="inkk">
+        	<div style="font-size: 12px;" class="inbt">搜索 <strong class="fc_03c">{dede:global name='keyword' function='RemoveXSS(@me)'/}</strong> 的结果 </div>
+      <div class="innr3">
+ {dede:list pagesize='10'} 
+<li class="red_lj">
+<a href="[field:arcurl/]"><img  src="[field:litpic/]"></a><br><a href="[field:arcurl/]">[field:title/]</a>(<span style="color: red;">[field:comic/]</span>)<br>作者：[field:author/]<br>时间：[field:stime/]</li>
+{/dede:list}
+      </div>
+
+            <div class="ff"></div>
+            <div class="fanye">
+{dede:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
+   </ul>
+
+            </div>
+    </div>
+</DIV></DIV>
+
+<DIV style="HEIGHT: 10px" class=ff></DIV>
+{dede:include filename="aabbccdd_foot.htm"/}
+
+</BODY></HTML>

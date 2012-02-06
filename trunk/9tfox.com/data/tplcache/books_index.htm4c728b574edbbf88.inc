@@ -1,0 +1,44 @@
+<?php
+$z[0]=Array("global","",276,309);
+$z[0][4]['name']="cfg_webname";
+$z[1]=Array("global","",331,363);
+$z[1][4]['name']="cfg_cmsurl";
+$z[2]=Array("global","",537,569);
+$z[2][4]['name']="cfg_cmsurl";
+$z[3]=Array("global","",796,828);
+$z[3][4]['name']="cfg_cmsurl";
+$z[4]=Array("global","",1215,1250);
+$z[4][4]['name']="cfg_memberurl";
+$z[5]=Array("global","",1299,1334);
+$z[5][4]['name']="cfg_memberurl";
+$z[6]=Array("global","",1923,1955);
+$z[6][4]['name']="cfg_cmsurl";
+$z[7]=Array("catalog","\r\n                    <li><a href=\"{in:field name='url'}{/in:field}\">{in:field name='classname'}{/in:field}</a></li>\r\n        			",1985,2143);
+$z[8]=Array("global","",2169,2204);
+$z[8][4]['name']="cfg_memberurl";
+$z[9]=Array("global","",2466,2499);
+$z[9][4]['name']="cfg_cmspath";
+$z[10]=Array("booklist","\r\n							<li><a href='[field:bookurl /]'>[field:bookname /]</a></li>\r\n							",2829,2976);
+$z[10][4]['row']="8";
+$z[10][4]['titlelen']="24";
+$z[10][4]['orderby']="weekcc";
+$z[11]=Array("booklist","\r\n							<li><a href='[field:bookurl /]'>[field:bookname /]</a></li>\r\n							",3366,3514);
+$z[11][4]['row']="8";
+$z[11][4]['titlelen']="24";
+$z[11][4]['orderby']="commend";
+$z[12]=Array("booklist","\r\n                       		<li><a href='[field:bookurl /]'>[field:bookname /]</a></li>\r\n							",3891,4055);
+$z[12][4]['row']="8";
+$z[12][4]['titlelen']="24";
+$z[12][4]['orderby']="click";
+$z[13]=Array("catalog","\r\n                  	<option value=\"{in:field name='id'}{/in:field} \">{in:field name='classname'}{/in:field} </option>\r\n              		{in:sonlist}\r\n                  	<option value=\"[field:id/]\"> --[field:classname/]</option>\r\n                  	{/in:sonlist}\r\n              		",4649,4957);
+$z[14]=Array("catalog","\r\n                        <div class=\"book_class_form\">\r\n                            <dl>\r\n                            <dt><a href=\"{in:field name='url'}{/in:field}\">{in:field name='classname'}{/in:field}：</a></dt>\r\n                            {in:sonlist}<dd> <a href='[field:url/]'>[field:classname/]</a></dd>{/in:sonlist}\r\n                            </dl>\r\n                            <div class=\"clear\">\r\n                            </div>\r\n                        </div>\r\n                        ",5363,5896);
+$z[15]=Array("booklist","\r\n<div class=\"book_news_style_form\">\r\n                        	<div class=\"book_news_style_img\"><a href=\"[field:bookurl/]\">[field:litpic runphp='yes']@me = ((@me==\"\") ? \"<img src='/images/defaultpic.gif' width='80' height='100'/>\" : \"<img src='@me' width='80' height='100'>\"); [/field:litpic]</a></div>\r\n                    <div class=\"book_news_style_text\"><h1><a href='[field:bookurl/]'>[field:title/]</a></h1><h2>作者：<a href='search.php?author=[field:author/]'>[field:author/]</a></h2>\r\n                            <h3>[field:description function=\"cn_substr(@me,60)\"/]…</h3>\r\n                            </div>\r\n                        </div>\r\n                        ",6276,7021);
+$z[15][4]['row']="4";
+$z[15][4]['titlelen']="24";
+$z[15][4]['orderby']="bid";
+$z[16]=Array("contentlist","\r\n                    <div class=\"book_next_text\">\r\n                    	<dl>\r\n                        <dd class=\"name_book\">[[field:cataloglink/]] [field:booklink/]</dd>\r\n                        <dd class=\"news_book\">[field:contentlink/]</dd>\r\n                        <dd class=\"time_book\">[field:lastpost function=\"GetDateMk(@me)\"/]</dd>\r\n                        </dl>\r\n                        <div class=\"clear\"></div>\r\n                  	</div>\r\n                    ",7802,8318);
+$z[16][4]['row']="20";
+$z[17]=Array("global","",8559,8592);
+$z[17][4]['name']="cfg_version";
+
+?>

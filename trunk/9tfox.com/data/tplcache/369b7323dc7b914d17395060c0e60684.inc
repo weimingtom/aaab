@@ -1,0 +1,1 @@
+[field:total runphp='yes']@me=empty(@me)? 0 : @me;[/field:total]

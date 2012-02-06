@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD>
+<META content="text/html; charset=utf-8" http-equiv=Content-Type>
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<LINK rel=stylesheet type=text/css href="/images/home.css">
+</HEAD>
+<BODY>
+{dede:include filename="aabbccdd_head.htm"/}
+<DIV id=header>
+<DIV class=index_l>
+
+<DIV class="inkk">
+<DIV class=inbt>本月热门漫画</DIV>
+<DIV class=innr4>
+{dede:booklist row='8' titlelen='24' orderby='weekcc'}
+<DL><SPAN class=flr>[field:pubdate function="MyDate('m-d',@me)"/]</SPAN><a href='[field:bookurl /]'>[field:bookname /]</a></DL>
+{/dede:booklist}
+
+</DIV></DIV>
+<DIV class="inkk mato10">
+<DIV class=inbt>推荐漫画</DIV>
+{dede:booklist row='8' titlelen='24' orderby='commend'}
+<DIV class=innr8>
+<UL>
+  <LI><A href="[field:bookurl /]"><IMG   src="[field:litpic/]"></A></LI></UL>
+<DL>
+  <DT class=red_lj><STRONG><A href="[field:bookurl /]" >[field:bookname/]</A></STRONG></DT>
+  <DT>状态：[field:array runphp='yes']@me = (@me['status']==0 ? "连载中" : "已完结"); [/field:array] </DT>
+  <DT>作者：[field:author/]</DT>
+  <DT>人气：[field:click /]</DT>
+  </DL>
+  </DIV>
+<DIV class=ff></DIV>
+{/dede:booklist}
+
+</DIV>
+<DIV class="inkk"  style="margin-top:10px;">
+<DIV class=inbt>总点击排行</DIV>
+<DIV class=innr4>
+{dede:booklist row='8' titlelen='24' orderby='click'}
+<DL><a href='[field:bookurl /]'>[field:bookname /]</a></DL>
+{/dede:booklist}
+
+</DIV></DIV>
+</DIV>
+<DIV class=index_r>
+<DIV class="ssk red_lj matoa">
+<FORM name=formsearch action=/plus/search.php target=_blank><INPUT value=0 
+type=hidden name=kwtype> 
+<TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+  <TBODY>
+  <TR>
+    <TD height=30 width="11%"><FONT class=redzic>漫画搜索：</FONT></TD>
+    <TD width="35%"><INPUT id=search-keyword class=sos2 size=55 type=text      name=keyword></TD>
+    <TD width="10%" align=middle><INPUT src="/images/dmss.gif" type=image 
+      name=""></TD>
+    <TD width="44%">
+
+    <A href="#" target=_blank>火影忍者</A><A href="#" >海贼王</A><A href="#" >死神</A><A href="#" >银魂</A><A href="#" 
+      target=_blank>不迷羊/不迷途的羔羊</A></TD></TR></TBODY></TABLE></FORM></DIV>
+
+<DIV class=ff></DIV>
+<div class="inkk">
+        	<div style="font-size: 12px;" class="inbt">当前您的位置： {dede:field name='position'/} </div>
+      <div class="innr3">
+ {dede:list pagesize='10'} 
+<li class="red_lj">
+<a href="[field:bookurl/]"><img  src="[field:litpic/]"></a><br><a href="[field:bookurl/]">[field:title/]</a>(<span style="color: red;">[field:comic/]</span>)<br>作者：[field:author/]<br>更新时间：[field:pubdate function="MyDate('m-d',@me)"/]</li>
+{/dede:list}
+      </div>
+
+            <div class="ff"></div>
+            <div class="fanye">
+{dede:pagelist listitem="info,index,end,pre,next,pageno,option" listsize="5"/}
+   </ul>
+
+            </div>
+    </div>
+</DIV></DIV>
+
+<DIV style="HEIGHT: 10px" class=ff></DIV>
+{dede:include filename="aabbccdd_foot.htm"/}
+
+</BODY></HTML>

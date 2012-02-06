@@ -1,0 +1,1 @@
+<DIV class=innr72><A href="[field:bookurl/]" target=_blank>[field:bookname/]</A></DIV>

@@ -1,0 +1,30 @@
+<?php
+$typeArr[22] = 'J';
+$typeArr[21] = 'I';
+$typeArr[20] = 'H';
+$typeArr[19] = 'G';
+$typeArr[18] = 'F';
+$typeArr[17] = 'E';
+$typeArr[15] = 'C';
+$typeArr[16] = 'D';
+$typeArr[14] = 'B';
+$typeArr[12] = '字母索引';
+$typeArr[13] = 'A';
+$typeArr[23] = 'K';
+$typeArr[24] = 'L';
+$typeArr[26] = 'M';
+$typeArr[27] = 'N';
+$typeArr[28] = 'O';
+$typeArr[29] = 'P';
+$typeArr[30] = 'Q';
+$typeArr[31] = 'R';
+$typeArr[32] = 'S';
+$typeArr[33] = 'T';
+$typeArr[34] = 'U';
+$typeArr[35] = 'V';
+$typeArr[36] = 'W';
+$typeArr[37] = 'X';
+$typeArr[38] = 'Y';
+$typeArr[39] = 'Z';
+$typeArr[65] = '小说';
+?>

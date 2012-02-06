@@ -1,0 +1,1 @@
+<DIV class=innr72><A href="/book/book.php?bid=[field:bid/]" >[field:bookname/]</A></DIV>

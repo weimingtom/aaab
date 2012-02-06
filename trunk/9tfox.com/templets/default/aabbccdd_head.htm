@@ -1,0 +1,25 @@
+<DIV class=top><A href="#"><IMG 
+src="/images/top.gif"></A></DIV>
+<DIV id=hd>
+<DIV id=header>
+<DIV class="hds bai_lj">本站共有漫画 <B class=yellow>{dede:sql sql="select count(ID) as c from dede_archives "}：[field:c /] 部{/dede:sql}</B> ，为了方便您阅读，请 <SPAN class=h_bai><A onclick="window.external.AddFavorite('#','漫画天下')" href="javascript:;">收藏本站</A> 　　　</B></SPAN></DIV>
+<DIV class=logo><A href="#"><IMG src="/images/logo.gif"></A></DIV>
+<DIV class=logor>
+<DIV class=logor1><A href="#" target=_blank><IMG src="/images/imgad.jpg"></A></DIV>
+<DIV class=logor2>
+<UL class=dm_nav>
+ </UL></DIV></DIV></DIV>
+<DIV id=header class=ff>
+<DIV style="TEXT-ALIGN: center; FONT-SIZE: 14px; FONT-WEIGHT: bold" class=nav_wz><A href="/" style="font-size:14px">网站首页</A> | 
+{dede:channel row='13' type='top'}
+<a href='[field:typelink /]' style="font-size:14px">[field:typename/]</a> | 
+{/dede:channel} 
+</DIV>
+<DIV id=nav_fl1></DIV>
+<DIV id=nav_fl2> <SPAN class=nav_zm>
+{dede:sql sql="Select * From #@__story_catalog WHERE pid='2' order by id ASC limit 0,30"}
+<A 
+href="/book/list.php?id=[field:id/]"><SPAN>[field:classname/]</SPAN></A> </SPAN>
+{/dede:sql}
+</DIV>
+<DIV id=nav_fl3></DIV></DIV></DIV>
