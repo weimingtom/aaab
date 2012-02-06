@@ -86,7 +86,6 @@ if ($photo) {
 }
 $bv->dtp->Assign('photoArr', $photoArr);
 // huyao end
-//print_r($photoArr);
 
 $bv->Display();
 $bv->Close();
