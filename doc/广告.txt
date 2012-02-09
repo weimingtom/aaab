@@ -1,1 +1,6 @@
-<script type="text/javascript">/*格子间*/ var cpro_id = 'u696232';</script><script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>
+<script type="text/javascript">/*360*300，创建于2012-1-10*/ var cpro_id = 'u738559';</script><script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>
+
+
+
+百度左则对联广告
+<script type="text/javascript">/*百度对联120＊600*/ var cpro_id = 'u687668';</script><script src="http://cpro.baidu.com/cpro/ui/c.js" type="text/javascript"></script>
