@@ -668,8 +668,8 @@ class BookView
 						
 						$ct = 0;
 						$nlist = '';
-						while($rowch = $this->dsql->GetArray('ch'))
-						{
+						$rowch = $this->dsql->GetArray('ch');
+						
 							$ct++;
 							if($this->Fields['booktype']==1)
 							{
@@ -685,7 +685,7 @@ class BookView
 							$rbtext = preg_replace("/\[field:title([\s]{0,})\/\]/isU",$rowch['title'],$rbtext);
 							$rbtext = preg_replace("/\[field:bigpic([\s]{0,})\/\]/isU",$rowch['bigpic'],$rbtext);
 							$nlist .= $rbtext;
-						}
+						
 						$ndtp->Assign($tagid,$nlist);
 					}
 				}//End foreach
