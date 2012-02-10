@@ -106,18 +106,11 @@ type=hidden name=kwtype>
                         </div>
                     </div>
                     {dede:chapter}
-      <div class="book_article_texttable">
-                    	<div class="book_article_texttitle">第{in:field name='chapnum'}{/in:field}卷 {in:field name='chaptername'}{/in:field}
-                        </div>
-                        <div class="book_article_listtext">
-                        	<dl id="chapterlist">
-                            {in:content}<dd><a href="[field:url/]">第[field:ch/]节 [field:title/]</a></dd>{/in:content}
-                            </dl>
-                            <div class="clear">
-                            </div>
-                        </div>
-                </div>
+     
+                            {in:content}<div style="width:100px; text-align:center; height:30px; border:1px solid #CCC; float:left; line-height:30px; margin-left:5px; margin-right:5px;"><a href="[field:url/]">[field:title/]</a></div>{/in:content}
+                           
                     {/dede:chapter}
+                    <div style="clear:both; padding-bottom:10px;"></div>
                   <!-- comment--><!-- comment -->	      
               </div>
 </DIV></DIV>
