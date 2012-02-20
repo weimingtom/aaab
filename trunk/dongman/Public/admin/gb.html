@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="__PUBLIC__/js/admin.js"></script>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome}</div>
+  <div class="right_main">
+  <if condition="strtolower(ACTION_NAME) eq show ">
+	<table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+    <tr class="tb_head"><td><h2>留言管理：搜索支持用户呢称,用户IP,用户QQ,留言内容!</h2></td></tr>
+    <form action="index.php?s=Admin-Gb-Show" method="post">{__NOTOKEN__}
+    <tr class="firstalt"><td colspan="5" style="line-height:30px;"> 筛选内容：
+    <select name="gb_del" id="gb_del" class="select"><option value="0">全部状态</option><option value="2" <eq name="gb_del" value="2">selected</eq>>已审核</option><option value="1" <eq name="gb_del" value="1">selected</eq>>未审核</option></select>&nbsp;&nbsp;
+    <select name="gb_intro" id="gb_intro" class="select"><option value="0">回复状态</option><option value="2" <eq name="gb_intro" value="2">selected</eq>>已回复</option><option value="1" <eq name="gb_intro" value="1">selected</eq>>未回复</option></select>&nbsp;&nbsp;
+    <select name="gb_cid" id="gb_cid" class="select"><option value="0">报错状态</option><option value="2" <eq name="gb_cid" value="2">selected</eq>>报错留言</option><option value="1" <eq name="gb_cid" value="1">selected</eq>>普通留言</option></select>&nbsp;&nbsp;
+    <select name="gb_type" id="gb_type" class="select"><option value="0">排序方式</option><option value="gb_addtime" <eq name="gb_type" value="gb_addtime">selected</eq>>时间</option><option value="gb_id" <eq name="gb_type" value="gb_id">selected</eq>>ID</option></select>&nbsp;&nbsp;
+    <select name="gb_order" id="gb_order" class="select"><option value="desc">降序</option><option value="asc" <eq name="gb_order" value="asc">selected</eq>>升序</option></select>&nbsp;&nbsp;
+    关键字：<input name="gb_keyword" type="text" id="gb_keyword" value="{$gb_keyword}" size="20" maxlength="20"> <input name="gb_submit" type="submit" value="筛　选" class="mininput">
+    </td></tr>
+    </form>
+    <form action="index.php?s=Admin-Gb-Show" method="post" name="myform">{__NOTOKEN__}
+    <tr class="firstalt"><td ><volist name="gb_list" id="admin">
+    <table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#EEF7D2">
+    <tr bgcolor="#F4FAE4"><td width="9%">&nbsp;选择<input name="gb_id[{$admin.gb_id}]" type="checkbox" value="{$admin.gb_id}" style="border:none" checked>{$admin.gb_id}</td>
+    <td width="20%">属性：<eq name="admin.gb_del" value="1"><font color="#009900">未审核</font><else/>已审核</eq> <empty name="admin.gb_intro"><font color="#0099FF">未回复</font></empty> <gt name="admin.gb_cid" value="0"><a href="index.php?s=Admin-Vod-Add-vod_id-{$admin.gb_cid}"><font color="red">报错处理</font></a></gt></td>
+    <td width="15%">呢称：<a href="index.php?s=Admin-Gb-Show-gb_keyword-{$admin.gb_user}">{$admin.gb_user|msubstr=0,20}</a></td>
+    <td width="10%">QQ：<a href="index.php?s=Admin-Gb-Show-gb_keyword-{$admin.gb_qq}">{$admin.gb_qq}</a></td>
+    <td width="15%">IP地址：<a href="index.php?s=Admin-Gb-Show-gb_keyword-{$admin.gb_ip}">{$admin.gb_ip}</a></td>
+    <td width="18%">时间：{$admin.gb_addtime|date='Y-m-d H:i:s',###}</td>
+    <td width="12%" align="center"><a href="index.php?s=Admin-Gb-Add-id-{$admin.gb_id}">编辑/回复</a> <a href="index.php?s=Admin-Gb-Del-id-{$admin.gb_id}" onClick="return confirm('确定删除?')">删除</a> <eq name="admin.gb_oid" value="0"><a href="index.php?s=Admin-Gb-Ding-id-{$admin.gb_id}-cid-1">置顶</a><else/><a href="index.php?s=Admin-Gb-Ding-id-{$admin.gb_id}-cid-0"><font color="red">取顶</font></a></eq></td></tr>
+  	<tr bgcolor="#FFFFFF"><td colspan="7"><dl class="gbbox"><p class="<notempty name="admin.gb_intro">zuti</notempty>">主题：{$admin.gb_content}</p><notempty name="admin.gb_intro">{$admin.gb_intro}</notempty></dl></td></tr>
+    </table>
+    </volist></td></tr>
+    <tr class="firstalt"><td><input type="button" class="mininput" value="全/反选" onClick="CheckAll(this.form)"/>　<input type="submit" class="mininput" value="审核留言" onClick="ChangeAction('index.php?s=Admin-Gb-Shenhe-cid-1');"/>　<input type="submit" class="mininput" value="取消审核" onClick="ChangeAction('index.php?s=Admin-Gb-Shenhe-cid-0');"/>　<input type="submit" class="mininput" value="删除留言" onClick="ChangeAction('index.php?s=Admin-Gb-Delall-cid-1');"/>　<input type="submit" class="mininput" value="审核所有留言" onClick="ChangeAction('index.php?s=Admin-GB-Shenhe-cid-2');"/>　<input type="submit" class="mininput" value="取消审核所有留言" onClick="ChangeAction('index.php?s=Admin-Gb-Shenhe-cid-3');"/>　<input type="submit" class="mininput" value="清空所有留言" onClick="ChangeAction('index.php?s=Admin-Gb-Delall-cid-2');"/></td></tr>
+    <tr class="firstalt"><td align="center"><div class="pages">{$page}</div></td></tr><tr class="firstalt" style="display:none"><input name="gb_ip" type="hidden" value=""></tr>
+    </table>
+    </form>
+<elseif condition="strtolower(ACTION_NAME) eq add" />
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/js/editor/kindeditor.js"></script>
+    <script type="text/javascript"> KE.show({ id : 'gb_intro'});</script>
+	<form name="form" action="index.php?s=Admin-Gb-Update" method="post">
+	<table width="98%" border="0" cellpadding="5" cellspacing="1" class="tableoutline">
+        <tr class="tb_head"><td colspan="2"><h2>修改回复网友留言：</h2></td></tr>
+        <tr class="firstalt"><td width="12%" style="text-align:right">是否审核该留言：</td><td ><select name="gb_del"><option value="1">未审核</option><option value="0" <eq name="gb_del" value="0">selected</eq>>已审核</option></select></td></tr>
+        <tr class="firstalt"><td style="text-align:right">用户呢称：</td><td><input type="text" name="gb_user" id="gb_user" value="{$gb_user}" size="35" maxlength="35"></td></tr>
+        <tr class="firstalt"><td style="text-align:right">用户IP：</td><td><input type="text" name="gb_ip" id="gb_ip" value="{$gb_ip}" size="35" maxlength="35"></td></tr>
+        <tr class="firstalt"><td style="text-align:right">留言时间：</td><td><input type="text" name="gb_addtime" id="gb_addtime" value="{$gb_addtime|date='Y-m-d H:i:s',###}" size="27" maxlength="27"> 更新<input name="gb_time" type="checkbox" style="border:none" value="1" <if condition="C('admin_time_edit') eq 1">checked</if>></td></tr>       
+        <tr class="firstalt"><td style="text-align:right">留言内容：</td><td><textarea name="gb_content" id="gb_content" style="width:715px;height:100px">{$gb_content}</textarea> 不支持html语法</td></tr>
+        <tr class="firstalt"><td style="text-align:right">回复内容：</td><td><textarea id="gb_intro" name="gb_intro" style="width:715px;height:300px;">{$gb_intro}</textarea></td></tr>
+        <tr class="firstalt"><td colspan="2" align="center"><input type="hidden" name="gb_id" id="gb_id" value="{$gb_id}"><input class="bginput" type="submit" name="submit" value=" 提交 " > <input class="bginput" type="reset" name="Input" value=" 重置 " ></td></tr>
+     </table>
+     </form>
+</if>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome}</div>
+  <div class="right_main">
+  <if condition="strtolower(ACTION_NAME) eq show ">
+      <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+        <tr class="tb_head">
+          <td colspan="5"><h2>模板管理：</h2></td>
+        </tr>
+        <tr align=center class="tb_title">
+          <td width="30%" >文件名</td>
+          <td width="30%" >文件描述</td>
+          <td width="20%" nowrap>修改时间</td>
+          <td width="20%" nowrap>操作</td>
+        </tr>
+        <tr class="firstalt">
+          <td ><img src="__PUBLIC__/images/top13.gif"> ../style.css</td>
+          <td >全站风格样式表</td>
+          <td >{$css|date='Y-m-d H:i:s',###}</td>
+          <td style="text-align:center"><a href="index.php?s=Admin-Tpl-Add-id-style.css">修改</a></td>
+        </tr><volist name="dir" id="ppvod">
+        <php>if(!ereg("\.htm|\.txt|\.css|\.js",$ppvod['filename'])) continue;</php>
+        <tr class="firstalt">
+          <td ><img src="__PUBLIC__/images/top13.gif"> {$ppvod.filename}</td>
+          <td ><empty name="ppvod.gbname">未知或自定义模板 <a href="index.php?s=Admin-Html-Mytpl-id-{$ppvod.tplname}-ext-{$ppvod.ext}"><font color="red">生成</font></a><else/>{$ppvod.gbname}</empty></td>
+          <td >{$ppvod.mtim|date='Y-m-d H:i:s',###}</td>
+          <td style="text-align:center"><a href="index.php?s=Admin-Tpl-Add-id-{:str_replace('.html','.html-',$ppvod['filename'])}">修改</a></td>
+        </tr>
+        </volist>
+      </table>
+  <elseif condition="strtolower(ACTION_NAME) eq add" />
+  <form name="update" action="index.php?s=Admin-Tpl-Update" method="post">
+	<table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+        <tr class="tb_head"><td colspan="2"><h2>模板编辑：<input name="filename" type="text" value="{$filename}">（不允许用 “..” 形式的路径）</h2></td></tr>
+        <tr align=center><td ><textarea name="content" style="width:100%;height:450px">{$content}</textarea></td></tr>
+        <tr align=center><td ><input class="bginput" type="submit" name="submit" value=" 提交 " > <input class="bginput" type="reset" name="Input" value=" 重置 " ></td></tr>
+      </table> 
+  {__NOTOKEN__}
+  </form> 
+  </if>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

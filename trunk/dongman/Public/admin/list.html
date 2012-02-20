@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="__PUBLIC__/js/admin.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome}</div>
+  <div class="right_main">
+<if condition="strtolower(ACTION_NAME) eq show ">
+    <form action="index.php?s=Admin-List-Editall" method="post" name="myform">
+    <table width="98%" border="0" cellpadding="5" cellspacing="1" class="tableoutline">
+      <tr class="tb_head">
+        <td colspan="7"><h2>分类列表：排序ID如果设为0 将在导航栏中隐藏该分类</h2></td>
+      </tr>
+      <tr align="center" class="tb_title">
+        <td width="50">选中</td>
+        <td width="100">系统模块</td>
+        <td width="180">分类名称</td>
+        <td width="100">排序ID</td>
+        <td width="150">分类模板</td>
+        <td >栏目别名或外部链接</td>
+        <td width="100">编辑</td>
+      </tr>
+      <volist name="listtree" id="pp">
+      <tr class="firstalt">
+        <td align="center"><input name='list_id[{$pp.list_id}]' type='checkbox' value='{$pp.list_id}' style='border:none' checked><font color="blue">({$pp.list_id})</font></td>
+        <td align="center"><select name="list_sid[{$pp.list_id}]"><option value="1" <eq name="pp.list_sid" value="1">selected</eq>>视频模块</option><option value="2" <eq name="pp.list_sid" value="2">selected</eq>>新闻模块</option><option value="9" <eq name="pp.list_sid" value="9">selected</eq>>外部链接</option></select></td>
+        <td align="center"><input type='text' name='list_name[{$pp.list_id}]' value='{$pp.list_name}' class="tbpinput" size=25></td>
+        <td align="center"><input type='text' name='list_oid[{$pp.list_id}]' value='{$pp.list_oid}' class="tbpinput" size=10></td>
+        <td align="center"><input type='text' name='list_skin[{$pp.list_id}]' value='{$pp.list_skin}' class="tbpinput" size=20></td>
+        <td ><input type='text' name='list_dir[{$pp.list_id}]' value='{$pp.list_dir}' class="tbpinput" style="width:98%;text-align:left"></td>
+        <td align="center"><a href="index.php?s=Admin-List-Add-list_id-{$pp.list_id}"><img src="__PUBLIC__/images/edit.gif" alt="编辑" width="14" height="14" border="0" title="编辑"></a> <a href="index.php?s=Admin-List-Del-list_id-{$pp.list_id}" onClick="return confirm('确定删除?')"><img src="__PUBLIC__/images/del.gif" alt="删除" width="14" height="14" border="0" title="删除"></a> <a href="index.php?s=Admin-List-Add-list_pid-{$pp.list_id}" ><img src="__PUBLIC__/images/add.gif" alt="添加二级分类" width="14" height="14" border="0" title="添加二级分类"></a></td>
+      </tr>
+      <volist name="pp['son']" id="pp">
+      <tr class="firstalt">
+        <td align="center"><input name='list_id[{$pp.list_id}]' type='checkbox' value='{$pp.list_id}' style='border:none' checked>({$pp.list_id})</td>
+        <td align="center"><select name="list_sid[{$pp.list_id}]" class="tbsselect"><option value="1" <eq name="pp.list_sid" value="1">selected</eq>>视频模块</option><option value="2" <eq name="pp.list_sid" value="2">selected</eq>>新闻模块</option></select></td>
+        <td align="center"><input type='text' name='list_name[{$pp.list_id}]' value='{$pp.list_name}' class="tbsinput" size=25></td>
+        <td align="center"><input type='text' name='list_oid[{$pp.list_id}]' value='{$pp.list_oid}' class="tbsinput" size=10></td>
+        <td align="center"><input type='text' name='list_skin[{$pp.list_id}]' value='{$pp.list_skin}' class="tbsinput" size=20></td>
+        <td ><input type='text' name='list_dir[{$pp.list_id}]' value='{$pp.list_dir}' class="tbsinput" style="width:98%; text-align:left"></td>
+        <td align="center"><a href="index.php?s=Admin-List-Add-list_id-{$pp.list_id}"><img src="__PUBLIC__/images/edit.gif" alt="编辑" width="14" height="14" border="0" title="编辑"></a> <a href="index.php?s=Admin-List-Del-list_id-{$pp.list_id}" onClick="return confirm('确定删除?')"><img src="__PUBLIC__/images/del.gif" alt="删除" width="14" height="14" border="0" title="删除"></a></td>
+      </tr>
+      </volist>
+      </volist>
+      <tr>
+        <td colspan="7"><input type="button" value="全/反选" onClick="CheckAll(this.form)" /> <select name="list_type" id="list_type" onChange="ChangeAction(this.value)"><option value="index.php?s=Admin-List-Editall" >批量修改</option><option value="index.php?s=Admin-List-Delall">批量删除</option></select> <input class="mininput" type="submit" value="提交操作"> 注：删除分类将删除该分类下面的所有影片</td>
+      </tr>
+    </table>
+    </form>     
+<elseif condition="strtolower(ACTION_NAME) eq add" />
+	<script language="javascript">
+		function ChangeModel(str){
+			if(str==1){
+				$('#list_skin').val('pp_vodlist');
+				$('#listseo').css({display:"block"});
+			}else if(str==2){
+				$('#list_skin').val('pp_newslist');
+				$('#listseo').css({display:"block"});	
+			}else{
+				$('#listseo').css({display:"none"});
+			}	
+		}		
+    </script>
+    <gt name="list_id" value="0"><form name="form1" action="index.php?s=Admin-List-Update" method="post"><else/><form name="form1" action="index.php?s=Admin-List-Insert" method="post"></gt>
+      <table width="98%" border="0" cellpadding="5" cellspacing="1" class="tableoutline">
+        <tr class="tb_head"><td colspan="2"><h2>添加/修改分类：</h2></td></tr>
+        <tr class="firstalt"><td width="12%" style="text-align:right">选择系统模型与分类：</td><td ><select name="list_sid" onChange="ChangeModel(this.value)" style="width:132px">
+          <option value="1" <eq name="list_sid" value="1">selected</eq>>视频模块 | vod</option>
+          <option value="2" <eq name="list_sid" value="2">selected</eq>>新闻模块 | news</option>
+          <option value="9" <eq name="list_sid" value="9">selected</eq>>外部链接 | url</option>
+          </select> <select name="list_pid" style="width:132px">
+          <option value="0">作为一级分类</option>
+          <volist name="listvod" id="admin">
+          <option value="{$admin.list_id}" <eq name="admin.list_id" value="$list_pid">selected</eq>>{$admin.list_name}</option>
+          </volist>
+          <volist name="listnews" id="admin">
+          <option value="{$admin.list_id}" <eq name="admin.list_id" value="$list_pid">selected</eq>>{$admin.list_name}</option>
+          </volist></select></td></tr>
+        <tr class="firstalt"><td style="text-align:right">分类名称与排序：</td><td ><input type="text" name="list_name" id="list_name" value="{$list_name}" size="35" maxlength="35"> <input type="text" name="list_oid"  id="list_oid" value="{$list_oid}" size="5" maxlength="5" style="text-align:center"></td></tr>
+        <tr class="firstalt">
+          <td style="text-align:right">分类别名或外部链接：</td>
+          <td><input type="text" name="list_dir" id="list_dir" value="{$list_dir}" maxlength="100" style="width:400px"></td>
+        </tr>
+        <tbody id="listseo">
+            <tr class="firstalt"><td style="text-align:right">选择分类模板：</td>
+            <td><input type="text" name="list_skin" id="list_skin" value="{$list_skin}" maxlength="100" style="width:400px"></td>
+            </tr>       
+            <tr class="firstalt"><td style="text-align:right">栏目SEO标题：</td>
+            <td ><input type="text" name="list_title" id="list_title" value="{$list_title}" maxlength="100" style="width:400px"></td>
+            </tr> 
+            <tr class="firstalt"><td style="text-align:right">栏目SEO关键词：</td>
+            <td><input type="text" name="list_keywords" id="list_keywords" value="{$list_keywords}" maxlength="100" style="width:400px"></td>
+            </tr> 
+            <tr class="firstalt"><td style="text-align:right">栏目SEO简介：</td>
+            <td><textarea name="list_description" id="list_description"  style="width:400px; height:40px">{$list_description}</textarea></td>
+            </tr>
+        </tbody>
+        <tr class="firstalt">
+          <td colspan="2" align="center"><input type="hidden" name="list_id" id="list_id" value="{$list_id}">
+            <input class="bginput" type="submit" name="submit" value=" 提交 " >
+            <input class="bginput" type="reset" name="Input" value=" 重置 " >
+          </td>
+        </tr>
+      </table>
+    </form>
+</if>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

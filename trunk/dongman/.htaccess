@@ -1,0 +1,11 @@
+# 将 RewriteEngine 模式打开
+RewriteEngine On
+# 修改以下语句中的 /ppvod 为你的网站目录地址，如果程序放在根目录中，请将 /ppvod 修改为 /
+RewriteBase /
+# Rewrite 系统规则请勿修改
+RewriteRule ^vod-(.*)$ index.php\?s=/Home-vod-$1
+RewriteRule ^news-(.*)$ index.php\?s=/Home-news-$1
+RewriteRule ^ajax-(.*)$ index.php\?s=/Home-ajax-$1
+RewriteRule ^tag-(.*)$ index.php\?s=/Home-tag-$1
+RewriteRule ^gb-(.*)$ index.php\?s=/Home-gb-$1
+RewriteRule ^cm-(.*)$ index.php\?s=/Home-cm-$1

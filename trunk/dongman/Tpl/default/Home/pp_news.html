@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+{$css}
+<script type="text/javascript" src="{$tpl}js/ajax.js" charset="utf-8"></script>
+</head>
+<body>
+<include file="pp_header" />
+<div class="main">
+<div class="bd960 clear">{:getadsurl('top960')}</div>
+<div class="list">
+    <div class="listri">
+    	<dl class="tit clear"><dt>本周热播影片</dt></dl>
+    	<ul class="ad">{:getadsurl('left250250')}</ul>
+    	<ul><php>$hits=$pplist->ppvod('day:7;num:10;order:vod_hits desc');</php>
+        <volist name="hits" id="ppvod">
+        <li><span>{$ppvod.vod_hits}</span><a href="{$ppvod.vod_url}" target="_blank">{$i}.{$ppvod.vod_name|msubstr=0,20}</a></li>
+        </volist></ul>
+    </div>   
+    <div class="listlf">
+   		<dl class="tit clear"><dt><a href="{$root}">首页</a> &raquo; {$list_name} &raquo;{$news_name}</dt></dl>
+   		<div class="newscontent">
+        	<h1>{$news_name}{$news_apex}</h1>
+        	<h2>作者：{$news_inputer} 添加时间：{$news_addtime|date='Y-m-d H:i:s',###} 人气：<span id="view_hits"><script type="text/javascript" src="{$root}index.php?s=news-ajaxhot-id-{$news_id}"></script></span> 来源：{$news_reurl}</h2>
+        	<p>{$news_content}</p>
+            <div class="mark">
+                <div onclick="plus_news_ud({$news_id},1,'{$root}')" onfocus="this.blur()" onmouseout="this.style.backgroundPosition='-189px 0'" onmouseover="this.style.backgroundPosition='0 0'" id="mark0" style="background-position: -189px 0pt;">
+                    <div class="bar"><div style="width: 0px;" id="eimg1"></div></div>
+                    <span id="barnum1"><span id="sp1">0%</span> (<span id="s1">0</span>)</span>
+                </div>
+                <div onclick="plus_news_ud({$news_id},2,'{$root}')" onfocus="this.blur()" onmouseout="this.style.backgroundPosition='-378px 0'" onmouseover="this.style.backgroundPosition='-567px 0'" id="mark1" style="background-position: -378px 0pt;">
+                    <div class="bar"><div style="width: 0px;" id="eimg2"></div></div>
+                    <span id="barnum2"><span id="sp2">0%</span> (<span id="s2">0</span>)</span>
+                </div>
+            </div>
+            <script type="text/javascript">plus_news_ud({$news_id},0,'{$root}');</script>
+    </div>
+    <notempty name="page"><div class="page clear">{$page}</div></notempty>
+    </div>
+</div>
+<include file="pp_footer" />
+</div>
+</body>
+</html>

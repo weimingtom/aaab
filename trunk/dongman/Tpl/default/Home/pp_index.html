@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+{$css}
+</head>
+<body>
+<php>$vod_stars=$pplist->ppvod('num:10;order:vod_stars desc,vod_hits desc');
+$vod_news=$pplist->ppvod('num:15;order:vod_addtime desc');
+$vod_movie_pic=$pplist->ppvod('pid:1;num:2');
+$vod_movie_con=$pplist->ppvod('pid:1;num:1');
+$vod_movie_list=$pplist->ppvod('pid:1;num:2,30');
+$vod_tv_pic=$pplist->ppvod('pid:2;num:2');
+$vod_tv_con=$pplist->ppvod('pid:2;num:1');
+$vod_tv_list=$pplist->ppvod('pid:2;num:2,30');
+$vod_kt_pic=$pplist->ppvod('pid:3;num:2');
+$vod_kt_con=$pplist->ppvod('pid:3;num:1');
+$vod_kt_list=$pplist->ppvod('pid:3;num:2,30');
+$vod_zy_pic=$pplist->ppvod('pid:4;num:2');
+$vod_zy_con=$pplist->ppvod('pid:4;num:1');
+$vod_zy_list=$pplist->ppvod('pid:4;num:2,30');
+$vod_hot_80=$pplist->ppvod('num:80;order:vod_golder,vod_hits desc');</php>
+<include file="pp_header" />
+<div class="main">
+<div class="bd clear">{:getletter('vod')}</div>
+<div class="bd960 clear">{:getadsurl('top960')}</div>
+<div class="hbd1">
+    <div class="hbd1lf">
+        <dl class="tit clear"><dt><a href="{$root}">本周热播，敬请欣赏</a></dt><dd class="f14">本站共有影片{:getcount(0)}部 今日更新{:getcount(999)}部</dd></dl>
+        <div class="hbd11 ssv">
+        <ul><volist name="vod_stars" id="ppvod">
+        <li><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a><p><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,6}</a></p></li>
+        </volist></ul>
+        </div>
+    </div>
+    <div class="hbd1ri">
+      	<dl class="tit"><dt><a href="{:ppvodurl('ajax/show',false,false,false,true)}">最近更新影片</a></dt><dd class="f14"><a href="{:ppvodurl('ajax/show',false,false,false,true)}">更多>></a></dd></dl>
+        <div class="hbd12 ssv">
+        <ul><volist name="vod_news" id="ppvod">
+        <li><span>{$ppvod.vod_addtime|getcolordate='m-d',###}</span><a href="{$ppvod.list_url}" target="_blank">{$ppvod.list_name}</a> <a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a></li>
+        </volist></ul>
+        </div>
+    </div>
+</div>
+<div class="hsa">
+	<div class="hsalf">
+		<dl class="tit"><dt><a href="{:getlistname(1,'list_url')}">国产动画片</a></dt><dd><a href="{:getlistname(1,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
+        <!--电影大片左侧2张-->
+        <div class="hbd1a ssv">
+        	<volist name="vod_movie_pic" id="ppvod">
+        	<dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt><dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
+        	</volist>
+        </div>
+        <div class="hbdces">
+        	<!--电影大片一部简介-->
+        	<dl class="hbdcet"><volist name="vod_movie_con" id="ppvod">
+<dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}">>>查看详细</a></dd></volist></dl>
+        	<!--电影大片列表-->
+        	<ul><volist name="vod_movie_list" id="ppvod"><li><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
+        </div>
+	</div>
+    <div class="hsari">
+        <dl class="tit"><dt><a href="{:getlistname(2,'list_url')}">日本动画片</a></dt><dd><a href="{:getlistname(2,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
+        <div class="hbd1a ssv">
+            <volist name="vod_tv_pic" id="ppvod">
+            <dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt><dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
+            </volist>
+        </div>
+        <div class="hbdces">
+            <dl class="hbdcet"><volist name="vod_tv_con" id="ppvod"><dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}">>>查看详细</a></dd></volist></dl>
+        <ul><volist name="vod_tv_list" id="ppvod"><li><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
+        </div>
+    </div>
+</div>
+<div class="hsa">
+	<div class="hsalf">
+		<dl class="tit"><dt><a href="{:getlistname(3,'list_url')}">欧美动画片</a></dt><dd><a href="{:getlistname(3,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
+		<div class="hbd1a ssv">
+        	<volist name="vod_kt_pic" id="ppvod">
+            <dl><dt><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt><dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
+            </volist>
+    	</div>
+		<div class="hbdces">
+			<dl class="hbdcet"><volist name="vod_kt_con" id="ppvod"><dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">>>查看详细</a></dd></volist></dl>
+			<ul><volist name="vod_kt_list" id="ppvod"><li><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
+		</div>
+	</div>
+    <div class="hsari">
+        <dl class="tit"><dt><a href="{:getlistname(4,'list_url')}">综艺娱乐</a></dt><dd><a href="{:getlistname(4,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
+        <div class="hbd1a ssv">
+            <volist name="vod_zy_pic" id="ppvod">
+            <dl><dt><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt>
+            <dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
+            </volist>
+        </div>
+        <div class="hbdces">
+            <dl class="hbdcet"><volist name="vod_zy_con" id="ppvod"><dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">>>查看详细</a></dd></volist></dl>
+            <ul><volist name="vod_zy_list" id="ppvod"><li><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
+        </div>
+    </div>
+</div>
+<div class="hsae">
+	<div class="hsae1">
+        <dl class="tit"><dt>影片排行榜</dt><dd><img src="{$tpl}images/more.gif" /></dd></dl>
+        <div class="hbae11 ssv"><ul>
+            <volist name="vod_hot_80" id="ppvod">
+            <li><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" target="_blank">{$ppvod.list_name} {$ppvod.vod_name|msubstr=0,12}</a></li>
+            </volist>
+        </ul></div>
+	</div>
+</div>
+<div class="friend">
+	<dl class="tit"><dt>友情链接</dt><dd></dd></dl>
+	<ul><volist name="pplink" id="ppvod"><li><a href="{$ppvod.link_url}" target="_blank">{$ppvod.link_name}</a></li></volist></ul>
+</div>
+<include file="pp_footer" />         
+</div>
+</body>
+</html>

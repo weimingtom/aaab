@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript">
+function tab(no,n){
+	for(var i=1;i<=n;i++){
+		$('#tool'+i).hide();
+	}
+	$('#tool'+no).show();
+}
+function showfields(){
+	var exptable = $('#exptable').val();
+	$.ajax({
+		url: 'index.php?s=Admin-Tool-ajaxfields-id-'+exptable+'',
+		success: function(res){
+			$('#fields').html(res);
+		}
+	});
+} 
+function rpfield(v){
+	$('#rpfield').val(v); 
+}
+function checkall(form) {
+	for(var i = 0;i < form.elements.length; i++) {
+		var e = form.elements[i];
+		if (e.name != 'chkall' && e.disabled != true) {
+			e.checked = form.chkall.checked;
+		}
+	}
+}
+</script>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome}</div>
+  <div class="right_main">
+<if condition="strtolower(ACTION_NAME) eq restore ">
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline" id="tool1">
+      <form action="index.php?s=Admin-Tool-Delall" method="post">
+        <tr class="tb_head"><td colspan="7"><h2>数据库分卷还原：</h2></td></tr>
+        <tr align="center" class="tb_title">
+        <td width="3%">选中</td>
+        <td width="5%">ID</td>
+        <td width="40%">文件名</td>
+        <td width="5%">文件大小</td>
+        <td width="20%">备份时间</td>
+        <td width="5%">卷号</td>
+        <td width="27%">操作</td>
+        </tr><volist name="sql_list" id="ppvod">        
+        <tr align="center" class="firstalt">
+          <td ><input type="checkbox" name="filename[]" value="{$ppvod.filename}" style='border:none'></td>
+          <td >{$i}</td>
+          <td style="text-align:left"><a href="{$ppvod.path}{$ppvod.filename}" target="_blank">{$ppvod.filename}</a></td>
+          <td >{$ppvod.filesize} M</td>
+          <td >{$ppvod.maketime}</td>
+          <td >{$ppvod.number}</td>
+          <td ><a href="index.php?s=Admin-Tool-Update-id-{$ppvod.pre}" onClick="return confirm('导入数据会删除现在数据库的所有信息,是否断续?')">导入</a> | <a href="index.php?s=Admin-Tool-Del-id-{$ppvod.filename}" onClick="return confirm('确定删除?')">删除</a> | <a href="index.php?s=Admin-Tool-Down-id-{$ppvod.filename}">下载</a></td>
+        </tr></volist>
+        <tr class="firstalt">
+        <td colspan="7">说明:导入时只需要点导入任意一个文件,程序会自动导入剩余文件,<font color="red">请确保分卷编号完整以及当前数据表前缀信息与备份的前缀一致</font>!</td>
+        </tr>
+        <tr class="firstalt">
+        <td colspan="7"><input name="chkall" type="checkbox" onClick="checkall(this.form)" style='border:none'>全选/反选 <input type="submit" class="mininput" value=" 批量删除数据 " onClick="return confirm('确定删除?')"/></td>
+        </tr>
+      </form>
+    </table>
+<else/>    
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline" id="tool1">
+      <form action="index.php?s=Admin-Tool-Backup" method="post">
+        <tr class="tb_head"><td colspan="2"><h2>数据库分卷备份：</h2></td></tr>
+        <tr class="firstalt">
+          <td width="10%" style="text-align:center"><input name="chkall" type="checkbox" id="chkall" onClick="checkall(this.form)" value="check" style='border:none' checked>全选/反选</td>
+          <td width="90%">数据库表</td>
+        </tr><volist name="table" id="ppvod">        
+        <tr class="firstalt">
+          <td style="text-align:center"><input type="checkbox" name="tables[]" value="{$ppvod}" style='border:none' checked></td>
+          <td >{$ppvod}</td>
+        </tr></volist>
+        <tr class="firstalt">
+        <td colspan="2">每个分卷文件大小：<input type="text" name="filesize" value="2048" size="5"> K <input type="submit" name="submit" value=" 开始备份数据 " class="mininput"></td>
+        </tr>
+      </form>
+    </table>    
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline" id="tool2" style="display:none">
+      <form action="index.php?s=Admin-Tool-Runsql" method="post">
+        <tr class="tb_head">
+          <td colspan="2"><h2>SQL运行器：</h2></td>
+        </tr>        
+        <tr class=firstalt>
+          <td width="15%">执行SQL语句：<br><span style="color:#999999">除非确定您的SQL语句安全 <br>否则不要轻易在此处运行!</span></td>
+          <td width="85%"><textarea name="sql" id="textarea"  type="text" style="height:150px;width:500px;"></textarea></td>
+        </tr>
+        <tr class="firstalt">
+          <td colspan="2" align="center"><input name="runsql_sub" type="hidden" id="runsql_sub" value="true"><input class="bginput" type="submit" name="submit" value=" 提交 " > <input class="bginput" type="reset" name="Input" value=" 重置 " >
+          </td>
+        </tr>
+        <tr class="firstalt">
+          <td colspan="2">将'wp9'服务器组的视频设为未审核：update pp_vod Set vod_del=1 Where vod_play='wp9'<br>
+          将'wp9'服务器组的视频直接删除：delete From pp_vod Where vod_play='wp9'<br>
+          清空视频模型的所有评论：delete From pp_cm Where cm_sid=1<br>
+          表的修复与优化:repair TABLE pp_vod,optimize TABLE pp_vod
+          </td>
+        </tr>
+        </form>
+      </table>
+      <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline" id="tool3" style="display:none">
+      <form action="index.php?s=Admin-Tool-Replacefield" method="post">
+        <tr class="tb_head">
+          <td colspan="2"><h2>程序用于批量替换数据库中某字段的内容，此操作极为危险，请小心使用。</h2></td>
+        </tr>
+        <tr class="firstalt">
+          <td width="15%">选择数据表与字段：</td>
+          <td width="85%"><select name="exptable" id="exptable" size="10" style="height:150px; width:500px" onChange="showfields()">
+          <volist name="table" id="ppvod"><option value="{$ppvod}">{$ppvod}</option></volist></select>
+          <div id="fields"></div></td>
+        </tr>
+         <tr class="firstalt">
+          <td width="15%">要替换的字段：</td>
+          <td width="85%"><input name="rpfield" type="text" id="rpfield" style="width:500px;"/></td>
+        </tr>       
+        <tr class="firstalt">
+          <td width="15%">被替换的内容：</td>
+          <td width="85%"><textarea name="rpstring" id="rpstring" style="width:500px;height:50px"></textarea></td>
+        </tr>
+        <tr class="firstalt">
+           <td>替换为的内容：</td>
+           <td><textarea name="tostring" id="tostring" class="alltxt" style="width:500px;height:50px"></textarea></td>
+        </tr>
+         <tr class="firstalt">
+           <td>选择替换条件：</td>
+           <td><input name="condition" type="text" id="condition" style="width:500px;"/>(为空全部替换 请遵循SQL的条件语句 如vod_id=3271 vod_id>3271)</td>
+        </tr>               
+        <tr class="firstalt">
+          <td colspan="2" align="center"><input class="bginput" type="submit" name="submit" value=" 提交 " onClick="return confirm('一旦执行后将无法恢复，请确定条件语句正确无误，或者备份好数据库以防万一!')"> <input class="bginput" type="reset" name="Input" value=" 重置 " >
+          </td>
+        </tr>
+        </form>
+      </table>
+</if>
+  </div>
+</div>
+<notempty name="Think.get.index"><script>tab({.index} ,3);</script></notempty>
+<include file="footer" />
+</body>
+</html>

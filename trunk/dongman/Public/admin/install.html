@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>{&admin_name} 安装程式 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+</head>
+<body >
+<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+<if condition="strtolower(ACTION_NAME) eq index ">
+  <tr>
+    <td align="center"><table width="600" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+          <tr nowrap  class="tb_head">
+            <td><h2>使用协议：</h2></td>
+          </tr>
+          <tr nowrap class="firstalt">
+            <td width="48%"><h3>欢迎使用 <a href="{&admin_url}" target="_blank"> {&admin_name}</a> v{&admin_var}</h3>
+              {&admin_name} 以下简称为 PPVOD。官方讨论区网址为 <a href="{&admin_url}" target="_blank">http://www.ff84.com</a><br><br>
+              感谢您选择 PPVOD 产品。希望我们的努力能为您提供一个高效快速和强大的影视网站解决方案。<br><br>
+              捌零玖工作室为 PPVOD 产品的开发商，依法独立拥有 PPVOD 产品著作权。
+              <h5>使用本产品请遵守以下协议:</h5>
+              <ol style="line-height:150%">
+                <li>禁止以任何目的通过Internet或其他媒介将所获授权的产品提供给第三人或公众。</li>
+                <li>不得对本软件或与之关联的商业授权进行出租、出售、抵押或发放子许可证。</li>
+                <li><font color=red>无论用途如何、是否经过修改或美化、修改程度如何，只要使用 PPVOD 的整体或任何部分，未经书面许可，网站页面页脚处的 PPVOD 名称和链接都必须保留，而不能清除或修改。 </font></li>
+                <li><font color=red>禁止在 PPVOD 的整体或任何部分基础上以发展任何派生版本、修改版本或第三方版本用于重新分发。</font></li>
+                <li>您拥有使用本软件构建的网站中全部资料的所有权，并独立承担与其内容相关的法律义务。</li>
+                <li>禁止利用本程序发布非法内容，如因违反国家和地方法律法规引起的相应法律责任，须由个人承担。</li>
+                <li>用户出于自愿而使用本软件，您必须了解使用本软件的风险，在尚未购买产品技术服务之前，我们不承诺提供任何形式的技术支持、使用担保，也不承担任何因使用本软件而产生问题的相关责任。</li>
+                <li>有关 PPVOD 最终用户授权协议、商业授权与技术服务的详细内容，均由 PPVOD 官方网站独家提供。捌零玖工作室拥有在不
+事先通知的情况下，修改授权协议和服务价目表的权力，修改后的协议或价目表对自改变之日起的新授权用户生效。</li>
+                <li>电子文本形式的授权协议如同双方书面签署的协议一样，具有完全的和等同的法律效力。您一旦开始安装 PPVOD，即被视为完全理解并接受
+本协议的各项条款，在享有上述条款授予的权力的同时，受到相关的约束和限制。协议许可范围以外的行为，将直接违反本授权协议并构成侵权，我们有权随时终止授权，责令停止损害，并保留追究相关责任的权力。</li>
+              </ol></td>
+          </tr>
+          <tr nowrap class="tb_head" style="text-align:center">
+            <td><form method="post" action="index.php?s=Admin-Install-second">
+              <input type="submit" name="submit" value="我完全同意" class="bginput">
+              &nbsp; 
+              <input type="button" name="exit" value="我不能同意" class="bginput" onClick="javascript: window.close();">
+            </form></td>
+          </tr>          
+      </table></td>
+  </tr>
+<elseif condition="strtolower(ACTION_NAME) eq second"/>  
+<tr><td align="center">
+    <table width="600" border="0" cellpadding="4" cellspacing="1" class="tableoutline" style="text-align:center">
+         <tr class="tb_head" style="text-align:left"><td colspan="3"><h2>目录权限检测：</h2></td></tr>
+         <tr class="firstalt">
+         <td width="250"><strong>目录名</strong></td>
+         <td width="100"><strong>读取权限</strong></td>
+         <td ><strong>写入权限</strong></td>
+    <?php 
+    $dirs=array('/','/Conf/*','/Runtime/*','/Public/ads/*','/Upload/*','/Map/*'); 
+    ?>   
+         </tr>
+    <?php 
+        foreach($dirs as $d){
+    ?>
+        <tr class="firstalt">
+        <td><?php echo $d; ?></td>
+    <?php
+        $fulld = APP_PATH.str_replace('/*','',$d);
+        $rsta = (is_readable($fulld) ? '<font color=green>[√]读</font>' : '<font color=red>[×]读</font>');
+        $wsta = (testwrite($fulld) ? '<font color=green>[√]写</font>' : '<font color=red>[×]写</font>');
+        echo "<td>$rsta</td><td>$wsta</td>";
+    ?> </tr>
+    <?php
+        };
+    ?></table>
+     <table width="600" border="0" cellpadding="4" cellspacing="1" class="tableoutline" style="text-align:center">
+     <tr class="tb_head" style="text-align:left"><td colspan="3"><h2>服务器环境检测：</h2></td></tr>
+     <tr class="firstalt">
+     <td width="250"><strong>需开启的变量或函数</strong></td>
+     <td width="100"><strong>要求</strong></td>
+     <td ><strong>实际状态及建议</strong></td>
+     </tr>
+     <tr class="firstalt">
+     <td >MySQL 支持</td>
+     <td >On</td>
+     <td ><?=function_exists('mysql_connect') ? '<font color=green>[√]On</font>' : '<font color=red>[×]Off</font>'?></td>
+     </tr>          
+     <tr class="firstalt">
+     <td >allow_url_fopen</td>
+     <td >On</td>
+     <td ><?=ini_get('allow_url_fopen') ? '<font color=green>[√]On</font>' : '<font color=red>[×]Off</font>'?></td>
+     </tr>
+     <tr class="firstalt">
+     <td >safe_mode</td>
+     <td >Off</td>
+     <td ><?=ini_get('safe_mode') ? '<font color=red>[√]On</font>' : '<font color=green>[×]Off</font>'?></td>
+     </tr>
+     <tr class="firstalt">
+     <td >GD 支持</td>
+     <td >(>=2.0.34 compatible)</td>
+     <td ><?php
+            $gd = gd_info();
+			echo $gd['GD Version'] ? $gd['GD Version'] : '<font color=red>[×]Off</font>';
+			?>
+     </td>
+     </tr>
+ 	<tr class="tb_head" style="text-align:center">
+    <td colspan="3"><form method="post" action="index.php?s=Admin-Install-Setup"><input type="submit" name="submit" value="下一步" class="bginput"></form></td></tr>             
+    </table> 
+</td></tr>
+<else/> 
+<tr><td align="center">
+	<table width="600" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+        <form action="index.php?s=Admin-Install-install"  method="post" name="myform">
+          <tr nowrap  class="tb_head"><td colspan="2"><h2>安装设置：</h2></td></tr>
+           <tr class="firstalt">
+            <td width="48%" valign="top"><b>安装目录</b><br>
+              <font color="#666666">自动检测一般不需要修改,结尾必需加斜杆 '/'</font></td>
+            <td><input  type="text" name="data[site_path]" size="35" maxlength="50" value="{:getsitepath('index.php')}" id="data[site_path]" ></td>
+          </tr>              
+          <tr class="firstalt">
+            <td width="48%" valign="top"><b>服务器地址</b><br>
+              <font color="#666666">一般为localhost</font></td>
+            <td><input  type="text" name="data[db_host]" size="35" maxlength="50" value="localhost" id="data[db_host]" ></td>
+          </tr>
+          <tr nowrap class="firstalt">
+            <td width="48%"><b>数据库端口</b><br><font color="#666666">请填写MYSQL数据库使用的端口</font><br></td>
+            <td><input name="data[db_port]" type="text" id="data[db_port]" value="3306" size="35" maxlength="50" ></td>
+          </tr>          
+          <tr nowrap class="firstalt">
+            <td width="48%"><b>数据库名称</b><br><font color="#666666">请填写已存在的数据库名</font><br></td>
+            <td><input name="data[db_name]" type="text" id="data[db_name]" value="ppvod" size="35" maxlength="50" ></td>
+          </tr>         
+          <tr nowrap class="firstalt">
+            <td width="48%"><b>数据库用户名</b><br><font color="#666666">一般为root</font><br></td>
+            <td><input name="data[db_user]" type="text" id="data[db_user]" value="root" size="35" maxlength="50" ></td>
+          </tr>
+          <tr nowrap class="firstalt">
+            <td width="48%"><b>数据库密码</b><br>密码尽量不要设为空<br></td>
+            <td><input name="data[db_pwd]"  type="text" id="data[db_pwd]" size="35" maxlength="50" ></td>
+          </tr>
+          <tr nowrap class="firstalt">
+            <td width="48%"><p><b>表前缀</b><br><font color="#666666">一般不用修改</font><br></p></td>
+            <td><input name="data[db_prefix]"  type="text" id="data[db_prefix]" value="pp_" size="35" maxlength="50"  valid="required"  errmsg="表前缀不能为空!"></td>
+          <tr class="firstalt" style="height:60px">
+            <td colspan="2" align="center">
+              <input class="bginput" type="submit" name="submit" <?=(testwrite(APP_PATH.'/Conf')?'value=" 安装程序 "':'value="你的空间没有写入权限不能安装" disabled');?>>
+              <input class="bginput" type="reset" name="Input" value=" 重 置 " ></td>
+          </tr>
+          <tr class="firstalt" style="height:60px">
+            <td colspan="2" align="center"><a href="http://bbs.ff84.com/thread-34-1-1.html" target="_blank"><font color="green">点此查看*ux空间的权限设置教程</font></a>　看了教程还不会设置的用户请加技术QQ：271513820</td>
+          </tr>
+        </form>
+      </table>     
+</td></tr>
+</if>
+</table>
+</body>
+</html>
