@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+{$css}
+</head>
+<body>
+<include file="pp_header" />
+<div class="main">
+<div class="bd960 clear">{:getadsurl('top960')}</div>
+<div class="hsae">
+	<div class="hsae1"><php>$newlist=$pplist->ppvod('num:200;order:vod_addtime desc');</php>
+        <dl class="tit clear"><dt>最近更新的200部影片</dt></dl>
+        <div class="hbae11 ssv"><ul>
+            <volist name="newlist" id="ppvod">
+            <li><a href="{$ppvod.list_url}" target="_blank">{$ppvod.list_name}</a> <a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" target="_blank">{$ppvod.vod_name|msubstr=0,13}</a></li>
+            </volist>
+        </ul></div>
+	</div>
+</div>
+<div class="friend">
+	<dl class="tit"><dt>友情链接</dt><dd>Powered by <strong><a href="http://www.ff84.com" target="_blank">PPVOD!</a></strong> <em>{&admin_var}</em></dd></dl>
+	<ul><volist name="pplink" id="ppvod"><li><a href="{$ppvod.link_url}" target="_blank">{$ppvod.link_name}</a></li></volist></ul>
+</div>
+<include file="pp_footer" />         
+</div>
+</body>
+</html>

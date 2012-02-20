@@ -1,0 +1,15 @@
+<div class="pluscm">
+    <div class="list">
+        <ul><volist name="cm_list" id="ppvod">
+        <li><span class="floor">第{$ppvod.cm_floor}楼 <a href="javascript:" onclick="plus_cm_ud({$ppvod.cm_id},'{$root}','cm_up');">支持[<span id="cm_up{$ppvod.cm_id}">{$ppvod.cm_up}</span>]</a> <a href="javascript:" onclick="plus_cm_ud({$ppvod.cm_id},'{$root}','cm_down');">反对[<span id="cm_down{$ppvod.cm_id}">{$ppvod.cm_down}</span>]</a></span><span class="user u{$key}">{$ppvod.cm_user|msubstr=0,20}</span> 发表于{$ppvod.cm_addtime|date='Y-m-d',###}</li>
+        <p>{$ppvod.cm_content|h||msubstr=0,400}</p>
+        </volist></ul>
+        <div class="page"><notempty name="cm_list">{$cm_page}<else/>还没有网友评论，快抢沙发哦！</notempty></div>
+    </div>
+    <div class="form"><a name='input'></a>
+    	<form action="index.php?s=Cm-Add" method="post" name="plus_cm_vod" id="plus_cm_vod" onsubmit="return plus_cm_post('vod','{$root}',{.id});">
+        <ul><textarea name="cm_content" onFocus="if(this.value=='请在此输入评论内容!'){this.value='';}">请在此输入评论内容!</textarea></ul>
+        <ul>访问呢称：<input name="cm_user" type="text" class="btn-1" maxlength="10" value="访客" onFocus="if(this.value=='访客'){this.value='';}"/>&nbsp;验证码：<input name="cm_code" type="text" class="btn-1" size="4" maxlength="4"/> <img src="{$root}index.php?s=Cm-Cmcode-time-" style="cursor:pointer" alt='点击我更换图片' align="absbottom" onclick="this.src=this.src+'?'">&nbsp;<input name="cm_del" type="hidden" value="1" /><input type="submit" name="submit" value="发表评论" class="btn-2"/> <input name="放弃评论" type="reset" class="btn-2"/></ul>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome}</div>
+  <div class="right_main">
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+      <tr class="tb_head"><td><h2 style="font-size:14px">网站生成选项：</h2></td></tr>
+      <form action="index.php?s=Admin-Html-Createindex" method="post" name="mymap">
+      <tr class=firstalt>
+        <td><input name="Submit" type="submit" class="bginput" value="生成网站首页"> <input name="Submit" type="submit" class="bginput" value="生成网站地图" onClick="document.mymap.action='index.php?s=Admin-Html-Mapsite';"> <input name="Submit" type="submit" class="bginput" value="生成百度地图" onClick="document.mymap.action='index.php?s=Admin-Html-Mapbaidu';"> <input name="Submit" type="submit" class="bginput" value="生成谷歌地图" onClick="document.mymap.action='index.php?s=Admin-Html-Mapgoogle';"> <input name="Submit" type="submit" class="bginput" value="生成RSS订阅" onClick="document.mymap.action='index.php?s=Admin-Html-Maprss';"></td>
+      </tr>
+      </form>
+    </table>
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+      <tr class="tb_head"><td><h2 style="font-size:14px">生成视频选项：</h2></td></tr>
+      <form action="index.php?s=Admin-Html-Showvod" method="post" name="myformlist">
+      <tr class="firstalt">
+        <td style="font-size:14px">生成视频栏目：&nbsp;&nbsp;&nbsp;&nbsp;<select name="id"><option value='0'>全部分类</option><volist name="listvod" id="pp"><option value="{$pp.list_id}" <eq name="pp.list_id" value="$vod_cid">selected</eq>>{$pp.list_name}</option><volist name="pp['son']" id="pp"><option value="{$pp.list_id}" <eq name="pp.list_id" value="$vod_cid">selected</eq>>├ {$pp.list_name}</option></volist></volist></select>&nbsp;&nbsp;&nbsp;&nbsp;<input name="cindex" type="submit" class="bginput" value="生成视频分类页" > <input type="submit" class="bginput" value="一键生成全站视频" onClick="document.myformlist.action='index.php?s=Admin-Html-Showvod-gid-1';"/></td>
+      </tr>
+      </form>
+      <form action="index.php?s=Admin-Html-Readvod" method="post" name="myformvod">
+      <tr class="firstalt">
+        <td style="font-size:14px">生成视频内容：&nbsp;&nbsp;&nbsp;&nbsp;<select name="id"><option value='0'>全部内容</option>
+        <volist name="listvod" id="pp"><if condition="getlistson($pp['list_id']) eq 1"><option value="{$pp.list_id}">{$pp.list_name}</option></if>
+        <volist name="pp['son']" id="pp"><option value="{$pp.list_id}">{$pp.list_name}</option></volist></volist></select>&nbsp;&nbsp;&nbsp;&nbsp;<input name="cindex" type="submit" class="bginput" value="生成视频内容页" > <input type="submit" class="bginput" value="一键生成当天视频" onClick="document.myformvod.action='index.php?s=Admin-Html-Readvod-did-1-gid-1';"/> <input type="submit" class="bginput" value="一键生成当天视频+分类" onClick="document.myformvod.action='index.php?s=Admin-Html-Showvod-did-1-gid-1';"/></td>
+      </tr>
+      </form>
+    </table>
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+      <tr class="tb_head"><td><h2 style="font-size:14px">生成新闻选项：</h2></td></tr>
+      <tr class="firstalt"><form action="index.php?s=Admin-Html-Shownews" method="post" name="myform">
+        <td style="font-size:14px">生成新闻栏目：&nbsp;&nbsp;&nbsp;&nbsp;<select name="id"><option value='0'>全部分类</option><volist name="listnews" id="pp"><option value="{$pp.list_id}">{$pp.list_name}</option><volist name="pp['son']" id="pp"><option value="{$pp.list_id}">├ {$pp.list_name}</option></volist></volist></select>&nbsp;&nbsp;&nbsp;&nbsp;<input name="cindex" type="submit" class="bginput" value="生成新闻分类页" > <input type="submit" class="bginput" value="一键生成全站新闻" onClick="document.myformlist.action='index.php?s=Admin-Html-Shownews-gid-1';"/></td>
+        </form>
+      </tr>
+      <tr class="firstalt"><form action="index.php?s=Admin-Html-Readnews" method="post" name="myformnews">
+        <td style="font-size:14px">生成新闻内容：&nbsp;&nbsp;&nbsp;&nbsp;<select name="id"><option value='0'>全部内容</option>
+        <volist name="listnews" id="pp"><if condition="getlistson($pp['list_id']) eq 1"><option value="{$pp.list_id}">{$pp.list_name}</option></if>
+        <volist name="pp['son']" id="pp"><option value="{$pp.list_id}">{$pp.list_name}</option></volist></volist></select>&nbsp;&nbsp;&nbsp;&nbsp;<input name="cindex" type="submit" class="bginput" value="生成新闻内容页" > <input type="submit" class="bginput" value="一键生成当天新闻" onClick="document.myformnews.action='index.php?s=Admin-Html-Readnews-did-1-gid-1';"/> <input type="submit" class="bginput" value="一键生成当天新闻+分类" onClick="document.myformnews.action='index.php?s=Admin-Html-Shownews-did-1-gid-1';"/></td>
+        </form>
+      </tr>
+    </table>    
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

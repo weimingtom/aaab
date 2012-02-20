@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<meta http-equiv='Refresh' content='{$waitSecond};URL={$jumpUrl}'>
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+</head>
+<body>
+<tagLib name="html" />
+<TABLE align="center" cellpadding=0 cellspacing=0 class="message" >
+<tr>
+    <td height='5'  class="topTd" ></td>
+</tr>
+<TR class="row" >
+    <th class="tCenter space">{$msgTitle}</th>
+</TR>
+<TR class="row">
+    <TD style="color:blue">{$message}</TD>
+</TR>
+    <TR class="row">
+    <TD>系统将在 <span style="color:blue;font-weight:bold">{$waitSecond}</span> 秒后自动关闭，如果不想等待,直接点击 <A HREF="{$jumpUrl}">这里</A> 关闭</TD>
+</TR>
+<tr>
+    <td height='5' class="bottomTd"></td>
+</tr>
+</TABLE>
+</body>
+</html>

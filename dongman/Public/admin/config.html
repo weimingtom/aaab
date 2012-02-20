@@ -1,0 +1,496 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="__PUBLIC__/js/admin.js"></script>
+<script language="JavaScript" charset="utf-8" type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript">
+function tab(no,n){
+	for(var i=1;i<=n;i++){
+		$('#config'+i).hide();
+	}
+	$('#config'+no).show();
+} 
+</script>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome}</div>
+  <div class="right_main">
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+      <tr class="tb_head" >
+        <td><h2>操作导航：</h2></td>
+      </tr>
+      <tr class="firstalt">
+        <td><ul class="do_nav">
+            <li><a href="javascript:" onClick="tab(1,7);">网站信息</a></li>
+            <li><a href="javascript:" onClick="tab(2,7);">系统设置</a></li>
+            <li><a href="javascript:" onClick="tab(3,7);">附件设置</a></li>
+            <li><a href="javascript:" onClick="tab(4,7);">缓存设置</a></li>
+            <li><a href="javascript:" onClick="tab(5,7);">访问模式</a></li>
+            <li><a href="javascript:" onClick="tab(6,7);">视频设置</a></li>
+            <li><a href="javascript:" onClick="tab(7,7);">互动设置</a></li>
+          </ul></td>
+      </tr>
+    </table>
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+      <form action="index.php?s=Admin-Index-Configsave"  method="post">
+      <tbody id="config1">  
+        <tr nowrap  class="tb_head">
+          <td colspan="2" id="a"><h2>网站信息：</h2></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>网站标题</b><br></td>
+          <td ><input type="text" name="config[site_name]" size="35" maxlength="50" value="{$site_name}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>主页地址</b><br><font color="#666666">系统所安装的地址,结尾必需加斜杆 '/'</font></td>
+          <td><input  type="text" name="config[site_url]" size="35" maxlength="50" value="{$site_url}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>安装目录</b><br><font color="#666666"> 结尾必需加斜杆 '/', 根目录请填写'/'</font></td>
+          <td><input  type="text" name="config[site_path]" size="35" maxlength="50" value="{$site_path}">
+          </td>
+        </tr>
+        <tr class="firstalt">
+          <td width="260" valign="top"><b>模板方案</b><br><font color="#666666">如须修改,修改后请清空缓存 </font></td>
+          <td><select name="config[default_theme]"><volist name="dir" id="admin"><option value="{$admin.filename}" <eq name="admin.filename" value="$default_theme">selected</eq>>{$admin.filename}</option></volist></select>
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>关键字</b><br><font color="#666666">SEO关键字描述</font></td>
+          <td><input name="config[site_keywords]"  type="text" value="{$site_keywords}" size="35">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>网站描述</b><br><font color="#666666">SEO网页内容信息描述</font></td>
+          <td><input name="config[site_description]" type="text" value="{$site_description}" size="35" >
+          </td>
+        </tr>
+        <tr class="firstalt">
+          <td width="260" valign="top"><b>站长Email</b><br><font color="#666666">留下站长邮箱方便广告商联系</font></td>
+          <td><input  type="text" name="config[site_email]" size="35" value="{$site_email}">
+          </td>
+        </tr>
+         <tr nowrap class="firstalt">
+          <td width="260"><b>备案信息</b><br><font color="#666666">填写贵站的ICP备案信息</font></td>
+          <td><input type="text" name="config[site_icp]" size="35" value="{$site_icp}"></td>
+        </tr>       
+        <tr nowrap class="firstalt">
+          <td width="260"><b>版权信息</b><br><font color="#666666">设置本网站相关版权信息</font></td>
+          <td><textarea name="config[site_copyright]" style="width:500px;height:100px">{$site_copyright}</textarea>
+          </td>
+        </tr> 
+         <tr nowrap class="firstalt">
+          <td width="260"><b>网站统计</b><br><font color="#666666">放上统计代码才能对网站了如指常哦</font></td>
+          <td><textarea name="config[site_tongji]" style="width:500px; height:100px">{$site_tongji}</textarea>
+          </td>
+        </tr>                
+        </tbody>
+        <tbody id="config2" style="display:none">
+         <tr  class="tb_head">
+          <td colspan="2" id="d"><h2>系统设置</h2></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>前台1/2分页左右页码数</b><br><font color="#666666">前台分页链接需要显示几页列表</font></td>
+          <td><input  type="text" name="config[home_pagenum]" size="35" maxlength="35" value="{$home_pagenum}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>前台分页跳转Javascript函数</b><br><font color="#666666">留空则不显示跳转 默认pagego</font></td>
+          <td><input  type="text" name="config[home_pagego]" size="35" maxlength="35" value="{$home_pagego}">
+          </td>
+        </tr>        
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>后台分页显示条数</b><br><font color="#666666">后台数据管理的每页默认显示条数</font></td>
+          <td><input  type="text" name="config[url_num_admin]" size="35" maxlength="50" value="{$url_num_admin}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>后台运行超时时间</b><br><font color="#666666">后台采集数据生成时容易超时请在这里设置</font></td>
+          <td><input  type="text" name="config[admin_time_limit]" size="35" maxlength="50" value="{$admin_time_limit}">
+          </td>
+        </tr>        
+        <tr class="firstalt"> 
+        <td width="260" valign="top"><strong>后台编辑数据默认更新时间</strong><br><font color="#666666">选择则更新数据的时候默认勾上更新时间选项</font></td>
+        <td><select name="config[admin_time_edit]"><option value=1 <eq name="admin_time_edit" value="1">selected</eq>>是</option><option value=0 <eq name="admin_time_edit" value="0">selected</eq>>否</option></select></td>
+        </tr> 
+        <tr class="firstalt"> 
+        <td width="260" valign="top"><strong>后台数据管理排序方式</strong><br><font color="#666666">数据管理默认以更新时间或ID倒序排序方式</font></td>
+        <td><select name="config[admin_order_type]"><option value="addtime">更新时间倒序</option><option value="id" <eq name="admin_order_type" value="id">selected</eq>>影片ID值倒序</option></select></td>
+        </tr>                    
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>服务器IP</b><br><font color="#666666">数据库所使用的IP地址 本机请填写localhost</font></td>
+          <td><input  type="text" name="config[db_host]" size="35" maxlength="50" value="{$db_host}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>数据库名称</b><br><font color="#666666">系统管理员给您分配的数据库</font></td>
+          <td><input  type="text" name="config[db_name]" size="35" maxlength="50" value="{$db_name}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>数据库用户名</b><br><font color="#666666">系统管理员给您分配的数据库对应的用户名</font></td>
+          <td><input  type="text" name="config[db_user]" size="35" maxlength="50" value="{$db_user}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>数据库密码</b><br><font color="#666666">系统管理员给您分配的数据库对应的密码</font></td>
+          <td><input  type="text" name="config[db_pwd]" size="35" maxlength="50" value="{$db_pwd}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>数据库端口</b><br><font color="#666666">MYSQL数据库所使用的端口号IP地址 默认3306</font></td>
+          <td><input  type="text" name="config[db_port]" size="35" maxlength="50" value="{$db_port}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>数据库编码</b><br><font color="#666666">系统安装完成后请勿更改</font></td>
+          <td><input  type="text" name="config[db_charset]" size="35" maxlength="50" value="{$db_charset}" disabled>
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>系统表前缀</b><br><font color="#666666">用于在同一个数据库安装多个皮皮系统时填写 安装后请勿修改</font></td>
+          <td><input  type="text" name="config[db_prefix]" size="35" maxlength="50" value="{$db_prefix}">
+          </td>
+        </tr>                              
+        </tbody>
+        <tbody id="config3" style="display:none">        
+        <tr class="tb_head">
+          <td colspan="2" id="d"><h2>附件设置</h2></td>
+        </tr>
+         <tr nowrap class="firstalt">
+          <td width="260"><strong>本地附件文件夹</strong><br><font color="#666666">定期修改此选项防止盗链,相对于程序安装目录,不要加 '/'</font></td>
+          <td><input type="text" name="config[upload_path]" size="35" maxlength="50" value="{$upload_path}"></td>
+        </tr>
+         <tr nowrap class="firstalt">
+          <td width="260"><strong>附件上传类型</strong><br><font color="#666666">只允许列出的后缀名文件才可以上传</font></td>
+          <td><input type="text" name="config[upload_class]" size="35" maxlength="50" value="{$upload_class}"></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><strong>附件保存路径风格</strong><br><font color="#666666">标记：Y年,M月,D日.相对于附件文件夹,不要加 '/'</font></td>
+          <td><input type="text" name="config[upload_style]" size="35" maxlength="50" value="{$upload_style}"></td>
+        </tr> 
+         <tr class="firstalt">
+          <td width="260" valign="top"><strong>是否自动保存远程图片</strong><br><font color="#666666">选择则在手动添加数据与采集官方资源库的时候自动保存图片</font></td>
+          <td><select name="config[upload_http]"><option value=1 <eq name="upload_http" value="1">selected</eq>>是</option><option value=0 <eq name="upload_http" value="0">selected</eq>>否</option></select>
+          </td>
+        </tr>            
+        <tr class="firstalt">
+          <td width="260" valign="top"><strong>是否开启缩略图功能</strong><br><font color="#666666">选择则上传或远程图片保存时自动为其增加小图片 并统一保存在上传目录/thumb</font></td>
+          <td><select name="config[upload_thumb]"><option value=1 <eq name="upload_thumb" value="1">selected</eq>>是</option><option value=0 <eq name="upload_thumb" value="0">selected</eq>>否</option></select>
+          </td>
+        </tr>        
+        <tr class="firstalt">
+          <td width="260" valign="top"><strong>缩略图宽度X高度</strong><br><font color="#666666">缩略图的宽度和高度设置，用于幻灯模式小图。</font></td>
+          <td><input  type="text" name="config[upload_thumb_w]" size="7" value="{$upload_thumb_w}" style="text-align:center"> X <input  type="text" name="config[upload_thumb_h]" size="7" value="{$upload_thumb_h}" style="text-align:center"></td>
+        </tr> 
+        <tr class="firstalt"> 
+        <td width="260" valign="top"><strong>是否开启水印功能</strong><br><font color="#666666">选择则上传或远程图片保存时加上水印</font></td>
+        <td><select name="config[upload_water]"><option value=1 <eq name="upload_water" value="1">selected</eq>>是</option><option value=0 <eq name="upload_water" value="0">selected</eq>>否</option></select></td>
+      </tr>
+      <tr nowrap class="firstalt"> 
+        <td width="260"><strong>水印图片</strong> <br><font color="#666666">相对于安装目录, 不要加'/'</font></td>
+        <td> <input type="text" name="config[upload_water_img]" size="35" maxlength="50" value="{$upload_water_img}"> </td>
+      </tr>
+      <tr nowrap class="firstalt"> 
+        <td width="260"><strong>水印透明度</strong> <br><font color="#666666">1-100, 一般设为70即可, 不要加 '%'</font><br></td>
+        <td> <input  type="text" name="config[upload_water_pct]" size="35" maxlength="50" value="{$upload_water_pct}"></td>
+      </tr>
+      <tr nowrap class="firstalt"> 
+        <td width="260"><strong>水印位置</strong> <br><font color="#666666">0=随机,从左&gt;右,上&gt;下 可以设置1-9 9个位置</font><br></td>
+        <td> <input  type="text" name="config[upload_water_pos]" size="35" maxlength="50" value="{$upload_water_pos}" ></td>
+      </tr>
+      <tr nowrap class="firstalt"> 
+        <td width="260"><strong>批量保存数量</strong> <br><font color="#666666">一次性批量保存多少张远程图片</font><br></td>
+        <td> <input  type="text" name="config[upload_http_down]" size="35" maxlength="50" value="{$upload_http_down}" ></td>
+      </tr>
+      <tr class="tb_head"><td colspan="2" id="d"><h2>远程附件设置</h2></td></tr>
+	  <tr class="firstalt"> 
+      <td width="260" valign="top"><strong>是否开启FTP远程附件</strong><br><font color="#666666">开启将影响上传速度,但是可以将附件转移到FTP服务器(上传图片或采集时自动保存到远程服务器)</font></td>
+      <td><select name="config[upload_ftp]"><option value=0>否</option><option value=1 <eq name="upload_ftp" value="1">selected</eq>>是</option></select></td>
+      </tr>
+      <tr class="firstalt"> 
+      <td width="260"><strong>FTP 服务器</strong><br><font color="#666666">服务器地址,不需要加"http://",一般为IP</font></td>
+      <td><input  type="text" name="config[upload_ftp_host]" size="35" maxlength="50" value="{$upload_ftp_host}" ></td>
+      </tr>
+      <tr class="firstalt"> 
+      <td width="260"><strong>FTP 用户名</strong><br><font color="#666666">FTP服务器登录用的用户名</font></td>
+      <td><input  type="text" name="config[upload_ftp_user]" size="35" maxlength="50" value="{$upload_ftp_user}" ></td>
+      </tr>
+      <tr class="firstalt"> 
+      <td width="260"><strong>FTP 密码</strong><br><font color="#666666">FTP服务器登录用的密码</font></td>
+      <td><input  type="text" name="config[upload_ftp_pass]" size="35" maxlength="50" value="{$upload_ftp_pass}" ></td>
+      </tr>
+      <tr class="firstalt"> 
+      <td width="260"><strong>FTP 端口</strong><br><font color="#666666">服务器端口, 一般为 21</font></td>
+      <td><input  type="text" name="config[upload_ftp_port]" size="35" maxlength="50" value="{$upload_ftp_port}" ></td>
+      </tr>
+      <tr class="firstalt"> 
+      <td width="260"><strong>远程附件保存文件夹(请确保已经建立)</strong><br><font color="#666666">相对于FTP服务器根目录, 如/wwwroot/upload/</font></td>
+      <td><input  type="text" name="config[upload_ftp_dir]" size="35" maxlength="50" value="{$upload_ftp_dir}" ></td>
+      </tr>                              
+      <tr nowrap class="firstalt"> 
+      <td width="260"><strong>远程附件访问地址(必须/结尾,留空则不使用)</strong><br><font color="#666666">如 http://img.ff84.com/upload/</font></td>
+      <td> <input  type="text" name="config[upload_http_prefix]" size="35" maxlength="50" value="{$upload_http_prefix}" ></td>
+      </tr> 
+	  <tr class="firstalt"> 
+      <td width="260" valign="top"><strong>是否删除本地图片</strong><br><font color="#666666">成功上传到远程服务器后，是否删除对应的文件</font></td>
+      <td><select name="config[upload_ftp_del]"><option value=0>否</option><option value=1 <eq name="upload_ftp_del" value="1">selected</eq>>是</option></select></td>
+      </tr>                 
+      </tbody>
+        <tbody id="config4" style="display:none"> 
+        <tr  class="tb_head">
+          <td colspan="2" id="e"><h2>静态缓存设置</h2></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>是否开启模板缓存功能</b><br><font color="#666666">建议只在制作模板的时候不开启</font></td>
+          <td><select name="config[tmpl_cache_on]">
+              <option value=1 <eq name="tmpl_cache_on" value="1">selected</eq>>开启</option>
+              <option value=0 <eq name="tmpl_cache_on" value="0">selected</eq>>关闭</option>
+            </select></td>
+        </tr>        
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>是否开启静态缓存功能</b><br><font color="#666666">只有开启了缓存开关后以下设置才会有效</font></td>
+          <td><select name="config[html_cache_on]">
+              <option value=1 <eq name="html_cache_on" value="1">selected</eq>>开启</option>
+              <option value=0 <eq name="html_cache_on" value="0">selected</eq>>关闭</option>
+            </select><font color="red">切换后一定要清空所有缓存 否则运行不正常</font></td>
+        </tr>      
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>首页缓存时间(小时)</b> <br><font color="#666666">0 = 不启用缓存. 启用缓存可以减少数据库压力,但会占用更多的空间</font><br></td>
+          <td><input  type="text" name="config[html_cache_index]" size="35" maxlength="50" value="{$html_cache_index}" >
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>列表页缓存时间(小时)</b> <br><font color="#666666">0 = 不启用缓存. 启用缓存会导致更新信息延后,请合理设置时间</font><br></td>
+          <td><input  type="text" name="config[html_cache_list]" size="35" maxlength="50" value="{$html_cache_list}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>内容页缓存时间(小时)</b> <br><font color="#666666">0 = 不启用缓存. 流量小的情况下不建议启用静态缓存</font><br></td>
+          <td><input  type="text" name="config[html_cache_content]" size="35" maxlength="50" value="{$html_cache_content}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="34%"><b>播放页缓存时间(小时)</b> <br><font color="#666666">0 = 不启用缓存. 流量小的情况下不建议启用静态缓存</font><br></td>
+          <td><input  type="text" name="config[html_cache_play]" size="35" maxlength="50" value="{$html_cache_play}">
+          </td>
+        </tr>      
+        <tr nowrap class="firstalt">
+          <td width="34%"><p><b>Ajax自定义页面缓存时间(小时)</b><br><font color="#666666">0 = 不启用缓存.用于静态缓存调用结果</font><br></p></td>
+          <td><input name="config[html_cache_ajax]"  type="text" value="{$html_cache_ajax}" size="35" maxlength="50" >
+          </td>
+        </tr>       
+        </tbody>
+        <tbody id="config5" style="display:none"> 
+        <tr  class="tb_head">
+          <td colspan="2" id="e"><h2>访问模式设置</h2></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>全站运行模式</b><br><font color="#666666">选择动态将不生成网页</font></td>
+          <td><select name="config[url_html]" style="width:200px">
+              <option value="0" <eq name="url_html" value="0">selected</eq>>全站动态页</option>
+              <option value="1" <eq name="url_html" value="1">selected</eq>>全站静态页</option>
+              <option value="2" <eq name="url_html" value="2">selected</eq>>栏目页动态(其它静态)</option>
+              <option value="4" <eq name="url_html" value="4">selected</eq>>播放页动态(其它静态)</option>
+              <option value="3" <eq name="url_html" value="3">selected</eq>>栏目页动态+播放页动态</option>
+            </select> 2万IP以下的虚以主机用户推荐使用动态+Rewrite重写</td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>动态访问模式</b><br><font color="#666666">Rewrite可以去除URL中的&quot;?&quot;,但需要服务器支持</font></td>
+          <td><select name="config[url_model]" style="width:200px">
+              <option value="3" <eq name="url_model" value="3">selected</eq>>一般伪静态</option>
+              <option value="2" <eq name="url_model" value="2">selected</eq>>Rewrite重写</option>
+            </select></td>
+        </tr>        
+        <tr nowrap class="firstalt">
+          <td width="260"><b>静态生成栏目页路径选项</b><br><font color="#666666">推荐使用目录结构式</font> 需要清空缓存才有效<br></td>
+          <td><select name="config[url_dir_a]" style="width:200px">
+          	  <option value="1">目录ID值式 (vodlist/8/)</option>
+              <option value="2" <eq name="url_dir_a" value="2">selected</eq>>目录别名式 (vodlist/dz/)</option>
+              <option value="3" <eq name="url_dir_a" value="3">selected</eq>>序列ID值式 (vodlist/8_1.html)</option>
+              <option value="4" <eq name="url_dir_a" value="4">selected</eq>>序列别名式 (vodlist/dz_1.html)</option>
+              <option value="5" <eq name="url_dir_a" value="5">selected</eq>>栏目MD5式 (vodlist/md5_1.html)</option>
+            </select>
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>静态生成内容页路径选项</b><br><font color="#666666">推荐使用目录结构式</font><br></td>
+          <td><select name="config[url_dir_b]" style="width:200px">
+              <option value="1">目录ID值式 (vod/585/)</option>
+              <option value="2" <eq name="url_dir_b" value="2">selected</eq>>目录MD5 (vod/md5值/)</option>
+              <option value="3" <eq name="url_dir_b" value="3">selected</eq>>序列ID (vod/585.html)</option>
+              <option value="4" <eq name="url_dir_b" value="4">selected</eq>>序列MD5 (vod/md5值.html)</option>
+              <option value="5" <eq name="url_dir_b" value="5">selected</eq>>栏目拼音式</option>
+            </select>
+          </td>
+        </tr>        
+        <tr nowrap class="firstalt">
+          <td width="260"><b>静态生成过程中暂停几秒</b><br><font color="#666666">合理设置时间以缓冲服务器压力</font><br></td>
+          <td><input  type="text" name="config[url_time]" size="12" maxlength="50" value="{$url_time}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>伪静态文件后缀名</b> <br><font color="#666666">伪静态的后缀名，更改后需要清除缓存</font><br></td>
+          <td><input  type="text" name="config[url_html_suffix]" size="12" maxlength="50" value="{$url_html_suffix}">
+          </td>
+        </tr>        
+        <tr nowrap class="firstalt">
+          <td width="260"><b>静态文件后缀名</b><br><font color="#666666">生成的静态文件与静态缓存文件的后缀名</font><br></td>
+          <td><input type="text" name="config[html_file_suffix]" size="12" maxlength="50" value="{$html_file_suffix}">
+          </td>
+        </tr>                
+        <tr nowrap class="firstalt">
+          <td width="260"><b>每页生成的数量</b><br><font color="#666666">根据自己的硬件情况合理设置</font><br></td>
+          <td><input  type="text" name="config[url_number]" size="12" maxlength="50" value="{$url_number}">
+          </td>
+        </tr>             
+        <tr nowrap class="firstalt">
+          <td width="260"><b>视频分类页目录及前缀</b> <br><font color="#666666">保存视频模块栏目的位置，建议结尾加斜杆 '/'</font><br></td>
+          <td><input  type="text" name="config[url_vodlist]" size="12" maxlength="50" value="{$url_vodlist}"> 当选择目录结构式的时候可以为空 即生成这样的结构http://xxxx.com/movie/
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>视频内容页目录及前缀</b> <br><font color="#666666">保存视频模块内容的位置，建议结尾加斜杆 '/'</font><br></td>
+          <td><input  type="text" name="config[url_voddata]" size="12" maxlength="50" value="{$url_voddata}">
+          </td>
+        </tr> 
+        <tr nowrap class="firstalt">
+          <td width="260"><b>视频播放页目录及前缀</b> <br><font color="#666666">保存视频模块播放的位置，建议结尾加斜杆 '/'</font><br></td>
+          <td><input  type="text" name="config[url_vodplay]" size="12" maxlength="50" value="{$url_vodplay}">
+          </td>
+        </tr> 
+         <tr nowrap class="firstalt">
+          <td width="260"><b>新闻分类页目录及前缀</b> <br><font color="#666666">保存新闻模块栏目的位置，建议结尾加斜杆 '/'</font><br></td>
+          <td><input  type="text" name="config[url_newslist]" size="12" maxlength="50" value="{$url_newslist}">
+          </td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><b>新闻内容页目录及前缀</b> <br><font color="#666666">保存新闻模块内容的位置，建议结尾加斜杆 '/'</font><br></td>
+          <td><input  type="text" name="config[url_newsdata]" size="12" maxlength="50" value="{$url_newsdata}">
+          </td>
+        </tr> 
+        <tr nowrap class="firstalt">
+          <td width="260"><b>网站地图页目录及前缀</b> <br><font color="#666666">网站地图页保存的位置，建议结尾加斜杆 '/'</font><br></td>
+          <td><input  type="text" name="config[url_map]" size="12" maxlength="50" value="{$url_map}">
+          </td>
+        </tr>                                    
+        </tbody> 
+        <tbody id="config6" style="display:none"> 
+        <tr class="tb_head">
+          <td colspan="2" id="b"><h2>视频模块设置：</h2></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>播放器宽高与列表位置</b><br><font color="#666666">默认情况下宽会自动填满模板中播放器的位置</font><br></p></td>
+          <td><input  type="text" name="config[play_width]" size="7" value="{$play_width}" style="text-align:center"> X <input  type="text" name="config[play_height]" size="7" value="{$play_height}" style="text-align:center"> <select name="config[play_show]"><option value=1 <eq name="play_show" value="1">selected</eq>>开启播放列表</option><option value=0 <eq name="play_show" value="0">selected</eq>>不开启列表</option></select></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>节目缓冲广告地址</b></p></td>
+          <td><input  type="text" name="config[play_playad]" size="66" value="{$play_playad}"></td>
+        </tr>       
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>快播Qvod播放器下载地址</b></p></td>
+          <td><input  type="text" name="config[play_qvod]" size="66" value="{$play_qvod}"></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>迅播Gvod播放器下载地址</b></p></td>
+          <td><input  type="text" name="config[play_gvod]" size="66" value="{$play_gvod}"></td>
+        </tr> 
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>久久Web9播放器下载地址</b></p></td>
+          <td><input  type="text" name="config[play_web9]" size="66" value="{$play_web9}"></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>暴风影音播放器下载地址</b></p></td>
+          <td><input  type="text" name="config[play_baofeng]" size="66" value="{$play_baofeng}"></td>
+        </tr>        
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>皮皮PIPI播放器下载地址</b></p></td>
+          <td><input  type="text" name="config[play_pvod]" size="66" value="{$play_pvod}"></td>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>百度影音播放器下载地址</b></p></td>
+          <td><input  type="text" name="config[play_bdhd]" size="66" value="{$play_bdhd}"></td>
+        </tr>
+        </tr>                                 
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>默认视频语言列表</b><br><font color="#666666">半角逗号,分开语言列表</font></p></td>
+          <td><input  type="text" name="config[play_language]" size="66" value="{$play_language}"></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>默认视频地区列表</b><br><font color="#666666">半角逗,号分开地区列表</font></p></td>
+          <td><input  type="text" name="config[play_area]" size="66" value="{$play_area}"></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>默认视频年代列表</b><br><font color="#666666">半角逗,号分开年代列表</font></p></td>
+          <td><input  type="text" name="config[play_year]" size="66" value="{$play_year}"></td>
+        </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>FLV视频片头广告时长</b><br><font color="#666666">类似优酷这种引用的视频的片头广告</font></p></td>
+          <td><input  type="text" name="config[play_second]" size="10" value="{$play_second}" style="text-align:center"></td>
+        </tr>        
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>采集跳转时间间隔</b><br><font color="#666666">按列表采集时的时间停顿，以缓冲服务器压力</font></p></td>
+          <td><input  type="text" name="config[play_collect_time]" size="10" value="{$play_collect_time}" style="text-align:center"></td>
+        </tr>
+       <tr class="firstalt"> 
+        <td width="260" valign="top"><strong>采集影片相似度设置(为0不检查)</strong><br><font color="#666666">大于0的数字可以将重名的设成未入库状态</font></td>
+        <td><input type="text" name="config[play_collect_name]" size="10" value="{$play_collect_name}" style="text-align:center"> 使用此功能可以减少重名 但会加重采集时的服务器负担</td>
+       </tr>
+       <tr class="firstalt"> 
+        <td width="260" valign="top"><strong>是否开启伪原创功能</strong><br><font color="#666666">选择则在采集数据时自动做seo伪造</font></td>
+        <td><select name="config[play_collect]"><option value=1 <eq name="play_collect" value="1">selected</eq>>是</option><option value=0 <eq name="play_collect" value="0">selected</eq>>否</option></select></td>
+       </tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>采集伪原创内容(一行一段)</b><br><font color="#666666">请写下几段小于200字的文字 将随机添加在采集的简介的任意位置 建议一次性添加10条以上 这样操作后就可以减小内容雷同的机会，将大大提升seo的效果! 支持html语法!</font></p></td>
+          <td><textarea name="config[play_collect_content]" style="width:500px;height:100px"><volist name="play_collect_content" id="ppvod">{$ppvod}<php>echo(chr(13));</php></volist></textarea></td>
+        </tr>               
+       <tr nowrap class="firstalt">
+          <td width="260"><p><b>服务器组共享前缀(一行一个)</b><br><font color="#666666">请使用</font> <font color="red">前缀名称$$$对应地址</font> <font color="#666666">这种格式添加</font></p></td>
+          <td><textarea name="config[play_server]" style="width:500px;height:60px"><volist name="play_server" id="ppvod">{$key}$$${$ppvod}<php>echo(chr(13));</php></volist></textarea></td>
+       </tr>
+        </tbody> 
+        <tbody id="config7" style="display:none"> 
+        <tr class="tb_head"><td colspan="2" id="b"><h2>互动模块设置：</h2></td></tr>
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>评论及留言(是/否)需审核才显示</b></p></td>
+          <td><select name="config[user_gbcm]"><option value="1">需要审核</option><option value="0" <eq name="user_gbcm" value="0">selected</eq>>禁用审核</option></select></td>
+        </tr>
+        <tr class="firstalt">
+          <td width="260"><b>两次评论/留言至少间隔时间(秒钟)</b></td>
+          <td><input type="text" name="config[user_second]" value="{$user_second}" style="text-align:center" maxlength="5" size="6">
+          </td>
+        </tr> 
+        <tr class="firstalt">
+          <td width="260"><b>留言列表显示条数(留言分页条数)</b></td>
+          <td><input type="text" name="config[user_gbnum]" value="{$user_gbnum}" style="text-align:center" maxlength="5" size="6">
+          </td>
+        </tr> 
+        <tr class="firstalt">
+          <td width="260"><b>评论列表显示条数(评论分页条数)</b></td>
+          <td><input type="text" name="config[user_cmnum]" value="{$user_cmnum}" style="text-align:center" maxlength="5" size="6">
+          </td>
+        </tr>                 
+        <tr nowrap class="firstalt">
+          <td width="260"><p><b>替换词语（词语会被替换成***）</b><br><font color="#666666">用|分开，但不要在结尾加|</font><br></p></td>
+          <td><textarea name="config[user_replace]" style="width:500px;height:50px">{$user_replace}</textarea></td>
+        </tr>                                          
+        </tbody>              
+        <tr class="firstalt">
+          <td colspan="2" align="center"><input type="hidden" name="setting_sub" value="true">
+            <input class="bginput" type="submit" name="submit" value=" 提交 " >
+            <input class="bginput" type="reset" name="Input" value=" 重置 " >
+          </td>
+        </tr>
+      </form>
+    </table>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

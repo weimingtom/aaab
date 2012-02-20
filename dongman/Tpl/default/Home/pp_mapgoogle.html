@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<php>$vod_map=$pplist->ppvod('num:500;order:vod_addtime desc');</php>
+<url>
+<loc>{$siteurl}</loc>
+<lastmod>{:date('Y-m-d',time())}</lastmod>
+<changefreq>hourly</changefreq>
+<priority>1.0</priority>
+</url>
+<volist name="vod_map" id="ppvod">
+<url>
+<loc>{:getbaseurl($siteurl,$ppvod['vod_url'])}</loc> 
+<lastmod>{$ppvod.vod_addtime|date='Y-m-d',###}</lastmod>
+<changefreq>daily</changefreq> 
+<priority>0.8</priority>
+</url>
+</volist>
+</urlset>

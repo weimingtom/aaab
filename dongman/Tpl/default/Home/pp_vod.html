@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$list_keywords|default=''.$keywords.''}">
+<meta name="description" content="{$description}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+{$css}
+<script type="text/javascript" src="{$tpl}js/ajax.js" charset="utf-8"></script>
+</head>
+<body>
+<include file="pp_header" />
+<div class="main">
+<div class="bd960 clear">{:getadsurl('top960')}</div>
+<div class="datal">
+	<dl class="tit clear"><span><php>$tag_list=$pplist->pptag('id:'.$vod_id.';sid:1;');</php><volist name="tag_list" id="ppvod"><eq name="i" value="1">标签：</eq><a href="{$ppvod.tag_url}" target="_blank">{$ppvod.tag_name|msubstr=0,4}</a>&nbsp;</volist></span><dt>当前位置：<a href="{$root}">首页</a> &raquo; {$list_name} &raquo; {$vod_name}</dt></dl>
+    <div class="vmain">
+	<div class="vpic"><img src="{$vod_pic|getpicurl}" alt="{$vod_name}" border="0"/></div>
+	<div class="vshow">
+    <h2>{:getcolor($vod_name.$vod_title,$vod_color)}<span id="plus_gold"><php>for($i=1;$i<=10;$i++){echo '<img src="'.$tpl.'images/x2.png" onmouseover="plus_gold_img('.$i.');" onmouseout="plus_gold_show();" onclick="plus_gold('.$i.');" />';}</php></span></h2>
+    <p>主要演员：{$vod_actor|getactorurl}</p>
+    <p>所属分类：{$list_name} {$vod_area}</p>
+    <p>更新时间：{$vod_addtime|date='Y-m-d H:i:s',###}</p>
+    <p>连载状态：<font color="red">{$vod_continu}</font></p>
+    <p>影片热度：<span id="view_hits"><script type="text/javascript" src="{$root}index.php?s=vod-ajaxhot-id-{$vod_id}-t-1"></script></span>℃</p>
+    <p>影片映像：<a href="javascript:" onclick="plus_vod_ud({$vod_id},1,'{$root}');" class="vup">顶/<span id="s1">{$vod_up}</span></a> <a href="javascript:" onclick="plus_vod_ud({$vod_id},2,'{$root}');" class="vdown">踩/<span id="s2">{$vod_down}</span></a>&nbsp;&nbsp;共<span id="golder">{$vod_golder}</span>人评分/平均得分<span id="gold">{$vod_gold}</span>/总得分<span id="goldall">{$vod_gold}</span></p>
+    <p class="input"><script language="javascript" src="{$tpl}js/copy.js"></script></p>
+	</div>
+    <div class="vbanner">{:getadsurl('right300250')}</div>
+    </div>
+</div>
+<volist name="ppplay" id="ppvod">
+<eq name="ppvod.playname" value="down">
+<script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
+<div class="datal clear">
+    <dl class="tit clear"><dt>影片来源：{$ppvod.playname}迅雷下载</dt></dl>
+    <div class="vmain"><div class="vpl"><ul>
+        <volist name="ppvod['son']" id="ppvodson"><a oncontextmenu=ThunderNetwork_SetHref(this) onclick="return OnDownloadClick_Simple(this,2,4)" href="#" thunderResTitle="222" thunderType="" thunderPid="03682" thunderHref="thunder://{:base64_encode('AA'.$ppvodson['playpath'].'ZZ')}">{$ppvodson.playname}</a></volist> 
+    </ul></div></div>
+</div>
+<else/>
+<div class="datal clear">
+    <dl class="tit clear"><dt>影片来源：{$ppvod.playername}</dt></dl>
+    <div class="vmain"><div class="vpl"><ul>
+        <volist name="ppvod['son']" id="ppvodson"><a href="{$ppvodson.playurl}" target="_blank">{$ppvodson.playname}</a></volist>
+    </ul></div></div>
+</div>
+</eq>
+</volist>
+<div class="datal clear"><a name="juqing"></a>
+	<dl class="tit"><dt style="float:left">有关《{$vod_name}》的剧情</dt></dl>
+	<div class="vmain"><div class="vcs">
+	<ul>{$vod_content}</ul>
+	</div></div>
+</div>
+<div class="datal clear">
+	<dl class="tit"><dt style="float:left">有关《{$vod_name}》的评论</dt></dl>
+    <div id="ajax_vod_cm"></div><script type="text/javascript">plus_vod_ud({$vod_id},0,'{$root}');var gold_id={$vod_id};var gold_root='{$root}';var gold_model='vod';plus_gold(0);plus_cm_list('vod','{$root}',{$vod_id});</script>
+</div>
+<include file="pp_footer" />
+</div>
+</body>
+</html>

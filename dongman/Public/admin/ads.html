@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>{&admin_name} 管理面版 v{&admin_var}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="keywords" content="{&admin_keywords}">
+<meta name="description" content="{&admin_description}">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome}</div>
+  <div class="right_main">
+    <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+      <tr class="tb_head"><td><h2>广告列表：</h2></td></tr>
+      <tr class=firstalt>
+        <td>广告是一组&lt;html&gt;代码, 在模板中调用广告标识即可将广告内容展示出来.调用方法:<font color="red"><literal>{:getadsurl('xxxx')}</literal></font> 其中: xxxx 为广告的唯一标识 </td>
+      </tr>
+    </table>
+    <form action="index.php?s=Admin-Ads-Update" method="post" name="myform">
+      <table width="98%" border="0" cellpadding="4" cellspacing="1" class="tableoutline">
+        <tr align=center class=tb_title >
+          <td width="19%" >广告唯一标识</td>
+          <td width="81%" >广告代码内容</td>
+        </tr>
+        <volist name="listads" id="ppvod">
+        <tr align="center" class=firstalt>
+          <input name="ads_id[{$ppvod.ads_id}]" type="hidden"  value="{$ppvod.ads_id}" maxlength="50">
+          <td><input name="ads_name[{$ppvod.ads_id}]"  type="text" value="{$ppvod.ads_name}" maxlength="50"></td>
+          <td align="left" ><textarea name="ads_content[{$ppvod.ads_id}]" cols="80" style="height:80px">{$ppvod.ads_content|htmlspecialchars}</textarea>
+        </tr>
+        </volist>
+        <tr align="center" class=firstalt>
+          <td ><input name="ads_name_sub" type="text" maxlength="50"></td>
+          <td align="left" ><textarea name="ads_content_sub" cols="80" style="height:80px;"></textarea>
+        </tr>
+        <tr class="firstalt">
+          <td colspan="2" align="center">
+            <input class="bginput" type="submit" name="submit" value=" 提交 " >
+            <input class="bginput" type="reset" name="Input" value=" 重置 " >
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

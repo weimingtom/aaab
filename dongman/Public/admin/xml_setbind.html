@@ -1,0 +1,5 @@
+<select name="cid" id="cid">
+<volist name="list" id="ppvod">
+<option value="{$ppvod.list_id}" <if condition="ff_bind_id($_GET['bind']) eq $ppvod['list_id']">selected</if>>{$ppvod.list_name}</option>
+</volist></select>
+<input class="submit" type="button" value="提 交" onClick="submitbind(cid.value,'{.bind}');" style="cursor:pointer"> <input name="button" type="button" value="取 消" class="submit" onClick="hidebind();" style="cursor:pointer">

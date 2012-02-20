@@ -1,0 +1,27 @@
+﻿<div class="top">
+<div class="header">
+	<div class="logo"><a href="{$root}" title="首页"></a></div>
+	<div class="banner">{:getadsurl('top46860')}</div>
+</div>
+<div class="search">
+    <div class="nav">
+       <ul>
+        <li class="no_bg <eq name="model" value="index">on</eq>"><a href="{$root}" title="{$sitename}">首 页</a></li>
+        <volist name="ppmenu" id="ppvod">
+        <li class="<eq name="ppvod.list_id" value="$list_id">no_bg on</eq><eq name="ppvod.list_id" value="$list_pid">no_bg on</eq>"><a href="{$ppvod.list_url}">{$ppvod.list_name}</a></li>
+        </volist></ul>
+    </div>
+    <div class="form"><eq name="list_id" value="20"><form name="form1" method="post" action="{$root}index.php?s=news-search"><else/><form name="form1" method="post" action="{$root}index.php?s=vod-search"></eq>
+    	<input type="text" name="id" value="请在此处输入关键字" onclick="this.value = ''" maxLength="26" />
+    	<button type="submit" id="searchbutton" name="Submit" >全站搜索</button></form>
+    </div>
+    <div class="up"><ul><php>$tag_list=$pplist->pptag('sid:1;num:8;');</php>
+    	<volist name="ppmenu" id="ppvod"><if condition="$ppvod.list_id eq 1">
+        <li>电　影：<volist name="ppvod.son" id="son"><a href="{$son.list_url}">{$son.list_name}</a></volist></li>
+        <elseif condition="$ppvod.list_id eq 2" />
+        <li>电视剧：<volist name="ppvod.son" id="son"><a href="{$son.list_url}">{$son.list_name}</a></volist></li>
+        </if></volist>
+        <li>标　签：<a href="{:ppvodurl('ajax/show',false,false,false,true)}">最近更新</a><volist name="tag_list" id="ppvod"><a href="{$ppvod.tag_url}">{$ppvod.tag_name|msubstr=0,4}</a></volist></li>
+    </ul></div>
+</div>
+</div>

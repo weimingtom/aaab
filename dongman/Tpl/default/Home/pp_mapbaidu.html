@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<document>
+<webSite>{$siteurl}</webSite> 
+<webMaster>{$email}</webMaster> 
+<updatePeri>720</updatePeri>
+<php>$vod_map=$pplist->ppvod('num:100;order:vod_addtime desc');</php>
+<volist name="vod_map" id="ppvod">
+<item>
+<link>{:getbaseurl($siteurl,$ppvod['vod_url'])}</link> 
+<title>{$ppvod.vod_name}{$ppvod.vod_title}</title>
+<text><![CDATA["{$ppvod.vod_content|h|trim|msubstr=0,500}"]]></text>
+<image>{:getbaseurl($siteurl,getpicurl($ppvod['vod_pic']))}</image> 
+<category>{$ppvod.list_name}</category>
+<pubDate>{$ppvod.vod_addtime|date='Y-m-d H:i:s',###}</pubDate>
+</item>
+</volist>
+</document>

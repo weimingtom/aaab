@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+{$css}
+</head>
+<body><php>$list_id=22</php>
+<include file="pp_header" />
+<div class="main">
+<div class="tag">
+<php>$tag_list=$pplist->pptag('sid:0;');</php><volist name="tag_list" id="ppvod" mod="5"><if condition="$mod eq 1"><a href="{$ppvod.tag_url}" class="a s{$ppvod.tag_sid}">{$ppvod.tag_name}</a>&nbsp;&nbsp;<elseif condition="$mod eq 2" /><a href="{$ppvod.tag_url}" class="b s{$ppvod.tag_sid}">{$ppvod.tag_name}</a>&nbsp;&nbsp;<elseif condition="$mod eq 3" /><a href="{$ppvod.tag_url}" class="c s{$ppvod.tag_sid}">{$ppvod.tag_name}</a>&nbsp;&nbsp;<elseif condition="$mod eq 4" /><a href="{$ppvod.tag_url}" class="d s{$ppvod.tag_sid}">{$ppvod.tag_name}</a>&nbsp;&nbsp;<else /><a href="{$ppvod.tag_url}" class="e s{$ppvod.tag_sid}">{$ppvod.tag_name}</a>&nbsp;&nbsp;</if></volist></div></div>
+<include file="pp_footer" />
+</div>
+</body>
+</html>

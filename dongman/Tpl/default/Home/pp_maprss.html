@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+<title>{$sitename}</title> 
+<description>{$sitename}</description> 
+<link>{$siteurl}</link> 
+<language>zh-cn</language> 
+<docs>{$sitename}</docs> 
+<generator>Rss Powered By {$siteurl}</generator> 
+<image>
+<url>{$siteurl}public/images/logo.gif</url> 
+</image>
+<php>$urlen=strlen($siteurl)-1;$vod_map=$pplist->ppvod('num:30;order:vod_addtime desc');</php>
+<volist name="vod_map" id="ppvod">
+<item>
+<title>{$ppvod.vod_name}{$ppvod.vod_title}</title> 
+<link>{:getbaseurl($siteurl,$ppvod['vod_url'])}</link>
+<author>{$ppvod.vod_actor}</author>
+<pubDate>{$ppvod.vod_addtime|date='Y-m-d H:i:s',###}</pubDate>
+<description><![CDATA["{$ppvod.vod_content|h|trim|msubstr=0,200}"]]></description> 
+</item>
+</volist>
+</channel>
+</rss>

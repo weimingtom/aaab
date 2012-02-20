@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+{$css}
+</head>
+<body>
+<include file="pp_header" />
+<div class="main">
+<php>$lz_list=$pplist->ppvod('pid:'.$list_id.';lz:1;order:vod_addtime desc');</php><notempty name="lz_list">
+<div class="hsae lzmar">
+	<div class="hsae1">
+    <div class="hbae11 ssv lzing"><ul><volist name="lz_list" id="ppvod"><li><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" target="_blank">{$ppvod.list_name} {$ppvod.vod_name|msubstr=0,10}</a> {$ppvod.vod_continu}</li></volist></ul></div>
+	</div>
+</div></notempty>
+<div class="bd960 clear">{:getadsurl('top960')}</div>
+<php>$cidarr=getlistarr($list_id);</php>
+<volist name="cidarr" id="ppcid" key="k">
+<php>$hits=$pplist->ppvod('cid:'.$ppcid.';num:12;order:vod_gold desc,vod_hits desc');</php><notempty name="hits"><div class="list lzmar clear">
+    <div class="listri">
+    	<dl class="tit clear"><dt>{:getlistname($ppcid)}排行榜</dt><dd class="f14"><a href="{:getlistname($ppcid,'list_url')}" target="_blank">更多>></a></dd></dl>
+   		<ul><volist name="hits" id="ppvod">
+        <li><span>{$ppvod.vod_golder}</span><a href="{$ppvod.vod_url}" target="_blank">{$ppvod.list_name} {$ppvod.vod_name|msubstr=0,12}</a></li>
+        </volist></ul>
+    </div></notempty>
+<php>$list=$pplist->ppvod('cid:'.$ppcid.';num:12;order:vod_addtime desc');</php><notempty name="list">
+    <div class="listlf">
+        <dl class="tit clear"><dt>{:getlistname($ppcid)}最近更新</dt><dd class="f14"><a href="{:getlistname($ppcid,'list_url')}" target="_blank">更多>></a></dd></dl>
+        <ul class="channel"><volist name="list" id="ppvod">
+        <dl><a href="{$ppvod.vod_url}" target="_blank"> <img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';" width="93" height="125" border="0"/></a><br /><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" target="_blank">{$ppvod.vod_name|msubstr=0,6}</a></dl>
+        </volist></ul>
+    </div>
+</div></notempty>
+<eq name="k" value="2"><div class="bd960 clear">{:getadsurl('top960')}</div></eq>
+</volist>
+<include file="pp_footer" />
+</div>
+</body>
+</html>
