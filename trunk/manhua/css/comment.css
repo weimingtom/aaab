@@ -1,0 +1,52 @@
+.shuneirong p{line-height:160%;margin-bottom:15px;}
+.pl em,.pl b,.pl strong{font-style:normal;font-weight:normal;font-size:12px;color:#666;}
+.bold{font-weight:bold;color:#000}
+.pl{border:1px solid #7AE0FF;margin-bottom:8px;}
+.pl .title{background:#cff4ff;line-height:26px;border-top:1px #fff solid;padding-left:15px;}
+.pl h2{font-size:12px;color:#000;font-weight:bold;}
+.pl .page{zoom:1;overflow:hidden;}
+.pl .page .right,dl h3 span{float:right;margin-right:5px;font-weight:normal;font-size:12px;}
+.pl .page .right a,.page2 a{margin:0 4px;}
+.pl .link a{margin:0 4px;padding:2px 6px 1px 6px;_padding:3px 6px 1px 6px;#padding:3px 6px 1px 6px;background:#fff;border:1px solid #7AE0FF;}
+.page2{background:#f5f5f5;text-align:right;line-height:25px;}
+.pl .content{padding:10px;}
+.pl dl{margin-bottom:10px;}
+.pl dl h3{background:#eaf5ff;font:normal 14px/24px Arial;border-top:1px solid #bed9f5;color:#666;}
+.pl dl h3,.pl dl dt,.pl dl dd{padding:0 0 0 10px;}
+.pl dl h3 span a:link,.pl dl h3 span a,.pl dl dd b a:link{margin:0 2px;color:#666;}
+.pl dl h3 span a:hover,.pl dl dd a:link,.pl dl dd a:hover{color:#000;}
+.pl dl h3 span em{color:#090;font-style:italic;margin-left:5px;}
+.pl dl h3 b,.pl dl dt b{font-weight:bold;margin:0 5px;color:#f00;font-size:12px;}
+.pl dl dt{line-height:20px;margin-top:8px;color:#666;padding:0 18px 0 25px;}
+.pl dl h3 img,.pl dl h3 input,.shop input{float:left;margin:4px 3px 0 0;}
+.pl dl h3 input{margin:5px 4px 0 0;_margin:1px 2px 0 -4px;#margin:1px 2px 0 -4px}
+.pl dl dd{padding:0 18px 0 25px;line-height:20px;margin-top:9px;}
+.pl dl dd em a:link,.pl .page .right span{color:#1A53FF;}
+.pl dl dd a:link{color:#000;text-decoration:none;}
+.pl dl dd a:hover{color:#000;text-decoration:underline;}
+.pl dl div.quote{border:1px solid #BED9F5;border-top-width:3px;background:#F5FBFF;margin:6px 30px;padding:0;text-indent:0;}
+.pl dl div.quote h4{border-bottom:1px solid #BED9F5;color:#666;font:bold 12px/23px Arial;padding-left:10px;margin:0}
+.pl dl div.quote .cont{padding:10px;background:#fff;}
+.pl h3.font_{font-size:12px;}
+.pl p{margin-bottom:8px}
+.pl .text P{clear:both;overflow:hidden;display:inherit;margin-bottom:6px;}
+.pl .text span{float:left;display:block;width:420px;}
+.pl .text label{width:60px;text-align:right;float:left;display:block;}
+.pl .text .input{width:420px;height:20px;background:#f4fdff;border:1px solid #7F9DB9}
+.pl .text .textarea{width:420px;height:130px;}
+.pl .text .button{padding-left:60px;line-height:30px;position:relative}
+.pl .doctype{padding:9px;background:#EAF5FF;border-top:1px dashed #BED9F5}
+.pl .face{position:absolute;border:0;cursor:pointer;background:url(/images/facebutton.gif) no-repeat;height:24px;width:64px;top:0;right:200px;_right:208px}
+.pl .text .button em a{margin-left:5px;}
+.pl .faceimg{position:absolute;border:1px solid #ddd;background:#fff;padding:2px;margin:-120px 0 0 60px;width:420px;height:115px;zoom:1;overflow:hidden;}
+.pl .faceimg img{margin:2px;cursor:pointer}
+.a1 a,cite a,.a1 a:hover,cite a:hover,.a2 a:hover{background:url(/images/menu1.gif) no-repeat;display:block;float:left;width:19px;height:22px;}
+.a1 a,cite a{background-position:1px -38px}
+.a1 a:hover,cite a:hover{background-position:1px -59px;}
+.a2 a{background-position:1px -18px;}
+.a2 a:hover{background-position:1px 3px;}
+.pl .ico_shupi{background:url(/images/ico_shupi_bg.png) no-repeat;width:690px;height:35px;margin:0 0 10px -2px;overflow:hidden;position:relative;zoom:1;}
+.pl .ico_shupi div{height:20px;padding:0 0 0 15px;margin:10px 0 5px;}
+.pl .ico_shupi li{height:20px;line-height:20px;overflow:hidden;}
+.pl .ico_shupi li a,.pl .ico_shupi li .red{color:#f00;}
+.pl .ico_shupi li img{vertical-align:middle;}

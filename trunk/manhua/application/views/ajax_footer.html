@@ -1,0 +1,13 @@
+{eval $s = ob_get_contents();}
+{eval ob_end_clean();}
+{eval ob_start();}
+{eval echo "var json_return = '';\r\n";}
+{eval strpos($s, '<message>') === FALSE && $s = "<message><![CDATA[$s]]></message>";}
+{eval strpos($s, '<message><![CDATA[') === FALSE && $s = preg_replace("/\<message\>(.*?)\<\/message\>/is", "<message><![CDATA[\\1]]></message>", $s);}
+{eval !empty($_SERVER['XIUNO_ERROR']) && $s .= "<servererror><![CDATA[".$_SERVER['XIUNO_ERROR']."]]></servererror>";}
+{eval strpos($s, '<menuid>') === FALSE && $s .= '<menuid>'.getgpc('menuid').'</menuid>';}
+{eval $s = "<root>$s</root>";}
+{eval $s = str_replace("\r\n", "\n", $s);}
+{eval $s = str_replace(array('&', '<', '>'), array('&amp;', '&lt;', '&gt;'), $s);}
+{eval foreach(explode("\n", $s) as $line) echo "json_return += '".str_replace(array("\\", "'"), array("\\\\", "\\'"), $line)."' + \"\\n\";\r\n";}
+{eval exit;}

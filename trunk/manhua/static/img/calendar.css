@@ -1,0 +1,56 @@
+@charset "utf-8";
+#carlendar_div{
+display:none;
+z-index:1000;
+position:absolute;
+border:1px solid #1b6ba3;
+width:175px;
+font-size:12px;
+background-color:#FFFFFF;
+}
+#carlendar_div a{
+display:block;
+text-decoration:none;
+color:#000000;
+line-height:18px;
+}
+#carlendar_div a:hover{
+background-color:#F0FBFB
+}
+#carlendar_div table td{
+text-align:center;
+width:25px;
+height:18px;
+}
+#carlendar_div table td table td{
+height:25px;
+background-color:#1b6ba3;
+color:#ffffff;
+}
+#carlendar_div table td table span{
+display:block;
+cursor:pointer;
+}
+/*输入年月的样式*/
+#carlendar_div input{
+background-color:#1b6ba3;
+border:1px solid #1b6ba3;
+color:#ffffff;
+}
+#carlendar_div #inYear{
+width:30px;
+}
+#carlendar_div #inMonth{
+text-align:center;
+width:20px;
+}
+
+/*显示星期的背景色*/
+#carlendar_div #cssWeek{
+background-color:#F0FBFB;
+}
+/*当天日期的背景色*/
+#carlendar_div #cur{
+background-color:#adddff;
+}
+

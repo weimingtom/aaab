@@ -1,0 +1,195 @@
+
+#b-topBox .r .t DIV {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 430px; LINE-HEIGHT: 24px; MARGIN-RIGHT: 20px; WHITE-SPACE: nowrap
+}
+#b-currBox {
+	MARGIN: 10px auto 0px
+}
+#b-currBox .l {
+	FLOAT: left; OVERFLOW: hidden; WIDTH: 300px; HEIGHT: 400px; TEXT-ALIGN: center
+}
+#b-currBox .r {
+	 FLOAT: left; MARGIN: 0px 0px 0px 5px; OVERFLOW: hidden; WIDTH: 685px; HEIGHT: 400px; background-color:#E0DACE
+}
+#b-currBox .r .tt {
+	LINE-HEIGHT: 28px; HEIGHT: 28px; float:left
+}
+#b-currBox .r .tt DIV {
+	PADDING-LEFT: 10px; FONT-WEIGHT: 800; FLOAT: left; LINE-HEIGHT: 28px; HEIGHT: 28px
+}
+#b-currBox .r .tt .tl {
+	BACKGROUND:#E0DACE; WIDTH: 460px; COLOR: #000000; font-family:""
+}
+#b-currBox .r .tt .tr {
+	WIDTH: 205px; COLOR: #70614f
+}
+#b-currBox .r .box_inner { float:left; background-color:#FFFFFF;
+	BORDER-RIGHT: #ccc4aa 1px solid; BORDER-TOP: #ccc4aa 1px; OVERFLOW: hidden; BORDER-LEFT: #ccc4aa 1px solid; WIDTH: 683px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 371px
+}
+#b-currBox .r .box_l {
+	DISPLAY: inline; FLOAT: left; MARGIN: 0px 0px 0px 5px; OVERFLOW: hidden; WIDTH: 458px
+}
+#b-currBox .r .box_l UL {
+	CLEAR: both
+}
+#b-currBox .r .box_l UL.pic {
+	MARGIN: 0px
+}
+#b-currBox .r .box_l UL.pic LI {
+	DISPLAY: inline; FLOAT: left; MARGIN: 9px 4px 10px 12px
+}
+#b-currBox .r .box_l UL.text {
+	PADDING-RIGHT: 5px; DISPLAY: inline-block; PADDING-LEFT: 5px; PADDING-BOTTOM: 6px; MARGIN: 0px 0px 0px 10px; WIDTH: 424px; PADDING-TOP: 6px; TEXT-ALIGN: left
+}
+#b-currBox .r .box_l UL.text LI {
+	PADDING-RIGHT: 0px; DISPLAY: inline; PADDING-LEFT: 12px; BACKGROUND: url(icon_4.gif) no-repeat 0px 7px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px 5px; OVERFLOW: hidden; WIDTH: 189px; LINE-HEIGHT: 24px; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc4aa 1px dashed; HEIGHT: 22px
+}
+#b-currBox .r .box_l UL.text LI A {
+	FLOAT: left
+}
+#b-currBox .r .box_l UL.text LI spand {
+	FONT-SIZE: 10px; BACKGROUND: url(bg_list_r.gif); FLOAT: left; MARGIN: 12px 0px 0px; OVERFLOW: hidden; WIDTH: 28px; COLOR: #a7a7a7; LINE-HEIGHT: 12px; POSITION: relative; HEIGHT: 12px; TEXT-ALIGN: center
+}
+#b-currBox .r .box_l UL.text LI SPAN {
+	FONT-SIZE: 10px; FLOAT: left; MARGIN: 0px 0px 0px 5px; COLOR: #a7a7a7
+}
+#b-currBox .r .box_r {
+	BACKGROUND: #fdfdfb; FLOAT: right; OVERFLOW: hidden; BORDER-LEFT: #ccc4aa 1px solid; WIDTH: 214px; HEIGHT: 371px
+}
+#b-currBox .r .box_r UL {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; WIDTH: 204px; PADDING-TOP: 5px
+}
+#b-currBox .r .box_r UL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; BACKGROUND: url(icon_4.gif) no-repeat 0px 7px; PADDING-BOTTOM: 0px; MARGIN: 0px 5px; OVERFLOW: hidden; LINE-HEIGHT: 24px; PADDING-TOP: 0px; BORDER-BOTTOM: #d9d3bf 1px dashed; HEIGHT: 24px
+}
+
+/** List **/
+
+
+#b-classBoxMore {
+	
+}
+#b-classBoxMore .cBox { height:1235px;
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; BACKGROUND: #f7f4eb; PADDING-BOTTOM: 5px; MARGIN: 5px 0px 0px; BORDER-LEFT: #ccc4aa 1px solid; WIDTH: 978px; PADDING-TOP: 5px; BORDER-BOTTOM: #ccc4aa 1px solid
+}
+#b-classBoxMore .cBox .t { float:left;
+	BACKGROUND: url(box_top_2.gif) repeat-x; MARGIN: 10px 0px 0px; OVERFLOW: hidden; WIDTH: 978px; HEIGHT: 27px
+}
+#b-classBoxMore .cBox .t .l {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 35px; BACKGROUND: url(box_top_1.gif) repeat-x; PADDING-BOTTOM: 0px; OVERFLOW: hidden; WIDTH: 100px; LINE-HEIGHT: 29px; PADDING-TOP: 0px; HEIGHT: 27px
+}
+#b-classBoxMore .cBox .t .meroBox {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 25px; BACKGROUND: url(box_top_3.gif) no-repeat right 0px; FLOAT: right; PADDING-BOTTOM: 0px; WIDTH: 43px; LINE-HEIGHT: 30px; PADDING-TOP: 0px; HEIGHT: 33px
+}
+#b-classBoxMore .cBox .t .meroBox A {
+	FONT-WEIGHT: 700; COLOR: #fff
+}
+#b-classBoxMore .cBox UL.pic {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 5px; WIDTH: 750px; PADDING-TOP: 5px
+}
+#b-classBoxMore .cBox UL.pic LI {
+	FLOAT: left; MARGIN: 5px 10px 0px 5px
+}
+
+#b-classBoxMore .cBox UL.text { float:left;
+	BORDER-RIGHT: #afafaf 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #dedede 1px solid; PADDING-LEFT: 5px; BACKGROUND: white; FLOAT: left; PADDING-BOTTOM: 5px; MARGIN: 10px 0px 0px; OVERFLOW: hidden; BORDER-LEFT: #dedede 1px solid; WIDTH: 195px; PADDING-TOP: 5px; BORDER-BOTTOM: #afafaf 1px solid;
+}
+#b-classBoxMore .cBox UL.text LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; LINE-HEIGHT: 21px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; HEIGHT: 21px
+}
+#b-classBoxMore .cBox UL.text LI.t {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 42px; FONT-WEIGHT: 700; FONT-SIZE: 13px; BACKGROUND: url(topImg_1.gif) no-repeat 0px 50%; PADDING-BOTTOM: 0px; WIDTH: 153px; COLOR: #555; LINE-HEIGHT: 25px; PADDING-TOP: 0px; HEIGHT: 30px
+}
+#b-classBoxMore .cBox UL.text LI.li1 A {
+	FONT-WEIGHT: 700; COLOR: #8b008b
+}
+#b-classBoxMore .cBox UL.text LI.li2 A {
+	FONT-WEIGHT: 700; COLOR: #dc143c
+}
+#b-classBoxMore .cBox UL.text LI.li3 A {
+	FONT-WEIGHT: 700; COLOR: #ff6a31
+}
+#b-classBoxMore .cBox .b .bb .list .Text SPAN {
+	FONT-SIZE: 10px
+}
+#b-classBoxMore .right {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FLOAT: right; PADDING-BOTTOM: 0px; WIDTH: 225px; PADDING-TOP: 0px
+}
+
+/** End **/
+#b-classBox {
+	
+}
+#b-classBox .cBox { height:500px;
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; BACKGROUND: #f7f4eb; PADDING-BOTTOM: 5px; MARGIN: 5px 0px 0px; BORDER-LEFT: #ccc4aa 1px solid; WIDTH: 978px; PADDING-TOP: 5px; BORDER-BOTTOM: #ccc4aa 1px solid
+}
+#b-classBox .cBox .t { float:left;
+	BACKGROUND: url(box_top_2.gif) repeat-x; MARGIN: 10px 0px 0px; OVERFLOW: hidden; WIDTH: 978px; HEIGHT: 27px
+}
+#b-classBox .cBox .t .l {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 35px; BACKGROUND: url(box_top_1.gif) repeat-x; PADDING-BOTTOM: 0px; OVERFLOW: hidden; WIDTH: 100px; LINE-HEIGHT: 29px; PADDING-TOP: 0px; HEIGHT: 27px
+}
+#b-classBox .cBox .t .meroBox {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 25px; BACKGROUND: url(box_top_3.gif) no-repeat right 0px; FLOAT: right; PADDING-BOTTOM: 0px; WIDTH: 43px; LINE-HEIGHT: 30px; PADDING-TOP: 0px; HEIGHT: 33px
+}
+#b-classBox .cBox .t .meroBox A {
+	FONT-WEIGHT: 700; COLOR: #fff
+}
+#b-classBox .cBox UL.pic {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 20px; FLOAT: left; PADDING-BOTTOM: 5px; WIDTH: 964px; PADDING-TOP: 5px
+}
+/**   **/
+#b-classBox .cBox UL.pic LI { 
+	FLOAT: left; MARGIN: 5px 20px 0px 5px; 
+}
+#b-classBox .cBox UL.text { float:left;
+	BORDER-RIGHT: #afafaf 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #dedede 1px solid; PADDING-LEFT: 5px; BACKGROUND: white; FLOAT: left; PADDING-BOTTOM: 5px; MARGIN: 10px 0px 0px; OVERFLOW: hidden; BORDER-LEFT: #dedede 1px solid; WIDTH: 195px; PADDING-TOP: 5px; BORDER-BOTTOM: #afafaf 1px solid; HEIGHT: 178px
+}
+#b-classBox .cBox UL.text LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 15px; BACKGROUND: url(icon_4.gif) no-repeat 0px 50%; PADDING-BOTTOM: 0px; LINE-HEIGHT: 21px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; HEIGHT: 21px
+}
+#b-classBox .cBox UL.text LI.t {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 42px; FONT-WEIGHT: 700; FONT-SIZE: 13px; BACKGROUND: url(topImg_1.gif) no-repeat 0px 50%; PADDING-BOTTOM: 0px; WIDTH: 153px; COLOR: #555; LINE-HEIGHT: 25px; PADDING-TOP: 0px; HEIGHT: 25px
+}
+#b-classBox .cBox UL.text LI.li1 A {
+	FONT-WEIGHT: 700; COLOR: #8b008b
+}
+#b-classBox .cBox UL.text LI.li2 A {
+	FONT-WEIGHT: 700; COLOR: #dc143c
+}
+#b-classBox .cBox UL.text LI.li3 A {
+	FONT-WEIGHT: 700; COLOR: #ff6a31
+}
+#b-classBox .cBox .b .bb .list .Text SPAN {
+	FONT-SIZE: 10px
+}
+#b-classBox .right {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; FLOAT: right; PADDING-BOTTOM: 0px; WIDTH: 225px; PADDING-TOP: 0px
+}
+#b-Link {
+	BORDER-RIGHT: #ccc4aa 1px solid; BORDER-TOP: #ccc4aa 1px solid; margin-top:5px; BORDER-LEFT: #ccc4aa 1px solid; WIDTH: 988px; BORDER-BOTTOM: #ccc4aa 1px solid
+}
+#b-Link .t {
+	PADDING-RIGHT: 3px; PADDING-LEFT: 3px; BACKGROUND: #e7e3d7; PADDING-BOTTOM: 3px; PADDING-TOP: 3px
+}
+#b-Link .t B {
+	FONT-SIZE: 13px
+}
+#b-Link UL {
+	CLEAR: both; DISPLAY: block; MARGIN: 2px 0px
+}
+#b-Link UL LI {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 1px 4px; LINE-HEIGHT: 20px; PADDING-TOP: 0px; WHITE-SPACE: nowrap; HEIGHT: 20px
+}
+.adBox {
+	BORDER-RIGHT: #afafaf 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #afafaf 1px solid; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 5px; MARGIN: 5px auto 0px; BORDER-LEFT: #afafaf 1px solid; WIDTH: 978px; PADDING-TOP: 5px; BORDER-BOTTOM: #afafaf 1px solid; TEXT-ALIGN: center
+}
+.adBoxM {
+	BORDER-RIGHT: #ffa433 1px solid; BORDER-TOP: #ffa433 1px solid; FLOAT: left; MARGIN: 5px auto 0px; BORDER-LEFT: #ffa433 1px solid; WIDTH: 988px; BORDER-BOTTOM: #ffa433 1px solid; TEXT-ALIGN: center
+}
+UL.listmodel {
+	CLEAR: both; PADDING-RIGHT: 5px; DISPLAY: inline-block; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 0px; PADDING-TOP: 5px
+}
+UL.listmodel LI {
+	FLOAT: left; MARGIN: 3px 10px; WHITE-SPACE: nowrap; LIST-STYLE-TYPE: none
+}

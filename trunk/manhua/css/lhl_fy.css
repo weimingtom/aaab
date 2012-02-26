@@ -1,0 +1,534 @@
+BODY {
+	TEXT-ALIGN: center; LINE-HEIGHT: 160%; BACKGROUND: #fff; FONT-SIZE: 12px
+}
+#wrap {
+	TEXT-ALIGN: left; MARGIN: 0px auto; WIDTH: 950px; OVERFLOW: hidden
+}
+.content {
+	POSITION: relative; ZOOM: 1
+}
+.content-lr {
+	POSITION: relative; ZOOM: 1
+}
+.content-rl {
+	POSITION: relative; ZOOM: 1
+}
+.main {
+	DISPLAY: inline
+}
+.sidebar {
+	DISPLAY: inline
+}
+.content-lr .main {
+	FLOAT: left
+}
+.content-lr .sidebar {
+	FLOAT: right
+}
+.content-rl .main {
+	FLOAT: right
+}
+.content-rl .sidebar {
+	FLOAT: left
+}
+.content-rl .content-lr .main {
+	FLOAT: left
+}
+.content-rl .content-lr .sidebar {
+	FLOAT: right
+}
+.ad {
+	MARGIN-BOTTOM: 10px
+}
+IMG {
+	VERTICAL-ALIGN: middle
+}
+TEXTAREA {
+	VERTICAL-ALIGN: middle
+}
+.w710 {
+	WIDTH: 710px
+}
+.w600 {
+	WIDTH: 600px
+}
+.w470 {
+	WIDTH: 470px
+}
+.w370 {
+	WIDTH: 370px
+}
+.w350 {
+	WIDTH: 350px
+}
+.w230 {
+	WIDTH: 230px
+}
+.w210 {
+	WIDTH: 210px
+}
+A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #f00; TEXT-DECORATION: underline
+}
+.line {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.mod-hd {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.mod-hd-m {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.tab-menuWrapper {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.tab-menu-m {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.J_tab-menu {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.J_tab-menu SPAN {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.tab-menuWrapper .active {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.active.tab-menuWrapper SPAN {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.list2 LI {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.list3 LI {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.list4 LI {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.topList1 LI {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.topList2 LI {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.topList3 LI {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.notice .list2col LI {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.sortTop .mod-sub H3 {
+	BACKGROUND-IMAGE: url(/images/fy-bg-201005.png); BACKGROUND-REPEAT: no-repeat
+}
+.line {
+	BACKGROUND-REPEAT: repeat-x; HEIGHT: 2px; OVERFLOW: hidden
+}
+.solicit {
+	POSITION: absolute
+}
+.solicit IMG {
+	MARGIN-TOP: 0px
+}
+.mod {
+	MARGIN-BOTTOM: 10px
+}
+.tab {
+	MARGIN-BOTTOM: 10px
+}
+.mod-hd {
+	POSITION: relative; ZOOM: 1; BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 0px -447px; HEIGHT: 30px
+}
+.tab-menuWrapper {
+	POSITION: relative; ZOOM: 1; BACKGROUND-REPEAT: repeat-x; BACKGROUND-POSITION: 0px -447px; HEIGHT: 30px
+}
+.mod-hd H2 {
+	LINE-HEIGHT: 30px; PADDING-LEFT: 10px; COLOR: #fff; FONT-SIZE: 14px
+}
+.mod-hd-m {
+	POSITION: absolute; LINE-HEIGHT: 26px; WIDTH: 35px; BACKGROUND-POSITION: 30px -240px; TOP: 4px; RIGHT: 5px
+}
+.tab-menu-m {
+	POSITION: absolute; LINE-HEIGHT: 26px; WIDTH: 35px; BACKGROUND-POSITION: 30px -240px; TOP: 4px; RIGHT: 5px
+}
+.mod-hd-m A {
+	COLOR: #fff; FONT-SIZE: 12px
+}
+.tab-menu-m A {
+	COLOR: #fff; FONT-SIZE: 12px
+}
+.mod-bd {
+	BORDER-BOTTOM: #ccc 1px solid; POSITION: relative; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; ZOOM: 1; BORDER-TOP: #ccc 0px; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 10px
+}
+.J_tab-content {
+	BORDER-BOTTOM: #ccc 1px solid; POSITION: relative; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; ZOOM: 1; BORDER-TOP: #ccc 0px; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 10px
+}
+SPAN.pub_time {
+	DISPLAY: inline-table; COLOR: #999; MARGIN-LEFT: 20px
+}
+SPAN.num {
+	COLOR: #000
+}
+SPAN.sort {
+	COLOR: #999
+}
+SPAN.author {
+	PADDING-LEFT: 5px; DISPLAY: inline-table
+}
+SPAN.author A {
+	COLOR: #006704
+}
+SPAN.author A:hover {
+	COLOR: #f00
+}
+.noneMsg {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 0px; COLOR: #777; PADDING-TOP: 10px
+}
+.list2col LI {
+	WIDTH: 45%; FLOAT: left
+}
+.list3col LI {
+	WIDTH: 33%; FLOAT: left
+}
+.list4col LI {
+	WIDTH: 24.2%; FLOAT: left
+}
+.list5col LI {
+	WIDTH: 19.2%; FLOAT: left
+}
+.list6col LI {
+	WIDTH: 16.5%; FLOAT: left
+}
+.list9col LI {
+	WIDTH: 11%; FLOAT: left
+}
+.picList3col DL {
+	POSITION: relative; WIDTH: 33%; FLOAT: left
+}
+.picList2col DL {
+	POSITION: relative; WIDTH: 49%; FLOAT: left
+}
+.list LI {
+	POSITION: relative; LINE-HEIGHT: 21px; ZOOM: 1; HEIGHT: 21px
+}
+.list1 LI {
+	POSITION: relative; LINE-HEIGHT: 21px; ZOOM: 1; HEIGHT: 21px
+}
+.list2 LI {
+	POSITION: relative; LINE-HEIGHT: 21px; ZOOM: 1; HEIGHT: 21px
+}
+.list3 LI {
+	POSITION: relative; LINE-HEIGHT: 21px; ZOOM: 1; HEIGHT: 21px
+}
+.list4 LI {
+	POSITION: relative; LINE-HEIGHT: 21px; ZOOM: 1; HEIGHT: 21px
+}
+.list1 LI {
+	BORDER-BOTTOM: #e6e6e6 1px solid
+}
+.list1 LI SPAN.sort {
+	PADDING-LEFT: 8px
+}
+.list2 LI {
+	PADDING-LEFT: 12px; BACKGROUND-POSITION: 0px -136px; FONT-SIZE: 14px
+}
+.list2 LI A {
+	COLOR: #006704
+}
+.list2 LI A:hover {
+	COLOR: #f00
+}
+.list3 LI {
+	LINE-HEIGHT: 19px; PADDING-LEFT: 12px; BACKGROUND-POSITION: 0px -490px; HEIGHT: 19px
+}
+.list4 LI {
+	BORDER-BOTTOM: #e6e6e6 1px solid; POSITION: relative; PADDING-LEFT: 14px; ZOOM: 1; BACKGROUND-POSITION: 8px -490px; HEIGHT: 21px
+}
+.list4 LI SPAN.pub_time {
+	POSITION: absolute; TOP: 0px; RIGHT: 5px
+}
+LI.No1 {
+	BACKGROUND-POSITION: -380px -15px
+}
+LI.No2 {
+	BACKGROUND-POSITION: -380px -39px
+}
+LI.No3 {
+	BACKGROUND-POSITION: -380px -63px
+}
+LI.No4 {
+	BACKGROUND-POSITION: -380px -87px
+}
+LI.No5 {
+	BACKGROUND-POSITION: -380px -111px
+}
+LI.No6 {
+	BACKGROUND-POSITION: -380px -135px
+}
+LI.No7 {
+	BACKGROUND-POSITION: -380px -159px
+}
+LI.No8 {
+	BACKGROUND-POSITION: -380px -183px
+}
+LI.No9 {
+	BACKGROUND-POSITION: -380px -207px
+}
+LI.No10 {
+	BACKGROUND-POSITION: -380px -231px
+}
+LI.No11 {
+	BACKGROUND-POSITION: -380px -255px
+}
+LI.No12 {
+	BACKGROUND-POSITION: -380px -279px
+}
+LI.No13 {
+	BACKGROUND-POSITION: -380px -303px
+}
+LI.No14 {
+	BACKGROUND-POSITION: -380px -327px
+}
+LI.No15 {
+	BACKGROUND-POSITION: -380px -351px
+}
+.topList1 LI {
+	POSITION: relative; ZOOM: 1
+}
+.topList2 LI {
+	POSITION: relative; ZOOM: 1
+}
+.topList3 LI {
+	POSITION: relative; ZOOM: 1
+}
+.topList1 LI {
+	POSITION: relative; LINE-HEIGHT: 22px; PADDING-LEFT: 22px; ZOOM: 1; HEIGHT: 22px; OVERFLOW: hidden
+}
+.topList2 LI {
+	POSITION: relative; LINE-HEIGHT: 22px; PADDING-LEFT: 22px; ZOOM: 1; HEIGHT: 22px; OVERFLOW: hidden
+}
+.topList1 SPAN.num {
+	POSITION: absolute; TOP: 0px; RIGHT: 0px
+}
+.topList1 LI.No1 {
+	PADDING-LEFT: 37px; FONT-FAMILY: "����","����"; BACKGROUND-POSITION: 0px -26px; HEIGHT: 62px; FONT-SIZE: 16px; OVERFLOW: hidden; FONT-WEIGHT: normal
+}
+.topList1 LI.No1 SPAN.num {
+	POSITION: relative; DISPLAY: block
+}
+.topList2 LI {
+	
+}
+.topList3 {
+	BACKGROUND: url(/images/fy-line-201005.png)
+}
+.topList3 LI {
+	POSITION: relative; LINE-HEIGHT: 22px; ZOOM: 0; HEIGHT: 22px; OVERFLOW: hidden
+}
+.topList3 LI SPAN {
+	BACKGROUND: #fff; MARGIN-LEFT: 16px
+}
+.topList3 LI SPAN.author {
+	POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; TOP: 0px; RIGHT: 0px; PADDING-TOP: 0px
+}
+.picList1 {
+	POSITION: relative; ZOOM: 1
+}
+.picList1 DT {
+	POSITION: relative; PADDING-BOTTOM: 0px; TEXT-INDENT: -7px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; MARGIN-LEFT: 135px; FONT-SIZE: 14px; FONT-WEIGHT: normal; PADDING-TOP: 4px
+}
+.picList1 DT A {
+	FONT-WEIGHT: bold
+}
+.picList1 DD {
+	MARGIN-LEFT: 135px
+}
+.picList1 DD.intro {
+	TEXT-INDENT: 2em
+}
+.picList1 DD.upd A {
+	COLOR: #006704
+}
+.picList1 DD.upd A:hover {
+	COLOR: #f00
+}
+.picList1 DD.pic {
+	POSITION: absolute; MARGIN: 0px; TOP: 0px; LEFT: 0px
+}
+.picList1 DD.pic IMG {
+	BORDER-BOTTOM: #d1d1d1 1px solid; BORDER-LEFT: #d1d1d1 1px solid; PADDING-BOTTOM: 1px; PADDING-LEFT: 1px; WIDTH: 120px; PADDING-RIGHT: 1px; BACKGROUND: #fff; HEIGHT: 150px; BORDER-TOP: #d1d1d1 1px solid; BORDER-RIGHT: #d1d1d1 1px solid; PADDING-TOP: 1px
+}
+.picList2 {
+	POSITION: relative; ZOOM: 1; HEIGHT: 135px
+}
+.picList2 DT {
+	POSITION: relative; PADDING-BOTTOM: 0px; TEXT-INDENT: -3px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; ZOOM: 1; MARGIN-LEFT: 110px; FONT-SIZE: 12px; FONT-WEIGHT: normal; PADDING-TOP: 4px
+}
+.picList2 DT A {
+	FONT-WEIGHT: bold
+}
+.picList2 DD {
+	MARGIN-LEFT: 110px
+}
+.picList2 DD.author {
+	COLOR: #656565
+}
+.picList2 DD.author A {
+	COLOR: #006704
+}
+.picList2 DD.author A:hover {
+	COLOR: #f00
+}
+.picList2 DD.intro {
+	COLOR: #646464
+}
+.picList2 DD.pic {
+	POSITION: absolute; MARGIN: 0px; TOP: 0px; LEFT: 0px
+}
+.picList2 DD.pic IMG {
+	BORDER-BOTTOM: #999 1px solid; BORDER-LEFT: #999 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 96px; PADDING-RIGHT: 2px; BACKGROUND: #fff; HEIGHT: 120px; BORDER-TOP: #999 1px solid; BORDER-RIGHT: #999 1px solid; PADDING-TOP: 2px
+}
+.picList3 {
+	POSITION: relative; PADDING-BOTTOM: 9px; ZOOM: 1; MARGIN-BOTTOM: 5px; BACKGROUND: url(/images/fy-bg-201005.png) repeat-x 0px 103px; HEIGHT: 96px
+}
+.picList3 DT {
+	POSITION: relative; TEXT-INDENT: -3px; ZOOM: 1; MARGIN-LEFT: 90px; FONT-SIZE: 12px; FONT-WEIGHT: normal
+}
+.picList3 DT A {
+	FONT-WEIGHT: bold
+}
+.picList3 DD {
+	MARGIN-LEFT: 90px
+}
+.picList3 DD.author {
+	COLOR: #656565
+}
+.picList3 DD.author A {
+	COLOR: #006600
+}
+.picList3 DD.author A:hover {
+	COLOR: #f00
+}
+.picList3 DD.intro {
+	WIDTH: 118px; COLOR: #999
+}
+.picList3 DD.pic {
+	POSITION: absolute; MARGIN: 0px; TOP: 0px; LEFT: 0px
+}
+.picList3 DD.pic IMG {
+	BORDER-BOTTOM: #d1d1d1 1px solid; BORDER-LEFT: #d1d1d1 1px solid; PADDING-BOTTOM: 2px; PADDING-LEFT: 2px; WIDTH: 72px; PADDING-RIGHT: 2px; BACKGROUND: #fff; HEIGHT: 90px; BORDER-TOP: #d1d1d1 1px solid; BORDER-RIGHT: #d1d1d1 1px solid; PADDING-TOP: 2px
+}
+.tab-menuWrapper {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 0px; HEIGHT: 26px; PADDING-TOP: 4px
+}
+.J_tab-menu {
+	DISPLAY: inline; WHITE-SPACE: nowrap; BACKGROUND-POSITION: 0px -345px; FLOAT: left; FONT-SIZE: 14px; CURSOR: pointer; FONT-WEIGHT: normal; MARGIN-RIGHT: 2px; _width: 23px; _overflow: visible
+}
+.J_tab-menu SPAN {
+	PADDING-BOTTOM: 0px; LINE-HEIGHT: 26px; PADDING-LEFT: 8px; PADDING-RIGHT: 8px; DISPLAY: block; BACKGROUND-POSITION: right -414px; HEIGHT: 26px; PADDING-TOP: 0px
+}
+.tab-menuWrapper .active {
+	BACKGROUND-POSITION: left -311px; FONT-WEIGHT: bold
+}
+.tab-menuWrapper .active SPAN {
+	BACKGROUND-POSITION: right -380px
+}
+.mod-1 {
+	MARGIN-BOTTOM: 10px
+}
+.mod-1 .mod-hd {
+	BACKGROUND-IMAGE: none; BORDER-BOTTOM: #ccc 1px solid; POSITION: relative; BORDER-LEFT: #ccc 1px solid; ZOOM: 1; HEIGHT: 28px; OVERFLOW: hidden; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid
+}
+.mod-1 .mod-hd H2 {
+	COLOR: #000
+}
+.mod-1 .mod-hd-m {
+	BACKGROUND-POSITION: 30px -211px
+}
+.mod-1 .mod-hd-m A {
+	COLOR: #000
+}
+.mod-1 .mod-hd-m A:hover {
+	COLOR: #f00
+}
+.notice {
+	BORDER-BOTTOM: #ccc 1px solid; PADDING-BOTTOM: 10px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; HEIGHT: 359px; OVERFLOW: hidden; BORDER-TOP: #ccc 1px solid; PADDING-TOP: 10px
+}
+.notice H2 {
+	TEXT-ALIGN: center; MARGIN: 16px 0px 12px; FONT-FAMILY: "����","����"; FONT-SIZE: 18px; FONT-WEIGHT: normal
+}
+.notice H2 A {
+	COLOR: #d91c23
+}
+.notice .list2col LI {
+	LINE-HEIGHT: 24px; PADDING-LEFT: 12px; BACKGROUND-POSITION: 0px -486px; FONT-SIZE: 14px
+}
+.notice .list2col LI A {
+	COLOR: #004d01
+}
+.notice .list2col LI A:hover {
+	COLOR: #f00
+}
+.book .mod-bd {
+	PADDING-BOTTOM: 0px; BACKGROUND: url(/images/fy-line-201005.png) repeat-x 0px 165px; HEIGHT: 340px; OVERFLOW: hidden
+}
+.book .picList1 {
+	MARGIN-BOTTOM: 10px; HEIGHT: 165px
+}
+.PVTop H2 {
+	PADDING-LEFT: 5px; FLOAT: left; COLOR: #fff; FONT-SIZE: 14px; MARGIN-RIGHT: 43px
+}
+.PVTop .J_tab-content {
+	PADDING-BOTTOM: 5px
+}
+.PVTop .topList1 LI.No1 {
+	LINE-HEIGHT: 36px; MARGIN-TOP: -1px; PADDING-LEFT: 27px; BACKGROUND-POSITION: 0px -30px; HEIGHT: 50px; FONT-SIZE: 18px
+}
+.sortTop .mod-bd {
+	PADDING-BOTTOM: 0px
+}
+.sortTop .mod-sub {
+	MARGIN-BOTTOM: 10px
+}
+.sortTop .mod-sub H3 {
+	PADDING-BOTTOM: 0px; PADDING-LEFT: 20px; PADDING-RIGHT: 0px; BACKGROUND-POSITION: 0px -170px; MARGIN-BOTTOM: 10px; HEIGHT: 23px; PADDING-TOP: 0px
+}
+.sortTop .mod-sub LI {
+	LINE-HEIGHT: 20px; HEIGHT: 20px
+}
+.newNovel .picList2 {
+	MARGIN: 0px 15px 0px 10px; WIDTH: 255px; DISPLAY: inline; FLOAT: left
+}
+.newNovel .picList2 .author {
+	MARGIN-BOTTOM: 5px
+}
+.newNovel .list3 {
+	LINE-HEIGHT: 180%; PADDING-LEFT: 3px; WIDTH: 160px; FLOAT: left
+}
+.newNovel .line {
+	MARGIN-BOTTOM: 14px; CLEAR: both
+}
+.mod-lx {
+	BORDER-BOTTOM: #ccc 1px solid; BORDER-LEFT: #ccc 1px solid; PADDING-BOTTOM: 15px; LINE-HEIGHT: 23px; PADDING-LEFT: 15px; PADDING-RIGHT: 15px; HEIGHT: 70px; OVERFLOW: hidden; BORDER-TOP: #ccc 1px solid; BORDER-RIGHT: #ccc 1px solid; PADDING-TOP: 15px
+}
+#footer {
+	POSITION: relative; TEXT-ALIGN: center; PADDING-BOTTOM: 40px; LINE-HEIGHT: 21px; MARGIN: 0px auto; PADDING-LEFT: 0px; WIDTH: 950px; PADDING-RIGHT: 0px; FONT-FAMILY: Arial; PADDING-TOP: 0px
+}
+#foot_Navi {
+	BORDER-BOTTOM: #e1e1e1 1px solid; TEXT-ALIGN: center; PADDING-BOTTOM: 0px; LINE-HEIGHT: 25px; PADDING-LEFT: 10px; PADDING-RIGHT: 10px; MARGIN-BOTTOM: 10px; BACKGROUND: #f6f6f6; PADDING-TOP: 0px
+}
+#foot_Navi A {
+	MARGIN: 0px 30px
+}
+#footer P.Copyright * {
+	COLOR: #000; TEXT-DECORATION: none
+}
+#footer P.black * {
+	COLOR: #000; TEXT-DECORATION: none
+}
+#footer .police {
+	POSITION: absolute; TOP: 60px; RIGHT: 80px
+}
