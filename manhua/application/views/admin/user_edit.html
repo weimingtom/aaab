@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="static/img/houtai.css" rel="stylesheet" type="text/css" />
+<title>默认首页 - rt798.com CMS管理系统</title>
+<meta content="管理平台" name=keywords />
+<meta content="管理平台" name=description />
+<script language="javascript" type="text/javascript" src="static/js/jquery-1.3.2.min.js"></script>
+<script language="javascript" type="text/javascript" src="static/js/command.js"></script>
+<script language="javascript" type="text/javascript">	
+
+$(function(){
+	
+	CMSAPP.addkehu = {
+		
+		subject: '用户管理',
+		
+		init: function(){
+			
+			CMSAPP.command.webTitle(this.subject);			
+			
+		}
+	}
+
+	CMSAPP.addkehu.init();
+	
+});
+
+</script>
+
+</head>
+<body>
+
+<!--{template admin_top}-->
+
+<div id="wrap">
+
+<div class="path">
+<span><a href="?c=user">用户管理</a></span>
+<span>修改密码</span>
+<span><a href="?c=user&a=add">添加用户</a></span></div>
+
+<div class="content">
+<div class="c1">
+
+<form action="" method="post">
+      <table width="100%" border="0" cellspacing="2" cellpadding="2" style="text-align:center">
+        <tr>
+          <td width="15%" height="30" align="right">用户名：</td>
+          <td width="85%" align="left">{$uArr[username]}</td>
+          </tr>
+        <tr>
+          <td height="30" align="right">密　码：</td>
+          <td align="left"><input type="password" name="password" />
+            不修改密码就为空！</td>
+          </tr>
+        <tr>
+          <td height="30" align="right">用户角色：</td>
+          <td align="left">
+		  <select name="groupid">
+		  <!--{loop $group $key $col}-->
+		  <option value="{$key}" {if $uArr[groupid] == $key}selected="selected"{/if}>{$col[Name]}</option>
+		  <!--{/loop}-->
+          </select>
+		  <input type="hidden" name="uid" value="{$uArr[uid]}" />
+		  <input type="hidden" name="editserver" value="submit" />
+          </td>
+        </tr>
+        <tr>
+          <td height="30" align="right">&nbsp;</td>
+          <td align="left"><input type="submit" class="inputsubmit" name="Submit" value="  更新  " /></td>
+        </tr>
+      </table>
+      </form>
+  
+</div>
+</div>
+  
+<!--{template admin_floor}-->
+</div>
+
+</body>
+</html>

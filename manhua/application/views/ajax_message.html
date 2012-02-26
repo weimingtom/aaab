@@ -1,0 +1,33 @@
+{template header}
+<!--{if empty($_GET['inajax'])}-->
+	<DIV style="width: 750px; text-align:center; margin: auto; margin-top: 1em;">
+		<br />
+		$message$extra
+			<!--{if $redirect == 'BACK'}-->
+
+				<div style="text-align: center;" class="grey">
+					<br /><br /><a href="javascript:history.back();" style="color:{COLORGREY}"> 点击这里返回 </a><br />
+				</div>
+			<!--{elseif is_array($redirect)}-->
+				<center>
+				<!--{loop $redirect $k $v}-->
+					[<a href="$v"> $k </a>] &nbsp;
+				<!--{/loop}-->
+				</center>
+			<!--{elseif $redirect}-->
+
+				<div style="text-align: center;">
+					<br /><br /><a href="$redirect" style="color:{COLORGREY}"> 页面将在 {GODHOUSE_WAIT_TIME} 秒后自动跳转到下一页，点击这里直接跳转。</a>
+					<script type="text/javascript">
+					function redirect(url, time) {
+						setTimeout("window.location='" + url + "'", time * 1000);
+					}
+					redirect('$redirect', {GODHOUSE_WAIT_TIME});
+					</script>
+				</div>
+			<!--{/if}-->
+		<br />
+		<br />
+	</div>
+<!--{else}-->$message<!--{/if}-->
+{template footer}

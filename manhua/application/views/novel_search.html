@@ -1,0 +1,42 @@
+{template header}
+<div id="war">
+	<div id="main">
+		<div class="border">
+			<div class="status">
+			        <strong><a href="###">小说</a></strong>
+			       /<strong>最近更新的<a href="/ch/142.html">$category[cate_name]</a>小说
+				</strong>      
+			</div>
+			<div id="content">
+		        <!--{loop $novels $v}-->
+				<div class="Sum Search_line">
+					<div class="novel_img">
+					<img src="$v[picture]" width="96" height="120" alt="$v[novelName]"/>
+					</div>
+					<ul>
+						<h2>《<a href="index-detail-$v[novelId].htm" target="_blank">$v[novelName2]</a>》
+						[{$v[categoryName]}]       			        		</h2>
+						<li>作者：<em class="blue">$v[author2]</em></li>
+						<li><P>$v[comment]...<BR></P></li>
+					</ul>
+				</div>
+				<!--{/loop}-->
+				<div id="page"><!--{$multipage}--></div>
+				</div>
+			</div>
+		</div>
+		<div id="Sid">
+			<div class="Clumn1">
+				<div class="S_Title">
+				<h2>最近更新小说热门排行</h2>
+				<span class="more"><a target="_blank" href="/ch142/hot.html">更多</a></span>
+			</div>
+			<ul class="Cont">
+			<!--{loop $hotNovels $v}-->
+				<li>《<a href="index-detail-$v[novelId].htm" target="_blank">$v[novelName]</a>》</li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+	</div>
+</div>
+{template footer}

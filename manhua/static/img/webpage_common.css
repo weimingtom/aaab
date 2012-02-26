@@ -1,0 +1,12 @@
+
+.pages a,.pages strong,.pageback a{padding:2px;margin-right:2px;height:22px;line-height:22px;}
+.pages a,.pageback a{background-color:#FFF;color:#333;}
+.pages a:hover,.pageback a:hover{text-decoration:underline;}
+.pages strong{background-color:#ff0000;color:#FFF;font-weight:700;}
+.pages a.prev,.pages a.next{background-repeat:no-repeat;}
+.pages a.prev{background-image:url(arrow_left.gif);background-position:5% 50%;padding:0;width:60px;text-indent:15px;padding-left:15px;}
+.pages a.next{padding-right:16px;background-image:url(arrow_right.gif);background-position:90% 50%;}
+.pageback a{padding-left:16px;background:#FFF url(arrow_left.gif) no-repeat 0 50%;}
+.pages a:hover,.pageback a,.pages a.next{border-color:#09C;}
+.pages a{ font-size:14px;}
+.pages kbd input{width:30px;height:15px;margin-left:2px;margin-right:2px}

@@ -1,0 +1,244 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 0px auto; COLOR: #444; PADDING-TOP: 0px; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif Arial, Helvetica, sans-serif; TEXT-ALIGN: center
+}
+A:link {
+	COLOR: #444; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #444; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #cc0000; TEXT-DECORATION: underline
+}
+A:active {
+	COLOR: #cc0000; TEXT-DECORATION: none
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+#b-map {
+	PADDING-RIGHT: 0px; MARGIN-TOP: 5px; PADDING-LEFT: 0px; FONT-SIZE: 13px; BACKGROUND: url(mapbg_2.gif) #d8d8d8 no-repeat right 0px; PADDING-BOTTOM: 0px; WIDTH: 990px; COLOR: #000; LINE-HEIGHT: 21px; PADDING-TOP: 0px; HEIGHT: 21px
+}
+#b-map SPAN {
+	PADDING-RIGHT: 12px; DISPLAY: inline; PADDING-LEFT: 12px; FONT-WEIGHT: 700; BACKGROUND: url(mapbg_1.gif); FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px 5px 0px 0px; COLOR: #f7f7f7; LINE-HEIGHT: 21px; PADDING-TOP: 0px; HEIGHT: 21px
+}
+#b-map A {
+	COLOR: #000
+}
+UL {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+LI {
+	LIST-STYLE-TYPE: none
+}
+.l {
+	FLOAT: left
+}
+.r {
+	FLOAT: right
+}
+.pageBox {
+	MARGIN: 0px auto; OVERFLOW: hidden; WIDTH: 990px; TEXT-ALIGN: left
+}
+.barTitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #fff; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif Arial, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+#b-topBox {
+	CLEAR: both; DISPLAY: block;  MARGIN: 6px auto; WIDTH: 988px; HEIGHT: 80px
+}
+#b-topBox .l {
+	PADDING-RIGHT: 0px; FLOAT: left; PADDING-BOTTOM: 0px; WIDTH: 221px; PADDING-TOP: 13px
+}
+#b-topBox .l IMG {
+	MARGIN: 0px
+}
+#b-topBox .r {
+	FLOAT: right; OVERFLOW: hidden; HEIGHT: 80px
+}
+#b-topBox .r .t {
+	PADDING-RIGHT: 20px; DISPLAY: block; PADDING-LEFT: 480px; PADDING-BOTTOM: 6px; MARGIN: 12px 0px 0px; OVERFLOW: hidden; WIDTH: 244px; PADDING-TOP: 0px; HEIGHT: 25px; TEXT-ALIGN: right
+}
+#b-topBox .r .t .box_btn {
+	FLOAT: right
+}
+#b-topBox .r .t IMG {
+	FLOAT: left; MARGIN: 0px 3px; CURSOR: pointer
+}
+#b-topBox .r .t FORM {
+	MARGIN: 0px
+}
+#b-topBox .r .b {
+	FLOAT: right; MARGIN: 5px 0px 0px; HEIGHT: 26px
+}
+#b-topBox .r .b .box_search {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 70px; BACKGROUND: url(Header_sbox_1.gif) no-repeat 10px 50%; FLOAT: right; PADDING-BOTTOM: 0px; MARGIN-RIGHT: 35px; PADDING-TOP: 0px; HEIGHT: 25px
+}
+#b-topBox .r .b .box_search .s_text {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; BACKGROUND: url(Header_sbox_2.gif) no-repeat 0px 0px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 290px; BORDER-TOP-STYLE: none; LINE-HEIGHT: 20px; PADDING-TOP: 0px; FONT-FAMILY: Arial, Helvetica, sans-serif; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 22px; BORDER-BOTTOM-STYLE: none
+}
+#b-topBox .r .b .box_search .s_go {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(Header_btn4.gif); FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 4px; WIDTH: 74px; BORDER-TOP-STYLE: none; PADDING-TOP: 0px; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; HEIGHT: 24px; BORDER-BOTTOM-STYLE: none
+}
+#b-menu {
+	WIDTH: 990px; HEIGHT: 38px; margin:0 auto; background-color:#cc0000
+}
+
+#b-menu .l {
+	 WIDTH: 990px; HEIGHT: 4px; background-color:#BD0003
+}
+
+
+
+#b-menu UL {
+	FLOAT: left; MARGIN: 6px 0px 0px 20px; 
+}
+#b-menu UL LI {
+	PADDING-RIGHT: 16px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 14px; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px 5px 0px 0px; OVERFLOW: hidden; LINE-HEIGHT: 22px; PADDING-TOP: 0px; FONT-FAMILY:"宋体", Arial, Helvetica, sans-serif; HEIGHT: 22px
+}
+#b-menu UL LI A {
+	COLOR: #fff; padding:5px;
+}
+#b-menu UL LI.on A {
+	TEXT-DECORATION: none; padding:5px; background-color:#000000
+}
+
+#b-menu UL LI A:hover {
+	TEXT-DECORATION: none; background-color:#000000; padding:5px
+}
+
+#b-topBox .r .btn {
+	BORDER-RIGHT: #ffad1e 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #ffad1e 1px solid; PADDING-LEFT: 20px; BACKGROUND: url(topbtn.gif) #fff7da no-repeat 5px 50%; PADDING-BOTTOM: 0px; MARGIN: 10px 5px; BORDER-LEFT: #ffad1e 1px solid; CURSOR: pointer; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ffad1e 1px solid; HEIGHT: 20px
+}
+.menuBg {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(menubg.gif) repeat-x; PADDING-BOTTOM: 10px; WIDTH: 100%; PADDING-TOP: 0px; FONT-FAMILY: ΢ź, Verdana, Geneva, Arial, Helvetica, sans-serif Arial, Helvetica, sans-serif
+}
+#b-menuBox {
+	DISPLAY: block; BACKGROUND: url(menubg.gif) repeat-x; OVERFLOW: hidden; HEIGHT: 37px
+}
+#b-menuBox .l {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; LINE-HEIGHT: 25px; PADDING-TOP: 5px; HEIGHT: 27px
+}
+#b-menuBox .l DIV.out {
+	FLOAT: left; MARGIN: 0px 6px; HEIGHT: 28px
+}
+#b-menuBox .l DIV.out A {
+	COLOR: #d8d8d8
+}
+#b-menuBox .l .ml {
+	FLOAT: left
+}
+#b-menuBox .l .mt {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 13px; FLOAT: left; PADDING-BOTTOM: 0px; COLOR: #555; PADDING-TOP: 0px
+}
+#b-menuBox .l DIV.over {
+	FLOAT: left; MARGIN: 0px 6px; HEIGHT: 29px
+}
+#b-menuBox .l DIV.over .mt {
+	PADDING-RIGHT: 6px; PADDING-LEFT: 6px; BACKGROUND: url(menuSel_bg.gif) repeat-x center 0px; PADDING-BOTTOM: 0px; COLOR: #f8f8f8; LINE-HEIGHT: 26px; PADDING-TOP: 0px; HEIGHT: 29px; BORDER-BOTTOM-STYLE: none
+}
+#b-menuBox .l DIV.over .ml {
+	BACKGROUND: url(menuSel_l.gif) repeat-x; WIDTH: 4px; HEIGHT: 29px
+}
+#b-menuBox .l DIV.over .mr {
+	BACKGROUND: url(menuSel_r.gif) repeat-x; WIDTH: 4px; HEIGHT: 29px
+}
+#b-menuBox .l DIV.over * {
+	COLOR: #f8f8f8
+}
+#b-menuBox .r {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 14px; BACKGROUND: url(menuSo_bg.gif); PADDING-BOTTOM: 0px; WIDTH: 210px; COLOR: #7e3600; PADDING-TOP: 7px; HEIGHT: 27px; TEXT-ALIGN: center
+}
+#b-menuBox .search-Text {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; FONT-SIZE: 13px; BORDER-LEFT: #000 1px solid; BORDER-BOTTOM: #000 1px solid; HEIGHT: 16px
+}
+#b-bottomBox {
+	CLEAR: both; BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: #ccc4aa 1px solid; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 10px; MARGIN: 5px auto; OVERFLOW: hidden; BORDER-LEFT: #ccc4aa 1px solid; WIDTH: 988px; PADDING-TOP: 10px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 60px; TEXT-ALIGN: center
+}
+#b-bottomBox .b {
+	LINE-HEIGHT: 15px
+}
+#b-bottomBox .b {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 10px
+}
+.OtherBox {
+	BORDER-RIGHT: #d6d6d6 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #d6d6d6 1px solid; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; MARGIN: 5px 0px; BORDER-LEFT: #d6d6d6 1px solid; PADDING-TOP: 10px; BORDER-BOTTOM: #d6d6d6 1px solid
+}
+UL.pic LI {
+	PADDING-RIGHT: 9px; DISPLAY: inline; PADDING-LEFT: 6px;PADDING-BOTTOM: 0px; WIDTH: 120px; PADDING-TOP: 6px; HEIGHT: 186px; TEXT-ALIGN: center
+}
+UL.pic LI IMG {
+	PADDING-RIGHT: 0px; DISPLAY: block; PADDING-LEFT: 0px; PADDING-BOTTOM: 3px; WIDTH: 120px; PADDING-TOP: 0px
+}
+
+/****/
+
+
+#b-classBoxMore .top {
+	CLEAR: both; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 5px 0px 0px; LINE-HEIGHT: 24px; PADDING-TOP: 5px; HEIGHT: 24px
+}
+#b-classBoxMore .top .l {
+	FLOAT: left; COLOR: #ad0000
+}
+#b-classBoxMore .top .c {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+#b-classBoxMore .top .r {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+#b-classBoxMore .top .r SPAN {
+	FLOAT: left
+}
+#b-classBoxMore .top .r .l {
+	DISPLAY: block; FLOAT: left; MARGIN: 2px
+}
+#b-classBoxMore .top .r .PageBtn A:link {
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; BACKGROUND: #f7f4eb; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #ccc4aa 1px solid; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 20px; TEXT-ALIGN: center
+}
+#b-classBoxMore .top .r .PageBtn A:visited {
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; BACKGROUND: #f7f4eb; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #ccc4aa 1px solid; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 20px; TEXT-ALIGN: center
+}
+#b-classBoxMore .top .r .Its {
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; BACKGROUND: #f7f4eb; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #ccc4aa 1px solid; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 20px; TEXT-ALIGN: center
+}
+#b-classBoxMore .top .r .PageBtn A:hover {
+	BORDER-RIGHT: #cc9999 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cc9999 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px -3px; BORDER-LEFT: #cc9999 1px solid; LINE-HEIGHT: 24px; PADDING-TOP: 0px; BORDER-BOTTOM: #cc9999 1px solid; POSITION: relative; HEIGHT: 24px
+}
+#b-classBoxMore .top .r .Its {
+	BORDER-RIGHT: #cc9999 1px solid; BORDER-TOP: #cc9999 1px solid; FONT-WEIGHT: 700; BACKGROUND: #cc9999; BORDER-LEFT: #cc9999 1px solid; CURSOR: default; COLOR: #fff; BORDER-BOTTOM: #cc9999 1px solid
+}
+
+
+/******/
+#b-classBox .top {
+	CLEAR: both; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; PADDING-BOTTOM: 5px; MARGIN: 5px 0px 0px; LINE-HEIGHT: 24px; PADDING-TOP: 5px; HEIGHT: 24px
+}
+#b-classBox .top .l {
+	FLOAT: left; COLOR: #ad0000
+}
+#b-classBox .top .c {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; FLOAT: left; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+#b-classBox .top .r {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 20px; FLOAT: right; PADDING-BOTTOM: 0px; PADDING-TOP: 0px
+}
+#b-classBox .top .r SPAN {
+	FLOAT: left
+}
+#b-classBox .top .r .l {
+	DISPLAY: block; FLOAT: left; MARGIN: 2px
+}
+#b-classBox .top .r .PageBtn A:link {
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; BACKGROUND: #f7f4eb; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #ccc4aa 1px solid; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 20px; TEXT-ALIGN: center
+}
+#b-classBox .top .r .PageBtn A:visited {
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; BACKGROUND: #f7f4eb; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #ccc4aa 1px solid; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 20px; TEXT-ALIGN: center
+}
+#b-classBox .top .r .Its {
+	BORDER-RIGHT: #ccc4aa 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #ccc4aa 1px solid; PADDING-LEFT: 5px; FONT-SIZE: 11px; BACKGROUND: #f7f4eb; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 2px; BORDER-LEFT: #ccc4aa 1px solid; LINE-HEIGHT: 20px; PADDING-TOP: 0px; BORDER-BOTTOM: #ccc4aa 1px solid; HEIGHT: 20px; TEXT-ALIGN: center
+}
+#b-classBox .top .r .PageBtn A:hover {
+	BORDER-RIGHT: #cc9999 1px solid; PADDING-RIGHT: 10px; BORDER-TOP: #cc9999 1px solid; PADDING-LEFT: 10px; BACKGROUND: #fff; FLOAT: left; PADDING-BOTTOM: 0px; MARGIN: 0px -3px; BORDER-LEFT: #cc9999 1px solid; LINE-HEIGHT: 24px; PADDING-TOP: 0px; BORDER-BOTTOM: #cc9999 1px solid; POSITION: relative; HEIGHT: 24px
+}
+#b-classBox .top .r .Its {
+	BORDER-RIGHT: #cc9999 1px solid; BORDER-TOP: #cc9999 1px solid; FONT-WEIGHT: 700; BACKGROUND: #cc9999; BORDER-LEFT: #cc9999 1px solid; CURSOR: default; COLOR: #fff; BORDER-BOTTOM: #cc9999 1px solid
+}
