@@ -9,6 +9,8 @@ Server version : 5.1.31-community
 
 /*!40101 SET SQL_MODE=''*/;
 
+create database if not exists `mydecms`;
+
 USE `mydecms`;
 
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
@@ -30,11 +32,7 @@ CREATE TABLE `mydecms_ad` (
 
 /*Data for the table `mydecms_ad` */
 
-LOCK TABLES `mydecms_ad` WRITE;
-
 insert  into `mydecms_ad`(`id`,`name`,`beizhu`,`type`,`sort`,`content`) values (1,'全站头部广告一','468 x 60  全站头部广告一',5,1,'<a href=+=+http://www.mydecms.com+=+ target=+=+_blank+=+><img src=+=+http://btbbt.godhouse.com/biaozhun/template/default/images/top_ad_468x60.jpg+=+ /></a>'),(2,'全站头部广告二','250 x 60 全站头部广告二',5,2,'<a href=+=+http://www.mydecms.com+=+ target=+=+_blank+=+><img src=+=+http://btbbt.godhouse.com/biaozhun/template/default/images/top_ad_250x60.jpg+=+ /></a>'),(3,'全站右边广告一','300 x 250 全站广告，热门文章下面',5,3,'<a href=+=+http://www.mydecms.com+=+ target=+=+_blank+=+><img src=+=+http://btbbt.godhouse.com/biaozhun/template/default/images/right_ad_300x250.jpg+=+ /></a>'),(4,'全站右边广告二','300 x 250 全站广告，热门文章下面',5,4,'<a href=+=+http://www.mydecms.com+=+ target=+=+_blank+=+><img src=+=+http://btbbt.godhouse.com/biaozhun/template/default/images/right_ad_300x250.jpg+=+ /></a>'),(5,'文章内容顶部广告','300 x 250 文章内容顶部广告',5,5,'<a href=+=+http://www.mydecms.com+=+ target=+=+_blank+=+><img src=+=+http://btbbt.godhouse.com/biaozhun/template/default/images/right_ad_300x250.jpg+=+ /></a>'),(6,'首页左栏广告二','658 x 60 在第二个分类下面',5,6,'<a href=+=+http://www.mydecms.com+=+ target=+=+_blank+=+><img src=+=+http://btbbt.godhouse.com/biaozhun/template/default/images/ad_658x60.jpg+=+ /></a>'),(7,'页左栏广告二','658 x 60 在第四个分类下面',5,7,'<a href=+=+http://www.mydecms.com+=+ target=+=+_blank+=+><img src=+=+http://btbbt.godhouse.com/biaozhun/template/default/images/ad_658x60.jpg+=+ /></a>');
-
-UNLOCK TABLES;
 
 /*Table structure for table `mydecms_alink` */
 
@@ -51,10 +49,6 @@ CREATE TABLE `mydecms_alink` (
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 /*Data for the table `mydecms_alink` */
-
-LOCK TABLES `mydecms_alink` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `mydecms_article` */
 
@@ -76,13 +70,9 @@ CREATE TABLE `mydecms_article` (
   `img` text,
   `sort` int(10) DEFAULT '100',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=gbk;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
 
 /*Data for the table `mydecms_article` */
-
-LOCK TABLES `mydecms_article` WRITE;
-
-UNLOCK TABLES;
 
 /*Table structure for table `mydecms_dafenglei` */
 
@@ -100,15 +90,11 @@ CREATE TABLE `mydecms_dafenglei` (
   `dir` text,
   `mobanname` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=gbk;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
 
 /*Data for the table `mydecms_dafenglei` */
 
-LOCK TABLES `mydecms_dafenglei` WRITE;
-
-insert  into `mydecms_dafenglei`(`id`,`name`,`classid`,`type`,`sort`,`title`,`keywords`,`description`,`dir`,`mobanname`) values (1,'sdaf',0,5,100,'sadf','sdfa','sdfasdf','',''),(2,'sadf',1,1,100,'asdf','sdfasd','fasdfasd','','');
-
-UNLOCK TABLES;
+insert  into `mydecms_dafenglei`(`id`,`name`,`classid`,`type`,`sort`,`title`,`keywords`,`description`,`dir`,`mobanname`) values (1,'焦点图',0,1,100,'','','','',''),(2,'上下滚动',0,1,100,'','','','',''),(3,'排行版',0,1,100,'','','','',''),(4,'动漫档期表',0,1,100,'','','','',''),(5,'漫画档期表',0,1,100,'','','','','');
 
 /*Table structure for table `mydecms_link` */
 
@@ -126,11 +112,7 @@ CREATE TABLE `mydecms_link` (
 
 /*Data for the table `mydecms_link` */
 
-LOCK TABLES `mydecms_link` WRITE;
-
 insert  into `mydecms_link`(`id`,`name`,`url`,`type`,`sort`,`target`) values (1,'文章管理系统','http://www.mydecms.com',15,1,'_blank');
-
-UNLOCK TABLES;
 
 /*Table structure for table `mydecms_nav` */
 
@@ -148,11 +130,7 @@ CREATE TABLE `mydecms_nav` (
 
 /*Data for the table `mydecms_nav` */
 
-LOCK TABLES `mydecms_nav` WRITE;
-
 insert  into `mydecms_nav`(`id`,`name`,`url`,`type`,`sort`,`target`) values (1,'网站首页','http://btbbt.godhouse.com/biaozhun',5,1,'NULL');
-
-UNLOCK TABLES;
 
 /*Table structure for table `mydecms_setconfig` */
 
@@ -176,11 +154,7 @@ CREATE TABLE `mydecms_setconfig` (
 
 /*Data for the table `mydecms_setconfig` */
 
-LOCK TABLES `mydecms_setconfig` WRITE;
-
 insert  into `mydecms_setconfig`(`webname`,`weburl`,`webtitle`,`webkeywords`,`webdescription`,`webadmin`,`webpass`,`moban`,`openspider`,`html`,`icp`,`tongji`,`classid`) values ('我的网站','http://btbbt.godhouse.com/biaozhun','我的网站','','','21232f297a57a5a743894a0e4a801fc3','c4ca4238a0b923820dcc509a6f75849b','template/default/',5,'Html/','','','1,2,3,4,5,6');
-
-UNLOCK TABLES;
 
 /*Table structure for table `mydecms_spider` */
 
@@ -196,10 +170,6 @@ CREATE TABLE `mydecms_spider` (
 ) ENGINE=MyISAM DEFAULT CHARSET=gbk;
 
 /*Data for the table `mydecms_spider` */
-
-LOCK TABLES `mydecms_spider` WRITE;
-
-UNLOCK TABLES;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
