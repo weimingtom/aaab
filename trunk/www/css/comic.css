@@ -7,9 +7,9 @@
 .rank ul li,.day ul li,.ExprList li,.Theater li,.paren li,.cycle a,.PosTag li,.ABC a,.title,.ABC span.on,.ind .p4{ background:url(../images/doc.png) no-repeat -10000px -10000px;}
 
 
-h4{ height:24px; padding:11px 0; font-family:"宋体"; background:url(../images/new-H4.png) no-repeat -10000px -10000px;}
-h4 span{ float:right;}
-.H402{ background-position:left -25px;}
+h4{ height:34px;  }
+
+
 
 .title{ height:45px; margin:0 19px 5px 19px; padding:0; display:block; zoom:1; overflow:hidden; position:relative; background-position:left -455px; background-repeat:repeat-x;}
 
@@ -52,3 +52,20 @@ h4 span{ float:right;}
 
 #j_animafeature{height:470px;}
 #j_animafeature .j-slider{width:10000px;position: absolute;}
+
+
+/*动漫档期表*/
+
+.j-sliderdm .list {position: relative;float:left;}
+
+#j-tab-b ol{display:none;}
+#j-tab-b .active{display:block;}
+
+#j-tabdm-b1 ol{display:none;}
+#j-tabdm-b1 .active{display:block;}
+
+#j-tab-b2 .list{display:none;}
+#j-tab-b2 .active{display:block;}
+
+#j_animafeature{height:470px;}
+#j_animafeature .j-sliderdm{width:10000px;position: absolute;}
