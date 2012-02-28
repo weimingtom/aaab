@@ -1,0 +1,267 @@
+@charset "utf-8";
+/* CSS common */
+/*2011-8-19 16:00 zhaoyf*/
+html {}
+body { margin:0; color:#6C6C6C; font:12px/21px "宋体"; background:#fff;}
+ul, ol, li, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, input { margin:0; padding:0; }
+img, fieldset { border:none; }
+li { list-style:none; }
+select, input, img { vertical-align:middle; }
+select, input, textarea { font-size:12px; }
+div, ul, dl { zoom:1; }
+div:after, ul:after, dl:after { content:""; display:block; clear:both; height:0; visibility:hidden; }
+h2,h3,h1{font-size:14px;}
+
+/*a:link*/
+.fl{float:left}
+.fr{float:right}
+.tl{text-align:left}
+.tr{text-align:right}
+.red,a.red{color:#F00}
+a.red2{color:#440707; text-decoration:underline;}
+a{color:#010101;text-decoration:none;}
+a:hover{color:#c62322;text-decoration:underline;BACKGROUND-COLOR: transparent;}
+
+.w a{color:#fff;text-decoration:none}
+.w a:link{color:#fff;text-decoration:none}
+.w a:hover{color:#fff;text-decoration:underline}
+.w a:visited{color:#fff;}
+.w a:active{color:#fff;}
+a.w1{color:#fff;}
+a:hover.w1{color:#d5d5d5;text-decoration:underline}
+.w1 a{color:#fff;text-decoration:none}
+.w1 a:link{color:#fff;text-decoration:none}
+.w1 a:hover{color:#d5d5d5;text-decoration:none}
+.w1 a:visited{color:#fff;}
+.w1 a:active{color:#fff;}
+
+.w2 a{color:#fff;text-decoration:none}
+.w2 a:hover{color:#fff;text-decoration:none}
+.w2 a:active{color:#fff;}
+
+.r a{color:#c62322;text-decoration:none}
+.r a:hover{color:#c62322;text-decoration:underline}
+.r a:active{color:#c62322;}
+	a.r{color:#c62322;}
+	a.r:hover{ text-decoration:none;}
+.g a{color:#010101;}
+.g a:hover{color:#c62322; text-decoration:underline}
+.g a:active{color:#010101;}
+
+.gre a{color:#6C6C6C;}
+.gre a:hover{color:#6C6C6C; text-decoration:underline}
+.gre a:active{color:#6C6C6C;}
+
+.g1 a{color:#010101;}
+.g1 a:hover{color:#c62322; text-decoration:underline}
+.g1 a:active{color:#010101;}
+
+.bl a{color:#010101;}
+.bl a:hover{color:#C92323; text-decoration:underline}
+.bl a:active{color:#010101;}
+.black{color:#010101}
+.white{color:#ffffff}
+.red{color:#C92323} 
+.blue{color:#004F99}
+.green{color:#009944} 
+.grey{color:#6C6C6C}
+li a:hover span.black,li a:hover span.white,li a:hover span.blue,li a:hover span.green,li a:hover span.grey{color:#C92323}
+.p30{padding-top:30px;}
+.p10{padding-top:10px;}
+.p20{padding-top:20px;}
+.f14{font-size:14px;}
+a.tdn{ text-decoration:none;}
+/*allframe */
+.Atop{width:970px;margin:auto;padding-top:10px;height:62px;}
+.Atop .logo_a{float:left;display:block;width:180px;}
+.Atop .topnavbox{float:right;margin-top:8px;}
+.Atop .topup,.Atop .topdown{float:left}
+	.topdown{width:390px; height:54px; overflow:hidden;}
+	.topdown p{clear:both;height:28px;line-height:28px;padding-left:5px;}
+	.topdown p a{margin-right:12px;color:#6c6c6c;}
+	.topup{width:310px; position:relative; z-index:100}
+	.lognIcon{padding:5px 1px 5px 25px;font-size:12px; font-family:tahoma,arial,宋体,sans-serif;background:url(http://i3.letvimg.com/img/201112/06/top/letvIcon.png) no-repeat 5px 5px;}
+	.sina{*background:url(http://i1.letvimg.com/img/201112/06/top/sina.gif) no-repeat left -2px!important;background:url(http://i1.letvimg.com/img/201112/06/top/sina.gif) no-repeat left top;}
+	.renren{*background:url(http://i3.letvimg.com/img/201112/06/top/renren.gif) no-repeat left -2px!important;background:url(http://i3.letvimg.com/img/201112/06/top/renren.gif) no-repeat left top;}
+	.qq{*background:url(http://i3.letvimg.com/img/201112/06/top/QQ.gif) no-repeat left -2px!important;background:url(http://i3.letvimg.com/img/201112/06/top/QQ.gif) no-repeat left top;}
+	.msn{*background:url(http://i0.letvimg.com/img/201112/06/top/msn.gif) no-repeat left -2px!important;background:url(http://i0.letvimg.com/img/201112/06/top/msn.gif) no-repeat left top;}
+	.kai {background: url(http://img1.c0.letv.com/ptv/images/logn/kai.gif) no-repeat scroll left 5px;}
+	.feixin{background: url(http://i3.letvimg.com/user/201201/04/fx.png) no-repeat 4px 4px;}/**2012-01-04 edit feixin npy**/
+	.unicom{background: url(http://i0.letvimg.com/user/201112/31/unicom.png) no-repeat 4px 4px;}/**2012-01-04 add unicom npy**/
+	.tianya{background: url(http://i0.letvimg.com/user/201202/15/tyicon16.png) no-repeat 4px 4px;}/**2012-02-16 add tianya npy**/
+.formbox{width:345px;float:left;}
+	.inputText{border:2px solid #B31918;border-right:none;height:22px;line-height:22px;width:272px;color:#3d3d3d;text-indent:5px;float:left;}
+	.inputBtn,.inputBtnHov{width:64px;height:26px;background:url(http://i1.letvimg.com/img/201112/06/top/titbg.png) no-repeat 0px -625px;border:none;cursor:pointer;float:left;overflow:hidden;}
+	.inputBtnHov{ background-position:0 -657px;}
+	.topTXT{line-height:28px;height:24px;}
+	.MapSearch{background:#f3f3f3;height:28px;padding:5px 0px 5px 270px;line-height:28px;}
+
+.mainBox{width:970px;margin:0 auto;color:#666;margin-top:10px;}
+.Boxmenu,.Anav{background:url(http://i3.letvimg.com/img/201112/06/top/longbg.png) no-repeat top;margin-top:10px;}
+.Boxmenu2{margin-top:10px}	
+	.AnavL a.on,.AnavL a.aindex,.AnavL a:hover.aindex,.hisbox a,.Bnav,.lookedul a.Bclose{background:url(http://i1.letvimg.com/img/201112/06/top/titbg.png) repeat-x;}
+	.Anav{width:970px;margin:auto; z-index:1;}
+	.AnavL{float:left;font-size:14px;width:700px;height:35px;}
+	.AnavL a{display:block;float:left;padding:0 10px;height:35px;line-height:35px;position:relative;}
+	.AnavL a sup{display:block;width:28px;height:19px;overflow:hidden;position:absolute;right:0px;top:-7px; background:url(http://i2.letvimg.com/img/201112/06/top/test.png) no-repeat;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://i2.letvimg.com/img/201112/06/top/test.png');}
+	.AnavL a span{*line-height:30px;}
+	.AnavL a:hover{text-decoration:none;color:#d5d5d5;}
+	.AnavL a.on{background-position:0 -142px;color:#660000;font-weight:bold;}
+	.AnavL a:link.on{color:#660000;}
+	.AnavL a:hover.on{color:#660000;}
+	.AnavL a:visited.on{color:#660000;}
+	.AnavL a:active.on{color:#660000;}
+	.AnavL .endurer sup{ background:url(http://i0.letvimg.com/img/201112/06/top/new.png) no-repeat left top;_background:none; _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://i0.letvimg.com/img/201112/06/top/new.png');}
+	
+	.AnavL a.aindex{background-position:0 -115px;width:42px;height:23px;overflow:hidden;padding:0;margin:5px 10px;}
+	.AnavL a:hover.aindex{ background-position:0 -115px;}
+	.AnavR{float:right;width:255px;text-align:left;font-size:12px;height:35px;line-height:35px; position:relative; z-index:10; }
+	.AnavR a.spa{width:55px;height:35px;padding:0;margin:0;float:left; cursor:default;}
+	.AnavRl{float:left; width:248px; padding-right:7px;}
+	.hisbox a{background-position:63px -701px;width:83px;height:35px;display:block;text-align:left; text-indent:12px;overflow:hidden;}
+	.hisbox .a_on{background-position:1px -626px;}
+	.Bnav{width:968px;border:1px solid #b6b6b6;background-position:0 -305px;margin:auto;text-align:left;text-indent:10px;color:#cbcbcb;height:31px;line-height:31px;border-top:none;}
+	.Bnav a{padding:0 6px;color:#666666;}
+	.Bnav a u{ text-decoration:none;}
+	.page{clear:both; text-align:center;padding:10px 0px; font-family:Arial;}
+	.page a,.page span{border:1px solid #ddd;padding:5px 8px;margin-right:5px; text-decoration:none;}
+	.page a:hover{text-decoration:none;}
+	.page p{padding:5px 5px;}
+	.page a.on{border:1px solid #b31817;background:#e23433;color:#fff;font-weight:bold;}
+
+.Anav .x-2{ float:right; width:103px;_width:101px; padding:0;}
+.Anav .AnavRl{ padding:0; width:255px;}
+.Anav .hisbox{ height:35px; padding-right:0; width:103px;}
+.Anav .hisbox a{ background:none; height:28px; line-height:28px; _line-height:32px;}	
+.Anav .hisbox a.a_on{ background-color:fff; background-image:none; color:#6c6c6c;}
+.Anav .lookedbox{ display:none; width:94px; top:25px; right:7px;_right:6px; border-top:none;}
+.Anav .RecArea{ padding:0;}
+.Anav .RecArea a{ color:#6c6c6c!important; line-height:30px;}
+.Anav .RecArea a:hover{ text-decoration:underline; color:#c92323!important;}
+.Anav .newRecUl li{ background:none; text-align:center; border:none; border-top:1px dashed #E3E3E3; width:90px; padding-right:4px; height:28px; line-height:28px;}
+.Anav .hisbox small{background-position:-114px 7px;}
+
+.x-2 .hisbox a{ width:94px;margin-right:7px; *margin-right:9px;padding:0;}
+.x-2 .hisbox small{ margin-left:3px;}
+.vip{ float:right; height:28px; line-height:32px; padding:0 2px 0 10px;}
+	
+/*new sitemap foot*/			
+
+.SiteMap{ width:968px; margin:10px auto 0 auto; border:1px solid #d2d2d2;}
+.SiteMap ul{ padding:10px 20px;}
+.SiteMap li{ display:block; zoom:1; overflow:hidden;float:left; background:url(http://i1.letvimg.com/img/201112/06/top/doc-y.png) repeat-y right top;}
+.SiteMap dl{ width:100px; float:left; display:inline; line-height:22px;}
+.SiteMap dt{ color:#000;}
+.SiteMap dd{ color:#666;}
+.SiteMap .Li01{ width:620px;}
+.SiteMap .Li02{ width:75px; padding-left:25px;}
+.SiteMap .Li03{ width:180px; background:none; padding-left:25px;}
+.SiteMap .d01{ width:90px;}
+.SiteMap .d02{ width:100px;}
+.SiteMap .d03{ width:100px;}
+.SiteMap .d04{ width:100px;}
+.SiteMap .d05{ width:110px;}
+.SiteMap .d06{ width:115px;}
+.SiteMap .d07{ width:75px;}
+.SiteMap .d08{ width:210px;}
+
+.SiteMap .title{ height:46px; margin:0 20px; padding:0; display:block; zoom:1; overflow:hidden; background:url(http://i1.letvimg.com/img/201112/06/top/doc-x.png) repeat-x left bottom;}
+.SiteMap .title h2{ height:30px; margin:8px 0; text-indent:-99999px; background:url(http://i0.letvimg.com/img/201112/06/top/H2.png) no-repeat -1000px -1000px;}
+.SiteMap .title .H209{ background-position:left -217px;}
+
+.footer{ padding:15px 0;}
+.footer p{ text-align:center; line-height:24px; font-family:Arial, Helvetica, sans-serif;}
+.footer p a{ color:#666; margin:0 5px;}
+.footer .p1 a{ margin:0 17px;}
+.footer span{ padding:0 5px;}	
+/*a:hover end*/	
+.test{width:940px;margin:auto;}
+.tvul a{font-size:12px;}
+.tvul a:link{font-size:12px;}
+/*loading*/
+.loading{background:url(http://i2.letvimg.com/img/201112/06/top/loading.gif) no-repeat center;}
+
+.lookedbox b,.delete,.lookedbox,.anniversary #agkjl .hisbox .a_on{ background:url(http://i0.letvimg.com/img/201112/06/top/new-doc.png) no-repeat -1000px -1000px;}
+
+.AnavRl a{ padding:0 9px; _padding-left:8px;}
+.AnavRl a:hover{ color:#d5d5d5;}
+/*logn*/
+#userlogin u,.hisbox small{background:url(http://i0.letvimg.com/img/201112/06/top/headBtn.png) no-repeat; }
+#userlogin{float:right;height:28px;line-height:32px;position:relative;color:#ccc;}
+		#userlogin span{ border:1px solid #fff;padding:0px 5px 0 0;display:block;height:28px;line-height:28px;margin-top:0px;float:right;position:relative;z-index:1;min-width:70px; text-align:right;max-width:104px;min-width:75px;_width:expression(this.clientWidth>104?"104px":"auto");_overflow:hidden;}/**2012-01-04 edit npy**/
+		#userlogin span.now{background:#fff;border:1px solid #ddd;position:relative;z-index:1;}
+		#userlogin small{font-size:12px;padding-right:11px;}/**2012-01-04 edit npy**/
+		#userlogin span a:hover{ text-decoration:none;}
+		
+		#userlogin u{background-position:-60px 7px;padding:5px;text-decoration:none;}
+		#userlogin span.now u{background-position:-95px 7px;}
+		
+		.LognList{width:80px;border:1px solid #dedede;border-top:none;background:#fff;position:absolute;top:29px;right:0;_right:-1px;z-index:2;display:none;}
+		.LognList li{margin:0 10px;line-height:33px;height:33px;text-align:center;border-bottom:1px solid #dedede;}
+		.LognList li a:hover{ text-decoration:underline;}
+		.LognList li.last,.head_box .otherbox li.last{border:none;}
+		.LognList.active{display:block;}
+/*record*/			
+#agkjl{float:right;width:96px; padding:0 8px 0 3px;}
+		.hisbox a,.hisbox a.a_on,.newRecUl li,.newRecUl i,.opc .all,.opc .clear,.clearBtn,.clearBtnHov{background:url(http://i3.letvimg.com/img/201112/06/top/recordbg.png) no-repeat;}
+		.hisbox{float:right;height:37px;color:#010101;width:96px;cursor:pointer;text-align:left;overflow:hidden;}
+		.hisbox a{padding:0;margin:0;cursor: pointer;width:94px;float:right;display:block;text-align:right;border:1px solid transparent;_border:0px solid #fff;border-bottom:none;background-position:5px -35px;*background-position:5px -34px!important;_background-position:5px -35px;margin-top:2px;overflow:hidden;height:27px;line-height:27px;}
+		.hisbox a:hover{text-decoration:none;}
+		.hisbox a.a_on{border:1px solid #ddd;background-color:#fff;background-position:5px -35px;position:relative;z-index:13;border-bottom:none;}
+		.hisbox small{background-position:-60px 7px;padding:5px;margin:0 3px 0 1px;}
+		.hisbox a.a_on small{ background-position: -96px 7px;}
+		.RecArea a,.opc a{color:#333;}
+		.RecArea a:hover,.opc a:hover{color:#c62323;}
+		
+		.lookedbox{border:1px solid #dedede;background:#fff;width:245px;position:absolute;right:8px;top:29px;z-index:12;display:block;overflow:hidden;}
+		.newRecUl {padding:1px;}
+		.newRecUl li{border-bottom:1px dashed #e3e3e3;height:27px;line-height:27px;background-position:-155px 1px;float:left;overflow:hidden;width:100%; text-align:left;}
+		.newRecUl span,.newRecUl em,.newRecUl i{float:left;display:block;}
+		.newRecUl span{float:right;width:55px;color:#ccc;padding-right:5px; display:none;}
+		.newRecUl span.rent{text-align:right;color:#333;}
+		.newRecUl i{width:20px;font-style:normal;margin:0  0 0 2px;}
+		.newRecUl i.webIcon{background-position:-10px -66px;}
+		.newRecUl i.tvIcon{background-position:-75px -66px;}
+		.newRecUl i.macIcon{background-position:-46px -66px;}
+		.newRecUl li.active i.webIcon{background-position:4px -66px;}
+		.newRecUl li.active i.tvIcon{background-position:-100px -66px;}
+		.newRecUl li.active i.macIcon{background-position:-27px -66px;}
+		.newRecUl li.active span{ display:block;}
+		.newRecUl em{width:218px;font-style:normal;height:27px;overflow:hidden;white-space:nowrap;}
+		.newRecUl li.active em{width:155px;font-style:normal;}
+		.newRecUl .red a{color:#c62323;}
+		.opc{border-top:1px solid #dedede;margin-top:-2px;padding:5px 6px;height:20px;}
+		.opc .all{background-position:-130px -73px;padding-left:14px;}
+		.opc .clear{background-position:-237px -107px;padding-left:14px;}
+		.opc .fr input{vertical-align:text-top;}
+		.RecArea{ position:relative;}
+		.maskbox{opacity:0.9; filter:Alpha(opacity=90);width:100%;height:350px;background:#fff;position:absolute;left:0;top:0;}
+		.opcInfo{position:absolute;left:0;top:0;width:100%;}
+		.opcInfo p{text-align:center;padding-top:5px;}
+		.clearBtn,.clearBtnHov{background-position:-83px -105px;width:40px;height:20px;line-height:20px;border:none; text-align:center;margin:0 8px;}
+		.clearBtnHov{background-position:-27px -105px;}
+		.noRec dt{height:52px;line-height:52px; text-align:center}
+		.noRec dd{ background:#f2f2f2;line-height:22px;padding:0 15px;color:#999;}
+		.noRec dd.tit{padding-top:5px;padding-left:8px;}
+		.noRec dd.tip{padding:10px 0}
+		.noRec dd.tip p{border-top:1px solid #dfdfdf;margin:0px 10px;padding:5px 0 0;}
+		.getdata{padding:10px 20px; text-align:center;}
+		.getdata p{height:22px;line-height:22px;}
+		.smallLoad{padding-left:20px; background:url(http://i0.letvimg.com/img/201112/06/top/smallload.gif) no-repeat left -5px; font-size:12px;}
+	
+.off{ display:block; zoom:1; overflow:hidden; width:60px; height:20px; position:absolute; right:-286px; top:-67px;}
+.delete{ float:right; display:block; background-position:-68px -69px; width:12px; height:12px; cursor:pointer; margin:8px 8px 0 0;}
+.Adweibo{border: 1px solid #D2D2D2;width: 970px;margin: 10px auto 0 auto;height:155px;background:#fff;overflow:hidden;}
+
+.acResults {background-color:#fff;border: 1px solid #DDDDDD;overflow: hidden;padding: 0;z-index: 9999;}
+.acResults li {cursor: pointer;font: menu;font-size: 12px;margin: 0;overflow: hidden;padding: 2px 7px;}
+.acSelect {background-color: highlight;color: highlighttext;}	
+
+
+/*mail 2012-01-04 npy add*/
+a.mail{ background:url(http://i0.letvimg.com/img/201112/05/mail.png) no-repeat 6px top; display:inline-block; width:13px; height:11px; border-left:1px solid #CCCCCC; border-right:1px solid #CCCCCC; padding:0 6px; margin:10px 0 0px 2px; float:right; display:none;}
+
+/*tv*/
+
+.Anav{ position:relative;}
+.NewHot{ display:block; position:absolute; right:115px; top:-7px; width:27px; height:13px; background:url(http://i1.letvimg.com/img/201202/17/hot.png) no-repeat left top;}
