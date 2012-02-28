@@ -4,10 +4,10 @@
 
 /**/
 
-.rank ul li,.day ul li,.ExprList li,.Theater li,.paren li,.cycle a,.PosTag li,.ABC a,.title,.ABC span.on,.ind .p4{ background:url(http://i0.letvimg.com/dongman/201112/14/doc.png) no-repeat -10000px -10000px;}
+.rank ul li,.day ul li,.ExprList li,.Theater li,.paren li,.cycle a,.PosTag li,.ABC a,.title,.ABC span.on,.ind .p4{ background:url(../images/doc.png) no-repeat -10000px -10000px;}
 
 
-h4{ height:24px; padding:11px 0; font-family:"宋体"; background:url(http://i0.letvimg.com/dongman/201112/14/new-H4.png) no-repeat -10000px -10000px;}
+h4{ height:24px; padding:11px 0; font-family:"宋体"; background:url(../images/new-H4.png) no-repeat -10000px -10000px;}
 h4 span{ float:right;}
 .H402{ background-position:left -25px;}
 
@@ -22,12 +22,6 @@ h4 span{ float:right;}
 .FineList .list,.Games .list{ padding-bottom:10px;}
 .comtd .list{ padding-bottom:17px;}
 
-.rank ol{ background:url(http://i3.letvimg.com/dongman/201112/14/ol.png) no-repeat 23px 20px; padding:17px 20px;}
-.rank ol li{ line-height:24px; padding-left:30px; height:24px; overflow:hidden;}
-.rank span{ float:right;}
-.rank span a{ margin:0 5px; height:22px;line-height:22px;width:25px;display:inline;zoom:1;overflow:hidden;float:left;text-align:center;}
-.rank span a:hover{ margin:0 5px; text-decoration:none;}
-.rank span .active{border:1px solid #d6d6d6;border-bottom:1px solid #fff;}
 
 /**/
 
