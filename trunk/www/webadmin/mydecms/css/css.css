@@ -1,0 +1,60 @@
+*{padding:0px;margin:0px;}
+html{height:100%;overflow-x: hidden; overflow-y: auto;}
+body{font-size:12px;FONT-FAMILY: 'ËÎÌו', arial, verdana, sans-serif;line-height:23px;
+scrollbar-3dlight-color:#D4D0C8;scrollbar-highlight-color:#fff;scrollbar-face-color:#E4E4E4;scrollbar-arrow-color:#666;scrollbar-shadow-color:#808080;scrollbar-darkshadow-color:#D7DCE0;scrollbar-base-color:#D7DCE0;}
+ul{list-style-type:none;}
+img{border:0px;}
+a{color:#2679AA;text-decoration:none; font-size:13px}
+a:hover{color:#FF5400;text-decoration:underline;}
+a:visited {color:green;}
+.clear{clear:both;}
+.none{display:none;}
+.block{display:block;}
+.floatleft {float:left;}
+.floatright {float:right;}
+.input{border:1px solid #999; padding:5px 3px;}
+select{border:1px solid #999;}
+textarea{border:1px solid #999;}
+.a12px{font-size:12px;}
+.nav{margin-bottom:8px;}
+.nav ul li{float:left;display:inline;margin:0px 3px 0px 0px;}
+.nav ul li a{display:block;padding:1px 8px;border:1px solid #8DB2E3;font-weight:bold;color:#0099CC;float:left; font-size:12px; background:#EEF6FB;}
+.nav ul li a:hover{background:#FFF;color:#FF5400;border:1px solid #3678CE;}
+.table{background:#D6DFE6;}
+.table th{height:27px; line-height:27px; overflow:hidden;color:#2679AA; text-align:center;background:#D6DFE6 url(boxtitlebg.gif) repeat-x top left;}
+.table tr{line-height:27px; background:#FFF; color:#666;}
+.table td{padding:0px 2px;}
+.table tr.tr01{background:#EEF6FB;}
+.table2{background:#D6DFE6;}
+.table2 th{height:27px; line-height:27px; overflow:hidden;color:#2679AA; text-align:center;background:#D6DFE6 url(boxtitlebg.gif) repeat-x top left;}
+.table2 tr{line-height:27px; background:#FFF; color:#666;}
+.table2 td{padding:8px 5px;}
+.table2 tr.tr01{background:#EEF6FB;}
+#main{width:98%; margin:10px 0px;}
+.pages {font-size: 12px;padding:10px 0px;}
+.pages li {line-height:20px;display:inline;float: left;padding:2px 5px;color:#666;margin-right: 0.3em;margin-top:5px;border: 1px solid #E0E0E0;background:#FFF;}
+.pages li span {color:#2679AA;background:#FFF;}
+.pages li.page_a {padding:0;border:0;}
+.pages li.page_a a {float: left;display: block;padding:2px 5px;color:#2679AA;border: 1px solid #E0E0E0;}
+.pages li.page_a a:hover {display: block;color:red;border: 1px solid #A0A0A0;}
+.pages li.pages_input {padding:0;border:0px;}
+.pages li.pages_input input {border: 1px solid #A0A0A0;width:25px;font-size:12px;padding:4px 3px;margin:0px 0px;text-align:center;}
+.pages .on {padding:2px 5px;color: red;font-weight:bold;}
+.pages .page_clear {clear:both;}
+.layer_msg {font-size:18px;width: 500px;padding: 15px;border: 10px solid #66B1DD;background-color: #FFF;margin:150px auto;}
+.msg_content {margin:30px auto;text-align:center;font-size:18px;font-weight:bold; color:#2679AA;}
+.layer_msg p {text-align:center;}
+.layer_msg p a {font-size:14px;color:#333;font-weight:bold; text-decoration:underline;} 
+.nav_class {width:600px;background:#EFEFEF;padding-right:2px;position:absolute;display:none;top:35px;left:0px;border:1px solid #0099CC;}
+.nav_class ul {list-style-type:none;background:#FFF;}
+.nav_class li {border-top:1px solid #FFF;border-bottom:1px solid #FFF;float:left;width:100px;height:25px;line-height:25px;text-align:center;}
+.nav_class li a {display:block;font-size:12px;}
+.nav_class li a:hover {background:#C2F3CA;color:#22AC38;text-decoration:none;}
+.div {display: none;position: absolute;top: 25%;left: 25%;width: 55%;height: 55%;padding: 15px;border: 5px solid #D6DFE6;background-color: #FFF;z-index:1002;}
+.div div{margin:3px 8px;}
+.div h3 {background:#D6DFE6 url(boxtitlebg.gif) repeat-x top left;color:#2679AA;text-indent:10px;height:25px;line-height:25px; border:1px solid #D6DFE6; font-size:14px;}
+.div h3 cite{ float:right; font-weight:normal; font-style:normal; font-size:12px;margin-right:10px;}
+.div h3 span {margin-left:5px;}
+#wind{position:absolute;top:20%;left:5%;}
+#guanfangnews li{ width:45%; float:left; margin-right:15px; height:35px; line-height:35px; overflow:hidden;background:url(ico_proclass2.gif) no-repeat 2px 15px; text-indent:10px;}
+#guanfangnews li a{ font-size:14px;}
