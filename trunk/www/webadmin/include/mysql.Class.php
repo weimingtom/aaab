@@ -31,6 +31,35 @@ class mysql_Class
 		return @mysql_fetch_array($fetch_array, MYSQL_ASSOC);
 	}
 	
+	function result_first($sql)
+	{
+		$query = $this->query ($sql);
+		return $this->result($query, 0);
+	}
+	
+	function fetch_first($sql)
+	{
+		$query = $this->query ( $sql );
+		return $this->fetch_array ( $query );
+	}
+	
+	function fetch_all($sql, $id = '')
+	{
+		$arr = array ();
+		$query = $this->query ( $sql );
+		while ( $data = $this->fetch_array ( $query ) )
+		{
+			$id ? $arr [$data [$id]] = $data : $arr [] = $data;
+		}
+		return $arr;
+	}
+	
+	function result($query, $row)
+	{
+		$query = @mysql_result ( $query, $row );
+		return $query;
+	}
+	
 	function num_rows($sql)//返回记录的行数
 	{
 		return @mysql_num_rows($sql);

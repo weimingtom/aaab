@@ -36,5 +36,4 @@ while($row = $mysql -> fetch_array($query)){
 $tpl = new templateClass($mydecms['moban']);
 $tpl -> assign(array('mysql','mydecms','tpl','class_arr','page'));
 $tpl -> display('index');
-
 ?>

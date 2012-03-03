@@ -1,6 +1,10 @@
 <?php
 function get_naps_bot()
 {
+	if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+		return false;
+	}
+	
 	$useragent = strtolower($_SERVER['HTTP_USER_AGENT']);
 	
 	if (strpos($useragent, 'googlebot') !== false){
