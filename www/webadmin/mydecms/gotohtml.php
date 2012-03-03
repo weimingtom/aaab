@@ -26,10 +26,17 @@ function replace($str){
 
 switch($action){
 	case 'index':
+		$url = str_replace("gotohtml.php", "../www.php", "http://".$_SERVER ['HTTP_HOST'].$_SERVER['PHP_SELF']);
+		$art_html = new geturl($url, "../", "../index.html");
+		replace('Ê×Ò³');
+		break;
+	/*
+	case 'index':
 		$url = str_replace("gotohtml.php","../index.php","http://".$_SERVER ['HTTP_HOST'].$_SERVER['PHP_SELF']);
 		$art_html = new geturl($url,"../","index.html");
 		replace('Ê×Ò³');
 		break;
+	*/
 	case 'Classhtml':
 		$id = $_POST["id"];
 		$class_arr=array();

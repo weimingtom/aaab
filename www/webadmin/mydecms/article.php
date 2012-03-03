@@ -42,6 +42,7 @@ switch($action){
 			$tpl -> display('header');
 			$arr = array(
 				'title'         => str($_POST['title']),
+				'url'         	=> str($_POST['url']),
 				'keywords'      => str($_POST['keywords']),
 				'description'   => str($_POST['description']),
 				'type'          => numeric($_POST['type']),
@@ -71,6 +72,7 @@ switch($action){
 		if($row){
 			$arr = array(
 				'title'         => str($_POST['title']),
+				'url'         	=> str($_POST['url']),
 				'keywords'      => str($_POST['keywords']),
 				'description'   => str($_POST['description']),
 				'type'          => numeric($_POST['type']),

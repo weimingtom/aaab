@@ -22,6 +22,10 @@
       <td colspan="7"><input name="title" type="text" class="input" id="title" value="<?php  echo $row['title']; ?>" style="width:65%;" /></td>
     </tr>
     <tr>
+	<td width="72"><div align="right">跳转URL：</div></td>
+	<td colspan="7"><input name="url" type="text" class="input" id="url" value="<?php  echo $row['url']; ?>" style="width:65%;" /></td>
+    </tr>
+    <tr>
       <td><div align="right">关键字：</div></td>
       <td colspan="7"><input name="keywords" type="text" class="input" id="keywords" value="<?php  echo $row['keywords']; ?>" style="width:65%;" />
       多个关键词用英文的逗号“,”分开</td>
