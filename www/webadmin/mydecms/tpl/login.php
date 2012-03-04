@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>贤诚文章管理系统后台登录</title>
+<title>管理系统后台登录</title>
 <link href="css/css.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/mydecms.js"></script>
@@ -23,7 +23,7 @@ body {padding:0px;margin:0px;width:100%;height:100%;position:relative; backgroun
 <div id="login">
   <form id="form1" name="form1" method="post" action="?action=act_login">
     <table width="100%" cellpadding="0" cellspacing="1" class="table">
-      <tr><th colspan="2">贤诚文章管理系统后台管理入口</th>
+      <tr><th colspan="2">管理系统后台管理入口</th>
       <tr>
         <td width="30%"><div align="right">管理帐号:</div></td>
         <td width="70%"><input type="text" name="webadmin" id="webadmin" class="input" style="width:200px;" />
@@ -45,8 +45,6 @@ body {padding:0px;margin:0px;width:100%;height:100%;position:relative; backgroun
           </div></td>
       </tr>
     </table>
-    <br />
-    <p class="copy"> Powered by <a href="http://www.mydecms.com/" title="贤诚文章管理系统官方网站" target="_blank">MydeCms V1.0</a></p>
   </form>
 </div>
 </body>
