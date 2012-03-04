@@ -1,5 +1,7 @@
 <?php
 define('WWW.MYDECMS.COM',true);
+header("location:mydecms");
+exit;
 
 /**   
 +----------------------程序版权注释信息--------------------
