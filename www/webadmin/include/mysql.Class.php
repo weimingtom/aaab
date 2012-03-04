@@ -7,7 +7,7 @@ class mysql_Class
 	var $db_start = 'mydecms_';
 	function __construct($host, $user, $pass)
 	{
- 		@mysql_pconnect($host,$user,$pass) or die("数据库连接失败!");
+ 		mysql_connect($host,$user,$pass) or die("数据库连接失败!");
 		mysql_query("SET NAMES 'gbk'");
  	}
 	
@@ -18,17 +18,17 @@ class mysql_Class
 	
 	function select_db($db)//连接表
 	{
-		return @mysql_select_db($db);
+		return mysql_select_db($db);
 	}
 	
 	function query($sql)//执行SQL语句
 	{
-		return @mysql_query(str_replace('-table-',$this -> db_start,$sql));
+		return mysql_query(str_replace('-table-',$this -> db_start,$sql));
 	}
 	
 	function fetch_array($fetch_array)
 	{
-		return @mysql_fetch_array($fetch_array, MYSQL_ASSOC);
+		return mysql_fetch_array($fetch_array, MYSQL_ASSOC);
 	}
 	
 	function result_first($sql)
@@ -56,23 +56,23 @@ class mysql_Class
 	
 	function result($query, $row)
 	{
-		$query = @mysql_result ( $query, $row );
+		$query = mysql_result ( $query, $row );
 		return $query;
 	}
 	
 	function num_rows($sql)//返回记录的行数
 	{
-		return @mysql_num_rows($sql);
+		return mysql_num_rows($sql);
 	}
 	
 	function affected_rows()//取得前一次 MySQL 操作所影响的记录行数
 	{
-		return @mysql_affected_rows();
+		return mysql_affected_rows();
 	}
 	
 	function close() //关闭数据库
 	{ 
-		return @mysql_close();
+		return mysql_close();
 	}
 	
 	function insert($table,$arr) //添加记录
