@@ -1,6 +1,7 @@
 <?php
+error_reporting(0);
 if(!defined('WWW.MYDECMS.COM')) exit('请不要非法操作');
-date_default_timezone_set(PRC);
+date_default_timezone_set('PRC');
 
 define('PAGESIZE',20);
 
@@ -29,11 +30,11 @@ include '../include/template.Class.php';
 
 include '../include/db.php';
 
-$action = $_GET['action'];
-$page   = numeric($_GET['page']);
-$act    = $_GET['act'];
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+$page   = isset($_GET['page']) ? numeric($_GET['page']) : 1;
+$act    = isset($_GET['act']) ? $_GET['act'] : '';
 
-$mysql = new mysql_Class($web['host'],$web['dbuser'],$web['dbpass']);
+$mysql = new mysql_Class($web['host'], $web['dbuser'], $web['dbpass']);
 
 $mysql -> select_db($web['dbname']);
 
@@ -60,6 +61,8 @@ if($row){
 	$mydecms['webpass']        = $row['webpass'];
 	$mydecms['tongji']         = str_replace(array('+=+','-+-'),array('"',"'"),$row['tongji']);
 	$mydecms['classid']        = $row['classid'];
+	
+	$pageinfo = $mydecms;
 }
 
 $tpl =  new templateClass();

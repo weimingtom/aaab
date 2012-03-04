@@ -20,10 +20,10 @@ $tpl -> display('index');
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>无标题文档</title>
+<title><?php echo $mydecms['webname']?></title>
 <meta name="robots" content="all" />
-<meta name="description" content="网站说明" />
-<meta name="keywords" content="关键字" />
+<meta name="description" content="<?php echo $mydecms['webdescription']?>" />
+<meta name="keywords" content="<?php echo $mydecms['webkeywords']?>" />
 <meta name="Copyright" content="版权信息" />
 <meta name="revisit-after" content="1 days" />
 <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -39,7 +39,7 @@ $tpl -> display('index');
 
 	<!--头部开始-->
 <div id="page_header">
-    	<div class="logobox" title="九尾狐大陆">&nbsp;</div>
+    	<div class="logobox" title="<?php echo $mydecms['webname']?>">&nbsp;</div>
         <div class="big_img">&nbsp;</div>
       <div class="topmenubox">
         <a href="#"><strong>artery</strong></a><a href="#">退出</a><a href="#">短消息</a><a href="#">统计</a><a href="#">系统设置</a><a href="#">帮助</a>
@@ -55,7 +55,7 @@ $tpl -> display('index');
     <!--菜单开始-->
 <div id="menu">
     	<ul>
-		<li class="here"><a href="#">首页<em>HOMEPAGE</em></a></li>
+		<li class="here"><a href="<?php echo $mydecms['weburl']?>">首页<em>HOMEPAGE</em></a></li>
 		<li><a href="#">大陆社区<em>MENU TEXT</em></a></li>
 		<li><a href="#">动漫下载<em>MENU TEXT</em></a></li>
 		<li><a href="#">新番连载<em>MENU TEXT</em></a></li>

@@ -15,8 +15,6 @@ define('WWW.MYDECMS.COM',true);
 +----------------------------------------------------------   
 */ 
 
-
-
 include 'config.inc.php';
 $tpl -> display('header');
 $tpl -> display('gotohtml');

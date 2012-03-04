@@ -57,6 +57,7 @@ DROP TABLE IF EXISTS `mydecms_article`;
 CREATE TABLE `mydecms_article` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `title` text,
+  `url` varchar(255) DEFAULT NULL,
   `keywords` text,
   `description` text,
   `type` int(10) NOT NULL DEFAULT '1',
@@ -70,9 +71,11 @@ CREATE TABLE `mydecms_article` (
   `img` text,
   `sort` int(10) DEFAULT '100',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=gbk;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=gbk;
 
 /*Data for the table `mydecms_article` */
+
+insert  into `mydecms_article`(`id`,`title`,`url`,`keywords`,`description`,`type`,`content`,`date`,`dafenglei`,`count`,`tag`,`top`,`editdate`,`img`,`sort`) values (2,'测试焦点图','http://btbbt.godhouse.com/webadmin/www.php','','',1,'测试焦点图\r\n','2012-03-03 21:02:31',1,1,'',1,'2012-03-03 21:02:31','http://btbbt.godhouse.com/webadmin/up-file/20120303/pic-1.jpg',100),(3,'测试焦点图2','http://btbbt.godhouse.com/webadmin/www.php','','',1,'测试焦点图2\r\n\r\n','2012-03-03 21:04:20',1,1,'',1,'2012-03-03 21:07:11','http://btbbt.godhouse.com/webadmin/up-file/20120303/pic-1.jpg',100),(4,'可以是二级置顶或是精华的文章标题','http://btbbt.godhouse.com/webadmin/www.php','','王效杰表示，在三网融合总体方案颁布、试点方案颁布、确定试点城市后，三网融合才进入',1,'王效杰表示，在三网融合总体方案颁布、试点方案颁布、确定试点城市后，三网融合才进入\r\n\r\n','2012-03-03 21:10:34',2,1,'',1,'2012-03-03 21:12:51','http://btbbt.godhouse.com/webadmin/up-file/20120303/t9.gif',100),(5,'可以是二级置顶或是精华的文章标题','','','王效杰表示，在三网融合总体方案颁布、试点方案颁布、确定试点城市后，三网融合才进入',1,'王效杰表示，在三网融合总体方案颁布、试点方案颁布、确定试点城市后，三网融合才进入\r\n','2012-03-03 21:13:49',2,1,'',1,'2012-03-03 21:13:49','http://btbbt.godhouse.com/webadmin/up-file/20120303/t9.gif',100),(6,'可以是二级置顶或是精华的文章标题2','','','2王效杰表示，在三网融合总体方案颁布、试点方案颁布、确定试点城市后，三网融合才进入',1,'2王效杰表示，在三网融合总体方案颁布、试点方案颁布、确定试点城市后，三网融合才进入\r\n\r\n','2012-03-03 21:14:58',2,1,'',1,'2012-03-03 21:15:34','http://btbbt.godhouse.com/webadmin/up-file/20120303/bigimg_1.png',100),(7,'那些感动 动漫游戏中的杯具人物','http://btbbt.godhouse.com/webadmin/www.php','','《Ride of Passage》（通行坐骑）是The Animation Workshop 2012年本科电影项目 (Bachelor Film Project)的学生作品。剪纸般的二维动画的开篇为整部短片的欢快氛围奠定了基础，后续三维CG动画对故事情节进行了展开，无论是角色设计还是动作表演都非常有趣。尤其 喜欢二维到三维过渡的技巧。',1,'《Ride of Passage》（通行坐骑）是The Animation Workshop 2012年本科电影项目 (Bachelor Film Project)的学生作品。剪纸般的二维动画的开篇为整部短片的欢快氛围奠定了基础，后续三维CG动画对故事情节进行了展开，无论是角色设计还是动作表演都非常有趣。尤其 喜欢二维到三维过渡的技巧。\r\n\r\n','2012-03-03 21:22:12',3,1,'',1,'2012-03-03 21:22:18','http://btbbt.godhouse.com/webadmin/up-file/20120303/1.jpg',100),(8,'战姬绝唱','http://btbbt.godhouse.com/webadmin/www.php','','',1,'<br>\r\n','2012-03-03 21:36:58',18,1,'',1,'2012-03-03 21:36:58','',100);
 
 /*Table structure for table `mydecms_dafenglei` */
 
@@ -90,11 +93,11 @@ CREATE TABLE `mydecms_dafenglei` (
   `dir` text,
   `mobanname` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=gbk;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=gbk;
 
 /*Data for the table `mydecms_dafenglei` */
 
-insert  into `mydecms_dafenglei`(`id`,`name`,`classid`,`type`,`sort`,`title`,`keywords`,`description`,`dir`,`mobanname`) values (1,'焦点图',0,1,100,'','','','',''),(2,'上下滚动',0,1,100,'','','','',''),(3,'排行版',0,1,100,'','','','',''),(4,'动漫档期表',0,1,100,'','','','',''),(5,'漫画档期表',0,1,100,'','','','','');
+insert  into `mydecms_dafenglei`(`id`,`name`,`classid`,`type`,`sort`,`title`,`keywords`,`description`,`dir`,`mobanname`) values (1,'焦点图',0,1,100,'','','','',''),(2,'上下滚动',0,1,100,'','','','',''),(3,'排行版',0,1,100,'','','','',''),(4,'动漫档期表',0,1,100,'','','','',''),(5,'漫画档期表',0,1,100,'','','','',''),(6,'周一',4,1,90,'','','','',''),(7,'周二',4,1,91,'','','','',''),(8,'周三',4,1,92,'','','','',''),(9,'周四',4,1,93,'','','','',''),(10,'周五',4,1,94,'','','','',''),(11,'周六',4,1,95,'','','','',''),(12,'周日',4,1,89,'','','','',''),(13,'周一',5,1,90,'','','','',''),(14,'周二',5,1,91,'','','','',''),(15,'周三',5,1,92,'','','','',''),(16,'周四',5,1,93,'','','','',''),(17,'周五',5,1,94,'','','','',''),(18,'周六',5,1,95,'','','','',''),(19,'周日',5,1,89,'','','','','');
 
 /*Table structure for table `mydecms_link` */
 
