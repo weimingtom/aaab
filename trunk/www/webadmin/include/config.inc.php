@@ -22,7 +22,7 @@ include 'function.inc.php';
 
 include 'template.Class.php';
 
-include 'rss.Class.php';
+include 'rss.class.php';
 
 include 'db.php';
 
@@ -63,7 +63,7 @@ if($mydecms['openspider']==5 || $mydecms['openspider'] =="5"){
 	$url = "http://".$_SERVER["HTTP_HOST"].$_SERVER["REQUEST_URI"];
 	$spider = get_naps_bot();
 	
-	if($spider){
+	if($spider) {
 		$arr = array(
 			"spidername"=>$spider,
 			"url"=>$url,

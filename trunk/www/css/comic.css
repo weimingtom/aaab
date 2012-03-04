@@ -1,40 +1,25 @@
 @charset "utf-8";
 /* CSS Document */
-
-
-/**/
-
-.rank ul li,.day ul li,.ExprList li,.Theater li,.paren li,.cycle a,.PosTag li,.ABC a,.title,.ABC span.on,.ind .p4{ background:url(../images/doc.png) no-repeat -10000px -10000px;}
-
-
-h4{ height:34px;  }
-
-
-
-.title{ height:45px; margin:0 19px 5px 19px; padding:0; display:block; zoom:1; overflow:hidden; position:relative; background-position:left -455px; background-repeat:repeat-x;}
-
-
-/**/
-
-.Expr {margin-bottom:5px;}
-
-.FineList,.rank,.ExprList,.day,.CutList,.ind,.EndList,.land,.TheaList,.Games,.paren,.links,.subject,.comtd{ border:1px solid #d2d2d2;}
-.FineList .list,.Games .list{ padding-bottom:10px;}
-.comtd .list{ padding-bottom:17px;}
-
+/*2011-8-19 16:00 zhaoyf*/
 
 /**/
 
 
-.day{ height:308px; overflow:hidden; width:198px;}
-.day li{ height:35px; line-height:35px; overflow:hidden;}
-.day ul{ margin-top:14px; float:left; width:82px;}
-.day ul li{ cursor:pointer; background-position:-3px -40px; width:62px; padding-left:20px; font-weight:bold; font-size:13px;}
-.day ul .active{ background-position:-3px -3px; color:#fff;}
-.day ol{   margin-top:14px;   }
-.day ol li{  width:90px; padding-left:5px; }
-
 /**/
+
+.day ul li{ text-indent:8px; color:#A87431}
+
+
+h4{ height:27px;   background:url(../images/t16.gif) ; color:#B37B52}
+.H402{ line-height:27px; padding-left:10px;}
+
+.day{ height:308px; overflow:hidden; width:200px; }
+.day li{ height:28px; line-height:28px; overflow:hidden;}
+.day ul{  float:left; width:56px;}
+.day ul li{ cursor:pointer; background-position:-3px -40px; width:56px;   font-size:13px; }
+.day ul .active{ background-position:-3px -3px;  font-weight:bold}
+.day ol{ float:left; width:140px;  }
+.day ol li{ float:left; width:70px;}
 
 
 /**/
@@ -52,20 +37,3 @@ h4{ height:34px;  }
 
 #j_animafeature{height:470px;}
 #j_animafeature .j-slider{width:10000px;position: absolute;}
-
-
-/*动漫档期表*/
-
-.j-sliderdm .list {position: relative;float:left;}
-
-#j-tab-b ol{display:none;}
-#j-tab-b .active{display:block;}
-
-#j-tabdm-b1 ol{display:none;}
-#j-tabdm-b1 .active{display:block;}
-
-#j-tab-b2 .list{display:none;}
-#j-tab-b2 .active{display:block;}
-
-#j_animafeature{height:470px;}
-#j_animafeature .j-sliderdm{width:10000px;position: absolute;}
