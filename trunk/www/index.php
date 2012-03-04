@@ -138,7 +138,7 @@ $tpl -> display('index');
 	$news = $mysql->fetch_all("SELECT * FROM `-table-article` WHERE dafenglei='3' ORDER BY id DESC LIMIT 5");
 	foreach ($news as $k=>$v) { ?>
 	<div class="content">
-		<div class="timebox"><?php echo ++$k;?><em><?php echo substr($v['date'], 5, 7)?></em></div>
+		<div class="timebox"><?php echo substr($k+101, 1,2);?><em><?php echo substr($v['date'], 5, 5)?></em></div>
 		<h1><a href="<?php echo $v['url']?>"><?php echo $v['title']?></a></h1>
 		<p><?php echo $v['description']?></p>
 		<div class="img"><img src="<?php echo $v['img']?>" width="611" height="242" /></div>
@@ -155,72 +155,70 @@ $tpl -> display('index');
             <div id="right">
             
                 <!--标签1开始-->
-                <div class="Expr">
-  <div class="right">
-    <div class="day" id="j-tab-b1">
-      <div class="title">
-        <h4 ><img src="images/dongman-H4.png" /></h4>
-      </div>
-      <ul>
-        <li>周日</li>
-        <li>周一</li>
-        <li class="active">周二</li>
-        <li>周三</li>
-        <li>周四</li>
-        <li>周五</li>
-        <li>周六</li>
-      </ul>
-      <?php 
-      $categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='4' order by `sort` ASC");
-      foreach($categorys as $category) {?>
-      <ol>
-      	<?php 
-      	$news = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='{$category['id']}' ORDER BY id DESC LIMIT 10");
-      	foreach ($news as $v) {?>
-        <li><a href="<?php echo $v['url']?>" title="<?php echo $v['title']?>" target="_blank"><?php echo $v['title']?></a></li>
-	<?php }?>
-      </ol>
-      <?php }?>
-    </div>
-  </div>
-</div>
+		<div class="nTab">
+			<h1>动漫档期表：</h1>
+			<div class="TabTitle">
+				<ul id="myTab1">
+					<li class="normal" onmouseover="nTabs(this, 0);">周日</li>
+					<li class="normal" onmouseover="nTabs(this, 1);">周一</li>
+					<li class="normal" onmouseover="nTabs(this, 2);">周二</li>
+					<li class="normal" onmouseover="nTabs(this, 3);">周三</li>
+					<li class="normal" onmouseover="nTabs(this, 4);">周四</li>
+					<li class="normal" onmouseover="nTabs(this, 5);">周五</li>
+					<li class="normal" onmouseover="nTabs(this, 6);">周六</li>
+				</ul>
+			</div>
+			<div class="TabContent">
+				<?php 
+				$categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='4' order by `sort` ASC");
+				foreach($categorys as $k=>$category) {?>
+				<div id="myTab1_Content<?php echo $k?>">
+					<div class="text">
+						<ul>
+							<?php 
+							$news = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='{$category['id']}' ORDER BY id DESC LIMIT 10");
+							foreach ($news as $v) {?>
+								<li><a href="<?php echo $v['url']?>"><?php echo $v['title']?></a></li>
+							<?php }?>
+						</ul>
+					</div>
+				</div>
+				<?php }?>
+			</div>
+		</div>
                 <!--标签1结束-->
                 
                 <!--标签2开始-->
-
-<div class="Expr">
-  <div class="right">
-    <div class="day" id="j-tabdm-b1">
-      <div class="title">
-        <h4 ><img src="images/new-H4.png" /></h4>
-      </div>
-      <ul>
-        <li class="">周日</li>
-        <li>周一</li>
-        <li class="activedm">周二</li>
-        <li>周三</li>
-        <li>周四</li>
-        <li>周五</li>
-        <li>周六</li>
-      </ul>
-      <?php 
-      $categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='5' order by `sort` ASC");
-      foreach($categorys as $category) {?>
-      <ol>
-      	<?php 
-      	$news = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='{$category['id']}' ORDER BY id DESC LIMIT 10");
-      	foreach ($news as $v) {?>
-        <li><a href="<?php echo $v['url']?>" title="<?php echo $v['title']?>" target="_blank"><?php echo $v['title']?></a></li>
-	<?php }?>
-      </ol>
-      <?php }?>
-    </div>
-  </div>
-</div>
-<script type="text/javascript" src="js/dm_comic_min.js"></script> 
-<script type="text/javascript" src="js/chl_comic_min.js"></script> 
+		<div class="day" id="j-tab-b1">
+			<div class="title">
+				<h4 class="H402">漫画档期表：</h4>
+			</div>
+			<ul>
+				<li style="background:url(images/t17.gif)">周日</li>
+				<li style="background:url(images/t17.gif)" class="active">周一</li>
+				<li style="background:url(images/t17.gif)" >周二</li>
+				<li style="background:url(images/t17.gif)" >周三</li>
+				<li style="background:url(images/t17.gif)" >周四</li>
+				<li style="background:url(images/t17.gif)" >周五</li>
+				<li style="background:url(images/t17.gif)" >周六</li>
+			</ul>
+			<?php 
+				$categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='4' order by `sort` ASC");
+				foreach($categorys as $k=>$category) {
+					$news = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='{$category['id']}' ORDER BY id DESC LIMIT 10");	
+					if ($news) {?>
+					<ol>
+						<?php 
+						
+						foreach ($news as $v) {?>
+						<li><a href="<?php echo $v['url']?>" title="<?php echo $v['title']?>" target="_blank"><?php echo $v['title']?></a></li>
+						<?php }?>
+					</ol>
+					<?php }
+				}?>
+		</div>
                 <!--标签2结束-->
-              <script src="js/tab.js" type="text/javascript"></script>
+ 		<script src="js/tab.js" type="text/javascript"></script>
                 
                 <div class="adbox"><img src="images/t20.gif" /></div>
                 <div class="adbox"><img src="images/t20.gif" /></div>
@@ -255,5 +253,6 @@ $tpl -> display('index');
     <!--底部结束-->
 </div>
 </div>
+<script type="text/javascript" src="js/chl_comic_min.js"></script>
 </body>
 </html>
