@@ -31,7 +31,7 @@
       </tr>
       <tr>
       <td><div align="right">¹ã¸æ´úÂë£º</div></td>
-      <td><textarea name="content" id="content" class="input" style="width:98%; height:100px;"><?php echo str_replace(array('+=+','-+-'),array('"',"'"),$row['content']);?></textarea></td>
+      <td><textarea name="content" id="content" class="input" style="width:98%; height:100px;"><?php echo str_replace(array('+=+','-+-'),array('"',"'"), stripslashes($row['content']));?></textarea></td>
     </tr>
       <tr>
         <td colspan="2"><div align="center">

@@ -1,20 +1,6 @@
 <?php
 define('WWW.MYDECMS.COM',true);
 include 'webadmin/include/config.inc.php';
-
-/*******************************循环分类并加入到数组class_arr*****************************/
-$class_arr=array();
-$sql = "select * from `-table-dafenglei` order by `sort` asc, id asc";
-$query = $mysql -> query($sql);
-while($row = $mysql -> fetch_array($query)){
-	$class_arr[$row['id']] = array($row['id'],$row['name'],$row['classid'],$row['sort'],$row['dir'],$row['type']);
-}
-/*******************************循环分类并加入到数组*************************************/
-/*
-$tpl = new templateClass($mydecms['moban']);
-$tpl -> assign(array('mysql','mydecms','tpl','class_arr','page'));
-$tpl -> display('index');
-*/
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -71,10 +57,10 @@ $tpl -> display('index');
     
     	<!--左侧边栏开始-->
 	<div class="left">
-		<div class="adbox"><img src="images/t7.gif" width="120" height="240" /></div>
-		<div class="adbox"><img src="images/t7.gif" width="120" height="240" /></div>
-		<div class="adbox"><img src="images/t7.gif" width="120" height="240" /></div>
-		<div class="adbox"><img src="images/t7.gif" width="120" height="240" /></div>
+		<div class="adbox"><?php echo get_ad_rows(8)?></div>
+		<div class="adbox"><?php echo get_ad_rows(9)?></div>
+		<div class="adbox"><?php echo get_ad_rows(10)?></div>
+		<div class="adbox"><?php echo get_ad_rows(11)?></div>
 	</div>
         <!--左侧边栏结束-->
         
@@ -220,19 +206,12 @@ $tpl -> display('index');
                 <!--标签2结束-->
  		<script src="js/tab.js" type="text/javascript"></script>
                 
-                <div class="adbox"><img src="images/t20.gif" /></div>
-                <div class="adbox"><img src="images/t20.gif" /></div>
-                <div class="adbox"><img src="images/t21.gif" /></div>
-                <div class="adbox"><img src="images/t21.gif" /></div>
-
-                
+                <div class="adbox"><?php echo get_ad_rows(12)?></div>
+                <div class="adbox"><?php echo get_ad_rows(13)?></div>
+                <div class="adbox"><?php echo get_ad_rows(14)?></div>
+                <div class="adbox"><?php echo get_ad_rows(15)?></div>
             </div>
             <!--右侧部分结束-->
-            
-            
-            
-            
-            
         </div>
         <!--内容部分结束-->
             
@@ -242,15 +221,7 @@ $tpl -> display('index');
     
 	</div>
 	<!--内容结束-->
-
-
-
-    <!--底部开始-->
-    <div id="page_footer">
-    <a href="#">关于大陆</a>｜<a href="#">大陆动态</a>｜<a href="#">合作伙伴</a>｜<a href="#">版权声明</a>｜<a href="#">友情链接</a>｜<a href="#">招聘信息</a>｜<a href="#">意见反馈</a>｜<a href="#">帮助中心</a>｜<a href="#">联系方式</a><br />
-版权文字部分。。。
-    </div>
-    <!--底部结束-->
+	<?php include("footer.php");?>
 </div>
 </div>
 <script type="text/javascript" src="js/chl_comic_min.js"></script>

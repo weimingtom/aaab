@@ -32,7 +32,7 @@ switch($action){
 					'name'           => str($_POST['name']),
 					'beizhu'         => str($_POST['beizhu']),
 					'sort'           => numeric($_POST['sort']),
-					'content'        => str_replace(array('"',"'"),array('+=+','-+-'),str($_POST['content'])),
+					'content'        => str_replace(array('"',"'"),array('+=+','-+-'), str($_POST['content'])),
 					'type'           => numeric($_POST['type'])
 			);
 			$pageinfo['title'] = "Ìí¼Ó¹ã¸æ";

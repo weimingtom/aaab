@@ -56,7 +56,7 @@ class mysql_Class
 	
 	function result($query, $row)
 	{
-		$query = mysql_result ( $query, $row );
+		$query = @mysql_result ( $query, $row );
 		return $query;
 	}
 	
