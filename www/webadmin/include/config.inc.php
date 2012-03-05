@@ -74,9 +74,19 @@ if($mydecms['openspider']==5 || $mydecms['openspider'] =="5"){
 	}
 }
 
+/*
 $sql  = "select * from `-table-ad` where `type`=5 order by `sort` asc,`id` desc";
 $query = $mysql -> query($sql);
 while($row = $mysql -> fetch_array($query)){
 	$mydecms['webad'][$row['id']] = str_replace(array('+=+','-+-'),array('"',"'"),$row['content']);
+}*/
+
+function get_ad_rows($id) {
+	global $mysql;
+	$s = $mysql->result_first("SELECT content FROM -table-ad WHERE id='$id' AND `type`='5'");
+	if ($s) {
+		$s = stripslashes(str_replace(array('+=+','-+-'),array('"',"'"), $s));
+	} 
+	return $s;
 }
 ?>
