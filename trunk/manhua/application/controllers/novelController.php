@@ -1,6 +1,6 @@
 <?php
 !defined('IN_ROOT') && exit('Access Denied');
-class novelController extends Base 
+class NovelController extends Base 
 {
 	public function __construct() {
 		parent::__construct();

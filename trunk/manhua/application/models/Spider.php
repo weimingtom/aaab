@@ -1,5 +1,5 @@
 <?php
-class admin_spider
+class Spider
 {
 	private $_table = 'god_spider';
 	

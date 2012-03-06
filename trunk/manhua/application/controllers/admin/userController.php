@@ -8,15 +8,13 @@ class userController extends adminbase
 		$this->load('admin_user');
 	}
 
-	function indexAction()
+	function actionIndex()
 	{
-
 		$this->view->assign('userArr', $this->cmd->getNumbers());
-
 		$this->view->display('user_index');
 	}
 
-	function editpassAction()
+	function actionEditpass()
 	{
 
 		if(isset($_POST['oldpassword'], $_POST['password'], $_POST['password2']) && !empty($_POST['password']) && !empty($_POST['oldpassword']))
@@ -39,7 +37,7 @@ class userController extends adminbase
 		$this->view->display('user_editpass');
 	}
 
-	function addAction()
+	function actionAdd()
 	{
 		if(isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']) && !empty($_POST['password2']))
 		{
@@ -61,7 +59,7 @@ class userController extends adminbase
 		$this->view->display('user_add');
 	}
 
-	function editAction()
+	function actionEdit()
 	{
 		$uid = get('uid');
 
@@ -90,7 +88,7 @@ class userController extends adminbase
 		$this->view->display('user_edit');
 	}
 
-	function delAction()
+	function actionDel()
 	{
 		$uid = get('uid', 'G');
 

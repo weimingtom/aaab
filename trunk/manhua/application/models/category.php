@@ -1,5 +1,5 @@
 <?php
-class category
+class Category
 {
     protected $tree = null;
     
