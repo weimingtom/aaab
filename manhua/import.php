@@ -5,9 +5,8 @@ error_reporting ( E_ALL );
 
 set_time_limit(0);
 
-define ( 'IN_ROOT', true );
-define ( 'ROOT_PATH', str_replace('\\', '/', dirname(__FILE__)) . '/' );
-
+define ('IN_ROOT', true );
+define ('ROOT_PATH', str_replace('\\', '/', dirname(__FILE__)));
 
 require ROOT_PATH.'library/config.php';
 require ROOT_PATH.'library/db.php';
