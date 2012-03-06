@@ -1,11 +1,10 @@
 <?php
 ! defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
-class DataController extends adminbase
+class DataController extends AdminController
 {
 	public function __construct()
 	{
 		parent::__construct ();
-		$this->load('admin_create');
 	}
 
 	public function actionIndex() {

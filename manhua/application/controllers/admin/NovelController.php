@@ -1,6 +1,6 @@
 <?php
 !defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
-class NovelController extends adminbase
+class NovelController extends AdminController
 {
 	public function __construct()
 	{

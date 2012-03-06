@@ -1,17 +1,15 @@
 <?php
 !defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
-class GetdataController extends adminbase
+class GetdataController extends AdminController
 {
 	public function __construct()
 	{
 		parent::__construct ();
-		
-		$this->load('admin_getdata');
 	}
 	
 	public function actionDatabase()
 	{
-		$appgetID = get('appgetID', 'P');
+		$appgetID = getgpc('appgetID', 'P');
 		
 		if($appgetID == 126) $appget = 'wenshen';
 		elseif ($appgetID == 127) $appget = 'xingwei';
@@ -81,12 +79,11 @@ class GetdataController extends adminbase
 	{
 		if((isset($_REQUEST['mtid']) && is_array($_REQUEST['mtid'])) || isset($_REQUEST['mtid']))
 		{
-			
 			$mtid = daddslashes($_REQUEST['mtid']);
 
 			$mtid = is_array($mtid) ? implode(',', $mtid) : $mtid;
 			
-			$this->cmd->delmtData( $mtid );
+			$this->cmd->getDateModel($mtid);
 			
 			exit('<script>location.href="admin.php?c=getdata";</script>');
 			
@@ -107,8 +104,8 @@ class GetdataController extends adminbase
 		}
 		
 		
-		$data['cateid'] = (int)get('cateid');
-		$data['keyname'] = get('keyname');
+		$data['cateid'] = (int)getgpc('cateid');
+		$data['keyname'] = getgpc('keyname');
 		
 		daddslashes(&$data);
 		
@@ -141,7 +138,7 @@ class GetdataController extends adminbase
 	{
 		set_time_limit(0);
 		
-		$appdata = get('app', 'G');
+		$appdata = getgpc('app', 'G');
 
 		$get003dhContent = @file_get_contents(ROOT_PATH . "/data/003dh.com/$appdata-20101015-data.log");
 
@@ -388,7 +385,7 @@ class GetdataController extends adminbase
 		{
 			set_time_limit(0);
 			
-			$appdata = get('app', 'G');
+			$appdata = getgpc('app', 'G');
 	
 			$getContent = @file_get_contents("http://www.003dh.com/Article/$appdata/Index.html");
 			
