@@ -8,20 +8,17 @@ class Base
 	private $inajax;
 	
 	function __construct() {
-		$this->init_var ();
+		$this->init_var();
 	}
 	
-	function _alert($alertInfo, $url='', $open = true)
-	{
+	function _alert($alertInfo, $url='', $open = true) {
 		if(!$url) {
 			$url = $_SERVER['REQUEST_URI'];
 		}
-		if($open)
-		{
+		
+		if($open) {
 			exit('<script>alert("'.$alertInfo .'"); location.href="'. $url .'";</script>');
-		}
-		else
-		{
+		} else {
 			exit('<script>location.href="'. $url .'";</script>');
 		}
 	}
@@ -91,30 +88,37 @@ class Base
 			$this->view->assign('inajax', $this->inajax);
 			
 		} else if(strtolower(substr($var, -5)) == 'model') {
-			$model = substr($var, 0, -5);
-			require ROOT_PATH."/application/models/$model.php";
+			$model = ucfirst(substr($var, 0, -5));
+			require ROOT_PATH."/application/models/{$model}.php";
 			$this->$var = new $model($this);
 		}
 		return $this->$var;
-	}
-	
-	/* 以下以后废弃，后台暂时用----------------------- */
-	
-	function load($model)
-	{
-		require ROOT_PATH . "/application/models/". str_replace('_', '/', $model) .".php";
-		$this->cmd = new $model($this);
-	}
-
-	public function mydb()
-	{
-		return $this->db;
 	}
 	
 	protected function display($page)
 	{
 		$this->view->assign('header', $this->header);
 		$this->view->display($page);
+	}
+	
+	protected function redirect($url) {
+		$url = $this->createUrl($url);
+		exit('<script>location.href="'.$url.'";</script>');
+	}
+	
+	// 转换URL
+	protected function createUrl($str) {
+		$url = GODHOUSE_DOMAIN_WWW;
+		if(GODHOUSE_REWRITEENGINE) {
+			if($str{0} == '/') {
+				$url = $str.'.htm';
+			} else {
+				$url = '/'.$str.'.htm';
+			}
+		} else {
+			$url = 'admin.php?r='.$str;
+		}
+		return $url;
 	}
 }
 

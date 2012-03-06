@@ -9,7 +9,7 @@ class Category
 	
 	function __construct(&$base) {
 		$this->base = $base;
-		$this->db = $base->mydb ();
+		$this->db = $base->db;
 	}
 	
 	public function get_categorys($level=0){
@@ -93,7 +93,7 @@ class Category
              	'child'		=> $val['child'],
              	'cate_name' => $val['cate_name'],
              	'menulink' => $val['menulink'],
-             	'catestat' => $this->db->result_first("SELECT COUNT(*) FROM mh_product WHERE cateid = '". $val['cate_id'] ."' "),
+             	'catestat' => 0,
              	'level'	=> $val['level'],
              	'sort_order' => $val['sort_order'],
              	'time' => date('Y-m-d', strtotime($val['time']))

@@ -1,16 +1,14 @@
 <?php
-class userController extends adminbase
+class UserController extends AdminController
 {
 	function __construct()
 	{
 		parent::__construct();
-
-		$this->load('admin_user');
 	}
 
 	function actionIndex()
 	{
-		$this->view->assign('userArr', $this->cmd->getNumbers());
+		$this->view->assign('userArr', $this->userModel->getNumbers());
 		$this->view->display('user_index');
 	}
 
@@ -24,7 +22,7 @@ class userController extends adminbase
 			$password2 = get('password2', 'P');
 			if ($password == $password2)
 			{
-				if(!$this->cmd->setUpdateUserPass($oldpassword, $password, $this->sid))
+				if(!$this->userModel->setUpdateUserPass($oldpassword, $password, $this->sid))
 				{
 					exit("<script>alert('原始密码输入有误'); history.go(-1)</script>");
 				}
@@ -49,7 +47,7 @@ class userController extends adminbase
 
 				daddslashes(&$data);
 
-				$this->cmd->addUser($data);
+				$this->userModel->addUser($data);
 
 				header("Location: ?c=user");
 			}
@@ -77,12 +75,12 @@ class userController extends adminbase
 
 			$data['groupid'] = get('groupid', 'P');
 				
-			$this->cmd->updateUser($data, $uid);
+			$this->userModel->updateUser($data, $uid);
 				
 			header("Location: ?c=user");
 		}
 
-		$this->view->assign('uArr', $this->cmd->getOneUserData($uid));
+		$this->view->assign('uArr', $this->userModel->getOneUserData($uid));
 		$this->view->assign('group', Auth());
 
 		$this->view->display('user_edit');
@@ -97,7 +95,7 @@ class userController extends adminbase
 			header("Location: ?c=user");
 		}
 
-		$this->cmd->deleteUser($uid);
+		$this->userModel->deleteUser($uid);
 
 		header("Location: ?c=user");
 	}
