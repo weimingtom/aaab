@@ -8,16 +8,15 @@ class spiderCustomController extends adminbase
 		$this->load('admin_spider');
 	}
 	
-	function listAction() {
-		
+	function actionList() {
 		$this->view->display('spiderCustom_list');
 	}
 	
-	public function qidianAction() {
+	public function actionQidian() {
 		//http://www.qidian.com/
 	}
 	
-	public function xiaoshuoAction() {
+	public function actionXiaoshuo() {
 		set_time_limit(0);
 		/*
 		$conf[] = array('parentId'=>6, 'categoryId'=>31, 'categoryName'=>'外国科幻', 'url'=>'http://www.xiaoshuo.com/column/106001_2_0_','endPage'=>34);

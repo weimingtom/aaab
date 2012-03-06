@@ -1,5 +1,5 @@
 <?php
-class admin_user
+class User
 {
 	function __construct(&$base)
 	{

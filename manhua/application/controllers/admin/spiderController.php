@@ -12,13 +12,13 @@ class spiderController extends adminbase
 		$this->load('admin_spider');
 	}
 
-	function indexAction() {
+	function actionIndex() {
 		$spiderList = $this->cmd->getList();
 		$this->view->assign('spiderList', $spiderList);
 		$this->view->display('admin_spider_index');
 	}
 	
-	function logListAction() {
+	function actionLogList() {
 		$spiderId = getgpc('spiderId', 'R');
 		
 		$logList = array();
@@ -76,7 +76,7 @@ class spiderController extends adminbase
 		
 	}
 	
-	function deleteAction() {
+	public function actionDelete() {
 		$spiderId = getgpc('spiderId');
 		$this->cmd->deleteSpider($spiderId);
 		$tmpFile = GODHOUSE_ROOT.'data/tmp/'.$spiderId;
@@ -88,7 +88,7 @@ class spiderController extends adminbase
 		$this->_alert('删除成功。', 'admin.php?c=spider');
 	}
 	
-	function settingAction() {
+	public function actionSetting() {
 		$spiderId = getgpc('spiderId', 'R');
 		$mod = getgpc('mod', 'R');
 		$submit = getgpc('submit', 'P');
@@ -169,7 +169,7 @@ class spiderController extends adminbase
 		}
 	}
 	
-	public function dataListAction() {
+	public function actionDataList() {
 		$spiderId = getgpc('spiderId');
 		$tmpFile = GODHOUSE_ROOT."data/tmp/".$spiderId.'/array.php';		// 得到临时文件
 		$data = require $tmpFile;
@@ -179,7 +179,7 @@ class spiderController extends adminbase
 		$this->view->display('admin_spider_datalist');
 	}
 	
-	public function contentAction() {
+	public function actionContent() {
 		$submit = getgpc('submit', 'P');
 		if($submit) {
 			set_time_limit(0);

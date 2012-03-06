@@ -1,6 +1,6 @@
 <?php
 !defined('IN_ROOT') && exit('Access Denied');
-class indexController extends Base 
+class IndexController extends Base 
 {
 	public $categorys;
 	

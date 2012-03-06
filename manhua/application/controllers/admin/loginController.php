@@ -1,14 +1,12 @@
 <?php
-class loginController extends adminbase
+class LoginController extends adminbase
 {
 	function __construct()
 	{
 		parent::__construct();
-
-		$this->load('admin_login');
 	}
 
-	function indexAction()
+	public function actionIndex()
 	{
 		if(isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']))
 		{
@@ -37,7 +35,7 @@ class loginController extends adminbase
 		$this->view->display('admin_login');
 	}
 
-	function logoutAction()
+	public function actionLogout()
 	{
 		setcookie('ncms_sid', '', time() - 43200);
 		setcookie('ncms_group', '', time() - 43200);

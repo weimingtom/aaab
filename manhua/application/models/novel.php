@@ -1,5 +1,5 @@
 <?php
-class novel
+class Novel
 {
 	function __construct(&$base) {
 		$this->base = $base;

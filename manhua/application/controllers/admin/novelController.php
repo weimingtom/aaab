@@ -1,14 +1,13 @@
 <?php
 !defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
-class novelController extends adminbase
+class NovelController extends adminbase
 {
 	public function __construct()
 	{
 		parent::__construct ();
-		//$this->load('novel');
 	}
 	
-	public function adminAction() {
+	public function actionAdmin() {
 		$page = max(1, getgpc('page'));
 		
 		$categorys = $this->categoryModel->get_categorys();
@@ -22,7 +21,7 @@ class novelController extends adminbase
 		$this->display('novel_admin');
 	}
 	
-	public function deleteAction() {
+	public function actionDelete() {
 		$novelId = getgpc('novelId');
 		$this->novelModel->delete_novel($novelId);
 		$this->_alert('删除成功。', 'admin.php?c=novel&a=admin');

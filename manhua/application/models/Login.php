@@ -1,5 +1,5 @@
 <?php
-class admin_login
+class Login
 {
 	function __construct(&$base)
 	{

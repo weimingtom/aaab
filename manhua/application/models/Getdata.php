@@ -1,6 +1,5 @@
 <?php
-
-class admin_getdata
+class Getdata
 {
 	function __construct(&$base)
 	{
@@ -8,7 +7,7 @@ class admin_getdata
 		$this->db = $base->mydb();
 	}
 	
-	function delmtData( $mtid )
+	function delmtData($mtid)
 	{
 		$this->db->query("DELETE FROM mh_product WHERE id IN ( $mtid )");
 		$this->db->query("DELETE FROM mh_product_img WHERE productid IN ( $mtid )");
@@ -55,5 +54,4 @@ class admin_getdata
 		return array($data, $multipage);
 	}
 }
-
 ?>

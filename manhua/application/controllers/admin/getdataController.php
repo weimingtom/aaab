@@ -1,6 +1,6 @@
 <?php
 !defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
-class getdataController extends adminbase
+class GetdataController extends adminbase
 {
 	public function __construct()
 	{
@@ -9,7 +9,7 @@ class getdataController extends adminbase
 		$this->load('admin_getdata');
 	}
 	
-	function databaseAction()
+	public function actionDatabase()
 	{
 		$appgetID = get('appgetID', 'P');
 		
@@ -77,7 +77,7 @@ class getdataController extends adminbase
 		
 	}
 	
-	function indexAction()
+	public function actionIndex()
 	{
 		if((isset($_REQUEST['mtid']) && is_array($_REQUEST['mtid'])) || isset($_REQUEST['mtid']))
 		{
@@ -126,7 +126,7 @@ class getdataController extends adminbase
 		$this->display('getdata_index');
 	}
 	
-	function addAction()
+	public function actionAdd()
 	{
 		require ROOT_PATH . 'application/models/admin/category.php';
 		
@@ -137,7 +137,7 @@ class getdataController extends adminbase
 		$this->display('getdata_add');
 	}
 	
-	function getimgAction()
+	public function actionGetimg()
 	{
 		set_time_limit(0);
 		
@@ -234,13 +234,7 @@ class getdataController extends adminbase
 		echo $stati . ' Done...';
 	}
 	
-	
-	
-	
-	
-	
-	
-	function getmtzxyAction()
+	public function actionGetmtzxy()
 	{
 		set_time_limit(0);
 		
@@ -387,10 +381,7 @@ class getdataController extends adminbase
 		@fclose($fp);	
 	}
 	
-	
-	
-	
-	function get003dhAction()
+	public function actionGet003dh()
 	{
 		$_POST['action'] = 'a';
 		if(isset($_POST['action']) && !empty($_POST['action']))
