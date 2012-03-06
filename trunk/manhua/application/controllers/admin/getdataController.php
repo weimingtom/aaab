@@ -26,7 +26,7 @@ class GetdataController extends adminbase
 		{			
 			set_time_limit(0);
 			
-			$get003dhContent = @file_get_contents(ROOT_PATH . "data/003dh.com/$appget-20101015-data.log");
+			$get003dhContent = @file_get_contents(ROOT_PATH . "/data/003dh.com/$appget-20101015-data.log");
 	
 			if( !empty($get003dhContent) )
 			{
@@ -63,7 +63,7 @@ class GetdataController extends adminbase
 						}
 						else 
 						{
-							file_put_contents(ROOT_PATH . 'data/err.log', $zzdArr[1] . "\n", FILE_APPEND);
+							file_put_contents(ROOT_PATH . '/data/err.log', $zzdArr[1] . "\n", FILE_APPEND);
 						}
 					}
 				}
@@ -114,7 +114,7 @@ class GetdataController extends adminbase
 		
 		list($prArr, $pageData) = $this->cmd->cateData($data);
 		
-		require ROOT_PATH . 'application/models/admin/category.php';
+		require ROOT_PATH . '/application/models/admin/category.php';
 		
 		$cgory = new admin_category( $this );
 		
@@ -128,7 +128,7 @@ class GetdataController extends adminbase
 	
 	public function actionAdd()
 	{
-		require ROOT_PATH . 'application/models/admin/category.php';
+		require ROOT_PATH . '/application/models/admin/category.php';
 		
 		$cgory = new admin_category( $this );
 		
@@ -143,7 +143,7 @@ class GetdataController extends adminbase
 		
 		$appdata = get('app', 'G');
 
-		$get003dhContent = @file_get_contents(ROOT_PATH . "data/003dh.com/$appdata-20101015-data.log");
+		$get003dhContent = @file_get_contents(ROOT_PATH . "/data/003dh.com/$appdata-20101015-data.log");
 
 		if( !empty($get003dhContent) )
 		{
@@ -165,13 +165,13 @@ class GetdataController extends adminbase
 							
 							$zzdArr[3] = $parseurl['path'];
 							
-							if(!is_file(ROOT_PATH . 'upload' . $zzdArr[3]))
+							if(!is_file(ROOT_PATH . '/upload' . $zzdArr[3]))
 							{
-								mkDirs( ROOT_PATH . 'upload' . dirname($zzdArr[3]) );
+								mkDirs( ROOT_PATH . '/upload' . dirname($zzdArr[3]) );
 								
-								if(is_dir(ROOT_PATH . 'upload' . dirname($zzdArr[3])))
+								if(is_dir(ROOT_PATH . '/upload' . dirname($zzdArr[3])))
 								{
-									saveimg('http://tu.jueserenti.com', 'http://tu.jueserenti.com' . $zzdArr[3], ROOT_PATH . 'upload' . $zzdArr[3]);
+									saveimg('http://tu.jueserenti.com', 'http://tu.jueserenti.com' . $zzdArr[3], ROOT_PATH . '/upload' . $zzdArr[3]);
 									$stati ++;
 									
 									if(isset($zzdArr[5][0]) && !empty($zzdArr[5][0]))
@@ -182,13 +182,13 @@ class GetdataController extends adminbase
 							
 											$Mval = $Mparseurl['path'];
 							
-											if(!is_file(ROOT_PATH . 'upload' . $Mval))
+											if(!is_file(ROOT_PATH . '/upload' . $Mval))
 											{
-												mkDirs( ROOT_PATH . 'upload' . dirname($Mval) );
+												mkDirs( ROOT_PATH . '/upload' . dirname($Mval) );
 												
-												if(is_dir(ROOT_PATH . 'upload' . dirname($Mval)))
+												if(is_dir(ROOT_PATH . '/upload' . dirname($Mval)))
 												{
-													saveimg('http://tu.jueserenti.com', 'http://tu.jueserenti.com' . $Mval, ROOT_PATH . 'upload' . $Mval);
+													saveimg('http://tu.jueserenti.com', 'http://tu.jueserenti.com' . $Mval, ROOT_PATH . '/upload' . $Mval);
 													$stati ++;
 												}
 											}
@@ -199,25 +199,25 @@ class GetdataController extends adminbase
 						}
 						else
 						{
-							if(!is_file(ROOT_PATH . $zzdArr[3]))
+							if(!is_file(ROOT_PATH .'/'.$zzdArr[3]))
 							{
-								mkDirs( ROOT_PATH . dirname($zzdArr[3]) );
+								mkDirs( ROOT_PATH .'/'. dirname($zzdArr[3]) );
 								
-								if(is_dir(ROOT_PATH . dirname($zzdArr[3])))
+								if(is_dir(ROOT_PATH .'/'. dirname($zzdArr[3])))
 								{
-									saveimg('http://www.003dh.com', "http://www.003dh.com$zzdArr[3]", ROOT_PATH . $zzdArr[3]);
+									saveimg('http://www.003dh.com', "http://www.003dh.com$zzdArr[3]", ROOT_PATH .'/'. $zzdArr[3]);
 									$stati ++;
 									
 									if(isset($zzdArr[5][0]) && !empty($zzdArr[5][0]))
 									{
 										foreach($zzdArr[5] as $Mval)
 										{
-											if(!is_file(ROOT_PATH . $Mval))
+											if(!is_file(ROOT_PATH .'/'. $Mval))
 											{
-												mkDirs( ROOT_PATH . dirname($Mval) );
-												if(is_dir(ROOT_PATH . dirname($Mval)))
+												mkDirs( ROOT_PATH .'/'. dirname($Mval) );
+												if(is_dir(ROOT_PATH .'/'. dirname($Mval)))
 												{
-													saveimg('http://www.003dh.com', "http://www.003dh.com$Mval", ROOT_PATH . $Mval);
+													saveimg('http://www.003dh.com', "http://www.003dh.com$Mval", ROOT_PATH .'/'. $Mval);
 													$stati ++;
 												}
 											}
@@ -274,7 +274,7 @@ class GetdataController extends adminbase
 		
 		$mtnrArr[0] = '张筱�?';	
 
-		$fp = @fopen(ROOT_PATH . "data/mtzxy.com/". date('Ymd') ."/".$appurl."_". date("Ymd") ."-data.log", "w");
+		$fp = @fopen(ROOT_PATH . "/data/mtzxy.com/". date('Ymd') ."/".$appurl."_". date("Ymd") ."-data.log", "w");
 		
 		@flock($fp, LOCK_EX);
 		
@@ -368,7 +368,7 @@ class GetdataController extends adminbase
 				
 				$newData = array('mt' => $mtnrArr[0], 'webpath' => $mtnrArr[1][$i], 'title' => $mtnrArr[2][$i], 'smpic' => $mtnrArr[3][$i], 'moreArr' => $imgArr1 );
 				
-				mkDirs(ROOT_PATH . "data/mtzxy.com/". date('Ymd') ."/");
+				mkDirs(ROOT_PATH . "/data/mtzxy.com/". date('Ymd') ."/");
 				
 				@fwrite($fp, json_encode($newData) . "\n");
 				
@@ -431,9 +431,9 @@ class GetdataController extends adminbase
 							}
 						}
 						
-						mkDirs(ROOT_PATH . "data/003dh.com/". date('Ymd') ."/");
+						mkDirs(ROOT_PATH . "/data/003dh.com/". date('Ymd') ."/");
 						
-						if( $fp = @fopen(ROOT_PATH . "data/003dh.com/". date('Ymd') ."/$appdata-". date("Ymd") ."-data.log", "w") )
+						if( $fp = @fopen(ROOT_PATH . "/data/003dh.com/". date('Ymd') ."/$appdata-". date("Ymd") ."-data.log", "w") )
 						{
 							if( @flock($fp, LOCK_EX) )
 							{
@@ -454,7 +454,7 @@ class GetdataController extends adminbase
 				
 			}
 			
-			$get003dhContent = @file_get_contents(ROOT_PATH . "data/003dh.com/$appdata-". date("Ymd") ."-data.log");
+			$get003dhContent = @file_get_contents(ROOT_PATH . "/data/003dh.com/$appdata-". date("Ymd") ."-data.log");
 
 			if( !empty($get003dhContent) )
 			{

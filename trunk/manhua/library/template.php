@@ -19,9 +19,9 @@ class template
 	function template()
 	{
 		ob_start();
-		$this->defaulttpldir = ROOT_PATH.'application/views'.VIEWSPATH;
-		$this->tpldir = ROOT_PATH.'application/views'.VIEWSPATH;
-		$this->objdir = ROOT_PATH.'static/compile';
+		$this->defaulttpldir = ROOT_PATH.'/application/views'.VIEWSPATH;
+		$this->tpldir = ROOT_PATH.'/application/views'.VIEWSPATH;
+		$this->objdir = ROOT_PATH.'/static/compile';
 	}
 
 	function assign($k, $v)

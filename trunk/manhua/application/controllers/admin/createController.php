@@ -11,7 +11,7 @@ class CreateController extends adminbase
 
 	function actionIndex()
 	{
-		require ROOT_PATH . 'application/models/admin/category.php';
+		require ROOT_PATH . '/application/models/admin/category.php';
 
 		$cgory = new admin_category( $this );
 
@@ -61,7 +61,7 @@ class CreateController extends adminbase
 
 				replacecode( &$repHTML );
 
-				file_put_contents(ROOT_PATH . 'index.html', $repHTML);
+				file_put_contents(ROOT_PATH . '/index.html', $repHTML);
 
 				echo '首页生成成功...';
 			}
@@ -81,7 +81,7 @@ class CreateController extends adminbase
 
 					if( !empty($webnr) ) $repHTML = str_replace(array("\t"), '', $webnr);
 
-					mkDirs(ROOT_PATH . $appName . "/");
+					mkDirs(ROOT_PATH .'/'. $appName . "/");
 
 					preg_match('/<!--STARTPAGELIST-->(.*)<!--ENDPAGELIST-->/isU', $webnr, $listArr );
 
@@ -94,13 +94,13 @@ class CreateController extends adminbase
 
 					replacecode( &$repHTML );
 
-					$i == 1 ? file_put_contents(ROOT_PATH . "$appName/index.html", $repHTML) : file_put_contents(ROOT_PATH . "$appName/{$appgetID}_$i.html", $repHTML);
+					$i == 1 ? file_put_contents(ROOT_PATH . "/{$appName}/index.html", $repHTML) : file_put_contents(ROOT_PATH . "/{$appName}/{$appgetID}_$i.html", $repHTML);
 
 					foreach ($linkArr[1] as $val)
 					{
 						$infopath = str_ireplace(array('apprt.php?a=info&xxid=', '&mt='), '|', $val);
 						$infopath = explode('|', $infopath);
-						mkDirs(ROOT_PATH . "$appName/". $infopath[1] ."");
+						mkDirs(ROOT_PATH . "/{$appName}/". $infopath[1] ."");
 
 						$getmtNr = file_get_contents( $WebServerAddress . $val );
 						$getmtNr = preg_replace('/<a href="apprt.php\?a=info&xxid=(.*)&mt=(.*)&page=(.*)"([^>]*)>(.*)<\/a>/iU', '<a href="../info/\\1/\\2/\\3.html" \\4>\\5</a>', $getmtNr);
@@ -111,7 +111,7 @@ class CreateController extends adminbase
 
 						for($j=1; $j <= intval($MwebcArr[1]); $j++)
 						{
-							mkDirs(ROOT_PATH . "$appName/". $infopath[1] ."/".$infopath[2]."");
+							mkDirs(ROOT_PATH . "/{$appName}/". $infopath[1] ."/".$infopath[2]."");
 
 							$MgetmtNr = file_get_contents( $WebServerAddress . "apprt.php?a=info&xxid=".$infopath[1]."&mt=".$infopath[2]."&page=$j" );
 
@@ -123,7 +123,7 @@ class CreateController extends adminbase
 
 							replacecode( &$MgetmtNr );
 
-							file_put_contents(ROOT_PATH . "$appName/". $infopath[1] ."/". $infopath[2] ."/$j.html", $MgetmtNr);
+							file_put_contents(ROOT_PATH . "/{$appName}/". $infopath[1] ."/". $infopath[2] ."/$j.html", $MgetmtNr);
 						}
 
 					}

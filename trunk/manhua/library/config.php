@@ -29,7 +29,6 @@ define('KEY', '2Ofw5ydjeia693cY591H4O1O5pcmsklkewom78sdfsdfsdklamkl' );
 define('GODHOUSE_SITENAME', '木耳屋免费小说网');
 define('GODHOUSE_HEADER_KEYWORK', '免费小说网');									// 网站关键字
 define('GODHOUSE_HEADER_DESCRIPTION', '免费小说网');								// 网站关键字
-define('GODHOUSE_ROOT', str_replace('\\', '/', getcwd()).'/');
 define('GODHOUSE_PPP', 10); 											// 一页显示多少记录
 define('GODHOUSE_PPP3', 30); 											// 一页显示多少记录
 define('GODHOUSE_WAIT_TIME', 30); 										// 等待时间

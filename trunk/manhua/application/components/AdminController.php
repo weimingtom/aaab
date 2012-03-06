@@ -1,6 +1,6 @@
 <?php
 !defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
-class adminbase extends base 
+class AdminController extends base 
 {
 	protected $sid;
 	protected $group;

@@ -80,19 +80,19 @@ class Base
 			if($db) {
 				 $this->db = $db;
 			} else {
-				require_once ROOT_PATH .'library/db.php';
+				require_once ROOT_PATH .'/library/db.php';
 				$this->db = new db( );
 				$this->db->connect(DBHOST, DBUSER, DBPW, DBNAME, DBCHAR );
 			}
 		} else if($var == 'view') {
 			
-			require ROOT_PATH.'library/template.php';
+			require ROOT_PATH.'/library/template.php';
 			$this->view = new template();
 			$this->view->assign('inajax', $this->inajax);
 			
 		} else if(strtolower(substr($var, -5)) == 'model') {
 			$model = substr($var, 0, -5);
-			require ROOT_PATH."application/models/$model.php";
+			require ROOT_PATH."/application/models/$model.php";
 			$this->$var = new $model($this);
 		}
 		return $this->$var;
@@ -102,7 +102,7 @@ class Base
 	
 	function load($model)
 	{
-		require ROOT_PATH . "application/models/". str_replace('_', '/', $model) .".php";
+		require ROOT_PATH . "/application/models/". str_replace('_', '/', $model) .".php";
 		$this->cmd = new $model($this);
 	}
 
