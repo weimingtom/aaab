@@ -105,18 +105,6 @@ function daddslashes($string, $force = 0, $strip = FALSE)
 	return $string;
 }
 
-function get($k, $var = 'R')
-{
-	switch ($var)
-	{
-		case 'G' : $var = &$_GET; break;
-		case 'P' : $var = &$_POST; break;
-		case 'C' : $var = &$_COOKIE; break;
-		case 'R' : $var = &$_REQUEST; break;
-	}
-	return isset ( $var [$k] ) ? $var [$k] : NULL;
-}
-
 function cutstr($string, $length, $dot = ' ...')
 {
 	if (strlen ( $string ) <= $length)

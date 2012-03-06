@@ -25,7 +25,8 @@ class LoginController extends AdminController
 			{
 				setcookie('ncms_sid', sid_encode($data['username'], TIMEOUT), time() + 43200);
 				setcookie('ncms_group', sid_encode($uRow['groupid'], TIMEOUT), time() + 43200);
-				header("Location: admin.php?c=user");
+				
+				$this->redirect('admin/user/index');
 			}
 			else
 			{

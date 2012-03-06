@@ -65,7 +65,7 @@ class template
 		$template = preg_replace("/\{eval (.*?)\}/ies", "\$this->stripvtag('<? \\1?>')", $template);
 		$template = preg_replace("/\{for (.*?)\}/ies", "\$this->stripvtag('<? for(\\1) {?>')", $template);
 		$template = preg_replace("/\{elseif\s+(.+?)\}/ies", "\$this->stripvtag('<? } elseif(\\1) { ?>')", $template);
-
+		
 		for($i=0; $i<2; $i++) {
 			$template = preg_replace("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/ies", "\$this->loopsection('\\1', '\\2', '\\3', '\\4')", $template);
 			$template = preg_replace("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/ies", "\$this->loopsection('\\1', '', '\\2', '\\3')", $template);
@@ -74,13 +74,17 @@ class template
 		$template = preg_replace("/\{if\s+(.+?)\}/ies", "\$this->stripvtag('<? if(\\1) { ?>')", $template);
 		$template = preg_replace("/\{template\s+(\w+?)\}/is", "<? include \$this->gettpl('\\1');?>", $template);
 		$template = preg_replace("/\{template\s+(.+?)\}/ise", "\$this->stripvtag('<? include \$this->gettpl(\\1); ?>')", $template);
+		// huyao ++
+		$template = preg_replace("/\{createUrl=(\w+?)\}/is", "<? \$this->createUrl('\\1');?>", $template);
+		$template = preg_replace("/\{createUrl=(.+?)\}/ise", "\$this->stripvtag('<? echo \$this->createUrl(\'\\1\');?>')", $template);
+		
 		$template = preg_replace("/\{else\}/is", "<? } else { ?>", $template);
 		$template = preg_replace("/\{\/if\}/is", "<? } ?>", $template);
 		$template = preg_replace("/\{\/for\}/is", "<? } ?>", $template);
 		$template = preg_replace("/$this->const_regexp/", "<?=\\1?>", $template);
 		$template = "<? if(!defined('ROOT_PATH')) exit('Access Denied');?>\r\n$template";
 		$template = preg_replace("/(\\\$[a-zA-Z_]\w+\[)([a-zA-Z_]\w+)\]/i", "\\1'\\2']", $template);
-
+		
 		$fp = fopen($this->objfile, 'w');
 		fwrite($fp, $template);
 		fclose($fp);
@@ -109,6 +113,21 @@ class template
 		return $k ? "<? foreach((array)$arr as $k => $v) {?>$statement<?}?>" : "<? foreach((array)$arr as $v) {?>$statement<? } ?>";
 	}
 	
+	// 转换URL
+	private function createUrl($str) {
+		$url = GODHOUSE_DOMAIN_WWW;
+		if(GODHOUSE_REWRITEENGINE) {
+			if($str{0} == '/') {
+				$url = $str.'.htm';
+			} else {
+				$url = '/'.$str.'.htm';
+			}
+		} else {
+			$url = 'admin.php?r='.$str;
+		}
+		return $url;
+	}
+	
 }
 
 /*
@@ -128,5 +147,6 @@ $this->view->display("user_ls");
 
 <!--{loop $a $b}--><!--{/loop}-->
 
+{createUrl=admin/login/index}
 */
 ?>

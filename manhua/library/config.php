@@ -7,8 +7,8 @@ if($_SERVER['SERVER_ADDR'] == '127.0.0.1')
 	define('DBPW', 'root');
 	define('DBNAME', 'btbbt_manhua');
 	
-	define('GODHOUSE_DOMAIN_WWW', 'http://manhua.godhouse.com/');
-	define('GODHOUSE_DOMAIN_IMAGE', 'http://manhua.godhouse.com/');
+	define('GODHOUSE_DOMAIN_WWW', 'http://manhua.godhouse.com');
+	define('GODHOUSE_DOMAIN_IMAGE', 'http://manhua.godhouse.com');
 }
 else
 {
@@ -33,5 +33,5 @@ define('GODHOUSE_PPP', 10); 											// 一页显示多少记录
 define('GODHOUSE_PPP3', 30); 											// 一页显示多少记录
 define('GODHOUSE_WAIT_TIME', 30); 										// 等待时间
 
-	
+define('GODHOUSE_REWRITEENGINE', 0);										// 1=开，0=关
 ?>

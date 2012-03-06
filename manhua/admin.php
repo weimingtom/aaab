@@ -18,6 +18,8 @@ $_SERVER = daddslashes($_SERVER);
 $_FILES = daddslashes($_FILES);
 $_REQUEST = daddslashes($_REQUEST, 1, TRUE);
 
+$modules = array('admin'=>1);
+
 $m = $c = $a = '';
 
 $rule = isset($_GET['r']) ? $_GET['r'] : '';
@@ -32,16 +34,26 @@ if ($rule) {
 		$c = $rs[1];
 		$a = $rs[2];
 	} else {
-		$c = $rs[0];
-		$a = $rs[1];
+		if(isset($modules[$rs[0]])) {
+			$m = $rs[0];
+			$c = $rs[1];
+			$a = 'index';
+		} else {
+			$c = $rs[0];
+			$a = $rs[1];
+		}
 	}
+	
+	$_GET['m'] = $m;
+	$_GET['c'] = $c;
+	$_GET['a'] = $a;
 }
 
 require ROOT_PATH.'/library/base.php';
 
 $controller = '';
 if ($m) {
-	require ROOT_PATH.'/application/components/'.$m.'/'.ucfirst($m).'Controller.php';
+	require ROOT_PATH.'/application/components/'.ucfirst($m).'Controller.php';
 	$controller = 'application/controllers/'.$m.'/'.ucfirst($c).'Controller.php';
 } else {
 	$controller = 'application/controllers/'.ucfirst($c).'Controller.php';
