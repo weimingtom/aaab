@@ -4,7 +4,7 @@ class Getdata
 	function __construct(&$base)
 	{
 		$this->base = $base;
-		$this->db = $base->mydb();
+		$this->db = $base->db;
 	}
 	
 	function delmtData($mtid)

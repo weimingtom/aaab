@@ -3,7 +3,7 @@
  * @author huyao
  * @exception 采集工具
  */
-class spiderController extends adminbase
+class spiderController extends AdminController
 {
 	function __construct()
 	{
@@ -13,7 +13,7 @@ class spiderController extends adminbase
 	}
 
 	function actionIndex() {
-		$spiderList = $this->cmd->getList();
+		$spiderList = $this->spiderModel->getList();
 		$this->view->assign('spiderList', $spiderList);
 		$this->view->display('admin_spider_index');
 	}
@@ -41,7 +41,7 @@ class spiderController extends adminbase
 			$keys = getgpc('P', 'P');
 			$categoryId = getgpc('categoryId', 'P');
 			$category = $this->categoryModel->get_category($categoryId);
-			$spider = $this->cmd->getSpiderById($spiderId);
+			$spider = $this->spiderModel->getSpiderById($spiderId);
 			$novelId = $this->novelModel->insert_novel(array(
 				'novelName'=>$spider['spiderName'], 
 				'totals'=>$spider['recordTotal'], 
@@ -78,7 +78,7 @@ class spiderController extends adminbase
 	
 	public function actionDelete() {
 		$spiderId = getgpc('spiderId');
-		$this->cmd->deleteSpider($spiderId);
+		$this->spiderModel->deleteSpider($spiderId);
 		$tmpFile = GODHOUSE_ROOT.'data/tmp/'.$spiderId;
 		$files = array('content.log', 'array.php');
 		foreach ($files as $file) {
@@ -129,9 +129,9 @@ class spiderController extends adminbase
 				'createdTime'=>date('Y-m-d H:i:s'),
 			);
 			if(empty($spiderId) || $mod=='copy') {
-				$spiderId = $this->cmd->insertSpider($config);
+				$spiderId = $this->spiderModel->insertSpider($config);
 			} else {
-				$this->cmd->updateSpider($spiderId, $config);
+				$this->spiderModel->updateSpider($spiderId, $config);
 			}
 			
 			require GODHOUSE_ROOT.'/library/thief.php';
@@ -160,7 +160,7 @@ class spiderController extends adminbase
 		}
 		$this->view->assign('spiderId', $spiderId);
 		if($spiderId) {
-			$spider = $this->cmd->getSpiderById($spiderId);
+			$spider = $this->spiderModel->getSpiderById($spiderId);
 			$this->view->assign('spider', $spider);
 			$this->view->assign('mod', $mod);
 			$this->view->display('admin_spider_edit');
@@ -187,13 +187,13 @@ class spiderController extends adminbase
 			$spiderId = getgpc('spiderId', 'P');
 			$mod = getgpc('mod', 'P');
 			
-			$config = $this->cmd->getSpiderById($spiderId);
+			$config = $this->spiderModel->getSpiderById($spiderId);
 			$arrayFile = GODHOUSE_ROOT."data/tmp/".$spiderId.'/array.php';		// 得到临时文件
 			$data = require $arrayFile;
 			require GODHOUSE_ROOT.'library/thief.php';
 			
 			$tmpLogFile = GODHOUSE_ROOT."data/tmp/".$spiderId.'/content.log';		// 写入采集到的内容
-			if($mod == 'normal') $this->cmd->updateRecord($spiderId, TRUE);
+			if($mod == 'normal') $this->spiderModel->updateRecord($spiderId, TRUE);
 			$fp = fopen($tmpLogFile, 'w');
 			$content = '';
 			
@@ -216,7 +216,7 @@ class spiderController extends adminbase
 					flush();
 					
 					if($mod == 'normal') $content .= json_encode($arr)."\r\n";
-					if($mod == 'normal') $this->cmd->updateRecord($spiderId);
+					if($mod == 'normal') $this->spiderModel->updateRecord($spiderId);
 					/* 以数组形式存放 
 					$writeText = "<?php\r\n";
 					$writeText .= 'return '.var_export($arr, true);

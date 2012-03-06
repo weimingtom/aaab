@@ -2,7 +2,7 @@
 
 ! defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
 
-class CreateController extends adminbase
+class CreateController extends AdminController
 {
 	public function __construct()
 	{
