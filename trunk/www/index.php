@@ -172,38 +172,45 @@ include 'webadmin/include/config.inc.php';
 				<?php }?>
 			</div>
 		</div>
-                <!--标签1结束-->
-                
-                <!--标签2开始-->
-		<div class="day" id="j-tab-b1">
-			<div class="title">
-				<h4 class="H402">漫画档期表：</h4>
-			</div>
-			<ul>
-				<li style="background:url(images/t17.gif)">周日</li>
-				<li style="background:url(images/t17.gif)" class="active">周一</li>
-				<li style="background:url(images/t17.gif)" >周二</li>
-				<li style="background:url(images/t17.gif)" >周三</li>
-				<li style="background:url(images/t17.gif)" >周四</li>
-				<li style="background:url(images/t17.gif)" >周五</li>
-				<li style="background:url(images/t17.gif)" >周六</li>
-			</ul>
-			<?php 
+        <!--标签1结束-->
+		
+        <!--标签2开始-->
+		<div class="nTab2">
+             <h1>漫画档期表：</h1>
+                  <div class="TabTitle">
+                    <ul id="myTab2">
+                      <li class="active" onmouseover="nTabs(this,0);">周日</li>
+                      <li class="normal" onmouseover="nTabs(this,1);">周一</li>
+                      <li class="normal" onmouseover="nTabs(this,2);">周二</li>
+                      <li class="normal" onmouseover="nTabs(this,3);">周三</li>
+                      <li class="normal" onmouseover="nTabs(this,4);">周四</li>
+                      <li class="normal" onmouseover="nTabs(this,5);">周五</li>
+                      <li class="normal" onmouseover="nTabs(this,6);">周六</li>
+                    </ul>
+                  </div>
+                  <div class="TabContent">
+                  <?php 
 				$categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='4' order by `sort` ASC");
 				foreach($categorys as $k=>$category) {
-					$news = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='{$category['id']}' ORDER BY id DESC LIMIT 10");	
-					if ($news) {?>
-					<ol>
+					?>
+                    <div id="myTab2_Content<?php echo $k?>">
+                      <div class="text">
+                        <ul>
 						<?php 
-						
+						$news = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='{$category['id']}' ORDER BY id DESC LIMIT 10");	
+						if ($news) {
 						foreach ($news as $v) {?>
-						<li><a href="<?php echo $v['url']?>" title="<?php echo $v['title']?>" target="_blank"><?php echo $v['title']?></a></li>
-						<?php }?>
-					</ol>
-					<?php }
-				}?>
-		</div>
-                <!--标签2结束-->
+                        	<li><a href="<?php echo $v['url']?>" title="<?php echo $v['title']?>" target="_blank"><?php echo $v['title']?></a></li>
+						<?php }
+						}?>
+                        </ul>
+                      </div>
+                    </div>
+					<?php }?>              
+                </div>
+         </div>
+        <!--标签2结束-->
+		
  		<script src="js/tab.js" type="text/javascript"></script>
                 
                 <div class="adbox"><?php echo get_ad_rows(12)?></div>
