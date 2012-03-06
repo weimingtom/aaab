@@ -9,10 +9,10 @@ class AdminController extends base
 	{
 		parent::__construct();
 		 
-		$this->sid = get('ncms_sid', 'C');
-		$this->group = get('ncms_group', 'C');
+		$this->sid = getgpc('ncms_sid', 'C');
+		$this->group = getgpc('ncms_group', 'C');
 		
-		$c = get('c');
+		$c = getgpc('c');
 
 		if($c != 'login' && $c != 'logout')
 		{
@@ -30,8 +30,8 @@ class AdminController extends base
 		
 		if(empty($username))
 		{
-			header('location: admin.php?c=login');
-			exit;
+			//header('location: admin.php?c=login');
+			exit('无权限访问。');
 		}
 		else
 		{

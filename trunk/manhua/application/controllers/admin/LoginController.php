@@ -1,5 +1,5 @@
 <?php
-class LoginController extends adminbase
+class LoginController extends AdminController
 {
 	function __construct()
 	{
@@ -10,12 +10,12 @@ class LoginController extends adminbase
 	{
 		if(isset($_POST['username'], $_POST['password']) && !empty($_POST['username']) && !empty($_POST['password']))
 		{
-			$data['username'] = get('username', 'P');
-			$data['password'] = get('password', 'P');
+			$data['username'] = getgpc('username', 'P');
+			$data['password'] = getgpc('password', 'P');
 				
 			daddslashes(&$data);
 				
-			$uRow = $this->cmd->getUserPass($data);
+			$uRow = $this->userModel->getUserPass($data);
 				
 			if(!$uRow)
 			{
