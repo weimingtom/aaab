@@ -37,3 +37,29 @@ CREATE TABLE IF NOT EXISTS `pp_vod` (
   PRIMARY KEY (`vod_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=393 ;
 
+
+
+
+单播放器用法
+  字段           值
+vod_play      tudou
+vod_url     64296798
+            64292094
+            64285227
+            64280736
+每一行为一集
+
+
+
+多播放器用法
+  字段           值
+vod_play      yuku$$$qvod
+vod_url       XMTE1MDUyNDky
+              XMTE1MDUyNDAw
+              XMTE1MDUyMzIw$$$11111
+              22222
+              3333
+              4444
+多播放器是用 三个$$$区分的
+每一行为一集
+
