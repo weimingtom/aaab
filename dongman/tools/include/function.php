@@ -1,7 +1,13 @@
 <?php
 function getContentUrl($url, $post=array()) {
-	$ch = curl_init($url); 
+	$ch = curl_init($url);
+	
 	//curl_setopt($ch,CURLOPT_ENCODING ,'gb2312'); 
+	// 设置来路 
+	//curl_setopt($curl, CURLOPT_REFERER, 'http://google.com/'); 
+	// 不直接输入内容 
+	//curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); 
+	
 	curl_setopt($ch, CURLOPT_TIMEOUT, 10); 
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true) ; // 获取数据返回 
 	if($post) {
