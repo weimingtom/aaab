@@ -1,58 +1,58 @@
 
 
 --
--- ±íµÄ½á¹¹ `pp_vod`
+-- è¡¨çš„ç»“æ„ `pp_vod`
 --
 
 CREATE TABLE IF NOT EXISTS `pp_vod` (
   `vod_id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
-  `vod_cid` smallint(6) NOT NULL COMMENT '·ÖÀàID',
-  `vod_name` varchar(255) NOT NULL COMMENT 'ÊÓÆµ±êÌâ',
-  `vod_title` varchar(255) NOT NULL COMMENT '¸±±êÌâ',
-  `vod_keywords` varchar(255) NOT NULL COMMENT '¹Ø¼ü×Ö',
-  `vod_color` char(8) NOT NULL COMMENT 'ÑÕÉ«',
-  `vod_actor` varchar(255) NOT NULL COMMENT 'ÑİÔ±',
-  `vod_director` varchar(255) NOT NULL COMMENT 'µ¼Ñİ',
-  `vod_content` text NOT NULL COMMENT 'ÊÓÆµ¼ò½é',
-  `vod_pic` varchar(255) NOT NULL COMMENT 'ËõÂÔÍ¼',
-  `vod_area` char(10) NOT NULL COMMENT 'µØÇø',
-  `vod_language` char(10) NOT NULL COMMENT 'ÓïÑÔ',
-  `vod_year` smallint(4) NOT NULL COMMENT 'Äê´ú',
+  `vod_cid` smallint(6) NOT NULL COMMENT 'åˆ†ç±»ID',
+  `vod_name` varchar(255) NOT NULL COMMENT 'è§†é¢‘æ ‡é¢˜',
+  `vod_title` varchar(255) NOT NULL COMMENT 'å‰¯æ ‡é¢˜',
+  `vod_keywords` varchar(255) NOT NULL COMMENT 'å…³é”®å­—',
+  `vod_color` char(8) NOT NULL COMMENT 'é¢œè‰²',
+  `vod_actor` varchar(255) NOT NULL COMMENT 'æ¼”å‘˜',
+  `vod_director` varchar(255) NOT NULL COMMENT 'å¯¼æ¼”',
+  `vod_content` text NOT NULL COMMENT 'è§†é¢‘ç®€ä»‹',
+  `vod_pic` varchar(255) NOT NULL COMMENT 'ç¼©ç•¥å›¾',
+  `vod_area` char(10) NOT NULL COMMENT 'åœ°åŒº',
+  `vod_language` char(10) NOT NULL COMMENT 'è¯­è¨€',
+  `vod_year` smallint(4) NOT NULL COMMENT 'å¹´ä»£',
   `vod_continu` varchar(20) NOT NULL DEFAULT '0',
-  `vod_addtime` int(11) NOT NULL COMMENT 'Ê±¼ä',
-  `vod_hits` mediumint(8) NOT NULL DEFAULT '0' COMMENT 'ÈËÆø',
-  `vod_stars` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'ÎåĞÇÆÀ¼¶',
-  `vod_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'ÏÔÊ¾£¬Òş²Ø',
-  `vod_up` mediumint(8) NOT NULL DEFAULT '0' COMMENT '¶¥',
-  `vod_down` mediumint(8) NOT NULL DEFAULT '0' COMMENT '²È',
-  `vod_play` varchar(255) NOT NULL COMMENT '²¥·ÅÆ÷Ñ¡Ôñ',
-  `vod_server` varchar(255) NOT NULL COMMENT '·şÎñÆ÷×é',
-  `vod_url` longtext NOT NULL COMMENT 'Êı¾İµØÖ·',
-  `vod_inputer` varchar(30) NOT NULL COMMENT 'Â¼Èë',
-  `vod_reurl` varchar(255) NOT NULL COMMENT 'À´Ô´',
-  `vod_letter` char(2) NOT NULL COMMENT 'Ê××ÖÄ¸',
-  `vod_skin` varchar(30) NOT NULL COMMENT 'Ä£°å',
-  `vod_gold` decimal(3,1) NOT NULL COMMENT 'ÆÀ·Ö',
-  `vod_golder` smallint(6) NOT NULL COMMENT 'ÈËÆø',
+  `vod_addtime` int(11) NOT NULL COMMENT 'æ—¶é—´',
+  `vod_hits` mediumint(8) NOT NULL DEFAULT '0' COMMENT 'äººæ°”',
+  `vod_stars` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'äº”æ˜Ÿè¯„çº§',
+  `vod_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT 'æ˜¾ç¤ºï¼Œéšè—',
+  `vod_up` mediumint(8) NOT NULL DEFAULT '0' COMMENT 'é¡¶',
+  `vod_down` mediumint(8) NOT NULL DEFAULT '0' COMMENT 'è¸©',
+  `vod_play` varchar(255) NOT NULL COMMENT 'æ’­æ”¾å™¨é€‰æ‹©',
+  `vod_server` varchar(255) NOT NULL COMMENT 'æœåŠ¡å™¨ç»„',
+  `vod_url` longtext NOT NULL COMMENT 'æ•°æ®åœ°å€',
+  `vod_inputer` varchar(30) NOT NULL COMMENT 'å½•å…¥',
+  `vod_reurl` varchar(255) NOT NULL COMMENT 'æ¥æº',
+  `vod_letter` char(2) NOT NULL COMMENT 'é¦–å­—æ¯',
+  `vod_skin` varchar(30) NOT NULL COMMENT 'æ¨¡æ¿',
+  `vod_gold` decimal(3,1) NOT NULL COMMENT 'è¯„åˆ†',
+  `vod_golder` smallint(6) NOT NULL COMMENT 'äººæ°”',
   PRIMARY KEY (`vod_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=393 ;
 
 
 
 
-µ¥²¥·ÅÆ÷ÓÃ·¨
-  ×Ö¶Î           Öµ
+å•æ’­æ”¾å™¨ç”¨æ³•
+  å­—æ®µ           å€¼
 vod_play      tudou
 vod_url     64296798
             64292094
             64285227
             64280736
-Ã¿Ò»ĞĞÎªÒ»¼¯
+æ¯ä¸€è¡Œä¸ºä¸€é›†
 
 
 
-¶à²¥·ÅÆ÷ÓÃ·¨
-  ×Ö¶Î           Öµ
+å¤šæ’­æ”¾å™¨ç”¨æ³•
+  å­—æ®µ           å€¼
 vod_play      yuku$$$qvod
 vod_url       XMTE1MDUyNDky
               XMTE1MDUyNDAw
@@ -60,6 +60,6 @@ vod_url       XMTE1MDUyNDky
               22222
               3333
               4444
-¶à²¥·ÅÆ÷ÊÇÓÃ Èı¸ö$$$Çø·ÖµÄ
-Ã¿Ò»ĞĞÎªÒ»¼¯
+å¤šæ’­æ”¾å™¨æ˜¯ç”¨ ä¸‰ä¸ª$$$åŒºåˆ†çš„
+æ¯ä¸€è¡Œä¸ºä¸€é›†
 
