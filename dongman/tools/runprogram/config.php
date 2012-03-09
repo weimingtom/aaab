@@ -1,7 +1,7 @@
 <?php
-define('dbhost', '');
-define('dbname', '');
-define('dbuser', '');
-define('dbpwd', '');
-define('dbcharset', '');
+define('DBHOST',	'localhost');
+define('DBNAME',	'btbbt_dongman');
+define('DBUSER',	'root');
+define('DBPWD',		'root');
+define('DBCHARSET',	'utf8');
 ?>
