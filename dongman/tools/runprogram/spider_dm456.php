@@ -5,6 +5,7 @@ define('ROOT_PATH', dirname(__FILE__));
 include ROOT_PATH.'/config.php';
 include ROOT_PATH.'/../include/db.php';
 include ROOT_PATH.'/../include/function.php';
+include ROOT_PATH.'/../include/letter.php';
 
 $db = new db();
 $db->connect(DBHOST, DBUSER, DBPWD, DBNAME, DBCHARSET);
@@ -23,15 +24,45 @@ $s = getContentUrl($spiderDetailUrl);
 // 图片
 $tpl = array();
 preg_match('/<img src="(.*)" class="pic" title/isU', $s, $tpl);
-$pic = isset($tpl[1]) ? $tpl[1] : '';
-echo $pic."\r\n";
+$field['vod_pic'] = isset($tpl[1]) ? $tpl[1] : '';
+save_picture($domain.$field['vod_pic'], PICTURE_SAVE_PATH);
 
 // 标题
 $tpl = array();
 preg_match('/ > <strong>(.*)<\/strong><\/div><\/div><\/div>/isU', $s, $tpl);
-$field['name'] = isset($tpl[1]) ? $tpl[1] : '';
-echo $field['name']."\r\n";
+$field['vod_name'] = isset($tpl[1]) ? $tpl[1] : '';
 
+// 获取首字母
+$field['vod_letter'] = '';
+if ($field['vod_name']) {
+	$py = new PYInitials(); 
+	$letter = $py->getInitials($field['vod_name']); 
+	$field['vod_letter'] = substr($letter, 0, 1);
+}
+
+// 演员
+$tpl = array();
+preg_match('/<p><em>主　　角：<\/em>(.*)<\/p>/isU', $s, $tpl);
+$field['vod_actor'] = isset($tpl[1]) ? $tpl[1] : '';
+
+// 剧情类别
+$tpl = array();
+preg_match('/<p><em>剧情类别：<\/em>(.*)<\/p>/isU', $s, $tpl);
+$field['vod_keywords'] = isset($tpl[1]) ? strip_tags($tpl[1]) : '';
+
+// 年代
+$tpl = array();
+preg_match('/<p class="w260"><em>出品年份：<\/em>(\d{4})<\/p>/isU', $s, $tpl);
+$field['vod_year'] = isset($tpl[1]) ? $tpl[1] : '';
+
+// 语言
+$tpl = array();
+preg_match('/<p class="w260"><em>对白语言：<\/em>(.*)<\/p>/isU', $s, $tpl);
+$field['vod_language'] = isset($tpl[1]) ? $tpl[1] : '';
+
+print_r($field);
+
+exit;
 // 简介
 $urls = array();
 $tpl = array();
@@ -66,5 +97,18 @@ function get_pay_vod_id($url) {
 		return $tpl;
 	}
 	return NULL;
+}
+
+// 保存图片
+function save_picture($sourceUrl, $toPath) {
+	$name = '';
+	if (strrpos($sourceUrl, '/') !== FALSE) {
+		$name = substr($sourceUrl, strrpos($sourceUrl, '/')+1);
+		if ($name) {
+			$s = file_get_contents($sourceUrl);
+			$w = $toPath.'/'.$name;
+			file_put_contents($w, $s);
+		}
+	}
 }
 ?>
