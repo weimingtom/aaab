@@ -4,7 +4,7 @@ return array (
   'db_host' => 'localhost',
   'db_name' => 'ppvod',
   'db_user' => 'root',
-  'db_pwd' => 'xampp',
+  'db_pwd' => '',
   'db_port' => '3306',
   'db_prefix' => 'pp_',
   'db_charset' => 'utf8',

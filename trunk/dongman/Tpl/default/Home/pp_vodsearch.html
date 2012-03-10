@@ -14,10 +14,10 @@
 <div class="list">
     <div class="listri">
     	<dl class="tit clear"><dt>影片排行榜</dt></dl>
-    	<ul class="ad">{:getadsurl('left250250')}</ul>
+    	
    		<ul><php>$hits=$pplist->ppvod('num:30;order:vod_gold desc,vod_hits desc');</php>
         <volist name="hits" id="ppvod">
-        <li><span>{$ppvod.vod_hits}</span><a href="{$ppvod.list_url}" target="_blank">{$ppvod.list_name}</a> <a href="{$ppvod.vod_url}" target="_blank">{$ppvod.vod_name|msubstr=0,15}</a></li>
+        <li><span>{$ppvod.vod_hits}</span><a href="{$ppvod.list_url}" target="_blank">{$ppvod.list_name}</a> <a href="{$ppvod.vod_url}" target="_blank">{$ppvod.vod_name|msubstr=0,10}</a></li>
         </volist></ul>
     </div>  
     <div class="listlf">
@@ -30,7 +30,7 @@
             <p>地区：{$ppvod.vod_area|default='未录入'}</p>
             <p>时间：{$ppvod.vod_addtime|date='Y-m-d H:i:s',###}</p>
             <p>人气：{$ppvod.vod_hits}℃</p>
-            <p>状态：<neq name="ppvod.vod_continu" value="0"><font color="red">连载至{$ppvod.vod_continu}集</font><else/>完结</neq></p></li>
+            <p>状态：<font color="red">{$ppvod.vod_continu}</font></p></li>
             </volist><else/>没有搜索到相关内容！</neq>
         </ul>
         <div class="page clear">{$page}</div>
