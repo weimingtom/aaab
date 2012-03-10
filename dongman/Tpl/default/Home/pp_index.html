@@ -3,121 +3,253 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>{$title}</title>
+<meta name="robots" content="all" />
 <meta name="keywords" content="{$keywords}">
 <meta name="description" content="{$description}">
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta name="Copyright" content="版权信息" />
+<meta name="revisit-after" content="1 days" />
 {$css}
 </head>
+
 <body>
-<php>$vod_stars=$pplist->ppvod('num:10;order:vod_stars desc,vod_hits desc');
-$vod_news=$pplist->ppvod('num:15;order:vod_addtime desc');
-$vod_movie_pic=$pplist->ppvod('pid:1;num:2');
-$vod_movie_con=$pplist->ppvod('pid:1;num:1');
-$vod_movie_list=$pplist->ppvod('pid:1;num:2,30');
-$vod_tv_pic=$pplist->ppvod('pid:2;num:2');
-$vod_tv_con=$pplist->ppvod('pid:2;num:1');
-$vod_tv_list=$pplist->ppvod('pid:2;num:2,30');
-$vod_kt_pic=$pplist->ppvod('pid:3;num:2');
-$vod_kt_con=$pplist->ppvod('pid:3;num:1');
-$vod_kt_list=$pplist->ppvod('pid:3;num:2,30');
-$vod_zy_pic=$pplist->ppvod('pid:4;num:2');
-$vod_zy_con=$pplist->ppvod('pid:4;num:1');
-$vod_zy_list=$pplist->ppvod('pid:4;num:2,30');
-$vod_hot_80=$pplist->ppvod('num:80;order:vod_golder,vod_hits desc');</php>
-<include file="pp_header" />
-<div class="main">
-<div class="bd clear">{:getletter('vod')}</div>
-<div class="bd960 clear">{:getadsurl('top960')}</div>
-<div class="hbd1">
-    <div class="hbd1lf">
-        <dl class="tit clear"><dt><a href="{$root}">本周热播，敬请欣赏</a></dt><dd class="f14">本站共有影片{:getcount(0)}部 今日更新{:getcount(999)}部</dd></dl>
-        <div class="hbd11 ssv">
-        <ul><volist name="vod_stars" id="ppvod">
-        <li><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a><p><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,6}</a></p></li>
-        </volist></ul>
-        </div>
-    </div>
-    <div class="hbd1ri">
-      	<dl class="tit"><dt><a href="{:ppvodurl('ajax/show',false,false,false,true)}">最近更新影片</a></dt><dd class="f14"><a href="{:ppvodurl('ajax/show',false,false,false,true)}">更多>></a></dd></dl>
-        <div class="hbd12 ssv">
-        <ul><volist name="vod_news" id="ppvod">
-        <li><span>{$ppvod.vod_addtime|getcolordate='m-d',###}</span><a href="{$ppvod.list_url}" target="_blank">{$ppvod.list_name}</a> <a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a></li>
-        </volist></ul>
-        </div>
-    </div>
+<php>
+$vod_news=$pplist->ppvod('num:46;order:vod_addtime desc');
+$vod_stars=$pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
+
+</php>
+
+<div id="page_main">
+<div id="page_container">
+
+	<!--头部开始-->
+<div id="page_header">
+    	<div class="newlogobox" title="九尾狐大陆">&nbsp;</div>
+        <div class="list_big_img">&nbsp;</div>
+     
+
+		
+    <!--菜单开始-->
+<div id="menu" style="width: 650px; float:right; margin-top:30px; margin-bottom:15px;">
+    	<ul>
+        	<li class="here"><a href="#">首页<em>HOMEPAGE</em></a></li>
+            <li><a href="#">大陆社区<em>MENU TEXT</em></a></li>
+            <li><a href="#">动漫下载<em>MENU TEXT</em></a></li>
+            <li><a href="#">新番连载<em>MENU TEXT</em></a></li>
+            <li><a href="#">动漫情报<em>MENU TEXT</em></a></li>
+            <li><a href="#">COSPLAY<em>MENU TEXT</em></a></li>
+        </ul>
 </div>
-<div class="hsa">
-	<div class="hsalf">
-		<dl class="tit"><dt><a href="{:getlistname(1,'list_url')}">国产动画片</a></dt><dd><a href="{:getlistname(1,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
-        <!--电影大片左侧2张-->
-        <div class="hbd1a ssv">
-        	<volist name="vod_movie_pic" id="ppvod">
-        	<dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt><dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
-        	</volist>
+
+<div class="searchbox_list" style=" margin-bottom:5px;">
+        
+           <form name="form1" method="post" action="{$root}index.php?s=vod-search" class="search_form">
+    	<input type="text" name="id" value="海贼王" onclick="this.value = ''" maxLength="26" class="input" />
+    	<button type="submit" value="&nbsp;" class="buttonstyle_list" id="searchbutton"/></button></form>
+         
+
         </div>
-        <div class="hbdces">
-        	<!--电影大片一部简介-->
-        	<dl class="hbdcet"><volist name="vod_movie_con" id="ppvod">
-<dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}">>>查看详细</a></dd></volist></dl>
-        	<!--电影大片列表-->
-        	<ul><volist name="vod_movie_list" id="ppvod"><li><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
-        </div>
+	
+    </div>
+    
+
+    <!--菜单结束-->
+    <!--头部结束-->
+    <!--导航开始-->
+	<div id="nav">
+	    <div class="nav_top w980">
+		   <div class="nav_menu w980">
+			   <ul>
+				   <li><a href="#">首页</a></li>
+				   <li><a href="#">日本动画片</a></li>
+				   <li><a href="#">国产动画片</a></li>
+				   <li><a href="#">欧美动画片</a></li>
+				   <li><a href="#">TV版</a></li>
+				   <li><a href="#">OVA版</a></li>
+				   <li><a href="#">剧场版</a></li>
+				   <li><a href="#">动画片大全</a></li>
+				   <li><a href="#">完结连载</a></li>
+				   <li><a href="#">排行榜</a></li>
+				   <li><a href="#">最新更新</a></li>
+			 </ul>
+		   	</div>
+		   <div class="nav_letter w980">
+			   <img src="images/anime_15.jpg" />
+			   <a href="/?s=vod-search-id-A-x-letter.html">A</a>
+			   <a href="/?s=vod-search-id-B-x-letter.html">B</a>
+			   <a href="/?s=vod-search-id-C-x-letter.html">C</a>
+			   <a href="/?s=vod-search-id-D-x-letter.html">D</a>
+			   <a href="/?s=vod-search-id-E-x-letter.html">E</a>
+			   <a href="/?s=vod-search-id-F-x-letter.html">F</a>
+			   <a href="/?s=vod-search-id-G-x-letter.html">G</a>
+			   <a href="/?s=vod-search-id-H-x-letter.html">H</a>
+			   <a href="/?s=vod-search-id-I-x-letter.html">I</a>
+			   <a href="/?s=vod-search-id-J-x-letter.html">J</a>
+			   <a href="/?s=vod-search-id-K-x-letter.html">K</a>
+			   <a href="/?s=vod-search-id-L-x-letter.html">L</a>
+			   <a href="/?s=vod-search-id-M-x-letter.html">M</a>
+			   <a href="/?s=vod-search-id-N-x-letter.html">N</a>
+			   <a href="/?s=vod-search-id-O-x-letter.html">O</a>
+			   <a href="/?s=vod-search-id-P-x-letter.html">P</a>
+			   <a href="/?s=vod-search-id-Q-x-letter.html">Q</a>
+			   <a href="/?s=vod-search-id-R-x-letter.html">R</a>
+			   <a href="/?s=vod-search-id-S-x-letter.html">S</a>
+			   <a href="/?s=vod-search-id-T-x-letter.html">T</a>
+			   <a href="/?s=vod-search-id-U-x-letter.html">U</a>
+			   <a href="/?s=vod-search-id-V-x-letter.html">V</a>
+			   <a href="/?s=vod-search-id-W-x-letter.html">W</a>
+			   <a href="/?s=vod-search-id-X-x-letter.html">X</a>
+			   <a href="/?s=vod-search-id-Y-x-letter.html">Y</a>
+			   <a href="/?s=vod-search-id-Z-x-letter.html">Z</a>
+		   </div>
+		</div>
+	<!--按时间浏览开始-->  
+		<div class="nav_type">
+		<dl style="width:373px;"><dt><strong>剧情</strong></dt><dd><a href="/donghua/rexue/">热血</a> <a href="/donghua/jizhan/">机战</a> <a href="/donghua/yundong/">运动</a> <a href="/donghua/tuili/">推理</a> <a href="/donghua/maoxian/">冒险</a> <a href="/donghua/bl/">耽美</a> <a href="/donghua/gaoxiao/">搞笑</a> <a href="/donghua/war/">战争</a> <a href="/donghua/shenmo/">神魔</a> <a href="/donghua/renzhe/">忍者</a> <a href="/donghua/jinji/">竞技</a> <a href="/donghua/xuanyi/">悬疑</a> <a href="/donghua/shehui/">社会</a> <a href="/donghua/loli/">萝莉</a> <a href="/donghua/lianai/">爱情</a> <a href="/donghua/chongwu/">宠物</a> <a href="/donghua/xiaoyuan/">校园</a> <a href="/donghua/hougong/">后宫</a> <a href="/donghua/kehuang/">科幻</a> <a href="/donghua/shaonv/">少女</a></dd>
+		</dl>
+		<dl style="width:250px;">
+		<dt><strong>年代</strong></dt><dd><a href="/donghua/y2012/">2012</a> <a href="/donghua/y2011/">2011</a> <a href="/donghua/y2010/">2010</a> <a href="/donghua/y2009/">2009</a> <a href="/donghua/y2008/">2008</a> <a href="/donghua/y2007/">2007</a> <a href="/donghua/y2006/">2006</a> <a href="/donghua/y2005/">2005</a> <a href="/donghua/y2004/">2004</a> <a href="/donghua/y2003/">2003</a> <a href="/donghua/y2002/">2002</a> <!--<a href="/donghua/y2001/">2001</a>--> <a href="/donghua/y2000/">以前</a></dd>
+		</dl>
+		<dl style="width:98px;"><dt><strong>对白</strong></dt><dd> <a href="/donghua/riyu/">日语</a> <a href="/donghua/guoyu/">国语</a> <a href="/donghua/yueyu/">粤语</a> <a href="/donghua/yingyu/">英语</a></dd>
+		</dl>
+		
+		<dl style="width:166px;" class="none"><dt><strong>版本</strong></dt><dd> <a href="/donghua/tv/">TV版</a> <a href="/donghua/ova/">OVA版本</a> <a href="/donghua/juchang/">剧场版</a> <a href="/donghua/zhenren/">真人版</a> <a href="/donghua/tedian/">特典版</a> <a href="/donghua/xuanchuang/">宣传版</a></dd></dl></div>
+	<!--按时间浏览开始-->  
 	</div>
-    <div class="hsari">
-        <dl class="tit"><dt><a href="{:getlistname(2,'list_url')}">日本动画片</a></dt><dd><a href="{:getlistname(2,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
-        <div class="hbd1a ssv">
-            <volist name="vod_tv_pic" id="ppvod">
-            <dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt><dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
-            </volist>
-        </div>
-        <div class="hbdces">
-            <dl class="hbdcet"><volist name="vod_tv_con" id="ppvod"><dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}">>>查看详细</a></dd></volist></dl>
-        <ul><volist name="vod_tv_list" id="ppvod"><li><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
-        </div>
-    </div>
-</div>
-<div class="hsa">
-	<div class="hsalf">
-		<dl class="tit"><dt><a href="{:getlistname(3,'list_url')}">欧美动画片</a></dt><dd><a href="{:getlistname(3,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
-		<div class="hbd1a ssv">
-        	<volist name="vod_kt_pic" id="ppvod">
-            <dl><dt><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt><dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
-            </volist>
-    	</div>
-		<div class="hbdces">
-			<dl class="hbdcet"><volist name="vod_kt_con" id="ppvod"><dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">>>查看详细</a></dd></volist></dl>
-			<ul><volist name="vod_kt_list" id="ppvod"><li><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
+	<!--导航结束-->
+    <div style=" line-height:10px;"></div>
+    
+    <!--内容开始-->
+	<div class="content">
+		<div class="content_left ">
+			<div class="xiaobian_tj boder">
+			<div class="dh_images"><img src="./images/anime_19.jpg"/></div>
+			<div class="tj_mh">
+				<ul>
+                <volist name="vod_stars" id="ppvod">
+					<li><img src="{$ppvod.vod_pic|getpicurl}" /><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,6}</a></li>
+                </volist>
+				</ul>
+			
+			</div>
+			</div>
+			<!--广告-->
+			<div class="gg_pic"><img src="./images/gg.jpg" width="716" /></div>
+			<!--热门连载-->
+			<div class="xiaobian_tj boder">
+			<div class="dh_images"><img src="./images/anime_22.jpg"/></div>
+			<div class="tj_mh">
+				<ul>
+					<li><img src="./images/tjmh.jpg" /><a href="#">海王五</a></li>
+					<li><img src="./images/tjmh.jpg" />群众好</li>
+					<li><img src="./images/tjmh.jpg" />群你好</li>
+					<li><img src="./images/tjmh.jpg" />海王五</li>
+					<li><img src="./images/tjmh.jpg" />群众好</li>
+					<li><img src="./images/tjmh.jpg" />群你好</li>
+					<li><img src="./images/tjmh.jpg" />海王五</li>
+					<li><img src="./images/tjmh.jpg" />群众好</li>
+					<li><img src="./images/tjmh.jpg" />群你好</li>
+					<li><img src="./images/tjmh.jpg" />海王五</li>
+					<li><img src="./images/tjmh.jpg" />群众好</li>
+					<li><img src="./images/tjmh.jpg" />群你好</li>
+					<li><img src="./images/tjmh.jpg" />海王五</li>
+					<li><img src="./images/tjmh.jpg" />群众好</li>
+					<li><img src="./images/tjmh.jpg" />群你好</li>
+					<li><img src="./images/tjmh.jpg" />海王五</li>
+					<li><img src="./images/tjmh.jpg" />群众好</li>
+					<li><img src="./images/tjmh.jpg" />群你好</li>
+						<li><img src="./images/tjmh.jpg" />群众好</li>
+					<li><img src="./images/tjmh.jpg" />群你好</li>
+				</ul>
+			
+			</div>
+			</div>
+			
+		</div>
+		
+		<div class="content_right">
+			<div class="update boder">
+				 <div class="update_title">动画片更新时间周期目录</div>
+				 <div class="update_date">
+				 	<ul>
+					<li class="first">今天</li><li>周一</li><li class="select_time">周二</li><li>周三</li><li>周四</li><li>周五</li><li class="last">周六</li>
+					</ul>
+				 </div>
+				 <div class="update_info">
+				 	<ul>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝</a></li>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="#">要听爸爸的话</a></li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
+						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+					</ul>
+				 </div>
+			
+			</div>
+			
+			<div style="height:10px;"></div>
+			
+			<div class="update boder">
+				 <div class="update_new_title">最近更新动画片<span><a href="#">更多>></a></span></div> 
+				 <div class="update_list">
+				 	<ul>
+                    <volist name="vod_news" id="ppvod">
+						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a><span class="time">{$ppvod.vod_addtime|getcolordate='m-d',###}</span></li>
+					</volist>
+ 					</ul>
+				 </div>
+			
+			</div>
+			
+		
 		</div>
 	</div>
-    <div class="hsari">
-        <dl class="tit"><dt><a href="{:getlistname(4,'list_url')}">综艺娱乐</a></dt><dd><a href="{:getlistname(4,'list_url')}"><img src="{$tpl}images/more.gif" /></a></dd></dl>
-        <div class="hbd1a ssv">
-            <volist name="vod_zy_pic" id="ppvod">
-            <dl><dt><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" alt="{$ppvod.vod_name}" onerror="javascript:this.src='__PUBLIC__/images/nophoto.jpg';"/></a></dt>
-            <dd><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7}</a></dd></dl>
-            </volist>
-        </div>
-        <div class="hbdces">
-            <dl class="hbdcet"><volist name="vod_zy_con" id="ppvod"><dt class="ssv1">{$ppvod.vod_name|msubstr=0,20}</dt><dd class="ssv">{$ppvod.vod_content|h|msubstr=0,45} <a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}">>>查看详细</a></dd></volist></dl>
-            <ul><volist name="vod_zy_list" id="ppvod"><li><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,8}</a></li></volist></ul>
-        </div>
+	<!--内容结束-->
+	
+<!--友情链接开始-->
+<div id="friends">
+	<div class="friend_title"><h1>　友情链接</h1><span>（欢迎和我们交换友情，要求收录正常，百度权重值7以上，PR欢迎和我们交换友情）</span></div>
+	<div class="friend_text">
+	<volist name="pplink" id="ppvod"><a href="{$ppvod.link_url}" target="_blank">{$ppvod.link_name}</a> │ </volist>
+		</div>
+<p class="thread2"><img src="http://www.kejixun.com/statics/images/dot.jpg"></p>
+<div class="message">
+邮箱：jwhdl@163.com
+</div>
+</div>
+
+<!--友情链接结束-->
+
+
+    <!--底部开始-->
+    <div id="page_footer">
+    <a href="#">关于大陆</a>｜<a href="#">大陆动态</a>｜<a href="#">合作伙伴</a>｜<a href="#">版权声明</a>｜<a href="#">友情链接</a>｜<a href="#">招聘信息</a>｜<a href="#">意见反馈</a>｜<a href="#">帮助中心</a>｜<a href="#">联系方式</a><br />
+版权文字部分。。。
     </div>
+    <!--底部结束-->
+
+
+
+
+
 </div>
-<div class="hsae">
-	<div class="hsae1">
-        <dl class="tit"><dt>影片排行榜</dt><dd><img src="{$tpl}images/more.gif" /></dd></dl>
-        <div class="hbae11 ssv"><ul>
-            <volist name="vod_hot_80" id="ppvod">
-            <li><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" target="_blank">{$ppvod.list_name} {$ppvod.vod_name|msubstr=0,12}</a></li>
-            </volist>
-        </ul></div>
-	</div>
 </div>
-<div class="friend">
-	<dl class="tit"><dt>友情链接</dt><dd></dd></dl>
-	<ul><volist name="pplink" id="ppvod"><li><a href="{$ppvod.link_url}" target="_blank">{$ppvod.link_name}</a></li></volist></ul>
-</div>
-<include file="pp_footer" />         
-</div>
+
 </body>
 </html>
