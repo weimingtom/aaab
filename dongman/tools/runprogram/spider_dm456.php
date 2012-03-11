@@ -43,6 +43,11 @@ $tpl = array();
 preg_match('/ > <strong>(.*)<\/strong><\/div><\/div><\/div>/isU', $s, $tpl);
 $field['vod_name'] = isset($tpl[1]) ? $tpl[1] : '';
 
+// 是否完结
+$tpl = array();
+preg_match('/<span>&nbsp;更新至: <a href="(.*)" target="_blank" title="(.*)" class="red">(.*)<\/a>(.*)<\/span>/isU', $s, $tpl);
+$field['vod_continu'] = isset($tpl[3]) && isset($tpl[4]) ? $tpl[3].$tpl[4] : '';
+
 // 获取首字母
 $field['vod_letter'] = '';
 if ($field['vod_name']) {
@@ -72,6 +77,14 @@ preg_match('/<p class="w260"><em>对白语言：<\/em>(.*)<\/p>/isU', $s, $tpl);
 $field['vod_language'] = isset($tpl[1]) ? $tpl[1] : '';
 
 // 简介
+$tpl = array();
+preg_match('/<div class="introduction" id="intro1">(.*)<\/div>/isU', $s, $tpl);
+$field['vod_content'] = isset($tpl[1]) ? strip_tags($tpl[1]) : '';
+
+print_r($field);
+exit;
+
+// 获取播放器数据
 $urls = array();
 $tpl = array();
 preg_match_all('/<div class="w980_b1px mt10 clearfix">(.*)<div class="blank_8"><\/div>/isU', $s, $tpl);
