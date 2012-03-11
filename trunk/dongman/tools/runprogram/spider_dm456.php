@@ -14,18 +14,29 @@ $domain = "http://www.dm456.com";
 // 最近更新的列表
 //$spiderMainUrl = 'http://www.dm456.com/donghua/update.html';
 
+// 获取列表页URL
+//$spiderListUrl = 'http://www.dm456.com/donghua/riben/index_3.html';
+//$s = getContentUrl($spiderDetailUrl);
+//
+//$tpl = array();
+//preg_match('/<a href="(.*)" class="pic">/isU', $s, $tpl);
+//$listUrl = isset($tpl[1]) ? $tpl[1] : '';
+//
+//print_r($listUrl);exit;
+
 $field = array();
 
 // 抓取动漫内容详细页的
-$spiderDetailUrl = 'http://www.dm456.com/donghua/4194/';
+$spiderDetailUrl = $domain.'/donghua/4194/';
 $s = getContentUrl($spiderDetailUrl);
 //$s = iconv('gbk', 'utf-8', $s);
 
 // 图片
 $tpl = array();
 preg_match('/<img src="(.*)" class="pic" title/isU', $s, $tpl);
-$field['vod_pic'] = isset($tpl[1]) ? $tpl[1] : '';
-save_picture($domain.$field['vod_pic'], PICTURE_SAVE_PATH);
+$vod_pic = isset($tpl[1]) ? $tpl[1] : '';
+$filename = save_picture($domain.$vod_pic, dirname(dirname(PICTURE_SAVE_PATH)).'/Upload/'.date('Y-m'));
+$field['vod_pic'] = date('Y-m').'/'.$filename;
 
 // 标题
 $tpl = array();
@@ -60,9 +71,6 @@ $tpl = array();
 preg_match('/<p class="w260"><em>对白语言：<\/em>(.*)<\/p>/isU', $s, $tpl);
 $field['vod_language'] = isset($tpl[1]) ? $tpl[1] : '';
 
-print_r($field);
-
-exit;
 // 简介
 $urls = array();
 $tpl = array();
@@ -86,7 +94,63 @@ foreach ($pays as $pay) {
 	}
 }
 
-print_r($urls);
+$field['vod_server'] = '';
+$field['vod_play'] = '';
+$field['vod_url'] = '';
+
+foreach ($urls as $payName=>$value) {
+	if ($field['vod_play']) {
+		$field['vod_play'] .= '$$$'.$payName;
+		$field['vod_url'] .= '$$$'.implode("\r\n", $value);
+	} else {
+		$field['vod_play'] = $payName;
+		$field['vod_url'] = implode("\r\n", $value);
+	}
+}
+
+/*
+$urlMax = 0;
+foreach ($urls as $value) {
+	$num = count($value);
+	if ($num > $urlMax) {
+		$urlMax = $num;
+	}
+}
+
+$arr = array();
+foreach ($urls as $payName=>$value) {
+	
+	if ($field['vod_play']) {
+		$field['vod_play'] .= '$$$'.$payName;
+	} else {
+		$field['vod_play'] = $payName;
+	}
+	
+	$count = count($value) - 1;
+	for($i=0; $i<$urlMax; $i++) {
+		if ($count >= $i) {
+			if (isset($arr[$i])) {
+				$arr[$i] .= '$$$'.$value[$i];
+			} else {
+				$arr[$i] = $value[$i];
+			}
+		} else {
+			if (isset($arr[$i])) {
+				$arr[$i] .= '$$$ ';
+			} else {
+				$arr[$i] = ' ';
+			}
+		}
+	}
+}
+*/
+
+// 入库
+$field['vod_addtime'] = time();
+$field['vod_inputer'] = 'admin';
+$db->insert('pp_vod', $field);
+
+print_r($field);
 
 // 获取影片ID
 function get_pay_vod_id($url) {
@@ -101,14 +165,19 @@ function get_pay_vod_id($url) {
 
 // 保存图片
 function save_picture($sourceUrl, $toPath) {
-	$name = '';
+	if (!file_exists($toPath)) {
+		mkdir($toPath, 0777);
+	}
+	$filename = '';
 	if (strrpos($sourceUrl, '/') !== FALSE) {
 		$name = substr($sourceUrl, strrpos($sourceUrl, '/')+1);
 		if ($name) {
 			$s = file_get_contents($sourceUrl);
-			$w = $toPath.'/'.$name;
+			$filename = time().rand(100, 999).'.'.substr($sourceUrl, strrpos($sourceUrl, '.')+1);
+			$w = $toPath.'/'.$filename;
 			file_put_contents($w, $s);
 		}
 	}
+	return $filename;
 }
 ?>
