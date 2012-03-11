@@ -495,9 +495,7 @@ function ppvodpage($currentPage,$totalPages,$halfPer=5,$url,$pagego){
     $linkPage .= ( $currentPage < $totalPages )
         ? '<a href="'.str_replace('{!page!}',($currentPage+1),$url).'" class="pagegbk">下一页</a>&nbsp;<a href="'.str_replace('{!page!}',$totalPages,$url).'" class="pagegbk">尾页</a>'
         : '<em>下一页</em>&nbsp;<em>尾页</em>';
-	if(!empty($pagego)){
-		$linkPage .='&nbsp;<input type="input" name="page" size=4 class="pagego" /><input type="button" value="跳转" onclick="'.$pagego.'" class="pagebtn" />'; 
-	}
+	
     return str_replace('-1/"','/"',$linkPage);
 }
 //$model,$arrayparams,$redirect,$suffix参考U函数;$indexphp=自由控制是否过滤index.php;C('url_html_suffix')
