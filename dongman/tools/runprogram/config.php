@@ -3,7 +3,7 @@ define('DBHOST',	'localhost');
 define('DBNAME',	'btbbt_dongman');
 define('DBUSER',	'root');
 define('DBPWD',		'root');
-define('DBCHARSET',	'utf8');
+define('DBCHARSET',	'gb2312');
 
-define('PICTURE_SAVE_PATH', ROOT);		// Í¼Æ¬±£´æÄ¿Â¼
+define('PICTURE_SAVE_PATH', ROOT_PATH);		// Í¼Æ¬±£´æÄ¿Â¼
 ?>
