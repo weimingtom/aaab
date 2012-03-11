@@ -56,17 +56,8 @@ $vod_stars=$pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc'); ?>
 	    <div class="nav_top w980">
 		   <div class="nav_menu w980">
 			   <ul>
-				   <li><a href="#">首页</a></li>
-				   <li><a href="#">日本动画片</a></li>
-				   <li><a href="#">国产动画片</a></li>
-				   <li><a href="#">欧美动画片</a></li>
-				   <li><a href="#">TV版</a></li>
-				   <li><a href="#">OVA版</a></li>
-				   <li><a href="#">剧场版</a></li>
-				   <li><a href="#">动画片大全</a></li>
-				   <li><a href="#">完结连载</a></li>
-				   <li><a href="#">排行榜</a></li>
-				   <li><a href="#">最新更新</a></li>
+               	   <li><a href="/">首页</a></li>
+                <?php if(is_array($ppmenu)): $i = 0; $__LIST__ = $ppmenu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$ppvod): ++$i;$mod = ($i % 2 )?><li><a href="<?php echo ($ppvod["list_url"]); ?>"><?php echo ($ppvod["list_name"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
 			 </ul>
 		   	</div>
 		   <div class="nav_letter w980">

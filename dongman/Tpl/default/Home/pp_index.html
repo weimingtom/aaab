@@ -59,17 +59,10 @@ $vod_stars=$pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
 	    <div class="nav_top w980">
 		   <div class="nav_menu w980">
 			   <ul>
-				   <li><a href="#">首页</a></li>
-				   <li><a href="#">日本动画片</a></li>
-				   <li><a href="#">国产动画片</a></li>
-				   <li><a href="#">欧美动画片</a></li>
-				   <li><a href="#">TV版</a></li>
-				   <li><a href="#">OVA版</a></li>
-				   <li><a href="#">剧场版</a></li>
-				   <li><a href="#">动画片大全</a></li>
-				   <li><a href="#">完结连载</a></li>
-				   <li><a href="#">排行榜</a></li>
-				   <li><a href="#">最新更新</a></li>
+               	   <li><a href="/">首页</a></li>
+                <volist name="ppmenu" id="ppvod">
+				   <li><a href="{$ppvod.list_url}">{$ppvod.list_name}</a></li>
+				</volist>
 			 </ul>
 		   	</div>
 		   <div class="nav_letter w980">
