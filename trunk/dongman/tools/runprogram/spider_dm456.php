@@ -15,14 +15,14 @@ $domain = "http://www.dm456.com";
 //$spiderMainUrl = 'http://www.dm456.com/donghua/update.html';
 
 // 获取列表页URL
-//$spiderListUrl = 'http://www.dm456.com/donghua/riben/index_3.html';
-//$s = getContentUrl($spiderDetailUrl);
-//
-//$tpl = array();
-//preg_match('/<a href="(.*)" class="pic">/isU', $s, $tpl);
-//$listUrl = isset($tpl[1]) ? $tpl[1] : '';
-//
-//print_r($listUrl);exit;
+$spiderListUrl = 'http://www.dm456.com/donghua/riben/index_3.html';
+$s = getContentUrl($spiderListUrl);
+
+$tpl = array();
+preg_match_all('/<dt><a href="(.*)" title="(.*)">(.*)<\/a><\/dt>/isU', $s, $tpl);
+$listUrl = isset($tpl[1]) ? $tpl[1] : '';
+
+print_r($listUrl);exit;
 
 $field = array();
 
@@ -120,43 +120,6 @@ foreach ($urls as $payName=>$value) {
 		$field['vod_url'] = implode("\r\n", $value);
 	}
 }
-
-/*
-$urlMax = 0;
-foreach ($urls as $value) {
-	$num = count($value);
-	if ($num > $urlMax) {
-		$urlMax = $num;
-	}
-}
-
-$arr = array();
-foreach ($urls as $payName=>$value) {
-	
-	if ($field['vod_play']) {
-		$field['vod_play'] .= '$$$'.$payName;
-	} else {
-		$field['vod_play'] = $payName;
-	}
-	
-	$count = count($value) - 1;
-	for($i=0; $i<$urlMax; $i++) {
-		if ($count >= $i) {
-			if (isset($arr[$i])) {
-				$arr[$i] .= '$$$'.$value[$i];
-			} else {
-				$arr[$i] = $value[$i];
-			}
-		} else {
-			if (isset($arr[$i])) {
-				$arr[$i] .= '$$$ ';
-			} else {
-				$arr[$i] = ' ';
-			}
-		}
-	}
-}
-*/
 
 // 入库
 $field['vod_addtime'] = time();
