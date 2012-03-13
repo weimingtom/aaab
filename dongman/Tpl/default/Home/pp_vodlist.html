@@ -122,7 +122,7 @@
 			<ul>
             <neq name="vod_list.0.count" value="0">
             <volist name="vod_list" id="ppvod">
-				<li class=""><p class="fl cover"><a href="{$ppvod.vod_url}" class="pic"><img src="{$ppvod.vod_pic|getpicurl}" alt="樱姬华传"></a><span><a class="yellow" href="{$ppvod.vod_url}" ></a></span></p><dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" >{$ppvod.vod_name|msubstr=0,20}</a></dt><dd><p><em>更新于：</em><span >{$ppvod.vod_addtime|date='Y-m-d H:i',###}</span></p><p><em>状　态：</em><span class="red">{$ppvod.vod_continu}</span></p><p class="black"><em>剧　情：</em>{$ppvod.vod_area|default='未录入'}</p><p class="intro"><em>简　介：</em>{$ppvod.vod_content|msubstr=0,40}...</p></dd></dl></li> 
+				<li class=""><p class="fl cover"><a href="{$ppvod.vod_url}" class="pic"><img src="{$ppvod.vod_pic|getpicurl}" ></a><span><a class="yellow" href="{$ppvod.vod_url}" ></a></span></p><dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" >{$ppvod.vod_name|msubstr=0,20}</a></dt><dd><p><em>更新于：</em><span >{$ppvod.vod_addtime|date='Y-m-d H:i',###}</span></p><p><em>状　态：</em><span class="red">{$ppvod.vod_continu}</span></p><p class="black"><em>剧　情：</em>{$ppvod.vod_area|default='未录入'}</p><p class="intro"><em>简　介：</em>{$ppvod.vod_content|msubstr=0,40}...</p></dd></dl></li> 
 				 </volist><else/>该分类暂无数据！</neq>
 
 			
