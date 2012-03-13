@@ -35,10 +35,9 @@
 </div>
 
 <div class="searchbox_list" style=" margin-bottom:5px;">
-        	<form action="" method="get" class="search_form">
-              <input type="button" value="&nbsp;" class="buttonstyle_list" />
-              <input type="text" class="input" onFocus="if(this.value=='●●●●●●')this.value='';" onBlur="if(this.value=='')this.value='●●●●●●';"   value="海贼王" size='50'/>
-           </form>
+        	  <form name="form1" method="post" action="{$root}index.php?s=vod-search" class="search_form">
+    	<input type="text" name="id" value="海贼王" onclick="this.value = ''" maxLength="26" class="input" />
+    	<button type="submit" value="&nbsp;" class="buttonstyle_list" id="searchbutton"/></button></form>
         </div>
 	
     </div>
@@ -123,7 +122,7 @@
 			<ul>
             <neq name="vod_list.0.count" value="0">
             <volist name="vod_list" id="ppvod">
-				<li class=""><p class="fl cover"><a href="{$ppvod.vod_url}" class="pic"><img src="./images/info4.jpg" alt="樱姬华传"></a><span><a class="yellow" href="{$ppvod.vod_url}" >番外无字幕</a></span></p><dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" >{$ppvod.vod_name|msubstr=0,20}</a></dt><dd><p><em>更新于：</em><span >{$ppvod.vod_addtime|date='Y-m-d H:i',###}</span></p><p><em>状　态：</em><span class="red">{$ppvod.vod_continu}</span></p><p class="black"><em>剧　情：</em>{$ppvod.vod_area|default='未录入'}</p><p class="intro"><em>简　介：</em>{$ppvod.vod_content|msubstr=0,40}...</p></dd></dl></li> 
+				<li class=""><p class="fl cover"><a href="{$ppvod.vod_url}" class="pic"><img src="{$ppvod.vod_pic|getpicurl}" alt="樱姬华传"></a><span><a class="yellow" href="{$ppvod.vod_url}" ></a></span></p><dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" >{$ppvod.vod_name|msubstr=0,20}</a></dt><dd><p><em>更新于：</em><span >{$ppvod.vod_addtime|date='Y-m-d H:i',###}</span></p><p><em>状　态：</em><span class="red">{$ppvod.vod_continu}</span></p><p class="black"><em>剧　情：</em>{$ppvod.vod_area|default='未录入'}</p><p class="intro"><em>简　介：</em>{$ppvod.vod_content|msubstr=0,40}...</p></dd></dl></li> 
 				 </volist><else/>该分类暂无数据！</neq>
 
 			
