@@ -1,0 +1,242 @@
+.info_title{ height: 40px; width:980px; background:#F6F4F5;border: 1px solid #D1CFD0; text-align:center; line-height:40px; font-size:14px; color:#FE6000; font-weight:bold; margin-bottom:8px;position: relative;}
+.bg_write{ background:#FFFFFF;}
+
+.book_title { background:url(../images/show_title_bg.jpg); height:41px; border-bottom:1px solid #CCCCCC;margin: 1px; line-height:41px; text-indent:1em;}
+
+.book_img { width:130px; float:left;}
+.book_img img {border: 1px solid #CACACA;padding: 3px;}
+
+.book_all { padding:15px;}
+
+/*¶¯ÂþÏêÇé*/
+.info {
+display: inline;
+float: right;
+padding-right: 6px;
+width: 530px;
+}
+.info p.w260 {
+float: left;
+margin-right: 12px;
+width: 220px;
+}
+.info p {
+border-bottom: 1px solid #F0F0F0;
+font-size: 12px;
+height: 21px;
+line-height: 1.8em;
+overflow: hidden;
+padding: 3px 0px;
+width: 460px;
+} 
+.info p.w260 em {
+font-weight:bold;
+color: #6D6D6D;
+font-style: normal;
+}
+.info p em{
+font-weight:bold;
+color: #6D6D6D;
+font-style: normal;
+}
+.info .intro_s {
+font-size: 12px;
+height: auto;
+}
+
+
+.anchors ul li{ float:left; width:115px; height:35px; margin-left:0; margin-right:8px;}
+.active img{ width:250px; height:282px; margin:1px;}
+
+.play_list_title{ float:left;width:980px; height:40px; background:url(../images/bg_2.jpg);position: relative;border-bottom: 1px solid #DFE2EB;}
+.play_list_title h3{ float:left; font-size:14px; font-weight:bold; color:#FE6000; line-height:40px; text-indent:1em; border-right:1px solid #CCCCCC;background:url(../images/bg_1.jpg); width:150px;}
+ 
+
+
+.plisttip strong {
+color: red;
+font-size: 14px;
+font-weight: bold;
+}
+
+
+.pa {
+position: absolute;
+padding-right: 12px;
+}
+
+
+
+span.hascoll {
+border-right: 1px solid #9FB7D4;
+right: 70px;
+}
+.collapse {
+border-left: 1px solid white;
+font-size: 12px;
+height: 24px;
+line-height: 20px;
+padding-left: 8px;
+padding-right: 6px;
+padding-top: 12px;
+width: 55px;
+}
+.fr {
+display: inline;
+float: right;
+}
+.collapse a {
+background: url(../images/2011_sprits.gif) no-repeat 6px -645px;
+color: #666;
+display: block;
+padding-left: 22px;
+text-decoration: none;
+}
+a.desc {
+background: url(../images/2011_sprits.gif) no-repeat 2px -1000px;
+color: #666;
+padding-left: 14px;
+}
+a.desc_on {
+background: url(../images/2011_sprits.gif) no-repeat 2px -950px;
+color: red;
+font-weight: bold;
+}
+
+a.asc {
+background: url(../images/2011_sprits.gif) no-repeat 2px -1100px;
+color: #666;
+padding-left: 14px;
+}
+a.asc_on {
+background: url(../images/2011_sprits.gif) no-repeat 2px -1050px;
+color: red;
+font-weight: bold;
+}
+
+.collapse a {
+background: url(../images/2011_sprits.gif) no-repeat 6px -645px;
+color: #666;
+display: block;
+padding-left: 22px;
+text-decoration: none;
+}
+
+.plistTip {
+margin-left: 15px;
+line-height:40px;
+}
+.listorder{height: 40px;line-height: 40px;}
+.plistTip strong {
+color: red;
+font-size: 14px;
+font-weight: bold;
+}
+.plist {
+clear: both;
+font-size: 12px;
+margin: 0px 8px;
+}
+.max-h200 {
+height: 196px;
+overflow: auto;
+}
+.plist ul {
+margin: 0px auto;
+width: 930px;
+}
+.pnormal ul li {
+width: 106px;
+}
+.plist ul li {
+background-color: #F0F0F0;
+border: 1px solid #CCC;
+display: inline-block;
+float: left;
+height: 29px;
+margin: 4px;
+text-align: left;
+width: 172px;
+}
+.plist li.new a {
+color: red;
+}
+
+.plist li a {
+background: #F3F3F3 url(../images/2011_sprits.gif) no-repeat 8px -741px;
+border: 1px solid white;
+display: block;
+font-family: Tahoma, Geneva, sans-serif;
+font-size: 12px;
+height: 27px;
+line-height: 27px;
+overflow: hidden;
+padding: 0px 6px 0px 18px;
+text-decoration: none;
+}
+.pnormal ul li {
+width: 106px;
+}
+.blank8 {
+clear: both;
+font-size: 1px;
+height:10px;
+overflow: hidden;
+}
+.p_tudou {
+background: url(../images/tip_icons.gif) no-repeat 0px -24px;
+height: 30px;
+vertical-align: middle;
+width: 20px;
+display: inline-block;
+}
+.p_baidu {
+background: url(../images/tip_icons.gif) no-repeat 0px 6px;
+background-position: 0px -174px;
+display: inline-block;
+height: 30px;
+vertical-align: middle;
+width: 20px;
+}
+a.download {
+background: url(../images/2011_sprits.gif) no-repeat 4px -900px;
+color: #066;
+padding-left: 22px;
+text-decoration: underline;
+}
+.introduction {
+border-top: 1px solid #F0F0F0;
+font-size: 14px;
+line-height: 2em;
+padding:20px 40px;
+}
+.anime_desc{ background: url(../images/anime_desc_bg.jpg);margin-top: 1px; line-height:40px; font-size:14px; text-indent:1em;
+border-bottom: ;
+font-weight: bold;
+height: 40px;
+padding-left: 10px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
