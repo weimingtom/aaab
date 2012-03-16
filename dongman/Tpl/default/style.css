@@ -618,7 +618,7 @@ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/bigimg_1.p
 	color:#000;
 }
 
-/* 在线动漫频道样式 */
+/* 在线动漫频道通用样式 */
 .w980{ width:980px; margin:0 auto;}
 .cb{ clear:both;}
 .f14{ font-size:14px;}
@@ -627,6 +627,10 @@ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/bigimg_1.p
 .cheng_red{ color:#FF6418;}
 .fl{ float:left;}
 .padding3{ padding:3px;}
+.fr{ float:right;}
+.tc {text-align: center;}
+em{font-style: italic;}
+.mleft10{ margin-left:10px;}
 
 a:link{text-decoration:none;color:#797979;}
 a:visited{color:#797979;text-decoration:none;}
@@ -730,7 +734,7 @@ float: left;
 height: 20px;
 text-align: center;
 width: 34px;}
-.navigation { background:#fff; height:40px; text-indent:1em; line-height:40px; padding-left: 10px;} 
+.navigation { background:#fff; height:40px; line-height:40px;  } 
 .navigation .new_nav{background: url(/images/home.jpg) no-repeat 5px 50%; padding-left:15px;}
 .list_content{ width:980px; background:#FFFFFF;}
 .list_content .bar{ width:980px; background:url(/images/list_title_bg.jpg); height:41px;}

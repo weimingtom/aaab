@@ -216,13 +216,48 @@ font-weight: bold;
 height: 40px;
 padding-left: 10px;}
 
+/*播放页面样式*/
+.paly_left_ad{ float:left; padding-right:8px;}
+.paly_on{ float:left;}
+.paly_right_ad{ float:right;}
+.paly_nav{ width:980px; background:#EBEBEB; border:1px solid #CCCCCC; height:60px; margin:0 auto;}
+.play_share{ width:350px; height:40px; margin:9px; float:left; line-height:40px;}
+.play_operate{ float:right; height:40px; width:590px;  margin-top:9px; line-height:40px; font-size:14px; font-weight:bold;}
+.add_faverite,.copy_site,.error_web,.for_set,.next_set{ display:block; float:left; margin-right:10px; display:block; float:left;}
+.add_faverite a,.copy_site a,.error_web a,{ background:url(../images/play_nav_bg.gif) repeat-x 0px -330px; display:block; height:36px; border:1px solid #CCCCCC;  float:left; width:108px; color:#006600;}
+.add_faverite a,.copy_site a,.error_web a,.for_set a,.next_set a{ background:url(../images/play_nav_bg.gif) repeat-x 0px -330px; display:block; height:36px; border:1px solid #CCCCCC;  float:left; width:104px; color:#006600;}
+.for_set a,.next_set a{ color:#FF6600; }
+
+.add_faverite a:hover,.copy_site a:hover,.error_web a:hover,.for_set a:hover,.next_set a:hover{ border:1px solid #FFCC99; text-decoration:underline;}
+
+.operate .btnPrev a {color: red;}
+.add_faverite a span { background: url(../images/xiao_button.png) no-repeat 10px -258px;cursor: pointer;padding-left: 32px;padding-right: 6px;zoom: 1;}
+.copy_site a span { background: url(../images/xiao_button.png) no-repeat -170px -260px;cursor: pointer;padding-left: 32px;padding-right: 6px;zoom: 1;}
+.error_web a span { background: url(../images/xiao_button.png) no-repeat 8px -298px;cursor: pointer;padding-left: 28px;padding-right: 6px;zoom: 1;}
+.for_set a span { background: url(../images/xiao_button.png) no-repeat 6px -340px;cursor: pointer;padding-left: 26px;padding-right: 2px;zoom: 1;}
+.next_set a span { background: url(../images/xiao_button.png) no-repeat -104px -340px;cursor: pointer;padding-left: 6px;padding-right: 25px;zoom: 1;}
 
 
+.play_adverice img{ width:976px; height:90px; padding:2px; border:1px solid #CCCCCC;}
 
+.xiao_tip{ width:940px; height:40px; border:1px #CCCCCC dotted; margin:0 20px 10px; background:#fdece2; padding:2px;}
+.etip{ width:400px; height:40px; line-height:40px; margin-left:15px; float:left; background:url(../images/xiao_button.png) no-repeat -180px -148px;padding-left: 20px; }
 
+.etip strong{ font-size:14px; color:#666666;}
+.play_order{ width:400px; float:right; position: relative;}
+.play_order span{ display:block; float:right;}
+a.return {font-size: 12px;font-weight: normal; background:url(../images/xiao_button.png) 6px -150px no-repeat;padding-left: 24px;padding-right: 8px;display: inline-block;line-height: 34px;color: #060;}
+.new_nav{ width:500px;text-indent: 1em;}
+.breadr {display: inline-block;padding-right:6px;padding-top: 2px; width:220px; }
+.breadr a {display: inline-block;line-height: 24px;padding: 4px 2px;text-align: center;vertical-align: top;}
+.breadr a.help {color: #060;}
+.breadr a.feedback { color:#FE6000;}
+.breadr a.wide {color: #90F;}
+.breadr em {display: inline-block;line-height: 32px;height: 24px;color: #CCC;padding: 0 4px; width:4px;}
+.breadr a.lighter {background: url(../images/xiao_button.png) -174px -191px no-repeat;position: relative;z-index: 100;padding: 4px 8px;padding-left: 26px;width: 30px;}
+.outer{ background:url(../images/play_bg.png) repeat-x; height: 536px;overflow: hidden; width:100%; margin:10px auto;}
 
-
-
+.play_list_title h3.play_gray{ color:#666;}
 
 
 
