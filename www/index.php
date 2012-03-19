@@ -74,13 +74,11 @@ include 'webadmin/include/config.inc.php';
             <div id="TU_Cont">
               <div class="ScrTuCont">
                 <div id="Tu_List1">
-                <ul>
 		<?php
 		$news = $mysql->fetch_all("SELECT * FROM `-table-article` where dafenglei='1' ORDER BY id DESC LIMIT 5");
 		foreach ($news as $v) { ?>
-			<li><A title="<?php echo $v['title']?>" href="<?php echo $v['url']?>" target="_blank"><IMG src="<?php echo $v['img']?>" ></A></li>
+			<A title="<?php echo $v['title']?>" href="<?php echo $v['url']?>" target="_blank"><IMG src="<?php echo $v['img']?>" ></A>
 		<?php }?>
-                </ul>
                 </div>
                 <div id="Tu_List2"></div>
               </div>
@@ -190,7 +188,7 @@ include 'webadmin/include/config.inc.php';
                   </div>
                   <div class="TabContent">
                   <?php 
-				$categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='4' order by `sort` ASC");
+				$categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='5' order by `sort` ASC");
 				foreach($categorys as $k=>$category) {
 					?>
                     <div id="myTab2_Content<?php echo $k?>">
