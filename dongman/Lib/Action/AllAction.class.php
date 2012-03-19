@@ -8,7 +8,7 @@ class AllAction extends Action{
 			if(!empty($tree[0]['son'])){
 				foreach($tree[0]['son'] as $val){$param['cid'][]=$val['list_id'];}
 			}else{
-			    $param['cid']=$param['pid'];
+				$param['cid']=$param['pid'];
 			}
 		}
 		$where=array();$where['vod_del']=0;//根据参数生成查询条件
@@ -87,7 +87,7 @@ class AllAction extends Action{
 					$urlPage=str_replace('index'.C('html_file_suffix'),'',C('site_path').C('url_vodlist').getlisturl(C('html_cid'),'{!page!}').C('html_file_suffix'));
 				}else{
 					$model_name=strtolower(MODULE_NAME);$action_name=strtolower(ACTION_NAME);
-					$urlPage=ppvodurl($model_name.'/'.$action_name,$url).'-p-{!page!}'.C('url_html_suffix');				
+					$urlPage=ppvodurl($model_name.'/'.$action_name,$url).'-p-{!page!}'.C('url_html_suffix');
 				};
 				$sql=ppvodsql('vod','*',$where,$order,$limit,$currentPage,$join);$arr=$sql['list'];//查询
 				$totalPages=ceil($sql['count']/$limit);if(C('home_pagego')){$pagego=''.C('home_pagego').'(\''.$urlPage.'\','.$totalPages.')';}
@@ -103,24 +103,24 @@ class AllAction extends Action{
 			$arr[$key]['list_url']=getlistname($arr[$key]['list_id'],'list_url');
 			$arr[$key]['vod_playurl']=getplayurl($arr[$key]['vod_id']);
 			if(C('url_html')>0){
-			    $vodurl=C('site_path').getdataurl($arr[$key]['vod_id'],$arr[$key]['vod_cid'],$arr[$key]['vod_name']).c('html_home_suffix');
-			    $arr[$key]['vod_url']=str_replace('index'.c('html_home_suffix'),'',$vodurl);//去除index.html
+				$vodurl=C('site_path').getdataurl($arr[$key]['vod_id'],$arr[$key]['vod_cid'],$arr[$key]['vod_name']).c('html_home_suffix');
+				$arr[$key]['vod_url']=str_replace('index'.c('html_home_suffix'),'',$vodurl);//去除index.html
 			}else{
 				$url['id']=$arr[$key]['vod_id'];unset($url['o']);unset($url['x']);unset($url['sid']);
 				$arr[$key]['vod_url']=ppvodurl('Home-vod/read',$url,'index.php',false,true);
 			}
 		}
 		return $arr;
-    }
+	}
 	//解析新闻模块
-    public function ppnews($str=''){
+	public function ppnews($str=''){
 		$param=array();$array=explode(';',$str);foreach ($array as $v){list($key,$val)=explode(':',trim($v));$param[trim($key)]=trim($val);}//生成参数列表
 		if($param['pid']&&false==$param['cid']) {
 			$tree=list_search(F('_ppvod/listnews'),'list_id='.$param['pid']);
 			if(!empty($tree[0]['son'])){
 				foreach($tree[0]['son'] as $val){$param['cid'][]=$val['list_id'];}
 			}else{
-			    $param['cid']=$param['pid'];
+				$param['cid']=$param['pid'];
 			}
 		}
 		$where=array();$where['news_del']=0;//根据参数生成查询条件
@@ -161,7 +161,7 @@ class AllAction extends Action{
 				$totalPages=ceil($sql['count']/$limit);if(C('home_pagego')){$pagego=''.C('home_pagego').'(\''.$urlPage.'\','.$totalPages.')';}
 				$showPage.='共'.$sql['count'].'条数据&nbsp;页次:'.$currentPage.'/'.$totalPages.'页&nbsp;'.ppvodpage($currentPage,$totalPages,C('home_pagenum'),$urlPage,$pagego);
 				$arr[0]['page']=$showPage;$arr[0]['count']=$sql['count'];
-			};			
+			};
 		}elseif('tag'==$param['action']){
 			if($param['keyword']){$url['id']=$param['keyword'];}//调用指定键词的数据
 			$rs=D('Home.News');
@@ -189,7 +189,7 @@ class AllAction extends Action{
 				$sql=ppvodsql('news','*',$where,$order,$limit,$currentPage);$arr=$sql['list'];
 				$totalPages=ceil($sql['count']/$limit);if(C('home_pagego')){$pagego=''.C('home_pagego').'(\''.$urlPage.'\','.$totalPages.')';}
 				$showPage.='共'.$sql['count'].'条数据&nbsp;页次:'.$currentPage.'/'.$totalPages.'页&nbsp;'.ppvodpage($currentPage,$totalPages,C('home_pagenum'),$urlPage,$pagego);
-				$arr[0]['page']=$showPage;$arr[0]['count']=$sql['count'];			
+				$arr[0]['page']=$showPage;$arr[0]['count']=$sql['count'];
 			}else{
 				$sql=ppvodsql('news','*',$where,$order,$limit,$currentPage);$arr=$sql['list'];
 			}
@@ -199,29 +199,29 @@ class AllAction extends Action{
 			$arr[$key]['list_name']=getlistname($arr[$key]['list_id'],'list_name');
 			$arr[$key]['list_url']=getlistname($arr[$key]['list_id'],'list_url');
 			if(C('url_html')>0){
-			    $newsurl=C('site_path').C('url_newsdata').getdataurl_p($arr[$key]['news_id'],1).C('html_home_suffix');
-			    $arr[$key]['news_url']=str_replace('index'.C('html_home_suffix'),'',$newsurl);//去除index.html
+				$newsurl=C('site_path').C('url_newsdata').getdataurl_p($arr[$key]['news_id'],1).C('html_home_suffix');
+				$arr[$key]['news_url']=str_replace('index'.C('html_home_suffix'),'',$newsurl);//去除index.html
 			}else{
 				$url['id']=$arr[$key]['news_id'];unset($url['o']);unset($url['x']);unset($url['sid']);
 				$arr[$key]['news_url']=ppvodurl('Home-news/read',$url,'index.php',false,true);
 			}
 		}
 		return $arr;
-    }
+	}
 	//解析Tag模块
-    public function pptag($str=''){
+	public function pptag($str=''){
 		$param=array();$where=array();
 		$array=explode(';',$str);foreach ($array as $v){list($key,$val)=explode(':',trim($v));$param[trim($key)]=trim($val);}
 		if($param['id']){$where['tag_id']=ids($param['id']);}
 		if($param['sid']){$where['tag_sid']=$param['sid'];}
 		if($param['num']){$limit=$param['num'];}
-		if(C('url_html')==1){$index='index.html';}else{$index='index.php';}		
+		if(C('url_html')==1){$index='index.html';}else{$index='index.php';}
 		$rs=D("Home.Tag");
 		$array=$rs->field('*,count(tag_name) as tag_count')->where($where)->limit($limit)->group('tag_name,tag_sid')->order('tag_count desc')->select();
 		foreach($array as $key=>$val){
 			$array[$key]['tag_url']=ppvodurl('tag/show',array('id'=>urlencode($array[$key]['tag_name']),'sid'=>$array[$key]['tag_sid']),$index,false,true);
 		}
 		return $array;
-    }			
+	}
 }
 ?>
