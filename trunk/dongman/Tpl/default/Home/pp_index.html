@@ -32,7 +32,7 @@ $vod_stars=$pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
 <div id="menu" style="width: 650px; float:right; margin-top:30px; margin-bottom:15px;">
     	<ul>
         	<li class="here"><a href="#">首页<em>HOMEPAGE</em></a></li>
-            <li><a href="#">大陆社区<em>MENU TEXT</em></a></li>
+            <li><a href="http://bbs.9dalu.com/">大陆社区<em>MENU TEXT</em></a></li>
             <li><a href="#">动漫下载<em>MENU TEXT</em></a></li>
             <li><a href="#">新番连载<em>MENU TEXT</em></a></li>
             <li><a href="#">动漫情报<em>MENU TEXT</em></a></li>
@@ -119,7 +119,7 @@ $vod_stars=$pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
 			<div class="tj_mh">
 				<ul>
                 <volist name="vod_stars" id="ppvod">
-					<li><img src="{$ppvod.vod_pic|getpicurl}" /><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,6}</a></li>
+					<li><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" /></a><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,6}</a></li>
                 </volist>
 				</ul>
 			
