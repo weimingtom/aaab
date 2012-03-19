@@ -13,9 +13,9 @@
 
 <body>
 <php>
-$vod_news=$pplist->ppvod('num:46;order:vod_addtime desc');
-$vod_stars=$pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
-
+$vod_news = $pplist->ppvod('num:46;order:vod_addtime desc');
+$vod_stars = $pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
+$vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_addtime desc');
 </php>
 
 <div id="page_main">
@@ -132,26 +132,9 @@ $vod_stars=$pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
 			<div class="dh_images"><img src="./images/anime_22.jpg"/></div>
 			<div class="tj_mh">
 				<ul>
-					<li><img src="./images/tjmh.jpg" /><a href="#">海王五</a></li>
-					<li><img src="./images/tjmh.jpg" />群众好</li>
-					<li><img src="./images/tjmh.jpg" />群你好</li>
-					<li><img src="./images/tjmh.jpg" />海王五</li>
-					<li><img src="./images/tjmh.jpg" />群众好</li>
-					<li><img src="./images/tjmh.jpg" />群你好</li>
-					<li><img src="./images/tjmh.jpg" />海王五</li>
-					<li><img src="./images/tjmh.jpg" />群众好</li>
-					<li><img src="./images/tjmh.jpg" />群你好</li>
-					<li><img src="./images/tjmh.jpg" />海王五</li>
-					<li><img src="./images/tjmh.jpg" />群众好</li>
-					<li><img src="./images/tjmh.jpg" />群你好</li>
-					<li><img src="./images/tjmh.jpg" />海王五</li>
-					<li><img src="./images/tjmh.jpg" />群众好</li>
-					<li><img src="./images/tjmh.jpg" />群你好</li>
-					<li><img src="./images/tjmh.jpg" />海王五</li>
-					<li><img src="./images/tjmh.jpg" />群众好</li>
-					<li><img src="./images/tjmh.jpg" />群你好</li>
-						<li><img src="./images/tjmh.jpg" />群众好</li>
-					<li><img src="./images/tjmh.jpg" />群你好</li>
+				<volist name="vod_hits" id="ppvod">
+					<li><a href="{$ppvod.vod_url}"><img src="{$ppvod.vod_pic|getpicurl}" /></a><a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,6}</a></li>
+				</volist>
 				</ul>
 			
 			</div>
