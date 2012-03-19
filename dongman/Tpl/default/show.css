@@ -1,7 +1,7 @@
 .info_title{ height: 40px; width:980px; background:#F6F4F5;border: 1px solid #D1CFD0; text-align:center; line-height:40px; font-size:14px; color:#FE6000; font-weight:bold; margin-bottom:8px;position: relative;}
 .bg_write{ background:#FFFFFF;}
 
-.book_title { background:url(../images/show_title_bg.jpg); height:41px; border-bottom:1px solid #CCCCCC;margin: 1px; line-height:41px; text-indent:1em;}
+.book_title { background:url(/images/show_title_bg.jpg); height:41px; border-bottom:1px solid #CCCCCC;margin: 1px; line-height:41px; text-indent:1em;}
 
 .book_img { width:130px; float:left;}
 .book_img img {border: 1px solid #CACACA;padding: 3px;}
@@ -48,8 +48,8 @@ height: auto;
 .anchors ul li{ float:left; width:115px; height:35px; margin-left:0; margin-right:8px;}
 .active img{ width:250px; height:282px; margin:1px;}
 
-.play_list_title{ float:left;width:980px; height:40px; background:url(../images/bg_2.jpg);position: relative;border-bottom: 1px solid #DFE2EB;}
-.play_list_title h3{ float:left; font-size:14px; font-weight:bold; color:#FE6000; line-height:40px; text-indent:1em; border-right:1px solid #CCCCCC;background:url(../images/bg_1.jpg); width:150px;}
+.play_list_title{ float:left;width:980px; height:40px; background:url(/images/bg_2.jpg);position: relative;border-bottom: 1px solid #DFE2EB;}
+.play_list_title h3{ float:left; font-size:14px; font-weight:bold; color:#FE6000; line-height:40px; text-indent:1em; border-right:1px solid #CCCCCC;background:url(/images/bg_1.jpg); width:150px;}
  
 
 
@@ -86,36 +86,36 @@ display: inline;
 float: right;
 }
 .collapse a {
-background: url(../images/2011_sprits.gif) no-repeat 6px -645px;
+background: url(/images/2011_sprits.gif) no-repeat 6px -645px;
 color: #666;
 display: block;
 padding-left: 22px;
 text-decoration: none;
 }
 a.desc {
-background: url(../images/2011_sprits.gif) no-repeat 2px -1000px;
+background: url(/images/2011_sprits.gif) no-repeat 2px -1000px;
 color: #666;
 padding-left: 14px;
 }
 a.desc_on {
-background: url(../images/2011_sprits.gif) no-repeat 2px -950px;
+background: url(/images/2011_sprits.gif) no-repeat 2px -950px;
 color: red;
 font-weight: bold;
 }
 
 a.asc {
-background: url(../images/2011_sprits.gif) no-repeat 2px -1100px;
+background: url(/images/2011_sprits.gif) no-repeat 2px -1100px;
 color: #666;
 padding-left: 14px;
 }
 a.asc_on {
-background: url(../images/2011_sprits.gif) no-repeat 2px -1050px;
+background: url(/images/2011_sprits.gif) no-repeat 2px -1050px;
 color: red;
 font-weight: bold;
 }
 
 .collapse a {
-background: url(../images/2011_sprits.gif) no-repeat 6px -645px;
+background: url(/images/2011_sprits.gif) no-repeat 6px -645px;
 color: #666;
 display: block;
 padding-left: 22px;
@@ -163,7 +163,7 @@ color: red;
 }
 
 .plist li a {
-background: #F3F3F3 url(../images/2011_sprits.gif) no-repeat 8px -741px;
+background: #F3F3F3 url(/images/2011_sprits.gif) no-repeat 8px -741px;
 border: 1px solid white;
 display: block;
 font-family: Tahoma, Geneva, sans-serif;
@@ -184,14 +184,14 @@ height:10px;
 overflow: hidden;
 }
 .p_tudou {
-background: url(../images/tip_icons.gif) no-repeat 0px -24px;
+background: url(/images/tip_icons.gif) no-repeat 0px -24px;
 height: 30px;
 vertical-align: middle;
 width: 20px;
 display: inline-block;
 }
 .p_baidu {
-background: url(../images/tip_icons.gif) no-repeat 0px 6px;
+background: url(/images/tip_icons.gif) no-repeat 0px 6px;
 background-position: 0px -174px;
 display: inline-block;
 height: 30px;
@@ -199,7 +199,7 @@ vertical-align: middle;
 width: 20px;
 }
 a.download {
-background: url(../images/2011_sprits.gif) no-repeat 4px -900px;
+background: url(/images/2011_sprits.gif) no-repeat 4px -900px;
 color: #066;
 padding-left: 22px;
 text-decoration: underline;
@@ -210,7 +210,7 @@ font-size: 14px;
 line-height: 2em;
 padding:20px 40px;
 }
-.anime_desc{ background: url(../images/anime_desc_bg.jpg);margin-top: 1px; line-height:40px; font-size:14px; text-indent:1em;
+.anime_desc{ background: url(/images/anime_desc_bg.jpg);margin-top: 1px; line-height:40px; font-size:14px; text-indent:1em;
 border-bottom: ;
 font-weight: bold;
 height: 40px;
@@ -224,29 +224,29 @@ padding-left: 10px;}
 .play_share{ width:350px; height:40px; margin:9px; float:left; line-height:40px;}
 .play_operate{ float:right; height:40px; width:590px;  margin-top:9px; line-height:40px; font-size:14px; font-weight:bold;}
 .add_faverite,.copy_site,.error_web,.for_set,.next_set{ display:block; float:left; margin-right:10px; display:block; float:left;}
-.add_faverite a,.copy_site a,.error_web a,{ background:url(../images/play_nav_bg.gif) repeat-x 0px -330px; display:block; height:36px; border:1px solid #CCCCCC;  float:left; width:108px; color:#006600;}
-.add_faverite a,.copy_site a,.error_web a,.for_set a,.next_set a{ background:url(../images/play_nav_bg.gif) repeat-x 0px -330px; display:block; height:36px; border:1px solid #CCCCCC;  float:left; width:104px; color:#006600;}
+.add_faverite a,.copy_site a,.error_web a,{ background:url(/images/play_nav_bg.gif) repeat-x 0px -330px; display:block; height:36px; border:1px solid #CCCCCC;  float:left; width:108px; color:#006600;}
+.add_faverite a,.copy_site a,.error_web a,.for_set a,.next_set a{ background:url(/images/play_nav_bg.gif) repeat-x 0px -330px; display:block; height:36px; border:1px solid #CCCCCC;  float:left; width:104px; color:#006600;}
 .for_set a,.next_set a{ color:#FF6600; }
 
 .add_faverite a:hover,.copy_site a:hover,.error_web a:hover,.for_set a:hover,.next_set a:hover{ border:1px solid #FFCC99; text-decoration:underline;}
 
 .operate .btnPrev a {color: red;}
-.add_faverite a span { background: url(../images/xiao_button.png) no-repeat 10px -258px;cursor: pointer;padding-left: 32px;padding-right: 6px;zoom: 1;}
-.copy_site a span { background: url(../images/xiao_button.png) no-repeat -170px -260px;cursor: pointer;padding-left: 32px;padding-right: 6px;zoom: 1;}
-.error_web a span { background: url(../images/xiao_button.png) no-repeat 8px -298px;cursor: pointer;padding-left: 28px;padding-right: 6px;zoom: 1;}
-.for_set a span { background: url(../images/xiao_button.png) no-repeat 6px -340px;cursor: pointer;padding-left: 26px;padding-right: 2px;zoom: 1;}
-.next_set a span { background: url(../images/xiao_button.png) no-repeat -104px -340px;cursor: pointer;padding-left: 6px;padding-right: 25px;zoom: 1;}
+.add_faverite a span { background: url(/images/xiao_button.png) no-repeat 10px -258px;cursor: pointer;padding-left: 32px;padding-right: 6px;zoom: 1;}
+.copy_site a span { background: url(/images/xiao_button.png) no-repeat -170px -260px;cursor: pointer;padding-left: 32px;padding-right: 6px;zoom: 1;}
+.error_web a span { background: url(/images/xiao_button.png) no-repeat 8px -298px;cursor: pointer;padding-left: 28px;padding-right: 6px;zoom: 1;}
+.for_set a span { background: url(/images/xiao_button.png) no-repeat 6px -340px;cursor: pointer;padding-left: 26px;padding-right: 2px;zoom: 1;}
+.next_set a span { background: url(/images/xiao_button.png) no-repeat -104px -340px;cursor: pointer;padding-left: 6px;padding-right: 25px;zoom: 1;}
 
 
 .play_adverice img{ width:976px; height:90px; padding:2px; border:1px solid #CCCCCC;}
 
 .xiao_tip{ width:940px; height:40px; border:1px #CCCCCC dotted; margin:0 20px 10px; background:#fdece2; padding:2px;}
-.etip{ width:400px; height:40px; line-height:40px; margin-left:15px; float:left; background:url(../images/xiao_button.png) no-repeat -180px -148px;padding-left: 20px; }
+.etip{ width:400px; height:40px; line-height:40px; margin-left:15px; float:left; background:url(/images/xiao_button.png) no-repeat -180px -148px;padding-left: 20px; }
 
 .etip strong{ font-size:14px; color:#666666;}
 .play_order{ width:400px; float:right; position: relative;}
 .play_order span{ display:block; float:right;}
-a.return {font-size: 12px;font-weight: normal; background:url(../images/xiao_button.png) 6px -150px no-repeat;padding-left: 24px;padding-right: 8px;display: inline-block;line-height: 34px;color: #060;}
+a.return {font-size: 12px;font-weight: normal; background:url(/images/xiao_button.png) 6px -150px no-repeat;padding-left: 24px;padding-right: 8px;display: inline-block;line-height: 34px;color: #060;}
 .new_nav{ width:500px;text-indent: 1em;}
 .breadr {display: inline-block;padding-right:6px;padding-top: 2px; width:220px; }
 .breadr a {display: inline-block;line-height: 24px;padding: 4px 2px;text-align: center;vertical-align: top;}
@@ -254,8 +254,8 @@ a.return {font-size: 12px;font-weight: normal; background:url(../images/xiao_but
 .breadr a.feedback { color:#FE6000;}
 .breadr a.wide {color: #90F;}
 .breadr em {display: inline-block;line-height: 32px;height: 24px;color: #CCC;padding: 0 4px; width:4px;}
-.breadr a.lighter {background: url(../images/xiao_button.png) -174px -191px no-repeat;position: relative;z-index: 100;padding: 4px 8px;padding-left: 26px;width: 30px;}
-.outer{ background:url(../images/play_bg.png) repeat-x; height: 536px;overflow: hidden; width:100%; margin:10px auto;}
+.breadr a.lighter {background: url(/images/xiao_button.png) -174px -191px no-repeat;position: relative;z-index: 100;padding: 4px 8px;padding-left: 26px;width: 30px;}
+.outer{ background:url(/images/play_bg.png) repeat-x; height: 536px;overflow: hidden; width:100%; margin:10px auto;}
 
 .play_list_title h3.play_gray{ color:#666;}
 
