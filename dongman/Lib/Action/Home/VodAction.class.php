@@ -141,7 +141,10 @@ class VodAction extends HomeAction{
 			$playerlist = C('play_player');
 			foreach($play as $sid=>$val){
 				$ppplay[$sid] = array('servername'=>$playerlist[$val],'playername'=>$playerlist[$val],'playname'=>$val,'serverurl'=>$serverurl[$server[$sid]],'son'=>$this->playlist($vodurl[$sid],$sid,$url));
+			
 			}
+			
+			
 			$list=list_search(F('_ppvod/list'),'list_id='.$arrs['vod_cid']);
 		}
 			$this->assign('ppplays',$ppplay);
