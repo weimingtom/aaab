@@ -8,6 +8,7 @@
 <meta name="description" content="{$description}">
 <meta name="Copyright" content="版权信息" />
 <meta name="revisit-after" content="1 days" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
 {$css}
 </head>
 
@@ -16,6 +17,7 @@
 $vod_news = $pplist->ppvod('num:46;order:vod_addtime desc');
 $vod_stars = $pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
 $vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_addtime desc');
+$vod_todays = $pplist->ppvod('num:22;day:1;order:vod_addtime desc');
 </php>
 
 <div id="page_main">
@@ -197,36 +199,63 @@ $vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_addtime desc');
 				 <div class="update_title">动画片更新时间周期目录</div>
 				 <div class="update_date">
 				 	<ul>
-					<li class="first">今天</li><li>周一</li><li class="select_time">周二</li><li>周三</li><li>周四</li><li>周五</li><li class="last">周六</li>
+					<li class="first">今天</li>
+					<li>周一</li>
+					<li>周二</li>
+					<li>周三</li>
+					<li>周四</li>
+					<li>周五</li>
+					<li class="last">周六</li>
 					</ul>
 				 </div>
 				 <div class="update_info">
 				 	<ul>
+				 	<volist name="vod_todays" id="ppvod">
+						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a></li>
+					</volist>
+					</ul>
+					<ul>
 						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝</a></li>
-						<li><span><img src="./images/sj.jpg"/></span> <a href="#">要听爸爸的话</a></li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
-						<li><span><img src="./images/sj.jpg"/></span> 要听爸爸的话</li>
-						<li><span><img src="./images/sj.jpg"/></span> 爱杀宝贝</li>
+					</ul>
+					<ul>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝3</a></li>
+					</ul>
+					<ul>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝4</a></li>
+					</ul>
+					<ul>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝5</a></li>
+					</ul>
+					<ul>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝6</a></li>
+					</ul>
+					<ul>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝7</a></li>
 					</ul>
 				 </div>
+			<script>
+			$(function(){
+				$('.update_date ul li').each(function(i){
+					$(this).bind("click", {ii:i}, function(event){
+						var ii = event.data.ii;
+						var num = $('.update_date ul li').get().length;
+						for(i=0; i<num; i++) {
+							if(i == ii) {
+								$('.update_date ul li').get(i).className = 'select_time';
+								$('.update_info ul').get(i).style.display='';
+							} else {
+								$('.update_date ul li').get(i).className = '';
+								$('.update_info ul').get(i).style.display='none';
+							}
+						}
+					});
+					if(i > 0){
+						$('.update_info ul').get(i).style.display='none';
+					}
+				})
+			});
 			
+			</script>
 			</div>
 			
 			<div style="height:10px;"></div>
