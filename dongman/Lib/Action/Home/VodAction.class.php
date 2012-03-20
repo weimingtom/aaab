@@ -53,7 +53,7 @@ class VodAction extends HomeAction{
 	//分解播放地址链接
 	public function playlist($vodurl,$sid,$url){
 		$play=explode(chr(13),str_replace(array("\r\n", "\n", "\r"),chr(13),$vodurl));
-		krsort($play,SORT_NUMERIC );
+		//krsort($play,SORT_NUMERIC );
 		//array_multisort($play,SORT_ASC);
 		//print_r($play);
 		foreach($play as $key=>$val){
@@ -125,6 +125,27 @@ class VodAction extends HomeAction{
 		$pp_play .= '</script>'."\n";
 		$arr['vod_player'] = $pp_play.'<iframe border="0" src="'.C('site_path').'Public/player/play.html" width="'.C('play_width').'" height="'.(C('play_height')+26).'" marginWidth="0" frameSpacing="0" marginHeight="0" frameBorder="0" scrolling="no" vspale="0" style="z-index:99;" noResize></iframe>';
 		//$rs->setInc('vod_hits','vod_id='.$id);//更新点击数
+		
+		
+//播放页底部播放器开始		
+		$get = $_GET;$url['id'] = intval($get['id']);$url['sid']='';$url['pid']='';//根据地址栏参数组合播放页链接参数
+		if(!empty($get['l'])){$url['l']=$get['l'];}if(!empty($get['t'])){$url['t']=$get['t'];}//语言与模板自定义
+		$rs=D("Home.Vod");
+		$arrs=$rs->where('vod_del=0 and vod_id='.$url['id'].'  ')->find();
+		if($arrs){
+			$arrs['vod_count']=count($vodurl);
+			$play = explode('$$$',$arrs['vod_play']);
+			$server = explode('$$$',$arrs['vod_server']);
+			$vodurl = explode('$$$',$arrs['vod_url']);
+			$serverurl = C('play_server');
+			$playerlist = C('play_player');
+			foreach($play as $sid=>$val){
+				$ppplay[$sid] = array('servername'=>$playerlist[$val],'playername'=>$playerlist[$val],'playname'=>$val,'serverurl'=>$serverurl[$server[$sid]],'son'=>$this->playlist($vodurl[$sid],$sid,$url));
+			}
+			$list=list_search(F('_ppvod/list'),'list_id='.$arrs['vod_cid']);
+		}
+			$this->assign('ppplays',$ppplay);
+//播放页底部播放器结束		
 		$this->assign($list[0]);
 		$this->assign($arr);
 		$this->assign('ppplay',$arr['vod_ppplay']);

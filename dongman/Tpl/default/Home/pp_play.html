@@ -10,7 +10,17 @@
 {$css}
 <link rel="stylesheet" type="text/css" href="/./Tpl/default/show.css">
 <script type="text/javascript" src="./js/jquery.min.js"></script>
-
+<script language="javascript">     
+function copyToClipBoard()
+{      
+    var clipBoardContent="";   
+    clipBoardContent+=document.title;  
+    clipBoardContent+="";  
+    clipBoardContent+=this.location.href; 
+    window.clipboardData.setData("Text",clipBoardContent);  
+    alert("复制成功，请粘贴到你的QQ/MSN上推荐给你的好友");    
+}    
+</script>
 </head>
 
 <body>
@@ -38,7 +48,7 @@
 		<div class="play_share">分享</div>
 		<div class="play_operate">
 			<span class="add_faverite"><a href="#" tip="加入收藏夹，方便下一次观看"><span>加入收藏</span></a></span>
-			<span class="copy_site"><a href="#" tip="复制网址，与好友一起分享吧!"><span>复制网址</span></a></span>
+			<span class="copy_site"><a href="#" tip="复制网址，与好友一起分享吧!" onClick='copyToClipBoard()' ><span>复制网址</span></a></span>
 			<span class="error_web"><a href="#" tip="视频不能播放，点击此处提交报错信息"><span>报错/举报</span></a></span>
 			<span class="for_set"><a href="#"><span>上一集(<strong>A</strong>)</span></a></span>
 			<span class="next_set" ><a href="#"><span>下一集(<strong>D</strong>)</span></a></span>		
@@ -68,15 +78,67 @@
 			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this,0)">展开</a></span>
 			</div>
 		</div>
-		<div class="plist pnormal max-h200" id="play_0"><ul>
-		 <li><a href="58278.html" title="第62集" target="_blank">第62集</a></li><li><a href="58277.html" title="第61集" target="_blank">第61集</a></li><li><a href="58276.html" title="第60集" target="_blank">第60集</a></li><li><a href="58275.html" title="第59集" target="_blank">第59集</a></li><li><a href="58274.html" title="第58集" target="_blank">第58集</a></li><li><a href="58273.html" title="第57集" target="_blank">第57集</a></li><li><a href="58272.html" title="第56集" target="_blank">第56集</a></li><li><a href="58271.html" title="第55集" target="_blank">第55集</a></li><li><a href="58270.html" title="第54集" target="_blank">第54集</a></li><li><a href="58269.html" title="第53集" target="_blank">第53集</a></li><li><a href="58268.html" title="第52集" target="_blank">第52集</a></li><li><a href="58267.html" title="第51集" target="_blank">第51集</a></li><li><a href="58266.html" title="第50集" target="_blank">第50集</a></li><li><a href="58265.html" title="第49集" target="_blank">第49集</a></li><li><a href="58264.html" title="第48集" target="_blank">第48集</a></li><li><a href="58263.html" title="第47集" target="_blank">第47集</a></li><li><a href="58262.html" title="第46集" target="_blank">第46集</a></li><li><a href="58261.html" title="第45集" target="_blank">第45集</a></li><li><a href="58260.html" title="第44集" target="_blank">第44集</a></li><li><a href="58259.html" title="第43集" target="_blank">第43集</a></li><li><a href="58258.html" title="第42集" target="_blank">第42集</a></li><li><a href="58257.html" title="第41集" target="_blank">第41集</a></li><li><a href="58256.html" title="第40集" target="_blank">第40集</a></li><li><a href="58255.html" title="第39集" target="_blank">第39集</a></li><li><a href="58254.html" title="第38集" target="_blank">第38集</a></li><li><a href="58253.html" title="第37集" target="_blank">第37集</a></li><li><a href="58252.html" title="第36集" target="_blank">第36集</a></li><li><a href="58251.html" title="第35集" target="_blank">第35集</a></li><li><a href="58250.html" title="第34集" target="_blank">第34集</a></li><li><a href="58249.html" title="第33集" target="_blank">第33集</a></li><li><a href="58248.html" title="第32集" target="_blank">第32集</a></li><li><a href="58247.html" title="第31集" target="_blank">第31集</a></li><li><a href="58246.html" title="第30集" target="_blank">第30集</a></li><li><a href="58245.html" title="第29集" target="_blank">第29集</a></li><li><a href="58244.html" title="第28集" target="_blank">第28集</a></li><li><a href="58243.html" title="第27集" target="_blank">第27集</a></li><li><a href="58242.html" title="第26集" target="_blank">第26集</a></li><li><a href="58241.html" title="第25集" target="_blank">第25集</a></li><li><a href="58240.html" title="第24集" target="_blank">第24集</a></li><li><a href="58239.html" title="第23集" target="_blank">第23集</a></li><li><a href="58238.html" title="第22集" target="_blank">第22集</a></li><li><a href="58237.html" title="第21集" target="_blank">第21集</a></li><li><a href="58236.html" title="第20集" target="_blank">第20集</a></li><li><a href="58235.html" title="第19集" target="_blank">第19集</a></li><li><a href="58234.html" title="第18集" target="_blank">第18集</a></li><li><a href="58233.html" title="第17集" target="_blank">第17集</a></li><li><a href="58232.html" title="第16集" target="_blank">第16集</a></li><li><a href="58231.html" title="第15集" target="_blank">第15集</a></li><li><a href="58230.html" title="第14集" target="_blank">第14集</a></li><li><a href="58229.html" title="第13集" target="_blank">第13集</a></li><li><a href="58228.html" title="第12集" target="_blank">第12集</a></li><li><a href="58227.html" title="第11集" target="_blank">第11集</a></li><li><a href="58226.html" title="第10集" target="_blank">第10集</a></li><li><a href="58225.html" title="第09集" target="_blank">第09集</a></li><li><a href="58224.html" title="第08集" target="_blank">第08集</a></li><li><a href="58223.html" title="第07集" target="_blank">第07集</a></li><li><a href="58222.html" title="第06集" target="_blank">第06集</a></li><li><a href="58221.html" title="第05集" target="_blank">第05集</a></li><li><a href="58220.html" title="第04集" target="_blank">第04集</a></li><li><a href="58219.html" title="第03集" target="_blank">第03集</a></li><li><a href="58218.html" title="第02集" target="_blank">第02集</a></li><li><a href="58217.html" title="第01集" target="_blank">第01集</a></li></ul></div>
-		 
-		 <div class="blank8"></div>
+		<div class="blank8"></div>
 		
 	</div>
 	<div style="height:8px;clear:both;"></div>
+
+
+ <!--播放器开始-->
+ <div id="page_container">   
+	<volist name="ppplays" id="ppvod" >
+<eq name="ppvod.playname" value="down">
+<script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
+<div class="content boder fl">
+		<div class="play_list_title">
+		
+			<h3><span class="p_tudou"></span>影片来源：{$ppvod.playname}迅雷下载</h3>
+			<span class="plistTip"> 来自<strong>{$ppvod.playername}</strong>，<em>无需安装任何插件，即可快速播放</em></span>
+			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(1,0,this)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(0,0,this)">升序</a></span>
+			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this,0)">展开</a></span>		
+		</div>
+		<div class="blank8"></div>
+		<div class="plist pnormal max-h200" id="play_0">
+        <ul>
+     
+        
+         <li><volist name="ppvod['son']" id="ppvodson"><a oncontextmenu=ThunderNetwork_SetHref(this) onclick="return OnDownloadClick_Simple(this,2,4)" href="#" thunderResTitle="222" thunderType="" thunderPid="03682" thunderHref="thunder://{:base64_encode('AA'.$ppvodson['playpath'].'ZZ')}">{$ppvodson.playname}</a></volist> </li>
+ 
+       
+         </ul>
+         </div>
+	</div>
+    
+     <div class="blank8"></div>
+	 <div class="blank8"></div>
+<else/> 
+	<div class="content boder fl">
+		<div class="play_list_title">
+		
+			<h3><span class="p_tudou"></span>全集播放地址① </h3>
+			<span class="plistTip"> 来自<strong>{$ppvod.playername}<a name="{$ppvod.playername}" id="{$ppvod.playername}"></a></strong>，<em>无需安装任何插件，即可快速播放</em></span>
+			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(1,0,this)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(0,0,this)">升序</a></span>
+			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this,0)">展开</a></span>		
+		</div>
+		<div class="blank8"></div>
+		<div class="plist pnormal max-h200" id="play_0">
+        <ul>
+        <volist name="ppvod['son']" id="ppvodson">
+		 <li><a href="{$ppvodson.playurl}" target="_blank">{$ppvodson.playname}</a></li>
+        </volist>
+         </ul>
+         </div>
+</div>		 
+		
+		
 	
-	 <!--内容结束-->
+    
+     <div class="blank8"></div>
+	 <div class="blank8"></div>
+     </eq>
+</volist>
+</div>
+	 <!--播放器结束-->
 	
 
 
