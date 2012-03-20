@@ -47,6 +47,8 @@ class AllAction extends Action{
 				$search['vod_content']=array('like','%'.$keyword.'%');
 			}elseif('lang'==$keytype){
 				$search['vod_language']=array('like','%'.$keyword.'%');
+			}elseif('keywords' == $keytype){
+				$search['vod_keywords'] = array('like', '%'.$keyword.'%');
 			}else{
 				$search['vod_name']=array('like','%'.$keyword.'%');
 				$search['vod_title']=array('like','%'.$keyword.'%');
@@ -55,6 +57,7 @@ class AllAction extends Action{
 				//$search['vod_area']=array('like','%'.$keyword.'%');$search['vod_letter']=array('eq',$keyword);$search['vod_year']=array('eq',$keyword);
 			}
 			$map=$search;
+			//print_r($map);
 			$map['_logic'] = 'or';
 			$where['_complex']=$map;
 			$sql=ppvodsql('vod','*',$where,$order,$limit,$currentPage,$join);$arr=$sql['list'];//查询
