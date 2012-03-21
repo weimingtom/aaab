@@ -698,6 +698,7 @@ width: 980px;
 .friend_title h1{ float:left; width:100px;}
 .friend{ width:930px; margin-top:18px; margin-left:30px;  }
 .friend_text{ width:920px; height:auto; overflow:auto; margin:20px;}
+.friend_text li{float:left; list-style:none; width:80px;  }
 
 .friend_index{ height:auto; line-height:22px; width:930px; margin-top:5px; margin-bottom:12px;}
 .title img{ margin:8px 0 0 10px;}

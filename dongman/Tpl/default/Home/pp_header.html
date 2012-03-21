@@ -1,27 +1,137 @@
-<div class="top">
-<div class="header">
-	<div class="logo"><a href="{$root}" title="首页"></a></div>
-	<div class="banner">{:getadsurl('top46860')}</div>
+<div id="page_header">
+    	<div class="newlogobox" title="九尾狐大陆">&nbsp;</div>
+        <div class="list_big_img">&nbsp;</div>
+     
+
+		
+    <!--菜单开始-->
+<div id="menu" style="width: 650px; float:right; margin-top:30px; margin-bottom:15px;">
+    	<ul>
+        	<li class="here"><a href="#">首页<em>HOMEPAGE</em></a></li>
+            <li><a href="http://bbs.9dalu.com/">大陆社区<em>MENU TEXT</em></a></li>
+            <li><a href="#">动漫下1载<em>MENU TEXT</em></a></li>
+            <li><a href="#">新番连载<em>MENU TEXT</em></a></li>
+            <li><a href="#">动漫情报<em>MENU TEXT</em></a></li>
+            <li><a href="#">COSPLAY<em>MENU TEXT</em></a></li>
+        </ul>
 </div>
-<div class="search">
-    <div class="nav">
-       <ul>
-        <li class="no_bg <eq name="model" value="index">on</eq>"><a href="{$root}" title="{$sitename}">首 页</a></li>
-        <volist name="ppmenu" id="ppvod">
-        <li class="<eq name="ppvod.list_id" value="$list_id">no_bg on</eq><eq name="ppvod.list_id" value="$list_pid">no_bg on</eq>"><a href="{$ppvod.list_url}">{$ppvod.list_name}</a></li>
-        </volist></ul>
+
+<div class="searchbox_list" style=" margin-bottom:5px;">
+        
+           <form name="form1" method="post" action="{$root}index.php?s=vod-search" class="search_form">
+    	<input type="text" name="id" value="海贼王" onclick="this.value = ''" maxLength="26" class="input" />
+    	<button type="submit" value="&nbsp;" class="buttonstyle_list" id="searchbutton"/></button></form>
+         
+
+        </div>
+	
     </div>
-    <div class="form"><eq name="list_id" value="20"><form name="form1" method="post" action="{$root}index.php?s=news-search"><else/><form name="form1" method="post" action="{$root}index.php?s=vod-search"></eq>
-    	<input type="text" name="id" value="请在此处输入关键字" onclick="this.value = ''" maxLength="26" />
-    	<button type="submit" id="searchbutton" name="Submit" >全站搜索</button></form>
-    </div>
-    <div class="up"><ul><php>$tag_list=$pplist->pptag('sid:1;num:8;');</php>
-    	<volist name="ppmenu" id="ppvod"><if condition="$ppvod.list_id eq 1">
-        <li>电　影：<volist name="ppvod.son" id="son"><a href="{$son.list_url}">{$son.list_name}</a></volist></li>
-        <elseif condition="$ppvod.list_id eq 2" />
-        <li>电视剧：<volist name="ppvod.son" id="son"><a href="{$son.list_url}">{$son.list_name}</a></volist></li>
-        </if></volist>
-        <li>标　签：<a href="{:ppvodurl('ajax/show',false,false,false,true)}">最近更新</a><volist name="tag_list" id="ppvod"><a href="{$ppvod.tag_url}">{$ppvod.tag_name|msubstr=0,4}</a></volist></li>
-    </ul></div>
-</div>
-</div>
+    
+
+    <!--菜单结束-->
+    <!--头部结束-->
+    <!--导航开始-->
+	<div id="nav">
+	    <div class="nav_top w980">
+		   <div class="nav_menu w980">
+			   <ul>
+               	   <li><a href="/">首页</a></li>
+                <volist name="ppmenu" id="ppvod">
+				   <li><a href="{$ppvod.list_url}">{$ppvod.list_name}</a></li>
+				</volist>
+			 </ul>
+		   	</div>
+		   <div class="nav_letter w980">
+			   <img src="images/anime_15.jpg" />
+			   <a href="/?s=vod-search-id-A-x-letter.html">A</a>
+			   <a href="/?s=vod-search-id-B-x-letter.html">B</a>
+			   <a href="/?s=vod-search-id-C-x-letter.html">C</a>
+			   <a href="/?s=vod-search-id-D-x-letter.html">D</a>
+			   <a href="/?s=vod-search-id-E-x-letter.html">E</a>
+			   <a href="/?s=vod-search-id-F-x-letter.html">F</a>
+			   <a href="/?s=vod-search-id-G-x-letter.html">G</a>
+			   <a href="/?s=vod-search-id-H-x-letter.html">H</a>
+			   <a href="/?s=vod-search-id-I-x-letter.html">I</a>
+			   <a href="/?s=vod-search-id-J-x-letter.html">J</a>
+			   <a href="/?s=vod-search-id-K-x-letter.html">K</a>
+			   <a href="/?s=vod-search-id-L-x-letter.html">L</a>
+			   <a href="/?s=vod-search-id-M-x-letter.html">M</a>
+			   <a href="/?s=vod-search-id-N-x-letter.html">N</a>
+			   <a href="/?s=vod-search-id-O-x-letter.html">O</a>
+			   <a href="/?s=vod-search-id-P-x-letter.html">P</a>
+			   <a href="/?s=vod-search-id-Q-x-letter.html">Q</a>
+			   <a href="/?s=vod-search-id-R-x-letter.html">R</a>
+			   <a href="/?s=vod-search-id-S-x-letter.html">S</a>
+			   <a href="/?s=vod-search-id-T-x-letter.html">T</a>
+			   <a href="/?s=vod-search-id-U-x-letter.html">U</a>
+			   <a href="/?s=vod-search-id-V-x-letter.html">V</a>
+			   <a href="/?s=vod-search-id-W-x-letter.html">W</a>
+			   <a href="/?s=vod-search-id-X-x-letter.html">X</a>
+			   <a href="/?s=vod-search-id-Y-x-letter.html">Y</a>
+			   <a href="/?s=vod-search-id-Z-x-letter.html">Z</a>
+		   </div>
+		</div>
+	<!--按时间浏览开始-->  
+		<div class="nav_type">
+		<dl style="width:373px;"><dt><strong>剧情</strong></dt>
+			<dd>
+				<a href="?s=vod-search-id-热血-x-keywords.html">热血</a> 
+				<a href="?s=vod-search-id-机战-x-keywords.html">机战</a> 
+				<a href="?s=vod-search-id-运动-x-keywords.html">运动</a> 
+				<a href="?s=vod-search-id-推理-x-keywords.html">推理</a> 
+				<a href="?s=vod-search-id-冒险-x-keywords.html">冒险</a> 
+				<a href="?s=vod-search-id-耽美-x-keywords.html">耽美</a> 
+				<a href="?s=vod-search-id-搞笑-x-keywords.html">搞笑</a> 
+				<a href="?s=vod-search-id-战争-x-keywords.html">战争</a> 
+				<a href="?s=vod-search-id-神魔-x-keywords.html">神魔</a> 
+				<a href="?s=vod-search-id-忍者-x-keywords.html">忍者</a> 
+				<a href="?s=vod-search-id-竞技-x-keywords.html">竞技</a> 
+				<a href="?s=vod-search-id-悬疑-x-keywords.html">悬疑</a> 
+				<a href="?s=vod-search-id-社会-x-keywords.html">社会</a> 
+				<a href="?s=vod-search-id-萝莉-x-keywords.html">萝莉</a> 
+				<a href="?s=vod-search-id-爱情-x-keywords.html">爱情</a> 
+				<a href="?s=vod-search-id-宠物-x-keywords.html">宠物</a> 
+				<a href="?s=vod-search-id-校园-x-keywords.html">校园</a> 
+				<a href="?s=vod-search-id-后宫-x-keywords.html">后宫</a> 
+				<a href="?s=vod-search-id-科幻-x-keywords.html">科幻</a> 
+				<a href="?s=vod-search-id-少女-x-keywords.html">少女</a>
+			</dd>
+		</dl>
+		<dl style="width:250px;">
+		<dt><strong>年代</strong></dt>
+			<dd>
+				<a href="?s=vod-search-id-2012-x-year.html">2012</a> 
+				<a href="?s=vod-search-id-2011-x-year.html">2011</a> 
+				<a href="?s=vod-search-id-2010-x-year.html">2010</a> 
+				<a href="?s=vod-search-id-2009-x-year.html">2009</a> 
+				<a href="?s=vod-search-id-2008-x-year.html">2008</a> 
+				<a href="?s=vod-search-id-2007-x-year.html">2007</a> 
+				<a href="?s=vod-search-id-2006-x-year.html">2006</a> 
+				<a href="?s=vod-search-id-2005-x-year.html">2005</a> 
+				<a href="?s=vod-search-id-2004-x-year.html">2004</a> 
+				<a href="?s=vod-search-id-2003-x-year.html">2003</a> 
+				<a href="?s=vod-search-id-2002-x-year.html">2002</a> 
+				<!--<a href="/donghua/y2001/">2001</a>--> 
+				<a href="?s=vod-search-id-2000-x-year.html">以前</a>
+			</dd>
+		</dl>
+		<dl style="width:98px;"><dt><strong>对白</strong></dt><dd> 
+			<a href="?s=vod-search-id-日语-x-lang.html">日语</a> 
+			<a href="?s=vod-search-id-国语-x-lang.html">国语</a> 
+			<a href="?s=vod-search-id-粤语-x-lang.html">粤语</a> 
+			<a href="?s=vod-search-id-英语-x-lang.html">英语</a>
+			</dd>
+		</dl>
+		
+		<dl style="width:166px;" class="none"><dt><strong>版本</strong></dt>
+		<dd> <a href="?s=vod-show-id-23.html">TV版</a> 
+			<a href="?s=vod-show-id-24.html">OVA版本</a> 
+			<a href="?s=vod-show-id-25.html">剧场版</a> 
+			<a href="?s=vod-show-id-26.html">真人版</a> 
+			<a href="?s=vod-show-id-27.html">特典版</a> 
+			<a href="?s=vod-show-id-28.html">宣传版</a>
+		</dd></dl>
+		</div>
+	<!--按时间浏览开始-->  
+	</div>
+	<!--导航结束-->
