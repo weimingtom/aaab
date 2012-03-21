@@ -1,20 +1,35 @@
 <?php
 set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
+define('RUNPROGRAM_ID', $value);
 
 include ROOT_PATH.'/config.php';
 include ROOT_PATH.'/../include/db.php';
 include ROOT_PATH.'/../include/function.php';
 include ROOT_PATH.'/../include/letter.php';
 
+// 判断是否锁定
+mkdirs(ROOT_PATH.'/syslog');
+$lockFile =  ROOT_PATH.'/syslog/dm456.lock';
+if(file_exists($lockFile)) {
+	exit;
+}
+
 $db = new db();
 $db->connect(DBHOST, DBUSER, DBPWD, DBNAME, DBCHARSET);
 
 $domain = "http://www.dm456.com";
+
 // 最近更新的列表
 //$spiderMainUrl = 'http://www.dm456.com/donghua/update.html';
+
 $categorys = array(
-	'riben'=>10,
+	2=>array('donghua/riben',	97),		// 日本动漫片
+	1=>array('donghua/dalu',	25),		// 国产动画片
+	3=>array('donghua/oumei',	17),		// 欧美动画片
+	23=>array('donghua/tv',		91),		// TV
+	24=>array('donghua/ova',	16),		// ova
+	25=>array('donghua/juchang',	25),		// 剧场
 );
 
 foreach ($categorys as $cateName=>$countPage) 
@@ -137,6 +152,7 @@ foreach ($categorys as $cateName=>$countPage)
 		}
 	}
 }
+touch($lockFile);
 
 // 获取影片ID
 function get_pay_vod_id($url) {
