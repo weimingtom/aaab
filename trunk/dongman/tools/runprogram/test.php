@@ -1,18 +1,5 @@
+#!/usr/local/php/bin/php
 <?php
-
-foreach ($urls as $payName=>$value) {
-	$field['vod_play'] .= $payName.'$$$';
-	foreach ($value as $k=>$v) {
-		if (isset($arr[$k])) {
-			$arr[$k] .= '$$$'.$v;
-		} else {
-			if ($p == 1) {
-				$arr[$k] = $v;
-			} else {
-				$arr[$k] = str_repeat(' $$$', $p).$v;
-			}
-		}
-	}
-	$p++;
-}
-print_r($arr);
+// ±£´æÍ¼Æ¬
+$s = 'a:2:{s:6:"cateId";i:1;s:4:"page";i:24;}';
+print_r(unserialize($s));
