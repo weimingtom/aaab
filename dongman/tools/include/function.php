@@ -3,13 +3,13 @@ function getContentUrl($url, $post=array()) {
 	$ch = curl_init($url);
 	
 	//curl_setopt($ch,CURLOPT_ENCODING ,'gb2312'); 
-	// è®¾ç½®æ¥è·¯ 
+	// ÉèÖÃÀ´Â· 
 	//curl_setopt($curl, CURLOPT_REFERER, 'http://google.com/'); 
-	// ä¸ç›´æ¥è¾“å…¥å†…å®¹ 
+	// ²»Ö±½ÓÊäÈëÄÚÈİ 
 	//curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); 
 	
 	curl_setopt($ch, CURLOPT_TIMEOUT, 10); 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true) ; // è·å–æ•°æ®è¿”å› 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true) ; // »ñÈ¡Êı¾İ·µ»Ø 
 	if($post) {
 		curl_setopt($ch, CURLOPT_POST, TRUE);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
@@ -19,7 +19,7 @@ function getContentUrl($url, $post=array()) {
 	return $s;
 }
 
-// è·å–get,post,request,cookie,serverçš„æ•°æ®
+// »ñÈ¡get,post,request,cookie,serverµÄÊı¾İ
 function getgpc($k, $var='G') {
 	switch($var) {
 		case 'G': $var = &$_GET; break;
@@ -33,7 +33,7 @@ function getgpc($k, $var='G') {
 
 function checkIpFormat($ip) {
 	$ipArr = explode('.', $ip);
-	$isRight = 1;	// 1æ­£ç¡®ï¼Œ0é”™è¯¯
+	$isRight = 1;	// 1ÕıÈ·£¬0´íÎó
 	if(count($ipArr) == 4) {
 		foreach($ipArr as $n) {
 			if(!is_numeric($n) || strlen($n)>3) {
@@ -46,7 +46,7 @@ function checkIpFormat($ip) {
 	return $isRight;
 }
 
-// è·å–æŒ‡å®šèŒƒå›´çš„IPåœ°å€
+// »ñÈ¡Ö¸¶¨·¶Î§µÄIPµØÖ·
 function getRandIp($startIp, $endIp) {
 	
 	if (!$startIp || !$endIp) {
@@ -86,7 +86,7 @@ function getRandIp($startIp, $endIp) {
 	return $ip;
 }
 
-//è®°å½•å½“æ—¥ç³»ç»Ÿè¿è¡Œé”™è¯¯logæ—¥å¿—ä¿¡æ¯
+//¼ÇÂ¼µ±ÈÕÏµÍ³ÔËĞĞ´íÎólogÈÕÖ¾ĞÅÏ¢
 function logSysError($log)
 {
 	$today = date('Ymd');
@@ -98,7 +98,7 @@ function logSysError($log)
 	logFile($path.$filename, date("Y-m-d H:i:s").' '.$log."\r\n");
 }
 
-//å†™log æ–‡ä»¶ï¼Œæ ¼å¼å¦‚ä¸‹ï¼šé”™è¯¯æ—¥å¿—æ ¼å¼ log/pid/å¹´æœˆæ—¥e.log  ç”¨æˆ·æ—¥å¿—æ ¼å¼ log/pid/å¹´æœˆæ—¥u.log
+//Ğ´log ÎÄ¼ş£¬¸ñÊ½ÈçÏÂ£º´íÎóÈÕÖ¾¸ñÊ½ log/pid/ÄêÔÂÈÕe.log  ÓÃ»§ÈÕÖ¾¸ñÊ½ log/pid/ÄêÔÂÈÕu.log
 function logFile($logfile,$content,$mode="a+")
 {
 	if($logfile)
@@ -112,7 +112,7 @@ function logFile($logfile,$content,$mode="a+")
 	}
 }
 
-/*ç”Ÿæˆç›®å½•*/
+/*Éú³ÉÄ¿Â¼*/
 function mkdirs($path , $mode = 0777 )
 {    
   if(!is_dir($path))
@@ -123,9 +123,9 @@ function mkdirs($path , $mode = 0777 )
   return true;    
 }
 
-//æ£€æŸ¥IPæ˜¯å¦æ­£ç¡®
+//¼ì²éIPÊÇ·ñÕıÈ·
 function checkIp($ip) {
-	$isRight = 1;	//1æ­£ç¡®		0é”™è¯¯
+	$isRight = 1;	//1ÕıÈ·		0´íÎó
 	$preg = '/^(([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.)(([0-9]|([0-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))\.){2}([1-9]|([1-9]\d)|(1\d\d)|(2([0-4]\d|5[0-5])))$/';
 	if(preg_match($preg, $ip)) {
 		$isRight = 1;
@@ -133,4 +133,17 @@ function checkIp($ip) {
 		$isRight = 0;
 	}	
 	return $isRight;
+}
+
+function saveFileInfo($fileid, $info) {
+	file_put_contents(ROOT_PATH.'/syslog/'.$fileid.'.info', serialize($info));
+}
+
+function getFileInfo($fileid) {
+	if (file_exists(ROOT_PATH.'/syslog/'.$fileid.'.info')) {
+		$s = file_get_contents(ROOT_PATH.'/syslog/'.$fileid.'.info');
+		return unserialize($s);
+	} else {
+		return NULL;
+	}
 }

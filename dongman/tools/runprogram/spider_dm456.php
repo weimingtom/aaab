@@ -2,23 +2,27 @@
 <?php
 //set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
+define('LOCK_PATH', ROOT_PATH.'/syslog');
 define('RUNPROGRAM_ID', 'dm456');
 
 include ROOT_PATH.'/config.php';
 include ROOT_PATH.'/../include/db.php';
 include ROOT_PATH.'/../include/function.php';
+include ROOT_PATH.'/../include/fun.processlock.php';
 include ROOT_PATH.'/../include/letter.php';
 
-$locked = process_islocked(PROCESSLOCK_LOCKID);
+mkdirs(ROOT_PATH.'/syslog');
+
+$locked = process_islocked(RUNPROGRAM_ID);
 if ($locked === TRUE) {
-	echo 'process '.PROCESSLOCK_LOCKID.' is running.';
+	echo 'process '.RUNPROGRAM_ID.' is running.';
 	exit();
 } else {
-	process_lock(PROCESSLOCK_LOCKID);
+	process_lock(RUNPROGRAM_ID);
 }
+
 // 判断是否锁定
-mkdirs(ROOT_PATH.'/syslog');
-$lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.lock';
+$lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.file.lock';
 if(file_exists($lockFile)) {
 	exit('Already lock file exit program');
 }
@@ -49,7 +53,6 @@ $fileInfo = getFileInfo(RUNPROGRAM_ID);
 if ($fileInfo) {
 	$recordInfo = $fileInfo;
 }
-//print_r($fileInfo);exit;
 
 // 是否第一次运行
 $isFirstRun = TRUE;
