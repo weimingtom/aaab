@@ -156,7 +156,7 @@ include 'webadmin/include/config.inc.php';
 				<?php 
 				$categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='4' order by `sort` ASC");
 				foreach($categorys as $k=>$category) {?>
-				<div id="myTab1_Content<?php echo $k?>">
+				<div id="myTab1_Content<?php echo $k?>" <?php if($k>0){?>style="display:none"<?php }?>>
 					<div class="text">
 						<ul>
 							<?php 
@@ -191,7 +191,7 @@ include 'webadmin/include/config.inc.php';
 				$categorys = $mysql->fetch_all("SELECT * FROM -table-dafenglei WHERE classid='5' order by `sort` ASC");
 				foreach($categorys as $k=>$category) {
 					?>
-                    <div id="myTab2_Content<?php echo $k?>">
+                    <div id="myTab2_Content<?php echo $k?>" <?php if($k>0){?>style="display:none"<?php }?>>
                       <div class="text">
                         <ul>
 						<?php 
