@@ -1,7 +1,8 @@
+#!/usr/local/php/bin/php
 <?php
-set_time_limit(0);
+//set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
-define('RUNPROGRAM_ID', $value);
+define('RUNPROGRAM_ID', 'dm456');
 
 include ROOT_PATH.'/config.php';
 include ROOT_PATH.'/../include/db.php';
@@ -15,12 +16,11 @@ if ($locked === TRUE) {
 } else {
 	process_lock(PROCESSLOCK_LOCKID);
 }
-
 // 判断是否锁定
 mkdirs(ROOT_PATH.'/syslog');
-$lockFile =  ROOT_PATH.'/syslog/dm456.lock';
+$lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.lock';
 if(file_exists($lockFile)) {
-	exit;
+	exit('Already lock file exit program');
 }
 
 $db = new db();
@@ -32,46 +32,95 @@ $domain = "http://www.dm456.com";
 //$spiderMainUrl = 'http://www.dm456.com/donghua/update.html';
 
 $categorys = array(
-	2=>array('donghua/riben',	97),		// 日本动漫片
 	1=>array('donghua/dalu',	25),		// 国产动画片
+	2=>array('donghua/riben',	97),		// 日本动漫片
 	3=>array('donghua/oumei',	17),		// 欧美动画片
 	23=>array('donghua/tv',		91),		// TV
 	24=>array('donghua/ova',	16),		// ova
 	25=>array('donghua/juchang',	25),		// 剧场
 );
 
-foreach ($categorys as $cateName=>$countPage) 
+// 记录信息的数组
+$recordInfo = array(
+	'cateId'=>0,
+	'page'=>0,
+);
+$fileInfo = getFileInfo(RUNPROGRAM_ID);
+if ($fileInfo) {
+	$recordInfo = $fileInfo;
+}
+//print_r($fileInfo);exit;
+
+// 是否第一次运行
+$isFirstRun = TRUE;
+
+foreach ($categorys as $cateId=>$confInfo) 
 {
-	for ($i=1; $i<=$countPage; $i++) 
+	$countPage = $confInfo[1];
+	if($isFirstRun == TRUE) {
+		if ($cateId < $recordInfo['cateId'])
+			continue;
+			
+		if (isset($recordInfo['page']) && $recordInfo['page'])
+			$countPage = $recordInfo['page'];
+		
+		$isFirstRun = FALSE;
+	}
+	$cateName = $confInfo[0];
+	
+	$recordInfo['cateId'] = $cateId;
+	saveFileInfo(RUNPROGRAM_ID, $recordInfo);
+	
+	print_r($recordInfo);
+	
+	for ($i=$countPage; $i>0; $i--) 
 	{
 		// 获取列表页URL
-		$spiderListUrl = $domain.'/donghua/riben/index_'.$i.'.html';
+		$spiderListUrl = $domain.'/'.$cateName.'/index_'.$i.'.html';
 		$s = getContentUrl($spiderListUrl);
 
 		$tpl = array();
 		preg_match_all('/<dt><a href="(.*)" title="(.*)">(.*)<\/a><\/dt>/isU', $s, $tpl);
 		$listUrls = isset($tpl[1]) ? $tpl[1] : '';
+		$listTitles = isset($tpl[2]) ? $tpl[2] : '';
 
-		foreach ($listUrls as $listUrl) 
+		foreach ($listUrls as $index=>$listUrl) 
 		{
+			$title = $listTitles[$index];
+			if($title) {
+				$vod = $db->fetch_first("SELECT vod_id FROM pp_vod WHERE vod_name='$title'");
+				if ($vod) {
+					continue;
+				}
+			}
+			
 			$field = array();
 
 			// 抓取动漫内容详细页的
 			$spiderDetailUrl = $domain.$listUrl;
+			echo $spiderDetailUrl."\r\n";
 			$s = getContentUrl($spiderDetailUrl);
 			//$s = iconv('gbk', 'utf-8', $s);
-
+			//print_r($s);exit;
+			
 			// 图片
 			$tpl = array();
 			preg_match('/<img src="(.*)" class="pic" title/isU', $s, $tpl);
 			$vod_pic = isset($tpl[1]) ? $tpl[1] : '';
-			$filename = save_picture($domain.$vod_pic, dirname(dirname(PICTURE_SAVE_PATH)).'/Upload/'.date('Y-m'));
-			$field['vod_pic'] = date('Y-m').'/'.$filename;
+			if ($vod_pic) {
+				$filename = save_picture($domain.$vod_pic, dirname(dirname(PICTURE_SAVE_PATH)).'/Upload/'.date('Y-m'));
+				$field['vod_pic'] = date('Y-m').'/'.$filename;
+			} else {
+				continue;
+			}
 
 			// 标题
 			$tpl = array();
 			preg_match('/ > <strong>(.*)<\/strong><\/div><\/div><\/div>/isU', $s, $tpl);
 			$field['vod_name'] = isset($tpl[1]) ? $tpl[1] : '';
+			if (!$field['vod_name']) {
+				continue;
+			}
 
 			// 是否完结
 			$tpl = array();
@@ -110,9 +159,6 @@ foreach ($categorys as $cateName=>$countPage)
 			$tpl = array();
 			preg_match('/<div class="introduction" id="intro1">(.*)<\/div>/isU', $s, $tpl);
 			$field['vod_content'] = isset($tpl[1]) ? strip_tags($tpl[1]) : '';
-
-			print_r($field);
-			exit;
 
 			// 获取播放器数据
 			$urls = array();
@@ -154,12 +200,20 @@ foreach ($categorys as $cateName=>$countPage)
 			// 入库
 			$field['vod_addtime'] = time();
 			$field['vod_inputer'] = 'admin';
-			$db->insert('pp_vod', $field);
-
-			print_r($field);
+			$field['vod_cid'] = $cateId;
+			
+			if ($field['vod_name']) {
+				print_r($field);
+				$db->insert('pp_vod', $field);
+			}
 		}
+		
+		$recordInfo['page'] = $i;
+		saveFileInfo(RUNPROGRAM_ID, $recordInfo);
 	}
 }
+
+// 创建锁文件
 touch($lockFile);
 
 // 获取影片ID
