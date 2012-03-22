@@ -8,6 +8,14 @@ include ROOT_PATH.'/../include/db.php';
 include ROOT_PATH.'/../include/function.php';
 include ROOT_PATH.'/../include/letter.php';
 
+$locked = process_islocked(PROCESSLOCK_LOCKID);
+if ($locked === TRUE) {
+	echo 'process '.PROCESSLOCK_LOCKID.' is running.';
+	exit();
+} else {
+	process_lock(PROCESSLOCK_LOCKID);
+}
+
 // ÅÐ¶ÏÊÇ·ñËø¶¨
 mkdirs(ROOT_PATH.'/syslog');
 $lockFile =  ROOT_PATH.'/syslog/dm456.lock';
