@@ -27,13 +27,27 @@ include 'webadmin/include/config.inc.php';
     	<div class="logobox" title="<?php echo $mydecms['webname']?>">&nbsp;</div>
         <div class="big_img">&nbsp;</div>
       <div class="topmenubox">
+	      <div style="display:none">
         <a href="#"><strong>artery</strong></a><a href="#">退出</a><a href="#">短消息</a><a href="#">统计</a><a href="#">系统设置</a><a href="#">帮助</a>
+	</div>
         </div>
 <div class="searchbox">
-        	<form action="" method="get">
-              <input type="button" value="&nbsp;" class="buttonstyle" />
-              <input name="" type="text" class="inputstyle"   value="●●●●●●" onFocus="if(this.value=='●●●●●●')this.value='';" onBlur="if(this.value=='')this.value='●●●●●●';" />
+        <form id="searchForm" action="http://bbs.9dalu.com" method="get">
+              <input type="button" value="&nbsp;" class="buttonstyle" onclick="bbsSearch();" />
+              <input name="bbsKeyword" id="bbsKeyword" type="text" class="inputstyle"   value="请输入搜索内容" onFocus="if(this.value=='请输入搜索内容')this.value='';" onBlur="if(this.value=='')this.value='请输入搜索内容';" />
         </form>
+	<script>
+	function bbsSearch() {
+		var url = $('#searchForm').attr('action') + '/search-index-keyword-_keyword_.htm';
+		var s = $('#bbsKeyword').val();
+		if(s == '' || s == 'undefined' || s == '请输入搜索内容'){
+			alert('请输入搜索内容。');
+			return false;
+		}
+		url = url.replace('_keyword_', s);
+		location.href = url;
+	}
+	</script>
         </div>
     </div>
     
@@ -41,11 +55,12 @@ include 'webadmin/include/config.inc.php';
 <div id="menu">
     	<ul>
 		<li class="here"><a href="<?php echo $mydecms['weburl']?>">首页<em>HOMEPAGE</em></a></li>
-		<li><a href="#">大陆社区<em>MENU TEXT</em></a></li>
-		<li><a href="#">动漫下载<em>MENU TEXT</em></a></li>
-		<li><a href="#">新番连载<em>MENU TEXT</em></a></li>
-		<li><a href="#">动漫情报<em>MENU TEXT</em></a></li>
-		<li><a href="#">COSPLAY<em>MENU TEXT</em></a></li>
+		<li><a href="http://bbs.9dalu.com">大陆社区<em>MENU TEXT</em></a></li>
+		<li><a href="http://bbs.9dalu.com/thread-list-fid-9.htm">动漫下载<em>MENU TEXT</em></a></li>
+		<li><a href="http://bbs.9dalu.com/thread-list-fid-1059.htm">动漫新番<em>MENU TEXT</em></a></li>
+		<li><a href="http://bbs.9dalu.com/thread-list-fid-1053.htm">动漫情报<em>MENU TEXT</em></a></li>
+		<li><a href="http://bbs.9dalu.com/thread-list-fid-988.htm">COSPLAY<em>MENU TEXT</em></a></li>
+		<li><a href="http://bbs.9dalu.com/thread-list-fid-1054.htm">在线漫画<em>MENU TEXT</em></a></li>
         </ul>
     </div>
     <!--菜单结束-->
@@ -110,7 +125,7 @@ include 'webadmin/include/config.inc.php';
         <!--滚动新闻结束-->
         
         <div id="index_bannerbox">
-        	<a href="#"><img src="images/t10.gif" width="830" height="62" /></a>
+        	<?php echo get_ad_rows(16)?>
         </div>
         
         <!--内容部分开始-->
@@ -129,7 +144,7 @@ include 'webadmin/include/config.inc.php';
 	</div>
 	<?php }?>
 	<div class="morearticle">
-		<a href="#">查看更多...</a>
+		<a href="http://bbs.9dalu.com/thread-list-fid-1053.htm">查看更多...</a>
 	</div>
             
             </div>
@@ -173,7 +188,7 @@ include 'webadmin/include/config.inc.php';
         <!--标签1结束-->
 		
         <!--标签2开始-->
-		<div class="nTab2">
+		<div class="nTab2" style="display:none">
              <h1>漫画档期表：</h1>
                   <div class="TabTitle">
                     <ul id="myTab2">
