@@ -36,9 +36,9 @@ function copyToClipBoard()
 	<!--播放内容开始-->
 <div class="outer">
 		<div class="content w980" style="margin:8px auto;">
-			<div class="paly_left_ad"><img src="images/paly_left.jpg" /></div>
+			<div class="paly_left_ad">{:getadsurl('play_right')}</div>
 			<div class="paly_on">{$vod_player}</div>
-			<div class="paly_right_ad"><img src="images/play_right.jpg" /></div>
+			<div class="paly_right_ad">{:getadsurl('play_left')}</div>
 		</div>
 	</div>
 	<!--播放内容结束-->
@@ -57,30 +57,13 @@ function copyToClipBoard()
 	<!--播放导航结束-->
 		<div style="height:8px;clear:both;"></div>
 	<!--广告位开始-->
-	<div class="play_adverice w980"><img src="images/002.jpg" /></div>
+	<div class="play_adverice w980">{:getadsurl('play_bottom')}</div>
 	
 	<!--广告位线束-->
 	
 	
-	<div style="height:8px;clear:both;"></div>
-	<div class="content boder w980">
-		<div class="play_list_title">
-		  
-			<h3><span class="p_tudou"></span>全集播放地址① </h3>
-			<h3 class="play_gray"><span class="p_baidu"></span>全集播放地址② </h3>
-			<span class="fr"><a href="#" id="return" class="return">返回当前播放地址</a></span>		
-		</div>
-		<div style="height:8px;clear:both;"></div>
-		<div class="xiao_tip">
-		    <div class="etip">来自<strong>土豆网</strong>，无需安装任何插件，即可快速播放</div>
-			<div class="play_order">
-			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(1,0,this)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(0,0,this)">升序</a></span>
-			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this,0)">展开</a></span>
-			</div>
-		</div>
-		<div class="blank8"></div>
-		
-	</div>
+	
+	
 	<div style="height:8px;clear:both;"></div>
 
 
