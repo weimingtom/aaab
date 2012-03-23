@@ -1,4 +1,21 @@
-<php>$vod_list=$pplist->ppvod('pid:'.$list_id.';num:12;page:true;order:vod_addtime desc,vod_id desc');$page=$vod_list[0]['page'];</php>
+<php>
+$orderby = $_GET['order'];
+if($orderby == 'updatetime') {
+	$orderby = 'vod_updatetime';
+}elseif($orderby == 'hits') {
+	$orderby = 'vod_hits';
+} else {
+	$orderby = 'vod_addtime';
+}
+
+$varcss = array(
+	'vod_hits'=>'',
+	'vod_updatetime'=>'',
+	'vod_addtime'=>'',
+);
+$varcss[$orderby] = 'listorder';
+$vod_list = $pplist->ppvod('pid:'.$list_id.';num:12;page:true;order:'.$orderby.' desc');$page=$vod_list[0]['page'];
+</php>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -31,20 +48,29 @@
 		<div class="bar">
 			<ul>
 				<li>排序方式</li>
-				<li class="listorder">添加时间</li>
-				<li>更新时间</li>
-				<li>点击次数</li>
+				<li class="{$varcss['vod_addtime']}"><a href="?s=vod-show-id-{$list_id}-order-addtime.html">添加时间</a></li>
+				<li class="{$varcss['vod_updatetime']}"><a href="?s=vod-show-id-{$list_id}-order-updatetime.html">更新时间</a></li>
+				<li class="{$varcss['vod_hits']}"><a href="?s=vod-show-id-{$list_id}-order-hits.html">点击次数</a></li>
 			</ul>
 			<span>共 <font style="color:#FF6418;">{$counts}</font> 部动画片，每页显示 <font style="color:#FF6418;">12</font> 部，当前第 <font style="color:#FF6418;">{$nums}</font> 页 </span>
 		</div>
 		<div class="order_list">
 			<ul>
-            <neq name="vod_list.0.count" value="0">
-            <volist name="vod_list" id="ppvod">
-				<li class=""><p class="fl cover"><a href="{$ppvod.vod_url}" class="pic"><img src="{$ppvod.vod_pic|getpicurl}" ></a><span><a class="yellow" href="{$ppvod.vod_url}" ></a></span></p><dl><dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" >{$ppvod.vod_name|msubstr=0,20}</a></dt><dd><p><em>更新于：</em><span >{$ppvod.vod_addtime|date='Y-m-d H:i',###}</span></p><p><em>状　态：</em><span class="red">{$ppvod.vod_continu}</span></p><p class="black"><em>剧　情：</em>{$ppvod.vod_area|default='未录入'}</p><p class="intro"><em>简　介：</em>{$ppvod.vod_content|msubstr=0,40}...</p></dd></dl></li> 
-				 </volist><else/>该分类暂无数据！</neq>
-
-			
+				<neq name="vod_list.0.count" value="0">
+				<volist name="vod_list" id="ppvod">
+				<li class="">
+					<p class="fl cover"><a href="{$ppvod.vod_url}" class="pic"><img src="{$ppvod.vod_pic|getpicurl}" ></a><span><a class="yellow" href="{$ppvod.vod_url}" ></a></span></p>
+					<dl>
+						<dt><a href="{$ppvod.vod_url}" title="{$ppvod.vod_name}" >{$ppvod.vod_name|msubstr=0,20}</a></dt>
+						<dd>
+							<p><em>更新于：</em><span >{$ppvod.vod_addtime|date='Y-m-d H:i',###}</span></p>
+							<p><em>状　态：</em><span class="red">{$ppvod.vod_continu}</span></p>
+							<p class="black"><em>剧　情：</em>{$ppvod.vod_area|default='未录入'}</p>
+							<p class="intro"><em>简　介：</em>{$ppvod.vod_content|msubstr=0,40}...</p>
+						</dd>
+					</dl>
+				</li> 
+				</volist><else/>该分类暂无数据！</neq>
 			</ul>
 		</div>
 		
