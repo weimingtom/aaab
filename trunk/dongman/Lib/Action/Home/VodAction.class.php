@@ -4,6 +4,9 @@ class VodAction extends HomeAction{
 	public function show(){
 		$cid=$_GET['id'];
 		$list=list_search(F('_ppvod/list'),'list_id='.$cid);$list[0]["list_page"]=!empty($_GET['p'])?$_GET['p']:1;
+		$counts = getcount($cid);
+		$this->assign('counts',$counts);
+		$this->assign('nums',$list[0]['list_page']);
 		$this->assign($list[0]);
 		$this->assign('pplist',A("Home.Vod"));
 		$this->assign('title',$list[0]['list_name'].'第'.$list[0]['list_page'].'页-'.C('site_name').C('site_by'));

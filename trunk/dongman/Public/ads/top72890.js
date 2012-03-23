@@ -1,1 +1,1 @@
-document.write("");
+document.write("<img src=\"/images/gg.jpg\" width=\"716\" />");
