@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `pp_vod` (
   `vod_year` smallint(4) NOT NULL COMMENT '年代',
   `vod_continu` varchar(20) NOT NULL DEFAULT '0',
   `vod_addtime` int(11) NOT NULL COMMENT '时间',
+  `vod_updatetime` int(11) NOT NULL COMMENT '更新时间',
   `vod_hits` mediumint(8) NOT NULL DEFAULT '0' COMMENT '人气',
   `vod_stars` tinyint(1) NOT NULL DEFAULT '0' COMMENT '五星评级',
   `vod_del` tinyint(1) NOT NULL DEFAULT '0' COMMENT '显示，隐藏',

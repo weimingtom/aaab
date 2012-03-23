@@ -33,26 +33,28 @@
 	<div class="info_title" id="info_title">女硕士毕业前自学绘出百余幅哲理漫画(组图)<span class="upcoming_close" onclick="$('#info_title').hide();"></span></div> 
 	<div class="content">
 		<div class="content_left boder bg_write">
-		<div class="book_title"><span class="f14 blod">{:getcolor($vod_name.$vod_title,$vod_color)}</span> 更新至 <font style="color:#FF6418;">{$vod_continu}</font></div>
-		<div class="book_all">
-			<div class="book_img"><img src="{$vod_pic|getpicurl}" alt="{$vod_name}" ></div>
-			<div class="info">                        <p class="w260"><em>更新时间：</em> <font class="cheng_red">{$vod_addtime|date='Y-m-d H:i',###}</font></p>            <p class="w260"><em>原著作者：</em>{$vod_actor|getactorurl}</p>                        <p class="w260"><em>对白语言：</em>{$vod_language} </p>            <p class="w260"><em>出品年份：</em>{$vod_year}</p>            <p><em>剧情类别：</em><a href="/donghua/xiaoyuan/">校园</a>,<a href="/donghua/xuanyi/">悬疑</a></p>            <p><em>主　　角：</em>山崎贤人,桥本爱</p>            <p class="intro_s" id="intro"><em>简　　介：</em>{$vod_content|msubstr=0,20}<a href="#intro1">&gt;&gt;更多</a></p>   
-			         
-			<div class="anchors">
-				<ul>
-                <volist name="ppplay" id="ppvod">
-					<li><a href="#{$ppvod.playername}"><img src="images/play1.jpg" /></a></li>
-					
-                </volist>
-				</ul>
-			 </div>       
-             <div class="fl" style="clear:both">全集下载：<a href="#">http://www.jiuweihu.com/123512</a></div>
-			
+			<div class="book_title"><span class="f14 blod">{:getcolor($vod_name.$vod_title,$vod_color)}</span> 更新至 <font style="color:#FF6418;">{$vod_continu}</font></div>
+			<div class="book_all">
+				<div class="book_img"><img src="{$vod_pic|getpicurl}" alt="{$vod_name}" ></div>
+				<div class="info">
+					<p class="w260"><em>更新时间：</em> <font class="cheng_red">{$vod_addtime|date='Y-m-d H:i',###}</font></p>            
+					<p class="w260"><em>原著作者：</em>{$vod_actor|getactorurl}</p>
+					<p class="w260"><em>对白语言：</em>{$vod_language} </p>            
+					<p class="w260"><em>出品年份：</em>{$vod_year}</p>            
+					<p><em>剧情类别：</em>{$vod_keywords}</p>            
+					<p><em>主　　角：</em>{$vod_actor}</p>            
+					<p class="intro_s" id="intro"><em>简　　介：</em>{$vod_content|msubstr=0,20}<a href="#intro1">&gt;&gt;更多</a></p>   
+					         
+					<div class="anchors">
+						<ul>
+						<volist name="ppplay" id="ppvod">
+						<li><a href="#{$ppvod.playername}"><img src="images/play1.jpg" /></a></li>
+						</volist>
+						</ul>
+					</div>       
+					<div class="fl" style="clear:both">全集下载：<a href="#">http://www.jiuweihu.com/123512</a></div>
+				</div>
 			</div>
-		</div>
-		
-		
-		
 		</div>
 		<div class="content_right boder bg_write active">{:getadsurl('vod_center_right')}</div>
 	</div>
