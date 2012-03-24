@@ -40,19 +40,19 @@
 					<p class="w260"><em>更新时间：</em> <font class="cheng_red">{$vod_addtime|date='Y-m-d H:i',###}</font></p>            
 					<p class="w260"><em>原著作者：</em>{$vod_actor|getactorurl}</p>
 					<p class="w260"><em>对白语言：</em>{$vod_language} </p>            
-					<p class="w260"><em>出品年份：</em>{$vod_year}</p>            
+					<p class="w260"><em>出品年份：</em>{$vod_year|default='未录入'}</p>            
 					<p><em>剧情类别：</em>{$vod_keywords}</p>            
 					<p><em>主　　角：</em>{$vod_actor}</p>            
 					<p class="intro_s" id="intro"><em>简　　介：</em>{$vod_content|msubstr=0,20}<a href="#intro1">&gt;&gt;更多</a></p>   
 					         
 					<div class="anchors">
 						<ul>
-						<volist name="ppplay" id="ppvod">
-						<li><a href="#{$ppvod.playername}"><img src="images/play1.jpg" /></a></li>
+						<volist name="ppplay" id="ppvod" key="index">
+						<li><a href="#{$ppvod.playername}"><img src="images/play{$index}.jpg" /></a></li>
 						</volist>
 						</ul>
 					</div>       
-					<div class="fl" style="clear:both">全集下载：<a href="#">http://www.jiuweihu.com/123512</a></div>
+					<div class="fl" style="clear:both;display:none;">全集下载：<a href="#">http://www.jiuweihu.com/123512</a></div>
 				</div>
 			</div>
 		</div>
@@ -61,11 +61,11 @@
 	
 	<div style="height:8px;clear:both;"></div>
     
-<volist name="ppplay" id="ppvod">
+<volist name="ppplay" id="ppvod" key="index">
 <eq name="ppvod.playname" value="down">
 <script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
 <div class="content boder fl">
-		<div class="play_list_title">
+	<div class="play_list_title">
 		
 			<h3><span class="p_tudou"></span>影片来源：{$ppvod.playname}迅雷下载</h3>
 			<span class="plistTip"> 来自<strong>{$ppvod.playername}</strong>，<em>无需安装任何插件，即可快速播放</em></span>
@@ -74,60 +74,75 @@
 		</div>
 		<div class="blank8"></div>
 		<div class="plist pnormal max-h200" id="play_0">
-        <ul>
-     
-        
-         <li><volist name="ppvod['son']" id="ppvodson"><a oncontextmenu=ThunderNetwork_SetHref(this) onclick="return OnDownloadClick_Simple(this,2,4)" href="#" thunderResTitle="222" thunderType="" thunderPid="03682" thunderHref="thunder://{:base64_encode('AA'.$ppvodson['playpath'].'ZZ')}">{$ppvodson.playname}</a></volist> </li>
- 
-       
-         </ul>
-         </div>
+			<ul>
+				<li>
+					<volist name="ppvod['son']" id="ppvodson">
+					<a oncontextmenu=ThunderNetwork_SetHref(this) onclick="return OnDownloadClick_Simple(this,2,4)" href="#" thunderResTitle="222" thunderType="" thunderPid="03682" thunderHref="thunder://{:base64_encode('AA'.$ppvodson['playpath'].'ZZ')}">{$ppvodson.playname}</a>
+					</volist> 
+				</li> 
+			</ul>
+	         </div>
 	</div>
-    
-     <div class="blank8"></div>
-	 <div class="blank8"></div>
+	<div class="blank8"></div>
+	<div class="blank8"></div>
 <else/> 
 	<div class="content boder fl">
 		<div class="play_list_title">
 		
-			<h3><span class="p_tudou"></span>全集播放地址① </h3>
-			<span class="plistTip"> 来自<strong>{$ppvod.playername}<a name="{$ppvod.playername}" id="{$ppvod.playername}"></a></strong>，<em>无需安装任何插件，即可快速播放</em></span>
-			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(1,0,this)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(0,0,this)">升序</a></span>
-			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this,0)">展开</a></span>		
+			<h3><span class="p_tudou"></span>全集播放地址{$index} </h3>
+			<span class="plistTip"> 来自<strong>{$ppvod.playername}<a name="{$ppvod.playername}" id="{$ppvod.playername}"></a></strong>，<em>
+			<php>if($ppvod['playname']=='baidu'){</php>
+			极速欣赏高清动画，请先安装百度影音播放器，<a class="download" target="_blank" href="/aspx/player.ashx">点这安装最新版本百度影音播放器</a>。
+			<php>}else{</php>
+			无需安装任何插件，即可快速播放
+			<php>}</php>
+			</em></span>
+			<span class="pa order hascoll listorder">排序：<a id="desc_{$index}" class="desc desc_on" href="javascript:void(0);" onclick="desc(this, 1)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(this, 0)">升序</a></span>
+			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this, {$index})">展开</a></span>		
 		</div>
 		<div class="blank8"></div>
-		<div class="plist pnormal max-h200" id="play_0">
-        <ul>
-        <volist name="ppvod['son']" id="ppvodson">
-		 <li><a href="{$ppvodson.playurl}" target="_blank">{$ppvodson.playname}</a></li>
-        </volist>
-         </ul>
-         </div>
-		 
-		
-		
+		<div class="plist pnormal max-h200" id="play_{$index}">
+			<ul>
+				<volist name="ppvod['son']" id="ppvodson">
+					<li><a href="{$ppvodson.playurl}" target="_blank">{$ppvodson.playname}</a></li>
+				</volist>
+			</ul>
+		</div>
 	</div>
-    
-     <div class="blank8"></div>
-	 <div class="blank8"></div>
+	<div class="blank8"></div>
+	<div class="blank8"></div>
      </eq>
 </volist>	
-	
-	
-	
-	
 	<div class="content boder">
 		<h3 class="anime_desc">{$vod_name}简介：</h3>
 		<div class="introduction" id="intro1"><p>　　{$vod_content}</p></div>
 	</div>
 	 <!--内容结束-->
-	
 
     <!--底部开始-->
   <include file="pp_footer" />  
     <!--底部结束-->
 </div>
 </div>
+<script>
+function collapse(e, n) {
+	$(e).parent().parent().parent().find('.plist').toggle();
+	var title = $(e).text();
+	if(title == '展开') {
+		$(e).text('关闭');
+	} else {
+		$(e).text('展开');
+	}
+}
 
+function desc(e, t) {
+	var s = ''; 
+	var li = $(e).parent().parent().parent().find('.plist ul li');
+	for(i=li.length-1; i>=0; i--) {
+		s += '<li>'+ $(li[i]).html() +'</li>';
+	}
+	$(e).parent().parent().parent().find('.plist ul').html(s);
+}
+</script>
 </body>
 </html>
