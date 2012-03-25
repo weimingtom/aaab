@@ -96,6 +96,7 @@ class VodAction extends HomeAction{
 			$servername=array_search($play[$sid],C('play_player'));
 			$ppplay[$sid]=array('playname'=>$val,'serverurl'=>$serverurl[$server[$sid]],'servername'=>$servername,'son'=>$this->playlist($vodurl[$sid],$sid,$url));
 		}
+//		print_r($ppplay);
 		//播放页专用标签
 		$arr['vod_number']=$pid+1;
 		$arr['vod_url']=str_replace('index.php?s=/','?s=',U('vod/read?id='.$vid));

@@ -5,5 +5,5 @@ define('DBUSER',	'dongman');
 define('DBPWD',		'dongman');
 define('DBCHARSET',	'gb2312');
 
-define('PICTURE_SAVE_PATH', ROOT_PATH);		// ͼƬ����Ŀ¼
+define('PICTURE_SAVE_PATH', ROOT_PATH);		// ͼƬ����Ŀ¼
 ?>
