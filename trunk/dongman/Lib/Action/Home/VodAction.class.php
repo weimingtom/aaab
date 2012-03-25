@@ -13,6 +13,12 @@ class VodAction extends HomeAction{
 		$skin=$list[0]['list_skin'];if(empty($skin)){$skin='pp_vodlist';}
 		$this->display($skin);
 	}
+		public function update(){
+
+		$this->assign('title',C('site_name').C('site_by'));
+		$this->assign('pplist',A("Home"));
+		$this->display('pp_update');
+	}
 	//搜索影视列表
 	public function search(){
 		$keyword=trim($_REQUEST['id']);

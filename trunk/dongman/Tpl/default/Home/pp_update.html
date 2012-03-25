@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$title}</title>
+<meta name="keywords" content="{$keywords}">
+<meta name="description" content="{$description}">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+{$css}
+</head>
+<body>
+<php>
+$vod_news = $pplist->ppvod('num:100;order:vod_addtime desc');
+</php>
+<div id="page_main" style="width:980px;">
+<include file="pp_header" />
+<div style="border:1px solid #CCC; height:790px;">
+<div class="update_time">
+				 	<ul>
+					<volist name="vod_news" id="ppvod">
+						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a><span class="time">{$ppvod.vod_addtime|getcolordate='m-d',###}</span></li>
+					</volist>
+ 					</ul>
+				 </div>
+</div>
+<include file="pp_footer" />
+</div>
+</body>
+</html>
