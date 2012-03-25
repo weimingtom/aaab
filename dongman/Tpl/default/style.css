@@ -904,3 +904,8 @@ top: 10px;
 width: 13px;
 }
 
+
+
+.update_time ul{padding: 5px 18px 0px 13px;} 
+.update_time li{ float:left; width:235px; line-height:30px;border-bottom: 1px dashed #CCC; }
+.update_time li span.time{ float:right; color:#C95508; padding-right:10px;}
