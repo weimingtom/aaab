@@ -17,7 +17,7 @@ function copyToClipBoard()
     clipBoardContent+=document.title;  
     clipBoardContent+="";  
     clipBoardContent+=this.location.href; 
-    window.clipboardData.setData("Text",clipBoardContent);  
+    window.clipboardData.setData("Text", clipBoardContent);  
     alert("复制成功，请粘贴到你的QQ/MSN上推荐给你的好友");    
 }    
 </script>
@@ -48,7 +48,7 @@ function copyToClipBoard()
 		<div class="play_share">分享</div>
 		<div class="play_operate">
 			<span class="add_faverite"><a href="#" tip="加入收藏夹，方便下一次观看"><span>加入收藏</span></a></span>
-			<span class="copy_site"><a href="#" tip="复制网址，与好友一起分享吧!" onClick='copyToClipBoard()' ><span>复制网址</span></a></span>
+			<span class="copy_site"><a href="javascript:void(0);" tip="复制网址，与好友一起分享吧!" onClick='copyToClipBoard()' ><span>复制网址</span></a></span>
 			<span class="error_web"><a href="#" tip="视频不能播放，点击此处提交报错信息"><span>报错/举报</span></a></span>
 			<span class="for_set"><a href="#"><span>上一集(<strong>A</strong>)</span></a></span>
 			<span class="next_set" ><a href="#"><span>下一集(<strong>D</strong>)</span></a></span>		
@@ -69,7 +69,7 @@ function copyToClipBoard()
 
  <!--播放器开始-->
  <div id="page_container">   
-	<volist name="ppplays" id="ppvod" >
+	<volist name="ppplays" id="ppvod" key="index">
 <eq name="ppvod.playname" value="down">
 <script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
 <div class="content boder fl">
@@ -77,11 +77,11 @@ function copyToClipBoard()
 		
 			<h3><span class="p_tudou"></span>影片来源：{$ppvod.playname}迅雷下载</h3>
 			<span class="plistTip"> 来自<strong>{$ppvod.playername}</strong>，<em>无需安装任何插件，即可快速播放</em></span>
-			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(1,0,this)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(0,0,this)">升序</a></span>
-			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this,0)">展开</a></span>		
+			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(this, 1)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(this, 0)">升序</a></span>
+			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this, {$index})">展开</a></span>		
 		</div>
 		<div class="blank8"></div>
-		<div class="plist pnormal max-h200" id="play_0">
+		<div class="plist pnormal max-h200" id="play_{$index}">
         <ul>
      
         
@@ -98,13 +98,13 @@ function copyToClipBoard()
 	<div class="content boder fl">
 		<div class="play_list_title">
 		
-			<h3><span class="p_tudou"></span>全集播放地址① </h3>
+			<h3><span class="p_tudou"></span>全集播放地址{$index} </h3>
 			<span class="plistTip"> 来自<strong>{$ppvod.playername}<a name="{$ppvod.playername}" id="{$ppvod.playername}"></a></strong>，<em>无需安装任何插件，即可快速播放</em></span>
-			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(1,0,this)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(0,0,this)">升序</a></span>
-			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this,0)">展开</a></span>		
+			<span class="pa order hascoll listorder">排序：<a id="desc_0" class="desc desc_on" href="javascript:void(0);" onclick="desc(this, 0)">降序</a><em>|</em><a id="asc_0" href="javascript:void(0);" class="asc" onclick="desc(this, 1)">升序</a></span>
+			<span class="fr collapse"><a href="javascript:void(0);" onclick="collapse(this, {$index})">展开</a></span>		
 		</div>
 		<div class="blank8"></div>
-		<div class="plist pnormal max-h200" id="play_0">
+		<div class="plist pnormal max-h200" id="play_{$index}">
         <ul>
         <volist name="ppvod['son']" id="ppvodson">
 		 <li><a href="{$ppvodson.playurl}" target="_blank">{$ppvodson.playname}</a></li>
@@ -112,19 +112,31 @@ function copyToClipBoard()
          </ul>
          </div>
 </div>		 
-		
-		
-	
-    
-     <div class="blank8"></div>
+	 <div class="blank8"></div>
 	 <div class="blank8"></div>
      </eq>
 </volist>
 </div>
 	 <!--播放器结束-->
-	
+<script>
+function collapse(e, n) {
+	$(e).parent().parent().parent().find('.plist').toggle();
+	var title = $(e).text();
+	if(title == '展开') {
+		$(e).text('关闭');
+	} else {
+		$(e).text('展开');
+	}
+}
 
-
-
+function desc(e, t) {
+	var s = ''; 
+	var li = $(e).parent().parent().parent().find('.plist ul li');
+	for(i=li.length-1; i>=0; i--) {
+		s += '<li>'+ $(li[i]).html() +'</li>';
+	}
+	$(e).parent().parent().parent().find('.plist ul').html(s);
+}
+</script>
 </body>
 </html>

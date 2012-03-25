@@ -76,7 +76,7 @@ $vod_todays = $pplist->ppvod('num:22;day:1;order:vod_addtime desc');
 				 <div class="update_info">
 				 	<ul>
 				 	<volist name="vod_todays" id="ppvod">
-						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a></li>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7|getcolor=$ppvod['vod_color']}</a></li>
 					</volist>
 					</ul>
 					<ul>
@@ -125,7 +125,7 @@ $vod_todays = $pplist->ppvod('num:22;day:1;order:vod_addtime desc');
 			<div style="height:10px;"></div>
 			
 			<div class="update boder">
-				 <div class="update_new_title">最近更新动画片<span><a href="/vod-update.html">更多>></a></span></div> 
+				 <div class="update_new_title">最近更新动画片<span><a href="?s=vod-update.html">更多>></a></span></div> 
 				 <div class="update_list">
 				 	<ul>
 					<volist name="vod_news" id="ppvod">
