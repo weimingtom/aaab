@@ -88,7 +88,7 @@ include 'webadmin/include/config.inc.php';
           <div class="Tu_box"><img src="images/a_35.gif" id="Tu_Left" alt="Ïò×ó" onMouseDown="TU_GoUp()" onMouseUp="TU_StopUp()" onMouseOut="TU_StopUp()" ondragstart="return false" />
             <div id="TU_Cont">
               <div class="ScrTuCont">
-                <div id="Tu_List1">
+                <div id="Tu_List1" style="line-height:0px">
 		<?php
 		$news = $mysql->fetch_all("SELECT * FROM `-table-article` where dafenglei='1' ORDER BY id DESC LIMIT 5");
 		foreach ($news as $v) { ?>
