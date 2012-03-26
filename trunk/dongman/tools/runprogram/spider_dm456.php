@@ -74,7 +74,7 @@ foreach ($categorys as $cateId=>$confInfo)
 	$recordInfo['cateId'] = $cateId;
 	saveFileInfo(RUNPROGRAM_ID, $recordInfo);
 	
-	print_r($recordInfo);
+	//print_r($recordInfo);
 	
 	for ($i=$countPage; $i>0; $i--) 
 	{
@@ -221,7 +221,7 @@ foreach ($categorys as $cateId=>$confInfo)
 			//print_r($field);exit;
 			
 			if ($field['vod_name']) {
-				print_r($field);
+//				print_r($field);
 				$db->insert('pp_vod', $field);
 			}
 		}
