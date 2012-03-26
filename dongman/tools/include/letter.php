@@ -118,7 +118,7 @@ class PYInitials
 			$chars[] = $this->_isAscii( $str[$i] ) ? 'yes':'no';
 		}
 		$result = array_count_values( $chars );
-		if ( emptyempty($result['no']) ){
+		if ( empty($result['no']) ){
 			return true;
 		}
 		return false;
