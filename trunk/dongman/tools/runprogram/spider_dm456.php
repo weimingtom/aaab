@@ -1,6 +1,6 @@
 #!/usr/local/php/bin/php
 <?php
-//set_time_limit(0);
+set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
 define('LOCK_PATH', ROOT_PATH.'/syslog');
 define('RUNPROGRAM_ID', 'dm456');
@@ -13,13 +13,13 @@ include ROOT_PATH.'/../include/letter.php';
 
 mkdirs(ROOT_PATH.'/syslog');
 
-$locked = process_islocked(RUNPROGRAM_ID);
-if ($locked === TRUE) {
-	echo 'process '.RUNPROGRAM_ID.' is running.';
-	exit();
-} else {
-	process_lock(RUNPROGRAM_ID);
-}
+//$locked = process_islocked(RUNPROGRAM_ID);
+//if ($locked === TRUE) {
+//	echo 'process '.RUNPROGRAM_ID.' is running.';
+//	exit();
+//} else {
+//	process_lock(RUNPROGRAM_ID);
+//}
 
 // 判断是否锁定
 $lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.file.lock';
@@ -37,11 +37,11 @@ $domain = "http://www.dm456.com";
 
 $categorys = array(
 	1=>array('donghua/dalu',	25),		// 国产动画片
-	2=>array('donghua/riben',	97),		// 日本动漫片
-	3=>array('donghua/oumei',	17),		// 欧美动画片
-	23=>array('donghua/tv',		91),		// TV
-	24=>array('donghua/ova',	16),		// ova
-	25=>array('donghua/juchang',	25),		// 剧场
+//	2=>array('donghua/riben',	97),		// 日本动漫片
+//	3=>array('donghua/oumei',	17),		// 欧美动画片
+//	23=>array('donghua/tv',		91),		// TV
+//	24=>array('donghua/ova',	16),		// ova
+//	25=>array('donghua/juchang',	25),		// 剧场
 );
 
 // 记录信息的数组
@@ -78,6 +78,7 @@ foreach ($categorys as $cateId=>$confInfo)
 	
 	for ($i=$countPage; $i>0; $i--) 
 	{
+		sleep(rand(0, 3));
 		// 获取列表页URL
 		$spiderListUrl = $domain.'/'.$cateName.'/index_'.$i.'.html';
 		$s = getContentUrl($spiderListUrl);
@@ -102,6 +103,8 @@ foreach ($categorys as $cateId=>$confInfo)
 			// 抓取动漫内容详细页的
 			$spiderDetailUrl = $domain.$listUrl;
 			echo $spiderDetailUrl."\r\n";
+			$field['vod_reurl'] = $spiderDetailUrl;
+			
 			$s = getContentUrl($spiderDetailUrl);
 			//$s = iconv('gbk', 'utf-8', $s);
 			//print_r($s);exit;
@@ -191,6 +194,16 @@ foreach ($categorys as $cateId=>$confInfo)
 			$field['vod_url'] = '';
 
 			foreach ($urls as $payName=>$value) {
+				
+				switch ($payName) {
+					case 'youku':
+						$payName = 'yuku';
+						break;
+					case 'baidu':
+						$payName = 'bdhd';
+						break;
+				}
+				
 				if ($field['vod_play']) {
 					$field['vod_play'] .= '$$$'.$payName;
 					$field['vod_url'] .= '$$$'.implode("\r\n", $value);
@@ -204,6 +217,8 @@ foreach ($categorys as $cateId=>$confInfo)
 			$field['vod_addtime'] = time();
 			$field['vod_inputer'] = 'admin';
 			$field['vod_cid'] = $cateId;
+			
+			//print_r($field);exit;
 			
 			if ($field['vod_name']) {
 				print_r($field);
