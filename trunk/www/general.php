@@ -46,10 +46,10 @@ if (!$navId) {
 			<div class="left">
 	        	<ul>
 		        	<?php
-		        	$navs = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='21'", 'id');
-		        	foreach ($navs as $v) {?>
-		            	<li <?php if($navId==$v['id']){?>class="here"<?php }?>><a href="general.php?a=<?php echo $idNavs[$v['id']]?>"><?php echo $v['title']?></a></li>
-		            	<?php }?>
+				$navs = $mysql->fetch_all("SELECT * FROM -table-article WHERE dafenglei='21'", 'id');
+				foreach ($navs as $v) {?>
+				<li <?php if($navId==$v['id']){?>class="here"<?php }?>><a href="general.php?a=<?php echo $idNavs[$v['id']]?>"><?php echo $v['title']?></a></li>
+				<?php }?>
 		            </ul>
 			</div>
 		        <!--×ó²à±ßÀ¸½áÊø-->
@@ -57,7 +57,17 @@ if (!$navId) {
 		        <!--ÓÒ²àÄÚÈÝ¿ªÊ¼-->
 			<div class="right">
 				<h1><?php echo $navs[$navId]['title']?>~~<?php echo $navs[$navId]['description']?></h1>
-				<?php echo $navs[$navId]['content']?>
+				<?php
+				if($a == 'link') {
+					echo '<div style="line-height:22px;margin-top:5px;">';
+					$links = $mysql->fetch_all("SELECT * FROM -table-link ORDER BY id ASC");
+					foreach ($links as $v) {
+						echo "<a href=\"{$v['url']}\" target=\"_blank\">{$v['name']}</a>&nbsp;&nbsp;&nbsp;";
+					}
+					echo '</div>';
+				} else {
+					echo $navs[$navId]['content'];
+				}?>
 			</div>
 		        <!--ÓÒ²àÄÚÈÝ½áÊø-->
 		</div>
