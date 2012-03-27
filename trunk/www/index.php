@@ -90,7 +90,7 @@ include 'webadmin/include/config.inc.php';
               <div class="ScrTuCont">
                 <div id="Tu_List1" style="line-height:0px">
 		<?php
-		$news = $mysql->fetch_all("SELECT * FROM `-table-article` where dafenglei='1' ORDER BY id DESC LIMIT 5");
+		$news = $mysql->fetch_all("SELECT * FROM `-table-article` where dafenglei='1' ORDER BY id DESC LIMIT 10");
 		foreach ($news as $v) { ?>
 			<A title="<?php echo $v['title']?>" href="<?php echo $v['url']?>" target="_blank"><IMG src="<?php echo $v['img']?>" ></A>
 		<?php }?>
