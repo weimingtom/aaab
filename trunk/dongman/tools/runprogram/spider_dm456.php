@@ -36,11 +36,11 @@ $domain = "http://www.dm456.com";
 //$spiderMainUrl = 'http://www.dm456.com/donghua/update.html';
 
 $categorys = array(
-	1=>array('donghua/dalu',	25),		// 国产动画片
+//	1=>array('donghua/dalu',	25),		// 国产动画片 采完
 //	2=>array('donghua/riben',	97),		// 日本动漫片
-//	3=>array('donghua/oumei',	17),		// 欧美动画片
+//	3=>array('donghua/oumei',	17),		// 欧美动画片 采完
 //	23=>array('donghua/tv',		91),		// TV
-//	24=>array('donghua/ova',	16),		// ova
+	24=>array('donghua/ova',	16),		// ova
 //	25=>array('donghua/juchang',	25),		// 剧场
 );
 
