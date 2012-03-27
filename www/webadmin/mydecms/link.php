@@ -144,7 +144,7 @@ switch($action){
 			$pageinfo['title'] = "友情链接管理";
 			$tpl -> display('header');
 			$pages = new PageClass($mysql -> num_rows($mysql -> query("select id  from `-table-link` where `id`>1".($typeid<>"" ? ' and `type`='.$typeid : ''))),PAGESIZE,numeric($_GET['page']),'?page={page}');
-			$sql  = "select * from `-table-link`  where `id`>1".($typeid<>"" ? ' and `type`='.$typeid : '')." order by sort asc,";
+			$sql  = "select * from `-table-link`  where `id`>0".($typeid<>"" ? ' and `type`='.$typeid : '')." order by sort asc,";
 			$sql .= "id Desc limit ".$pages -> page_limit.",".$pages -> myde_size;
 			$result = $mysql -> query($sql);
 			$tpl -> display('link');

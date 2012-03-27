@@ -134,7 +134,7 @@ include 'webadmin/include/config.inc.php';
         	<!--左侧部分开始-->
             <div id="left">
          <?php
-	$news = $mysql->fetch_all("SELECT * FROM `-table-article` WHERE dafenglei='3' ORDER BY id DESC LIMIT 5");
+	$news = $mysql->fetch_all("SELECT * FROM `-table-article` WHERE dafenglei='3' ORDER BY id DESC LIMIT 10");
 	foreach ($news as $k=>$v) { ?>
 	<div class="content">
 		<div class="timebox"><?php echo substr($k+101, 1,2);?><em><?php echo substr($v['date'], 5, 5)?></em></div>
