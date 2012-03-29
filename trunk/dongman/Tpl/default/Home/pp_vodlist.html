@@ -65,7 +65,7 @@ $vod_list = $pplist->ppvod('pid:'.$list_id.';num:12;page:true;order:'.$orderby.'
 						<dd>
 							<p><em>更新于：</em><span >{$ppvod.vod_addtime|date='Y-m-d H:i',###}</span></p>
 							<p><em>状　态：</em><span class="red">{$ppvod.vod_continu}</span></p>
-							<p class="black"><em>剧　情：</em>{$ppvod.vod_area|default='未录入'}</p>
+							<p class="black"><em>剧　情：</em>{$ppvod.vod_keywords|default='未录入'}</p>
 							<p class="intro"><em>简　介：</em>{$ppvod.vod_content|msubstr=0,40}...</p>
 						</dd>
 					</dl>

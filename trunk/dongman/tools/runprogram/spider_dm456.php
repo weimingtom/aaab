@@ -37,11 +37,11 @@ $domain = "http://www.dm456.com";
 
 $categorys = array(
 //	1=>array('donghua/dalu',	25),		// 国产动画片 采完
-//	2=>array('donghua/riben',	97),		// 日本动漫片
+//	2=>array('donghua/riben',	97),		// 日本动漫片 采完
 //	3=>array('donghua/oumei',	17),		// 欧美动画片 采完
-//	23=>array('donghua/tv',		91),		// TV
+//	23=>array('donghua/tv',		91),		// TV 采了一小半
 //	24=>array('donghua/ova',	16),		// ova 采完
-//	25=>array('donghua/juchang',	25),		// 剧场
+	25=>array('donghua/juchang',	25),		// 剧场
 );
 
 // 记录信息的数组
