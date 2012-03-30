@@ -8,6 +8,7 @@ include 'webadmin/include/config.inc.php';
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 <title><?php echo $mydecms['webtitle']?></title>
 <meta name="robots" content="all" />
+<meta name="baidu_union_verify" content="2d255caf26d92718116d59628b26439b">
 <meta name="description" content="<?php echo $mydecms['webdescription']?>" />
 <meta name="keywords" content="<?php echo $mydecms['webkeywords']?>" />
 <meta name="Copyright" content="版权信息" />
