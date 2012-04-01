@@ -1,5 +1,7 @@
 #!/usr/local/php/bin/php
 <?php
+exit;
+date_default_timezone_set('Asia/Shanghai');
 set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
 define('LOCK_PATH', ROOT_PATH.'/syslog');
