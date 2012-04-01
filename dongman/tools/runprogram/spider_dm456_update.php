@@ -1,6 +1,8 @@
 #!/usr/local/php/bin/php
 <?php
+header("Content-Type:text/html; charset=gb2312");
 date_default_timezone_set('Asia/Shanghai');
+error_reporting(E_ALL);
 
 set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
@@ -62,26 +64,12 @@ $cates = array(
 
 foreach ($updateUrls as $k=>$updateUrl) 
 {	
-	//print_r($recordInfo);
 	sleep(rand(0, 3));
 	
-	$field = array();
-	
-	/*
-	$title = $updateTitles[$k];
-	if(!$title) {
-		continue;
-	} else {
-		
-		$vod = $db->fetch_first("SELECT vod_id FROM pp_vod WHERE vod_name='$title'");
-		if ($vod) {
-			
-		}
-		$field['vod_updatetime'] = time();
-	}*/	
+	$field = array();	
 
 	// 抓取动漫内容详细页的
-	$spiderDetailUrl = $domain.$listUrl;
+	$spiderDetailUrl = $domain.$updateUrl;
 	echo $spiderDetailUrl."\r\n";
 	$field['vod_reurl'] = $spiderDetailUrl;
 
@@ -93,17 +81,6 @@ foreach ($updateUrls as $k=>$updateUrl)
 	$tpl = array();
 	preg_match('/<a href="\/">首页<\/a> > <a href="(.*)">(.*)<\/a> >/isU', $s, $tpl);
 	$field['vod_cid'] = isset($tpl[1]) ? isset($cates[$tpl[1]]) ? $cates[$tpl[1]] : 29 : 29;
-	
-	// 图片
-	$tpl = array();
-	preg_match('/<img src="(.*)" class="pic" title/isU', $s, $tpl);
-	$vod_pic = isset($tpl[1]) ? $tpl[1] : '';
-	if ($vod_pic) {
-		$filename = save_picture($domain.$vod_pic, dirname(dirname(PICTURE_SAVE_PATH)).'/Upload/'.date('Y-m'));
-		$field['vod_pic'] = date('Y-m').'/'.$filename;
-	} else {
-		continue;
-	}
 
 	// 标题
 	$tpl = array();
@@ -111,6 +88,20 @@ foreach ($updateUrls as $k=>$updateUrl)
 	$field['vod_name'] = isset($tpl[1]) ? $tpl[1] : '';
 	if (!$field['vod_name']) {
 		continue;
+	}
+	
+	$vod = $db->fetch_first("SELECT vod_id FROM pp_vod WHERE vod_name='{$field['vod_name']}'");
+	if(empty($vod)) {
+		// 图片
+		$tpl = array();
+		preg_match('/<img src="(.*)" class="pic" title/isU', $s, $tpl);
+		$vod_pic = isset($tpl[1]) ? $tpl[1] : '';
+		if ($vod_pic) {
+			$filename = save_picture($domain.$vod_pic, dirname(dirname(PICTURE_SAVE_PATH)).'/Upload/'.date('Y-m'));
+			$field['vod_pic'] = date('Y-m').'/'.$filename;
+		} else {
+			continue;
+		}
 	}
 
 	// 是否完结
@@ -202,12 +193,8 @@ foreach ($updateUrls as $k=>$updateUrl)
 	$field['vod_addtime'] = time();
 	$field['vod_updatetime'] = time();
 	$field['vod_inputer'] = 'admin';
-	$field['vod_cid'] = $cateId;
-
-	//print_r($field);exit;
 
 	if ($field['vod_name']) {
-		$vod = $db->fetch_first("SELECT vod_id FROM pp_vod WHERE vod_name='{$field['vod_name']}'");
 		if ($vod) {
 			$db->update('pp_vod', $field, "vod_id='{$vod['vod_id']}'");
 		} else {
