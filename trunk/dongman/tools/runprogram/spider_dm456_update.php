@@ -12,23 +12,16 @@ define('RUNPROGRAM_ID', 'dm456_update');
 include ROOT_PATH.'/config.php';
 include ROOT_PATH.'/../include/db.php';
 include ROOT_PATH.'/../include/function.php';
-include ROOT_PATH.'/../include/fun.processlock.php';
 include ROOT_PATH.'/../include/letter.php';
 
 mkdirs(ROOT_PATH.'/syslog');
-
-//$locked = process_islocked(RUNPROGRAM_ID);
-//if ($locked === TRUE) {
-//	echo 'process '.RUNPROGRAM_ID.' is running.';
-//	exit();
-//} else {
-//	process_lock(RUNPROGRAM_ID);
-//}
 
 // 判断是否锁定
 $lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.file.lock';
 if(file_exists($lockFile)) {
 	exit('Already lock file exit program');
+} else {
+	touch($lockFile);
 }
 
 $db = new db();
@@ -41,18 +34,7 @@ preg_match_all('/<strong>(\d+)<\/strong><a href="(.*)" class="video" i="(.*)">(.
 $updateUrls = $tpl[2];
 $updateTitles = $tpl[4];
 
-// 记录信息的数组
-$recordInfo = array(
-	'cateId'=>0,
-	'page'=>0,
-);
-$fileInfo = getFileInfo(RUNPROGRAM_ID);
-if ($fileInfo) {
-	$recordInfo = $fileInfo;
-}
-
 // 是否第一次运行
-$isFirstRun = TRUE;
 $cates = array(
 	'日本动画片'=>2,
 	'国产动画片'=>1,
@@ -201,12 +183,10 @@ foreach ($updateUrls as $k=>$updateUrl)
 			$db->insert('pp_vod', $field);
 		}
 	}
-	//$recordInfo['page'] = $i;
-	//saveFileInfo(RUNPROGRAM_ID, $recordInfo);
 }
 
 // 创建锁文件
-touch($lockFile);
+@unlink($lockFile);
 
 // 获取影片ID
 function get_pay_vod_id($url) {

@@ -19,22 +19,34 @@ function copyToClipBoard()
     clipBoardContent+=this.location.href; 
     window.clipboardData.setData("Text", clipBoardContent);  
     alert("复制成功，请粘贴到你的QQ/MSN上推荐给你的好友");    
-}    
+}
+
+// 加入收藏夹
+function setFavorite() {
+var sTitle=document.title;
+var sURL=document.location.href;
+    try {
+        window.external.addFavorite(sURL, sTitle);
+    } catch (e) {
+        try {
+            window.sidebar.addPanel(sTitle, sURL, "");
+        } catch (e) {
+            alert("加入收藏失败,请手动添加.");
+        }
+    }
+}
 </script>
 </head>
 
 <body>
-
-
-
 	<!--内容开始-->
 	<div class="navigation w980" style=" margin-top:3px;">
 	  <div class="new_nav fl mleft10" >当前位置：<a href="/">首页</a> > {$list_name} > <font style="font-size:14px; color:#FE6000; font-weight:bold;">{$vod_name}</font></div>
-	  <div class="fr breadr"><a class="help tc" href="/help">帮助</a><em>|</em><a class="feedback tc" href="/feedback">留言反馈</a><em>|</em><a href="#" class="wide" id="wide">宽屏</a><em>|</em><a href="#;" class="lighter" id="lighter">关灯</a></div>
+	  <div class="fr breadr"><a class="help tc" href="http://www.9dalu.com/general.php?a=help" target="_blank">帮助</a><em>|</em><a href="#" class="wide" id="wide">宽屏</a><em>|</em><a href="#;" class="lighter" id="lighter">关灯</a></div>
 	</div>
 	<div class="info_title w980" id="info_title" >观看动画推荐使用百度影音，P2P技术观看更流畅，自动播放下一集，边看边下载，还可离线观看，点击立即安装！<span class="upcoming_close" onclick="$('#info_title').hide();"></span></div> 
 	<!--播放内容开始-->
-<div class="outer">
+	<div class="outer">
 		<div class="content w980" style="margin:8px auto;">
 			<div class="paly_left_ad">{:getadsurl('play_right')}</div>
 			<div class="paly_on">{$vod_player}</div>
@@ -47,11 +59,11 @@ function copyToClipBoard()
 	<div class="paly_nav">
 		<div class="play_share">分享</div>
 		<div class="play_operate">
-			<span class="add_faverite"><a href="#" tip="加入收藏夹，方便下一次观看"><span>加入收藏</span></a></span>
+			<span class="add_faverite"><a href="javascript:void(0);" onclick="setFavorite();" tip="加入收藏夹，方便下一次观看"><span>加入收藏</span></a></span>
 			<span class="copy_site"><a href="javascript:void(0);" tip="复制网址，与好友一起分享吧!" onClick='copyToClipBoard()' ><span>复制网址</span></a></span>
 			<span class="error_web"><a href="#" tip="视频不能播放，点击此处提交报错信息"><span>报错/举报</span></a></span>
-			<span class="for_set"><a href="#"><span>上一集(<strong>A</strong>)</span></a></span>
-			<span class="next_set" ><a href="#"><span>下一集(<strong>D</strong>)</span></a></span>		
+			<span class="for_set"><a href="{$upUrl}"><span>上一集(<strong>A</strong>)</span></a></span>
+			<span class="next_set" ><a href="{$lastUrl}"><span>下一集(<strong>D</strong>)</span></a></span>		
 		</div>
 	</div>
 	<!--播放导航结束-->
@@ -60,19 +72,13 @@ function copyToClipBoard()
 	<div class="play_adverice w980">{:getadsurl('play_bottom')}</div>
 	
 	<!--广告位线束-->
-	
-	
-	
-	
 	<div style="height:8px;clear:both;"></div>
-
-
  <!--播放器开始-->
  <div id="page_container">   
 	<volist name="ppplays" id="ppvod" key="index">
-<eq name="ppvod.playname" value="down">
-<script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
-<div class="content boder fl">
+	<eq name="ppvod.playname" value="down">
+	<script src="http://pstatic.xunlei.com/js/webThunderDetect.js"></script>
+	<div class="content boder fl">
 		<div class="play_list_title">
 		
 			<h3><span class="p_tudou"></span>影片来源：{$ppvod.playname}迅雷下载</h3>

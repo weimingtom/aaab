@@ -136,8 +136,7 @@ class VodAction extends HomeAction{
 		$arr['vod_player'] = $pp_play.'<iframe border="0" src="'.C('site_path').'Public/player/play.html" width="'.C('play_width').'" height="'.(C('play_height')+26).'" marginWidth="0" frameSpacing="0" marginHeight="0" frameBorder="0" scrolling="no" vspale="0" style="z-index:99;" noResize></iframe>';
 		//$rs->setInc('vod_hits','vod_id='.$id);//更新点击数
 		
-		
-//播放页底部播放器开始		
+		//播放页底部播放器开始		
 		$get = $_GET;$url['id'] = intval($get['id']);$url['sid']='';$url['pid']='';//根据地址栏参数组合播放页链接参数
 		if(!empty($get['l'])){$url['l']=$get['l'];}if(!empty($get['t'])){$url['t']=$get['t'];}//语言与模板自定义
 		$rs=D("Home.Vod");
@@ -153,17 +152,24 @@ class VodAction extends HomeAction{
 				$ppplay[$sid] = array('servername'=>$playerlist[$val],'playername'=>$playerlist[$val],'playname'=>$val,'serverurl'=>$serverurl[$server[$sid]],'son'=>$this->playlist($vodurl[$sid],$sid,$url));
 			
 			}
-			
-			
 			$list=list_search(F('_ppvod/list'),'list_id='.$arrs['vod_cid']);
 		}
-			$this->assign('ppplays',$ppplay);
-//播放页底部播放器结束		
+		
+		$vodcount = count($ppplay[$sid]['son']);
+		$upid = $get['pid']-1 <= 0 ? 0 : $get['pid']-1;
+		$lastid = $get['pid'] >= $vodcount ? $get['pid'] : $get['pid']+1;
+		$upUrl = '?s=vod-play-id-'.$_GET['id'].'-sid-'.$sid.'-pid-'.$upid.'.html';
+		$lastUrl = '?s=vod-play-id-'.$_GET['id'].'-sid-'.$sid.'-pid-'.$lastid.'.html';
+		
+		$this->assign('ppplays',$ppplay);
+		//播放页底部播放器结束		
 		$this->assign($list[0]);
 		$this->assign($arr);
 		$this->assign('ppplay',$arr['vod_ppplay']);
 		$this->assign('pplist',A("Home.Vod"));
 		$this->assign('title',$arr['vod_name'].'-'.C('site_name').C('site_by'));
+		$this->assign('upUrl', $upUrl);
+		$this->assign('lastUrl', $lastUrl);
 		$this->display('pp_play');
 	}
 	//ajax顶踩

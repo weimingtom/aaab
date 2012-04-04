@@ -65,37 +65,26 @@ $vod_todays = $pplist->ppvod('num:22;day:1;order:vod_addtime desc');
 				 <div class="update_date">
 				 	<ul>
 					<li class="first">今天</li>
-					<li>周一</li>
-					<li>周二</li>
-					<li>周三</li>
-					<li>周四</li>
-					<li>周五</li>
-					<li class="last">周六</li>
+					<li>昨天</li>
+					<li class="last">前天</li>
 					</ul>
 				 </div>
 				 <div class="update_info">
 				 	<ul>
-				 	<volist name="vod_todays" id="ppvod">
+				 		<volist name="vod_todays" id="ppvod">
 						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7|getcolor=$ppvod['vod_color']}</a></li>
-					</volist>
+						</volist>
+					</ul>
+					
+					<ul>
+						<volist name="vodlist.yesterday" id="ppvod">
+						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7|getcolor=$ppvod['vod_color']}</a></li>
+						</volist>
 					</ul>
 					<ul>
-						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝</a></li>
-					</ul>
-					<ul>
-						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝3</a></li>
-					</ul>
-					<ul>
-						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝4</a></li>
-					</ul>
-					<ul>
-						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝5</a></li>
-					</ul>
-					<ul>
-						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝6</a></li>
-					</ul>
-					<ul>
-						<li><span><img src="./images/sj.jpg"/></span> <a href="#">爱杀宝贝7</a></li>
+						<volist name="vodlist.yesterday2" id="ppvod">
+						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,7|getcolor=$ppvod['vod_color']}</a></li>
+						</volist>
 					</ul>
 				 </div>
 			<script>
