@@ -1,6 +1,5 @@
-
-<?php
 #!/usr/local/php/bin/php
+<?php
 header("Content-Type:text/html; charset=gb2312");
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(E_ALL);
@@ -22,7 +21,7 @@ $lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.file.lock';
 if(file_exists($lockFile)) {
 	exit('Already lock file exit program');
 } else {
-//	touch($lockFile);
+	touch($lockFile);
 }
 
 $db = new db();
@@ -35,7 +34,6 @@ preg_match_all('/<strong>(\d+)<\/strong><a href="(.*)" class="video" i="(.*)">(.
 $updateUrls = $tpl[2];
 $updateTitles = $tpl[4];
 
-// 是否第一次运行
 $cates = array(
 	'日本动画片'=>2,
 	'国产动画片'=>1,
