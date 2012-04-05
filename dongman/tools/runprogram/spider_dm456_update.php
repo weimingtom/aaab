@@ -1,5 +1,6 @@
-#!/usr/local/php/bin/php
+
 <?php
+#!/usr/local/php/bin/php
 header("Content-Type:text/html; charset=gb2312");
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(E_ALL);
@@ -21,7 +22,7 @@ $lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.file.lock';
 if(file_exists($lockFile)) {
 	exit('Already lock file exit program');
 } else {
-	touch($lockFile);
+//	touch($lockFile);
 }
 
 $db = new db();
@@ -29,7 +30,7 @@ $db->connect(DBHOST, DBUSER, DBPWD, DBNAME, DBCHARSET);
 
 $domain = "http://www.dm456.com";
 $tpl = array();
-$s = getContentUrl($domain.'/donghua/update.html');
+$s = getContentUrl($domain.'/donghua/update.html', $domain);
 preg_match_all('/<strong>(\d+)<\/strong><a href="(.*)" class="video" i="(.*)">(.*)<\/a>/isU', $s, $tpl);
 $updateUrls = $tpl[2];
 $updateTitles = $tpl[4];
@@ -47,7 +48,7 @@ $cates = array(
 
 foreach ($updateUrls as $k=>$updateUrl) 
 {	
-	sleep(rand(0, 3));
+	sleep(rand(0, 5));
 	
 	$field = array();	
 
@@ -56,20 +57,20 @@ foreach ($updateUrls as $k=>$updateUrl)
 	echo $spiderDetailUrl."\r\n";
 	$field['vod_reurl'] = $spiderDetailUrl;
 
-	$s = getContentUrl($spiderDetailUrl);
+	$s = getContentUrl($spiderDetailUrl, $domain);
 	//$s = iconv('gbk', 'utf-8', $s);
-	//print_r($s);exit;
+//	print_r($s);exit;
 	
 	// 分类
 	$tpl = array();
-	preg_match('/<a href="\/">首页<\/a> > <a href="(.*)">(.*)<\/a> >/isU', $s, $tpl);
-	$field['vod_cid'] = isset($tpl[1]) ? isset($cates[$tpl[1]]) ? $cates[$tpl[1]] : 29 : 29;
+	preg_match('/首页<\/a> > <a href="(.*)">(.*)<\/a> > <strong>/isU', $s, $tpl);
+	$field['vod_cid'] = isset($tpl[2]) ? isset($cates[$tpl[2]]) ? $cates[$tpl[2]] : 29 : 29;
 
 	// 标题
 	$tpl = array();
 	preg_match('/ > <strong>(.*)<\/strong><\/div><\/div><\/div>/isU', $s, $tpl);
 	$field['vod_name'] = isset($tpl[1]) ? $tpl[1] : '';
-	if (!$field['vod_name']) {
+	if (empty($field['vod_name'])) {
 		continue;
 	}
 	
@@ -141,7 +142,7 @@ foreach ($updateUrls as $k=>$updateUrl)
 			preg_match_all('/<a href="(.*)" title="(.*)" target="_blank">(.*)<\/a>/isU', $pay, $r);
 			if (isset($r[1])) {
 				foreach ($r[1] as $url) {
-					$args = get_pay_vod_id($spiderDetailUrl.'/'.$url);
+					$args = get_pay_vod_id($spiderDetailUrl.'/'.$url, $domain);
 					$urls[$payTyps[1]][] = $args[2];
 				}
 			}
@@ -177,12 +178,10 @@ foreach ($updateUrls as $k=>$updateUrl)
 	$field['vod_updatetime'] = time();
 	$field['vod_inputer'] = 'admin';
 
-	if ($field['vod_name']) {
-		if ($vod) {
-			$db->update('pp_vod', $field, "vod_id='{$vod['vod_id']}'");
-		} else {
-			$db->insert('pp_vod', $field);
-		}
+	if ($vod) {
+		$db->update('pp_vod', $field, "vod_id='{$vod['vod_id']}'");
+	} else {
+		$db->insert('pp_vod', $field);
 	}
 }
 
@@ -190,8 +189,8 @@ foreach ($updateUrls as $k=>$updateUrl)
 @unlink($lockFile);
 
 // 获取影片ID
-function get_pay_vod_id($url) {
-	$s = getContentUrl($url);
+function get_pay_vod_id($url, $domain) {
+	$s = getContentUrl($url, $domain);
 	$tpl = array();
 	$result = preg_match('/ps:\'(.*)\',pv:\'(.*)\'/isU', $s, $tpl);
 	if($result) {
