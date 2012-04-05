@@ -62,9 +62,12 @@ class VodAction extends HomeAction{
 	//分解播放地址链接
 	public function playlist($vodurl,$sid,$url){
 		$play=explode(chr(13),str_replace(array("\r\n", "\n", "\r"),chr(13),$vodurl));
-		//krsort($play,SORT_NUMERIC );
-		//array_multisort($play,SORT_ASC);
-		//print_r($play);
+		// 排序
+		krsort($play, SORT_NUMERIC);
+		$play = array_values($play);
+		krsort($play, SORT_NUMERIC);
+//		print_r($play);
+
 		foreach($play as $key=>$val){
 			$url['sid']=$sid;$url['pid']=$key;
 			if(strpos($val,'$')>0){
