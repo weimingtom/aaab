@@ -1,10 +1,12 @@
 <?php
-function getContentUrl($url, $post=array()) {
+function getContentUrl($url, $referer='', $post=array()) {
 	$ch = curl_init($url);
 	
-	//curl_setopt($ch,CURLOPT_ENCODING ,'gb2312'); 
+//	curl_setopt($ch, CURLOPT_ENCODING, 'gb2312'); 
 	// 设置来路 
-	//curl_setopt($curl, CURLOPT_REFERER, 'http://google.com/'); 
+	if ($referer) {
+		curl_setopt($ch, CURLOPT_REFERER, $referer); 
+	}
 	// 不直接输入内容 
 	//curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); 
 	
