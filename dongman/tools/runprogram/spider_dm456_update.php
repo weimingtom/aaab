@@ -1,6 +1,6 @@
 #!/usr/local/php/bin/php
 <?php
-header("Content-Type:text/html; charset=gb2312");
+//header("Content-Type:text/html; charset=gb2312");
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(E_ALL);
 
@@ -32,34 +32,41 @@ $tpl = array();
 $s = getContentUrl($domain.'/donghua/update.html', $domain);
 preg_match_all('/<strong>(\d+)<\/strong><a href="(.*)" class="video" i="(.*)">(.*)<\/a>/isU', $s, $tpl);
 $updateUrls = $tpl[2];
-$updateTitles = $tpl[4];
+//$updateTitles = $tpl[4];
 
-$cates = array(
-	'日本动画片'=>2,
-	'国产动画片'=>1,
-	'大陆动画片'=>1,
-	'欧美动画片'=>3,
-	'TV版'=>23,
-	'OVA版'=>24,
-	'剧场版'=>25,
-);
-
-foreach ($updateUrls as $k=>$updateUrl) 
+foreach ($updateUrls as $updateUrl) 
 {	
-	sleep(rand(0, 5));
-	
-	$field = array();	
-
+//	sleep(rand(0, 5));
 	// 抓取动漫内容详细页的
 	$spiderDetailUrl = $domain.$updateUrl;
-	echo $spiderDetailUrl."\r\n";
+	
+	spiderVod($db, $spiderDetailUrl, $domain);
+}
+
+// 创建锁文件
+@unlink($lockFile);
+
+// 采集详细页内容
+function spiderVod(&$db, $spiderDetailUrl, $domain) 
+{
+	$field = array();
+
 	$field['vod_reurl'] = $spiderDetailUrl;
 
 	$s = getContentUrl($spiderDetailUrl, $domain);
 	//$s = iconv('gbk', 'utf-8', $s);
 //	print_r($s);exit;
-	
+
 	// 分类
+	$cates = array(
+		'日本动画片'=>2,
+		'国产动画片'=>1,
+		'大陆动画片'=>1,
+		'欧美动画片'=>3,
+		'TV版'=>23,
+		'OVA版'=>24,
+		'剧场版'=>25,
+	);
 	$tpl = array();
 	preg_match('/首页<\/a> > <a href="(.*)">(.*)<\/a> > <strong>/isU', $s, $tpl);
 	$field['vod_cid'] = isset($tpl[2]) ? isset($cates[$tpl[2]]) ? $cates[$tpl[2]] : 29 : 29;
@@ -71,7 +78,7 @@ foreach ($updateUrls as $k=>$updateUrl)
 	if (empty($field['vod_name'])) {
 		continue;
 	}
-	
+
 	$vod = $db->fetch_first("SELECT vod_id FROM pp_vod WHERE vod_name='{$field['vod_name']}'");
 	if(empty($vod)) {
 		// 图片
@@ -129,6 +136,7 @@ foreach ($updateUrls as $k=>$updateUrl)
 	$tpl = array();
 	preg_match_all('/<div class="w980_b1px mt10 clearfix">(.*)<div class="blank_8"><\/div>/isU', $s, $tpl);
 	$pays = isset($tpl[1]) ? $tpl[1] : '';
+	
 	foreach ($pays as $pay) {
 		// 播放器类型
 		$payTyps = array();
@@ -140,7 +148,11 @@ foreach ($updateUrls as $k=>$updateUrl)
 			preg_match_all('/<a href="(.*)" title="(.*)" target="_blank">(.*)<\/a>/isU', $pay, $r);
 			if (isset($r[1])) {
 				foreach ($r[1] as $url) {
-					$args = get_pay_vod_id($spiderDetailUrl.'/'.$url, $domain);
+					$payvodurl = $spiderDetailUrl.$url;
+					if(strpos('/', $url) !== false) {
+						$payvodurl = $domain.'/'.$url;
+					}
+					$args = get_pay_vod_id($payvodurl, $domain);
 					$urls[$payTyps[1]][] = $args[2];
 				}
 			}
@@ -180,11 +192,8 @@ foreach ($updateUrls as $k=>$updateUrl)
 		$field['vod_addtime'] = time();
 		$field['vod_updatetime'] = time();
 		$db->insert('pp_vod', $field);
-	}
+	}	
 }
-
-// 创建锁文件
-@unlink($lockFile);
 
 // 获取影片ID
 function get_pay_vod_id($url, $domain) {
