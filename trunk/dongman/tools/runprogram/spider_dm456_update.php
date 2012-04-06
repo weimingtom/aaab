@@ -171,14 +171,14 @@ foreach ($updateUrls as $k=>$updateUrl)
 		}
 	}
 
-	// Èë¿â
-	$field['vod_addtime'] = time();
-	$field['vod_updatetime'] = time();
+	// Èë¿â	
 	$field['vod_inputer'] = 'admin';
-
 	if ($vod) {
+		$field['vod_updatetime'] = time();
 		$db->update('pp_vod', $field, "vod_id='{$vod['vod_id']}'");
 	} else {
+		$field['vod_addtime'] = time();
+		$field['vod_updatetime'] = time();
 		$db->insert('pp_vod', $field);
 	}
 }
