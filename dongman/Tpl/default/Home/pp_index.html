@@ -14,10 +14,10 @@
 
 <body>
 <php>
-$vod_news = $pplist->ppvod('num:46;order:vod_addtime desc');
+$vod_news = $pplist->ppvod('num:46;order:vod_updatetime desc');
 $vod_stars = $pplist->ppvod('num:20;order:vod_stars desc,vod_hits desc');
-$vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_addtime desc');
-$vod_todays = $pplist->ppvod('num:22;day:1;order:vod_addtime desc');
+$vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_updatetime desc');
+$vod_todays = $pplist->ppvod('num:22;day:1;order:vod_updatetime desc');
 </php>
 
 <div id="page_main">
@@ -118,7 +118,7 @@ $vod_todays = $pplist->ppvod('num:22;day:1;order:vod_addtime desc');
 				 <div class="update_list">
 				 	<ul>
 					<volist name="vod_news" id="ppvod">
-						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a><span class="time">{$ppvod.vod_addtime|getcolordate='m-d',###}</span></li>
+						<li><span><img src="./images/sj.jpg"/></span> <a href="{$ppvod.vod_url}">{$ppvod.vod_name|msubstr=0,12|getcolor=$ppvod['vod_color']}</a><span class="time">{$ppvod.vod_updatetime|getcolordate='m-d',###}</span></li>
 					</volist>
  					</ul>
 				 </div>
