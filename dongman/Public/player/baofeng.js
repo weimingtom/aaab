@@ -1,4 +1,4 @@
-﻿//播放器控件
+//播放器控件
 function $Showhtml(){
 	player='<object classid="clsid:F587310D-5306-494D-87E2-88334B46E781" width="100%" height="'+Player.Height+'" id="BfPlayer" name="BfPlayer" style="margin-top:-1px" onerror="Player.Install();"></object>';
 	return player;

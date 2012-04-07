@@ -1,4 +1,4 @@
-﻿function $Showhtml(){
+function $Showhtml(){
 	player ='<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="100%" height="'+Player.Height+'">';
 	player +='<param name="movie" value="flv.swf"><param name="quality" value="high">';
 	player +='<param name="menu" value="false"><param name="wmode" value="opaque"><param name="allowFullScreen" value="true" />';
