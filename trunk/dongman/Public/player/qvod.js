@@ -1,4 +1,4 @@
-﻿function $Showhtml(){
+function $Showhtml(){
 	Player.Url = $Qvodurl(Player.Url,Player.UrlName);
 	Player.NextUrl = $Qvodurl(Player.NextUrl,Player.UrlNextName);
 	player ='<object id="QvodPlayer" name="QvodPlayer" width="100%" height="'+Player.Height+'" classid="clsid:F3D0D36F-23F8-4682-A195-74C92B03D4AF" onError="Player.Install();" style="display:none;">';

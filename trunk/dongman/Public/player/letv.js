@@ -1,4 +1,4 @@
-﻿function $Showhtml(){
+function $Showhtml(){
 	player ='<object classid="clsid:D27CDB6E-AE6D-11CF-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0" border="0" width="100%" height="'+Player.Height+'" >';
 	player += '<param name="movie" value="http://www.letv.com/player/x'+Player.Url+'.swf">';
 	player += '<param name="quality" value="High">';

@@ -1,4 +1,4 @@
-﻿function $Showhtml(){
+function $Showhtml(){
 	player = '<object classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6" width="100%" height="'+Player.Height+'" id="mdediaplayer">';
 	player += '<param name="URL" value="'+Player.Url+'">';
 	player += '<param name="stretchToFit" value="-1">';

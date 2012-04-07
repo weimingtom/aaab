@@ -15,19 +15,20 @@ $array=array(
 	'TMPL_DETECT_THEME'=>true,// 自动侦测模板主题
 	'DATA_CACHE_SUBDIR'=>true,//哈希子目录动态缓存的方式
 	'DATA_PATH_LEVEL'=>2,
-	'admin_name'=>'飞飞影视系统PHP版',
+	'admin_name'=>'九尾狐大陆',
 	'admin_var'=>'1.9',
-	'admin_url'=>'http://www.ff84.com/',
+	'admin_url'=>'http://dm.9dalu.com/',
 	'admin_urlvar'=>'http://union.ff84.com/up/ppvod_version.js',
-	'admin_keywords'=>'飞飞影视系统',
-	'admin_description'=>'努力打造飞飞影视系统为最好的影视系统!',		
-	'admin_welcome'=>'欢迎光临飞飞影视系统PHP版管理后台',			
+	'admin_keywords'=>'九尾狐大陆系统',
+	'admin_description'=>'九尾狐大陆影视系统!',		
+	'admin_welcome'=>'欢迎光临九尾狐大陆管理后台',			
 	'play_player' =>array (
 		'qvod' => '快播高清',
 		'baofeng' => '暴风影音',
 		'yuku' => '优酷视频',
 		'tudou' => '土豆视频',
 		'bdhd' => '百度影音',
+		'baidu' => '百度影音',
 		'qiyi' => '奇艺高清',
 		'pvod' => '皮皮高清',	
 		'sinahd' => '新浪视频',
@@ -44,6 +45,8 @@ $array=array(
 		'letv' => '乐视视频',
 		'media' => 'Media Player',
 		'real' => 'Real Player',
+		'cntv'=>'中国网络电视台',
+		'56'=>'56视频'
 	),
 );
 return array_merge($config,$array);
