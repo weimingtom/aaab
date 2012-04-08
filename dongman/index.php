@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Asia/Shanghai');
 //超时时间
 set_time_limit(120);
 //内存限制 取消内存限制
