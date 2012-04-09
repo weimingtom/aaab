@@ -17,9 +17,20 @@ class IndexAction extends HomeAction{
 		$yesterdayend2 = $yesterdaystart;
 		$vodlist['yesterday2'] = $vod->field("vod_name,vod_url,vod_color")->where("vod_updatetime>='$yesterdaystart2' AND vod_updatetime<='$yesterdayend2'")->limit('22')->select();
 		
+		$sql="select news_content from pp_news where news_id ='1' ";
+		$result=mysql_query($sql);
+		$rs=mysql_fetch_row($result);
+		$news_content=$rs[0];
+		
+		
+		
 		$this->assign('title',C('site_name').'-首页'.C('site_by'));
 		$this->assign('pplist', A("Home"));
 		$this->assign('vodlist', $vodlist);
+		$this->assign('news_content', $news_content);
 		$this->display('pp_index');
+		
+		
+		
 	}
 }?>
