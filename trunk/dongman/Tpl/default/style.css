@@ -680,6 +680,7 @@ width: 980px;
 .update_info{ float:left;}
 .update_info ul{ padding: 0px 18px 0px 13px;}
 .update_info li{  width:217px; line-height:26px; }
+.update_info li p{ font-size:12px}
 .update_info span{ margin-right: 2px;}
 
 .update_new_title{ background:url(/images/update_title_bg.jpg); width:248px; height:40px; font-size: 14px;font-weight: bold;line-height: 60px;text-align:left; text-indent:1em; color:#414143; margin: 1px;}
