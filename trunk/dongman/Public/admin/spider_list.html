@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>资源采集管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel='stylesheet' type='text/css' href='__PUBLIC__/css/admin.css'>
+<style>
+a{color:green}
+.ctable {margin:5px; background: #EBEBEB; width:95%}
+tr{ background-color:#FFFFFF; height:25px; line-height:25px; text-align:center}
+.tl{text-align:left}
+.red{color:#FF0000}
+.h{color: #666666}
+</style>
+<script language="JavaScript" type="text/javascript" charset="utf-8" src="__PUBLIC__/js/jquery.js"></script>
+</head>
+<body>
+<div class="right">
+  <div class="right_top">{&admin_welcome} <notempty name='jumpurl'><a href="{$jumpurl}" style="color:#FF0000;font-weight:bold">上次有采集任务没有完成，是否接着采集?</a></notempty></div>
+  <div class="right_main">
+  <table width="98%" border="0" cellpadding="5" cellspacing="1" class="tableoutline">
+      <tr class="tb_head">
+        <td colspan="7"><h2>采集列表</h2></td>
+      </tr>
+      <tr align="center" class="tb_title">
+        <td width="50">序号</td>
+        <td width="100">名称</td>
+        <td width="100">目标URL</td>
+        <td width="100">加入时间</td>
+        <td width="100">编辑</td>
+      </tr>
+   
+      <tr class="firstalt">
+        <td align="center">1</td>
+        <td align="center">动漫456</td>
+        <td align="center">http://www.dm456.com/</td>
+	<td align="center">2012-04-10</td>
+        <td align="center"><a href="/tools/runprogram/spider_dm456_update.php" target="_blank" onclick="if(confirm('确定执行采集程序？执行完毕后再退出采集程序。')){return true;}else{return false;}">采集目标网站当前更新</a> / <a href="/tools/runprogram/spider_dm456_url.php" target="_blank">采集指定的URL</a></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<include file="footer" />
+</body>
+</html>

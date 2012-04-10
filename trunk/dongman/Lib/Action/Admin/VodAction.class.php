@@ -91,7 +91,8 @@ class VodAction extends BaseAction{
 		}
 		$array['vod_language_list']=explode(',',C('play_language'));
 		$array['vod_area_list']=explode(',',C('play_area'));
-		$array['vod_year_list']=explode(',',C('play_year'));		
+		$array['vod_year_list']=explode(',',C('play_year'));	
+		$array['vod_updatetime']=time();	
 		$this->ppvod_play();
 		$this->assign($array);
 		$this->assign('listvod',F('_ppvod/listvod'));

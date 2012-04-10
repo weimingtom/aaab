@@ -136,6 +136,7 @@ function spiderVod(&$db, $spiderDetailUrl, $domain)
 
 		// ¼¯ÊıÓëÍøÖ·
 		if (isset($payTyps[1])) {
+			$payTyps[1] = strtolower($payTyps[1]);
 			$r = array();
 			preg_match_all('/<a href="(.*)" title="(.*)" target="_blank">(.*)<\/a>/isU', $pay, $r);
 			if (isset($r[1])) {
