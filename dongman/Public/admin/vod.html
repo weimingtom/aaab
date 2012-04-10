@@ -355,7 +355,11 @@ function showhtml(vodid){
           <td><textarea id="content" name="vod_content" style="width:715px;height:300px;">{$vod_content}</textarea></td>
         </tr>
         <tr class="firstalt">
-          <td colspan="2" align="center"><p><input class="bginput" type="submit" name="submit" value=" 提交 " > <input class="bginput" type="reset" name="Input" value=" 重置 " ></p></td>
+          <td colspan="2" align="center"><p>
+          	<input type="hidden" value="{$vod_updatetime}" name="vod_updatetime" />
+          	<input class="bginput" type="submit" name="submit" value=" 提交 " > 
+          	<input class="bginput" type="reset" name="Input" value=" 重置 " >
+          	</p></td>
         </tr>
       </table>
     </form>

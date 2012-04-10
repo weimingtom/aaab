@@ -16,8 +16,8 @@
 <body>
 <php>
 $vod_news = $pplist->ppvod('num:46;order:vod_updatetime desc');
-$vod_stars = $pplist->ppvod('num:50;order:vod_stars desc,vod_hits desc');
-$vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_updatetime desc');
+$vod_stars = $pplist->ppvod('num:50;order:vod_stars desc');
+$vod_hits = $pplist->ppvod('num:20;order:vod_hits desc');
 </php>
 
 <div id="page_main">
@@ -73,6 +73,7 @@ $vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_updatetime desc');
 				
 				 </div>
 			<script>
+			/*
 			$(function(){
 				$('.update_date ul li').each(function(i){
 					$(this).bind("click", {ii:i}, function(event){
@@ -92,7 +93,7 @@ $vod_hits = $pplist->ppvod('num:20;order:vod_hits,vod_updatetime desc');
 						$('.update_info ul').get(i).style.display='none';
 					}
 				})
-			});
+			});*/
 			</script>
 			</div>
 			

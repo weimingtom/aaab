@@ -5,6 +5,10 @@ class CollectAction extends BaseAction{
 		$this->assign('jumpurl',F('_xml/xucai'));
 		$this->display('./Public/admin/xml_show_list.html');
     }
+    
+    public function Spider() {
+		$this->display('./Public/admin/spider_list.html');
+    }
 	// FeiFei备用库
     public function feifei(){
 		$cai = D('Cai');
