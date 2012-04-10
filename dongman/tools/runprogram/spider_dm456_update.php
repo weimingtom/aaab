@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
 define('LOCK_PATH', ROOT_PATH.'/syslog');
-define('RUNPROGRAM_ID', 'dm456_update');
+define('RUNPROGRAM_ID', 'dm456_update2');
 
 include ROOT_PATH.'/config.php';
 include ROOT_PATH.'/../include/db.php';
@@ -79,7 +79,7 @@ function spiderVod(&$db, $spiderDetailUrl, $domain)
 		continue;
 	}
 
-	$vod = $db->fetch_first("SELECT vod_id FROM pp_vod WHERE vod_name='{$field['vod_name']}'");
+	$vod = $db->fetch_first("SELECT vod_id,vod_play,vod_url FROM pp_vod WHERE vod_name='{$field['vod_name']}'");
 	if(empty($vod)) {
 		// 图片
 		$tpl = array();
@@ -147,13 +147,30 @@ function spiderVod(&$db, $spiderDetailUrl, $domain)
 			$r = array();
 			preg_match_all('/<a href="(.*)" title="(.*)" target="_blank">(.*)<\/a>/isU', $pay, $r);
 			if (isset($r[1])) {
-				foreach ($r[1] as $url) {
-					$payvodurl = $spiderDetailUrl.$url;
-					if(strpos('/', $url) !== false) {
-						$payvodurl = $domain.'/'.$url;
+				$vodUrls = get_pay_urls($vod);
+				if ($vod && isset($vodUrls[$payTyps[1]])) 
+				{
+					foreach ($r[1] as $k=>$url) {
+						if (isset($vodUrls[$payTyps[1]][$k]) && $vodUrls[$payTyps[1]][$k]) {
+							$urls[$payTyps[1]][$k] = $vodUrls[$payTyps[1]][$k];
+						} else {
+							$payvodurl = $spiderDetailUrl.$url;
+							if(strpos('/', $url) !== false) {
+								$payvodurl = $domain.'/'.$url;
+							}
+							$args = get_pay_vod_id($payvodurl, $domain);
+							$urls[$payTyps[1]][$k] = $args[2];
+						}
 					}
-					$args = get_pay_vod_id($payvodurl, $domain);
-					$urls[$payTyps[1]][] = $args[2];
+				} else {
+					foreach ($r[1] as $url) {
+						$payvodurl = $spiderDetailUrl.$url;
+						if(strpos('/', $url) !== false) {
+							$payvodurl = $domain.'/'.$url;
+						}
+						$args = get_pay_vod_id($payvodurl, $domain);
+						$urls[$payTyps[1]][] = $args[2];
+					}
 				}
 			}
 		}
@@ -191,11 +208,41 @@ function spiderVod(&$db, $spiderDetailUrl, $domain)
 	if ($vod) {
 		$field['vod_updatetime'] = time();
 		$db->update('pp_vod', $field, "vod_id='{$vod['vod_id']}'");
+		echo "update\r\n";
 	} else {
 		$field['vod_addtime'] = time();
 		$field['vod_updatetime'] = time();
 		$db->insert('pp_vod', $field);
-	}	
+		echo "insert\r\n";
+	}
+	print_r($field);
+	exit();
+}
+
+// 获取从数据库得到的数据后重组一个格式
+function get_pay_urls($vod) {
+	if(empty($vod)) return array();
+	
+	$arr = array();
+	$payNames = explode('$$$', $vod['vod_play']);
+	$urls = explode('$$$', $vod['vod_url']);
+	if (count($payNames) == count($urls)) {
+		foreach ($urls as $k=>$v) {
+			switch ($payNames[$k]) {
+				case 'yuku':
+					$payNames[$k] = 'youku';
+					break;
+				case 'bdhd':
+					$payNames[$k] = 'baidu';
+					break;
+				case 'sinahd':
+					$payNames[$k] = 'sina';
+					break;
+			}
+			$arr[$payNames[$k]] = explode("\r\n", $v);
+		}
+	}
+	return $arr;
 }
 
 // 获取影片ID
