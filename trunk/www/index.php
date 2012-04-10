@@ -57,7 +57,7 @@ include 'webadmin/include/config.inc.php';
     	<ul>
 		<li class="here"><a href="<?php echo $mydecms['weburl']?>">首页<em>HOMEPAGE</em></a></li>
 		<li><a href="http://bbs.9dalu.com">大陆社区<em>MENU TEXT</em></a></li>
-		<li><a href="http://bbs.9dalu.com/thread-list-fid-9.htm">动漫下载<em>MENU TEXT</em></a></li>
+		<li><a href="http://dm.9dalu.com">在线动漫<em>MENU TEXT</em></a></li>
 		<li><a href="http://bbs.9dalu.com/thread-list-fid-1059.htm">动漫新番<em>MENU TEXT</em></a></li>
 		<li><a href="http://bbs.9dalu.com/thread-list-fid-1053.htm">动漫情报<em>MENU TEXT</em></a></li>
 		<li><a href="http://bbs.9dalu.com/thread-list-fid-988.htm">COSPLAY<em>MENU TEXT</em></a></li>
