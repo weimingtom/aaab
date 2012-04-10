@@ -1,13 +1,27 @@
 <?php
-#!/usr/local/php/bin/php
 header("Content-Type:text/html; charset=gb2312");
 date_default_timezone_set('Asia/Shanghai');
 error_reporting(E_ALL);
+?>
+<form id="myForm" action="" method="POST">
+	<input type="text" name="updateUrl" value="" style="width:300px" />
+	<input type="submit" name="spider" value="采集" />
+</form>
+<?php
+$spiderDetailUrl = isset($_POST['updateUrl']) ? $_POST['updateUrl'] : '';
+if (empty($spiderDetailUrl)) {
+	echo '请输入采集的URL地址，URL示例：<a href="http://www.dm456.com/donghua/4217/" target="_blank">http://www.dm456.com/donghua/4217/</a>';
+	exit;
+}
+if (stripos($spiderDetailUrl, 'http://')===false) {
+	echo '请输入合法的URL地址，直接显示动漫内容的URL，URL示例：<a href="http://www.dm456.com/donghua/4217/" target="_blank">http://www.dm456.com/donghua/4217/</a>';
+	exit;
+}
 
 set_time_limit(0);
 define('ROOT_PATH', dirname(__FILE__));
 define('LOCK_PATH', ROOT_PATH.'/syslog');
-define('RUNPROGRAM_ID', 'dm456_update');
+define('RUNPROGRAM_ID', 'dm456_update_url');
 
 include ROOT_PATH.'/config.php';
 include ROOT_PATH.'/../include/db.php';
@@ -16,35 +30,13 @@ include ROOT_PATH.'/../include/letter.php';
 
 mkdirs(ROOT_PATH.'/syslog');
 
-// 判断是否锁定
-$lockFile =  ROOT_PATH.'/syslog/'.RUNPROGRAM_ID.'.file.lock';
-if(file_exists($lockFile)) {
-	exit('Already lock file exit program');
-} else {
-	touch($lockFile);
-}
 
 $db = new db();
 $db->connect(DBHOST, DBUSER, DBPWD, DBNAME, DBCHARSET);
 
 $domain = "http://www.dm456.com";
-$tpl = array();
-$s = getContentUrl($domain.'/donghua/update.html', $domain);
-preg_match_all('/<strong>(\d+)<\/strong><a href="(.*)" class="video" i="(.*)">(.*)<\/a>/isU', $s, $tpl);
-$updateUrls = $tpl[2];
-//$updateTitles = $tpl[4];
-
-foreach ($updateUrls as $updateUrl) 
-{	
-//	sleep(rand(0, 5));
-	// 抓取动漫内容详细页的
-	$spiderDetailUrl = $domain.$updateUrl;
-	
-	spiderVod($db, $spiderDetailUrl, $domain);
-}
-
-// 创建锁文件
-@unlink($lockFile);
+spiderVod($db, $spiderDetailUrl, $domain);
+echo '采集成功。';
 
 // 采集详细页内容
 function spiderVod(&$db, $spiderDetailUrl, $domain) 
@@ -208,15 +200,12 @@ function spiderVod(&$db, $spiderDetailUrl, $domain)
 	if ($vod) {
 		$field['vod_updatetime'] = time();
 		$db->update('pp_vod', $field, "vod_id='{$vod['vod_id']}'");
-//		echo "update\r\n";
 	} else {
 		$field['vod_addtime'] = time();
 		$field['vod_updatetime'] = time();
 		$db->insert('pp_vod', $field);
-//		echo "insert\r\n";
 	}
-//	print_r($field);
-//	exit();
+//	print_r($field);exit;
 }
 
 // 获取从数据库得到的数据后重组一个格式
