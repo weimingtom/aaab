@@ -1,4 +1,4 @@
-<?php
+<?php 
 define('WWW.MYDECMS.COM',true);
 include 'webadmin/include/config.inc.php';
 ?>
