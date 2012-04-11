@@ -669,3 +669,11 @@ filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/bigimg_1.p
 #page_footer a {
 	color:#000;
 }
+#friends{ float:left;height:auto; border:1px solid #D1CFD0; background:#f7f7f7; width:980px; margin:10px auto;}
+.friend_title{ height:30px; line-height:30px; text-align:left;border-bottom:1px solid #D1CFD0; font-size:14px; font-weight:bold;}
+.friend_title span{ float:right; font-weight:normal; font-size:12px;}
+.friend_title h1{ float:left; width:100px;}
+.friend{ width:930px; margin-top:18px; margin-left:30px;  }
+.friend_text{ width:920px; height:auto; overflow:auto; margin:20px;}
+.friend_text li{float:left; list-style:none; width:80px;  }
+.friend_index{ height:auto; line-height:22px; width:930px; margin-top:5px; margin-bottom:12px;}
