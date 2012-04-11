@@ -63,11 +63,10 @@ class VodAction extends HomeAction{
 	public function playlist($vodurl,$sid,$url){
 		$play=explode(chr(13),str_replace(array("\r\n", "\n", "\r"),chr(13),$vodurl));
 		// 排序
-		krsort($play, SORT_NUMERIC);
-		$play = array_values($play);
-		krsort($play, SORT_NUMERIC);
-//		print_r($play);
-
+//		krsort($play, SORT_NUMERIC);
+//		$play = array_values($play);
+//		krsort($play, SORT_NUMERIC);
+		$num = count($play);
 		foreach($play as $key=>$val){
 			$url['sid']=$sid;$url['pid']=$key;
 			if(strpos($val,'$')>0){
@@ -75,7 +74,7 @@ class VodAction extends HomeAction{
 				$list['playname']=trim($ji[0]);
 				$list['playpath']=trim($ji[1]);
 			}else{
-				$list['playname']='第'.($key+1).'集';
+				$list['playname']='第'.($num-$key).'集';
 				$list['playpath']=trim($val);
 			}
 			$list['playurl']=ppvodurl('Home-vod/play',$url,'index.php',false,true);
