@@ -35,6 +35,7 @@ class BaseAction extends AllAction{
 	public function ppvod_list(){
 		$rs=D("Admin.List");
 		$where['list_oid']=array('GT',0);
+		$where['list_sid']=array('EQ',1);
 		$list=$rs->where($where)->order('list_oid asc')->select();
 		foreach($list as $key=>$val){
 			if(C('url_html')==1||C('url_html')==4){
