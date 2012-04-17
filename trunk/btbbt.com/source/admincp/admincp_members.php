@@ -329,6 +329,7 @@ EOF;
 
 	} else {
 
+		//if(!$search_condition && empty($_G['gp_uidarray'])) {
 		if(!$search_condition) {
 			cpmsg('members_no_find_deluser', '', 'error');
 		}
