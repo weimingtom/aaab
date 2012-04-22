@@ -1,0 +1,5 @@
+<div id="layerCenterAd" class="layer_center_ad" style="display:none;">
+<div style="position:absolute;top:0px;right:0px"><img src="http://www.btbbt.com/static/ad/page_center_show_ad/x.png" style="cursor:pointer;" title="关闭" /></div>
+{修改的广告代码}
+</div>
+<script type="text/javascript" src="http://www.btbbt.com/static/ad/page_center_show_ad/center_ad_show.js"></script>
