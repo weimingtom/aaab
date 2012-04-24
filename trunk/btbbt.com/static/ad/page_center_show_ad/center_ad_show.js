@@ -47,7 +47,7 @@ function showBlockLayerAd() {
 	addiv.style.marginLeft = '-' + parseFloat(addiv.offsetWidth/2) + 'px';
 	addiv.style.marginTop = scrolltop - parseFloat(addiv.offsetHeight/2) + 'px';
 	
-	setcookiead('isshowcenterad', 1, 86400);
+	setcookiead('isshowcenterad', 1, 28800);
 	
 	setTimeout("closeCenterAd()", 20000);	// 30√Î
 }
