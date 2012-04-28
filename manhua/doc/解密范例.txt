@@ -1,0 +1,22 @@
+<?php
+$uid = 123;
+$time = time();
+$key = '123456789abcdefg';		// 这个会约定好，跟 conf/conf.php 中的 public_key 相同,我会给你。
+$auth = encrypt($time.'-'.$uid, $key);	// 加密算法，我会给你。
+$url = "http://bbs.9dalu.com/api-user-uid-$uid-auth-$auth.htm";
+
+$s = file_get_contents($url);
+$json = decrypt($s, $key);		// 解密算法，我会给你。
+$user = json_decode($json);
+
+print_r($user);
+
+$auth = encrypt($time.'-'.$uid, $key); //每个URL的 auth 只对应一个uid，泄露也只泄露一个用户的。
+
+function encrypt($txt, $key = 'abcd9667676effff') {
+	return urlencode(base64_encode(xxtea_encrypt($txt, $key)));	
+}
+
+function decrypt($txt, $key = 'abcd9667676effff') {
+	return xxtea_decrypt(base64_decode(urldecode($txt)), $key);	
+}
