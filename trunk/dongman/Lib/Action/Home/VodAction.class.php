@@ -49,6 +49,10 @@ class VodAction extends HomeAction{
 			$this->assign('ppplay',$ppplay);
 			$this->assign('pplist',A("Home.Vod"));
 			$this->assign('title',$arr['vod_name'].'-'.C('site_name').C('site_by'));
+			
+			// 更新访问数
+			$rs->setInc('vod_hits', $url['id']);
+			
 			if(!empty($arr['vod_skin'])){
 				$this->display($arr['vod_skin']);
 			}else{
