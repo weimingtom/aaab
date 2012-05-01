@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BT之家视频</title>
+<style type="text/css">
+<!--
+a {
+	font-size: 12px;
+	color: #333333;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #333333;
+}
+a:hover {
+	text-decoration: none;
+	color: #333333;
+}
+a:active {
+	text-decoration: none;
+	color: #333333;
+}
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+}
+-->
+</style></head>
+
+<body>
+<table>
+	<tr>
+	<volist name="vodlist" id="data">
+		<td align="center" style="width:118px">
+		<a href="http://vod.btbbt.com/detail/{$data.id}.html" target="_blank"><img src="{$data.picurl}" width="110" height="149" /></a><br/>
+		<a href="http://vod.btbbt.com/detail/{$data.id}.html" target="_blank">{$data.title|msubstr=0,9}</a>
+		</td>
+	</volist>
+	</tr>
+</table>
+</body>
+</html>
