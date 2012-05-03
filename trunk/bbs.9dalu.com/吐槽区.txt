@@ -36,3 +36,6 @@
 最好不记录数据库，记录最新的几十条就OK了。不保存的
 ============
 列：http://www.bilibili.tv/video/av257657/
+
+
+http://i.yoho.cn/218340/logview/746989_1_0.html
