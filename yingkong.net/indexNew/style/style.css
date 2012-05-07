@@ -1,0 +1,342 @@
+/*
+	[Stone PHP] (C)2008-2011 REDSTONE.
+	This is NOT a freeware, use is subject to license terms
+*/
+
+@charset "utf-8";
+body { background:url(image/body_bg.png) top left repeat-x; }
+body, input, button, select, textarea { color:#666; font:12px/1.5 'Verdana',sans-serif,'宋体','microsoft yahei',Arial,Tahoma,Helvetica,SimSun; }
+a {color:#aeaeae;}
+
+#body {width:960px;margin:0 auto;}
+
+#head a {
+	text-decoration:none;
+}
+#head .tm {text-align:right;height:30px;line-height:30px;}
+#head .tm a {padding:0 3px;}
+#head .tm .split {color:#e8e8e8;}
+
+#head .lb {height:70px;}
+#head .lb .l {float:left;width:220px;}
+#head .lb .b {float:right;width:678px;text-align:right;}
+
+#head .ms {
+	height:30px;
+	padding-top:20px;
+	text-align:right;
+	clear:both;
+	position:relative;
+}
+#head .ms a {color:#6a6a6a;}
+	#head .ms .m {width:677px;position:absolute;right:300px;}
+		#head .ms .m ul {position:absolute;right:0px;}
+			#head .ms .m ul li {float:left;margin:0 2px;width:53px;height:30px;text-align:center;}
+			#head .ms .m ul li a {
+	display:block;
+	height:28px;
+	line-height:28px;
+}
+			#head .ms .m ul li.cr {background:url(image/background.png) -10px -10px no-repeat;}
+				#head .ms .m ul li.cr a {
+	font-size:12px;
+	color:#ededed;
+	font-weight:bold;
+}
+	#head .ms .s {height:100%;width:264px;position:absolute;right:0px;}
+	#head .ms .s .txt {text-indent:3px;border:none;background:url(image/background.png) -10px -720px no-repeat;height:24px;width:154px;color:#494949;font-size:12px;font-weight:bold;line-height:26px;no-repeat;position:absolute;left:0px;top:0px;font-size:14px;font-weight:normal;}
+	#head .ms .s .submit {position:absolute;top:0px;right:67px;}
+	#head .ms .s a {border:none;height:26px;width:65px;line-height:26px;position:absolute;right:0px;top:0px;}
+
+#head .mn {height:92px;padding-top:15px;}
+#head .mn ul li {float:left;background:url(image/background.png) -160px -60px no-repeat;height:81px;width:128px;padding-right:6px;}
+#head .mn ul li a { background: url("image/background.png") no-repeat scroll 0 0 transparent;display: block; height: 81px;overflow: hidden;text-indent: -1000px;}
+#head .mn ul li .all {background-position:-10px -1036px;}
+#head .mn ul li .all_off {background-position:-10px -1129px;}
+#head .mn ul li .male {background-position:-144px -1036px;}
+#head .mn ul li .male_off {background-position:-144px -1129px;}
+#head .mn ul li .female {background-position:-278px -1036px;}
+#head .mn ul li .female_off {background-position:-278px -1129px;}
+#head .mn ul li .industry {background-position:-412px -1036px;}
+#head .mn ul li .industry_off {background-position:-412px -1129px;}
+#head .mn ul li .new {background-position:-546px -1036px;}
+#head .mn ul li .new_off {background-position:-546px -1129px;}
+
+#head .mn ul li .general {background-position:-10px -1239px;}
+#head .mn ul li .general_off {background-position:-10px -1343px;}
+#head .mn ul li .light {background-position:-144px -1239px;}
+#head .mn ul li .light_off {background-position:-144px -1343px;}
+#head .mn ul li .friends {background-position:-278px -1239px;}
+#head .mn ul li .friends_off {background-position:-278px -1343px;}
+#head .mn ul li .views {background-position:-412px -1239px;}
+#head .mn ul li .views_off {background-position:-412px -1343px;}
+
+
+#head .mn ul li.cr a span {color:#fbfbfb;}
+#head .mn ul li.cr a em {color:#838383;}
+
+#bigFocusImg {clear:both;position:relative;height:390px;}
+#bigFocusImg .image{position:absolute;left:0px;top:0px;}
+#bigFocusImg .title{position:absolute;right:0px;top:0px;background:url(image/background.png) -1000px -10px no-repeat;height:390px;width:238px;}
+
+
+#search, #searchArea {clear:both;height:44px;padding:27px 0px;}
+#search {position:absolute;top:678px;}
+#search .select {margin-right:10px;}
+#search .select ul li {padding:0 10px;}
+#search .occupation {width:235px;}
+#search .occupation ul {width:231px;}
+#search .gender {width:121px;}
+#search .gender ul {width:117px;}
+#search .age {width:179px;}
+#search .age ul {width:175px;}
+#search .height {width:160px;}
+#search .height ul {width:156px;}
+#search .btn {background:url(image/background.png) -10px -500px no-repeat;height:44px;width:161px;border:none;font-family:"microsoft yahei";font-size:18px;font-weight:bold;color:#e0e0e0;}
+
+
+#screen2 {height:254px;}
+#screen2 .fr {height:254px;width:476px;overflow:hidden;}
+#screen2 .zm {border:2px solid #c3c3c3;height:250px;padding:0 16px;}
+#screen2 .zm a {color:#666666;}
+#screen2 .zm h2 {height:82px;background:url(image/background.png) -10px -780px no-repeat;position:relative;}
+#screen2 .zm h2 .more {position:absolute;right:0px;bottom:21px;font-size:14px;}
+#screen2 .zm .img {width:196px;height:139px;overflow:hidden;float:left;}
+#screen2 .zm .txt {height:139px;width:232px;overflow:hidden;padding-left:8px;font-size:14px;}
+#screen2 .zm .txt li {text-indent:16px;background:url(image/background.png) -10px -870px no-repeat;height:24px;line-height:24px;}
+#screen2 .zm .txt li.cr {background:url(image/background.png) -10px -900px no-repeat;}
+#screen2 .zm .txt li.cr a {color:#e50000;}
+
+#digest {
+	clear:both;
+	padding-top:40px;
+}
+#digest a {text-decoration:none;}
+#digest h3 {
+	height:40px;
+	background:url(image/background.png) -10px -240px;
+	text-indent:-9999px;
+	margin-bottom:34px;
+}
+#digest ul {padding-top:0px;}
+#digest ul li {float:left;width:221px;height:265px;overflow:hidden;position:relative;margin-right:17px;}
+#digest li .img {position:absolute;left:0px;top:0px;}
+#digest li .op1 {width:12px;height:9px;position:absolute;right:0px;top:0px;background:url(image/background.png) -30px -160px no-repeat;overflow:hidden;}
+	#digest li .op1 a,#digest li .op2 a {text-indent:-9999px;}
+#digest li .op2 {width:12px;height:9px;position:absolute;right:0px;top:17px;background:url(image/background.png) -10px -160px no-repeat;overflow:hidden;}
+#digest li .name {
+	position:absolute;
+	left:0px;
+	top:157px;
+}
+	#digest li .name .n {color:#494949;font-size:14px;font-weight:bold;display:inline;}
+	#digest li .name .oi {color:#bcbcbc;padding-left:7px;}
+#digest li .other {position:absolute;left:0px;top:180px;font-size:8px;color:#6d6d6d;}
+	#digest li .other .l {
+	color:#e50000;
+	font-family:Verdana;
+	font-size:12px;
+	font-weight:bold;
+}
+	#digest li .other .n1 {font-size:10px;font-family:Tahoma;margin-left:13px;padding-left:12px;background:url(image/background.png) -50px -160px no-repeat;}
+	#digest li .other .n2 {font-size:10px;font-family:Tahoma;margin-left:8px;padding-left:12px;background:url(image/background.png) -160px -160px no-repeat;}
+#digest li .operate {
+	position:absolute;
+	left:0px;
+	top:205px;
+}
+#digest li .operate a { padding-right:2px;}
+#vipArtists h3 {
+	float:left;
+	width:191px;
+	background:url(image/background.png) -10px -300px no-repeat;
+	height:50px;
+	text-indent:-9999px;
+}
+#newArtists h3 {
+	float:left;
+	width:191px;
+	background:url(image/background.png) -10px -362px no-repeat;
+	height:50px;
+	text-indent:-9999px;
+}
+#industryArtists {overflow:hidden;padding-bottom:35px;height:100%;}
+#industryArtists h3 {
+	float:left;
+	width:191px;
+	background:url(image/background.png) -10px -420px no-repeat;
+	height:50px;
+	text-indent:-9999px;
+}
+
+.artistsList {
+	clear:both;
+	padding-top:33px;
+	border-top:2px solid #393939;
+}
+.artistsList ul {
+	float:left;
+	width:769px;
+}
+.artistsList a {text-decoration:none;}
+.artistsList ul li {float:left;width:191px;height:228px;overflow:hidden;position:relative;}
+.artistsList li .img {position:absolute;left:0px;top:0px;}
+.artistsList li .op1 {width:12px;height:9px;position:absolute;right:17px;top:0px;background:url(image/background.png) -30px -160px no-repeat;overflow:hidden;}
+	.artistsList li .op1 a,#digest li .op2 a {text-indent:-9999px;}
+.artistsList li .op2 {width:12px;height:9px;position:absolute;right:17px;top:17px;background:url(image/background.png) -10px -160px no-repeat;overflow:hidden;}
+.artistsList li .name {
+	position:absolute;
+	left:0px;
+	top:120px;
+}
+	.artistsList li .name .n {color:#494949;font-size:14px;font-weight:bold;display:inline;}
+	.artistsList li .name .oi {color:#bcbcbc;padding-left:7px;}
+.artistsList li .other {position:absolute;left:0px;top:141px;font-size:8px;color:#6d6d6d;}
+	.artistsList li .other .l {
+	color:#e50000;
+	font-family:Verdana, Geneva, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+}
+	.artistsList li .other .n1 {font-size:10px;font-family:Tahoma;margin-left:13px;padding-left:16px;background:url(image/background.png) -50px -160px no-repeat;}
+	.artistsList li .other .n2 {font-size:10px;font-family:Tahoma;padding-left:16px;background:url(image/background.png) -160px -160px no-repeat;}
+.artistsList li .operate {position:absolute;left:0px;top:168px;}
+	.artistsList li .operate div {float:left;width:51px;height:25px;background:url(image/background.png) -10px -570px no-repeat;text-align:center;margin-right:1px;}
+	.artistsList li .operate a {height:25px;width:51px;color:#6d6d6d;line-height:25px;}
+
+#about {
+	border:2px solid #e5e5e5;
+	padding:20px 0px 22px 28px;
+	clear:both;
+	height:196px;
+}
+#about .about {float:left;width:138px;}
+#about .yk{width:350px;}
+#about .about h6 {color:#e50000;font-weight:bold;padding-bottom:10px;}
+#about li a {text-decoration:none;}
+#about .about li {line-height:22px;height:22px;overflow:hidden;}
+#about .join {
+	height: 32px;
+	width:89px;
+	margin-top:15px;
+}
+#copyright {clear:both;text-align:center;height:72px;line-height:72px;overflow:hidden; padding-bottom:45px;}
+#copyright strong {font-weight:bold;}
+
+/*stonephp.ui.selectInit*/
+.select {float:left;position:relative;height:40px;background:#fff;}
+.select h4 {height:40px;line-height:40px;overflow:hidden;border:2px solid #e0e0e0;padding:0 10px;font-size:14px;font-weight:bold;position:relative;background:url(image/dropdown.png) right center no-repeat;}
+.select ul {display:none;position:absolute;top:44px;left:0px;background:#fff;border-left:2px solid #e0e0e0;border-right:2px solid #e0e0e0;}
+.select ul li {height:40px;line-height:40px;border-bottom:2px solid #e0e0e0;}
+
+.pg {text-align:center;font-weight:700;font-size:11px;}
+.pg strong {border:1px solid #E5E5E5;padding:1px 4px;color:#E50000;margin:3px;}
+.pg a {border:1px solid #E5E5E5;padding:1px 4px;margin:3px;text-decoration:none;}
+.pg a.nxt {border:none;margin-left:15px;background:url(image/background.png) -14px -979px no-repeat;width:20px;color:#fff;}
+.pg a.prev {border:none;margin-right:8px;background:url(image/background.png) -14px -959px no-repeat;width:20px;color:#fff;}
+
+.multipage {margin-bottom:60px;}
+
+.rankList {border-top:2px solid #393939;}
+.rankList h3 {height:45px;line-height:45px;font-size:12px;font-weight:700;border-bottom:1px dashed #bbb;margin-top:20px;}
+.rankList h3 
+p {float:left;;}
+.rankList li {height:86px;border-bottom:1px dashed #bbb;overflow:hidden;}
+.rankList li div {float:left;height:86px;}
+.rankList li div.num {width:68px;line-height:86px;text-align:center;font-family:Arial;font-size:24px;}
+.rankList li div.top {font-size:36px;color:#e50000;}
+.rankList li div.avatar {width:48px;margin-top:19px;}
+.rankList li div.info {margin-left:13px;padding-top:20px;
+}
+.rankList li div.info h6 {width:384px;font-weight:700;margin-bottom:5px;}
+.rankList li div.info h6 a {text-decoration:none;
+color:#464646;}
+.rankList li div.info h6 span {background:#ff8329;font-size:8px;padding:0 5px;margin-left:8px;font-weight:normal;color:#fff;font-family:Arial;}
+.rankList li div.stats {width:92px;margin-top:45px;font-size:11px;text-align:center;}
+.rankList li div.operate {width:110px;float:right;margin-top:40px;}
+
+.backTop {width:106px;margin:20px auto 0 auto;padding-bottom:100px;}
+.backTop a {display:block;float:left;width:51px;height:25px;background:url(image/background.png) -10px -570px no-repeat;text-decoration:none;
+color:#6d6d6d;line-height:25px;text-align:center;}
+.backTop .goHome {margin-right:4px;}
+
+#zhaomuing {margin-top:40px;}
+#zhaomuing h3 {height:100px;background:url(image/background.png) no-repeat -10px -1553px;border-bottom:2px solid #393939;text-indent:-99999px;overflow:hidden;}
+#zhaomuing ul {padding-top:20px;}
+#zhaomuing ul li {float:left;margin:0 8px 8px 0px;}
+
+#zhaomued {clear:both;margin-top:40px;margin-bottom:74px;padding-top:40px;}
+#zhaomued h3 {height:75px;background:url(image/background.png) no-repeat -10px -1695px;text-indent:-99999px;overflow:hidden;}
+#zhaomued ul li {border:1px solid #bbb;margin-bottom:10px;height:118px;line-height:118px;font-family:微软雅黑;font-size:36px;overflow:hidden;}
+#zhaomued ul li a {text-decoration:none;display:block;padding-left:30px;color:#232323;}
+
+/*艺人页面头部*/
+#artistHead {padding-top:35px;clear:both;height:113px;overflow:hidden;}
+	#artistHead .VIP1 {color:#86b6f1;}
+	#artistHead .VIP2 {color:#98ca38;}
+
+	#artistHead .VIP3 {color:#56d5fa;}
+	#artistHead .VIP4 {color:#86b6f1;}
+	#artistHead .VIP5 {color:#fbc33c;}
+	#artistHead .avatar {margin-right:20px;float:left;}
+	#artistHead .info {float:left;width:492px;}
+		#artistHead .info h6 {font-size:30px;font-family:"微软雅黑";color:#484848;}
+			#artistHead .info h6 span {font-size:14px;font-family:verdana;font-weight:700;}
+		#artistHead .info .url {color:#dcdcdc;font-weight:bold;font-family:Verdana;
+}
+	#artistHead .operate {padding-top:8px;}
+	#artistHead .stats {float:left;padding-top:60px;}
+		#artistHead .stats li {float:left;padding:0px 20px;text-align:center;}
+		#artistHead .stats li p.num {font-size:20px;color:#e50000;font-family:"微软雅黑";font-weight:700;
+}
+		#artistHead .stats li.noLast {border-right:1px dashed #c9c7ca;}
+
+#artistNav {clear:both;padding:42px 0px 15px 0px;height:35px;border-bottom:2px solid #393939;font-size:14px;font-weight:700;
+}
+	#artistNav li {float:left;text-align:center;height:35px;line-height:30px;width:63px;margin-right:11px;}
+		#artistNav li a {display:block;color:#464646;}
+	#artistNav li.cr {background:url(image/background.png) no-repeat -10px -1820px;}
+		#artistNav li.cr a {color:#fff;}
+
+#artistProfile {padding-top:43px;}
+	#artistProfile .header {color:#e50000;padding-bottom:22px;font-size:14px;font-weight:700;}
+	#artistProfile .video {width:247px;float:left;padding:0 70px 20px 0px;height:600px;}
+	#artistProfile .video .player {width:247px;height:181px;overflow:hidden;background:#ddd;text-align:center;line-height:181px;font-size:14px;font-weight:700;color:#696969;}
+	
+	#artistProfile .baseInfo {float:left;width:630px;padding-bottom:62px;border-bottom:1px dashed #ddd;font-size:14px;font-weight:700;}
+		#artistProfile .baseInfo li {float:left;width:315px;line-height:35px;height:40px;margin-bottom:15px;}
+		#artistProfile .baseInfo li .title {color:#969696;float:left;width:75px;}
+		#artistProfile .baseInfo li .info {color:#464646;float:left;width:208px;border:2px solid #d2d2d2;height:31px;padding-left:10px;}
+	#artistProfile .intro {float:left;width:630px;padding-top:35px;font-size:14px;line-height:30px;padding-bottom:230px;}
+
+#artistListBox .img {height:112px;width:154px;text-align:center;background:#eee;overflow:hidden;}
+#artistListBox .img img {}
+
+#albumListBox .list ul {padding-top:35px;}
+#albumListBox .list li {float:left;width:200px;height:266px;padding:20px;text-align:center;margin-bottom:45px;}
+#albumListBox .list li .date {color:#c0c0c0;font-size:12px;line-height:22px;height:22px;}
+#albumListBox .list li .img {background:url(image/background.png) no-repeat -171px -1900px;padding:16px;height:166px;width:166px;overflow:hidden;}
+#albumListBox .list li .name {font-size:14px;font-weight:700;line-height:26px;height:26px;}
+#albumListBox .list li .name a {color:#4a4a4a;}
+
+#albumListBox .list li .stats  {color:#6d6d6d;font-size:10px;line-height:26px;height:26px;font-family:Tahoma;}
+#albumListBox .list li .stats span {background:url(image/background.png) no-repeat;padding-left:12px;margin-left:8px;}
+
+#albumListBox .list li .stats .lights {background-position:-50px -160px;}
+
+#albumListBox .list li .stats .views {background-position:-160px -160px}
+#albumListBox .list li .stats .replies {background-position:-280px -160px;}
+
+#albumListBox .slide {clear:both;}
+#albumListBox .slide ul {float:left;width:920px;margin-bottom:60px;height:151px;overflow:hidden;}
+#albumListBox .slide .left,#albumListBox .slide .right  {float:left;width:18px;height:131px;background:url(image/background.png) no-repeat;}
+#albumListBox .slide .left {background-position:-10px -2400px;}
+#albumListBox .slide .left.over {background-position:-10px -2160px;}
+#albumListBox .slide .right {background-position:-952px -2160px;}
+#albumListBox .slide .right.over {background-position:-952px -2400px;}
+#albumListBox .slide li {float:left;width:131px;height:131px;padding:15px;}
+#albumListBox .slide li .img {background:url(image/background.png) no-repeat -10px -1900px;width:131px;height:121px;padding-top:10px;overflow:hidden;text-align:center;}
+
+//artistList
+#artistListBox li {}
+#artistListBox li .img {}
