@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>思路二： 当执行animate之后，把之前的滚动的数据移动到ul的末尾 并且重新定义想对位置。</title>
+</head>
+
+<body>
+<script type="text/javascript">
+$(function(){
+  var value=$("#v2_list");
+  var obj=$(value).children();
+  var num= 2;//1次滚动的图片数量
+  var width= $(value).width();
+  $("#v2_right").click(function(){
+    if(!$(obj).is(":animated")){
+      $(obj).animate({left: -width}, "slow",function(){
+      $(obj).css({"left":"0"});
+      $(obj).children().each(function(i){
+        if(i==num){return false;}
+          $(obj).children().filter(":first").appendTo(obj);
+        })
+      });
+    }
+  });
+  $("#v2_left").click(function(){
+    if(!$(obj).is(":animated")){
+      $(obj).animate({left: 0}, "slow",function(){
+        $(obj).css({"left":-width});
+        $(obj).children().each(function(i){
+          if(i==num){return false;}
+          $(obj).children().filter(":last").prependTo(obj);
+        })
+      });
+    }
+  });
+  $(value).hover(function(){
+    clearInterval(changew);
+  },function(){
+    changew= setInterval(function(){$("#v2_right").click()} , 5000);
+  }).trigger("mouseleave");
+  })
+</script>
+</body>
+</html>

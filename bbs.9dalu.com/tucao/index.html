@@ -2,9 +2,39 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-<title>无标题文档</title>
+<title>思路一： 当初的想法是通过计算滚动的长度和1次滚动的数量 ，当接下去没有产品的时候 就会复制一段并加在滚动的后面 但是这样的话页面会变无限多个  于是就想 我只要复制一段 然后当接下去没有的时候 重新定义到首位置。 讲的有点乱 还是看看代码吧。</title>
 </head>
 
 <body>
+<script type="text/javascript">
+$(function(){
+  var obj=$("#v1_list ul");
+  var object=$("#v1_list ul li");
+  var num= 2;//1次滚动的图片数量
+  var time = Math.ceil($(object).length/num);
+  var width= $("#v1_list").width();
+  var n=0;
+  $(object).clone().appendTo(obj);
+  $("#v1_right").click(function(){
+    if(!$(obj).is(":animated")){
+      if(n==time){n=0;$(obj).css({left:0});};
+      $(obj).animate({left: "-="+width}, "slow");
+      n++;
+    }
+  });
+  $("#v1_left").click(function(){
+    if(!$(obj).is(":animated")){
+      if(n==0){n=time;$(obj).css({left:-time*width})};
+      $(obj).animate({left: "+="+width}, "slow");
+      n--;
+    }
+  });
+  $("#v1_con").hover(function(){
+    clearInterval(change);
+  },function(){
+    change= setInterval(function(){$("#v1_right").click()} , 5000);
+  }).trigger("mouseleave");
+  })
+</script>
 </body>
 </html>
