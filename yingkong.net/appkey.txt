@@ -1,0 +1,3 @@
+恭喜！我们已经验证了您对网站的管理权！并成功获取 App Key 和 App Secret
+App Key：2662957592
+App Sercet：173e7fbd740754759c16c4a884f52371
