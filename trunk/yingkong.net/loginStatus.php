@@ -28,7 +28,8 @@ if($_G['uid']) {
 <?php	
 } else {
 ?>
-	arr.push('<a href="http://www.yingkong.net/home.php?mod=spacecp&ac=plugin&id=sina_xweibo_x2:home_binding" target="_blank"><img style="vertical-align:-5px;" src="static/image/common/sina_bind_btn.png" /></a>');
+	arr.push('<a href="http://connect.discuz.qq.com/oauth/authorize?oauth_token=761f5cf5f45e783d&oauth_consumer_key=310255032" target="_blank"><img style="vertical-align:-5px;margin-top:2px" src="static/image/common/qq_login.gif" /></a>');
+	arr.push('<a href="http://www.yingkong.net/home.php?mod=spacecp&ac=plugin&id=sina_xweibo_x2:home_binding" target="_blank"><img style="vertical-align:-5px;margin-top:2px" src="xwb/images/bgimg/sina_login_btn.png" /></a>');
 	arr.push('<a href="http://www.yingkong.net/member.php?mod=logging&action=login">µÇÂ¼</a><span class="pipe">|</span>');
 	arr.push('<a href="http://www.yingkong.net/member.php?mod=register">×¢²á</a>');
 <?php
