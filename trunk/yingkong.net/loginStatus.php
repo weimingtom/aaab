@@ -35,5 +35,5 @@ if($_G['uid']) {
 <?php
 }
 ?>
-	$("#head").find(".tm").html(arr.join(''));
+	$("#login").html(arr.join(''));
 });
