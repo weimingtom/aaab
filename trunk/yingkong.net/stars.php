@@ -25,7 +25,10 @@ $num = 40;
 $start = ($page - 1) * $num;
 $cache_key = 'stars_'.$type.$page;
 $cururl = 'stars.php';
-if(!$data = memory('get', $cache_key)) {
+
+$data = $type != 'srch' ? memory('get', $cache_key) : '';
+
+if(!$data) {
 	$data = array();
 	if($type == 'lady') {
 		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
