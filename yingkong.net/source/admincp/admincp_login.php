@@ -67,8 +67,7 @@ EOT;
 <table class="logintb">
 <tr>
 	<td class="login">
-		<h1>Discuz! Administrator's Control Panel</h1>
-		<p>$tips</p>
+		<h1>Administrator's Control Panel</h1>
 	</td>
 
 	<td>
