@@ -63,6 +63,39 @@ if(!$data) {
 				WHERE m.groupid=21 AND mp.occupation NOT IN('演员', '模特', '歌手')";
 		$cururl = 'stars.php?type=industry';
 		$data['navtitle'] = '业内';
+	} elseif($type == 'actor') {
+		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
+				LEFT JOIN '.DB::table('common_member_profile').' mp ON m.uid=mp.uid
+				LEFT JOIN '.DB::table('common_member_count')." mc ON mc.uid=m.uid
+				LEFT JOIN ".DB::table('common_member_status')." ms ON m.uid=ms.uid
+				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '模特', '歌手') ORDER BY ms.lastactivity DESC LIMIT $start, $num";
+		$count_sql = 'SELECT count(*) FROM '.DB::table('common_member').' m
+				LEFT JOIN '.DB::table('common_member_profile')." mp ON m.uid=mp.uid
+				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '模特', '歌手')";
+		$cururl = 'stars.php?type=industry';
+		$data['navtitle'] = '演员';
+	} elseif($type == 'model') {
+		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
+				LEFT JOIN '.DB::table('common_member_profile').' mp ON m.uid=mp.uid
+				LEFT JOIN '.DB::table('common_member_count')." mc ON mc.uid=m.uid
+				LEFT JOIN ".DB::table('common_member_status')." ms ON m.uid=ms.uid
+				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '演员', '歌手') ORDER BY ms.lastactivity DESC LIMIT $start, $num";
+		$count_sql = 'SELECT count(*) FROM '.DB::table('common_member').' m
+				LEFT JOIN '.DB::table('common_member_profile')." mp ON m.uid=mp.uid
+				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '演员', '歌手')";
+		$cururl = 'stars.php?type=industry';
+		$data['navtitle'] = '模特';
+	} elseif($type == 'singer') {
+		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
+				LEFT JOIN '.DB::table('common_member_profile').' mp ON m.uid=mp.uid
+				LEFT JOIN '.DB::table('common_member_count')." mc ON mc.uid=m.uid
+				LEFT JOIN ".DB::table('common_member_status')." ms ON m.uid=ms.uid
+				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '模特', '演员') ORDER BY ms.lastactivity DESC LIMIT $start, $num";
+		$count_sql = 'SELECT count(*) FROM '.DB::table('common_member').' m
+				LEFT JOIN '.DB::table('common_member_profile')." mp ON m.uid=mp.uid
+				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '模特', '演员')";
+		$cururl = 'stars.php?type=industry';
+		$data['navtitle'] = '歌手';
 	} elseif($type == 'newvip') {
 		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
 				LEFT JOIN '.DB::table('common_member_profile').' mp ON m.uid=mp.uid
