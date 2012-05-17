@@ -71,6 +71,12 @@ a {color:#aeaeae;}
 #head .mn ul li .views {background-position:-412px -1239px;}
 #head .mn ul li .views_off {background-position:-412px -1343px;}
 
+#head .mn ul li .actor {background: url("image/actor_over.gif");}
+#head .mn ul li .actor_off {background: url("image/actor.gif");}
+#head .mn ul li .model {background: url("image/model_over.gif");}
+#head .mn ul li .model_off {background: url("image/model.gif");}
+#head .mn ul li .singer {background: url("image/singer_over.gif");}
+#head .mn ul li .singer_off {background: url("image/singer.gif");}
 
 #head .mn ul li.cr a span {color:#fbfbfb;}
 #head .mn ul li.cr a em {color:#838383;}
