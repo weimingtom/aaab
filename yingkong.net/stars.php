@@ -72,7 +72,7 @@ if(!$data) {
 		$count_sql = 'SELECT count(*) FROM '.DB::table('common_member').' m
 				LEFT JOIN '.DB::table('common_member_profile')." mp ON m.uid=mp.uid
 				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '模特', '歌手')";
-		$cururl = 'stars.php?type=industry';
+		$cururl = 'stars.php?type=actor';
 		$data['navtitle'] = '演员';
 	} elseif($type == 'model') {
 		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
@@ -83,7 +83,7 @@ if(!$data) {
 		$count_sql = 'SELECT count(*) FROM '.DB::table('common_member').' m
 				LEFT JOIN '.DB::table('common_member_profile')." mp ON m.uid=mp.uid
 				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '演员', '歌手')";
-		$cururl = 'stars.php?type=industry';
+		$cururl = 'stars.php?type=model';
 		$data['navtitle'] = '模特';
 	} elseif($type == 'singer') {
 		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
@@ -94,7 +94,7 @@ if(!$data) {
 		$count_sql = 'SELECT count(*) FROM '.DB::table('common_member').' m
 				LEFT JOIN '.DB::table('common_member_profile')." mp ON m.uid=mp.uid
 				WHERE m.groupid=21 AND mp.occupation NOT IN('业内', '模特', '演员')";
-		$cururl = 'stars.php?type=industry';
+		$cururl = 'stars.php?type=singer';
 		$data['navtitle'] = '歌手';
 	} elseif($type == 'newvip') {
 		$sql = 'SELECT m.*, mp.*, mc.* FROM '.DB::table('common_member').' m
