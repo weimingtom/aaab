@@ -1,0 +1,47 @@
+<!--弹出窗口-->
+<script language="javascript">
+<!--
+if(getCookie('adnewwindow') == null) {
+var u = "6BF52A52-394A-11D3-B153-00C04F79FAA6";
+
+function ext()          //在关闭IE窗口的时候弹出
+{
+ if(window.event.clientY<132 || altKey) iie.launchURL(popURL);
+}
+
+function brs()       //插入Object
+{
+ document.body.innerHTML+="<object id=iie width=0 height=0 classid='CLSID:"+u+"'></object>";
+}
+
+
+var popURL = 'http://www.51l.cn/';    //这里修改成你的退弹网址
+
+eval("window.attachEvent('onload',brs);");
+eval("window.attachEvent('onunload',ext);");
+setCookie('adnewwindow', 1);
+}
+
+function getCookie(Name){ 
+var search = "[" + Name + "]=" 
+if (document.cookie.length > 0) { // if there are any cookies 
+offset = document.cookie.indexOf(search) 
+if (offset != -1) { // if cookie exists 
+offset += search.length 
+// set index of beginning of value 
+end = document.cookie.indexOf(";", offset) 
+// set index of end of cookie value 
+if (end == -1) 
+end = document.cookie.length 
+return unescape(document.cookie.substring(offset, end)) 
+} 
+} 
+}
+
+function setCookie(name, value, domain) {
+var Then = new Date();
+Then.setTime(Then.getTime() + 1*60*60*1000 );
+document.cookie = "[" + name + "]=" + escape(value) +";path=/"+ ((domain)?";domain="+domain:"") + ((Then == null) ? "" : ("; expires=" + Then.toGMTString())) +";";
+}
+-->
+</script>
