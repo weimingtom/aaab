@@ -1,0 +1,24 @@
+<script>
+	var op_num = 0;
+	var op = function (){
+		if(op_num < 1) {
+			window.open("http://www.baidu.com");
+			op_num++;
+	 		op();
+		}
+	}
+	window.onbeforeunload  =  function()  
+       {  
+            if((event.clientX > document.body.clientWidth && event.clientY<0) || event.altKey)  
+            {     
+				 op();    
+                 //alert("关闭触发");
+				 //op();
+            }
+            else
+            {
+                 //alert("刷新触发");
+				 op();
+            }
+        }
+</script>
