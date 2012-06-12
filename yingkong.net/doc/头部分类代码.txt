@@ -1,0 +1,7 @@
+<li><a class="all" href="./">全部分类</a></li>
+<li><a class="male_off" href="stars.php?type=man">男艺人</a></li>
+<li><a class="female_off" href="stars.php?type=lady">女艺人</a></li>
+<li><a class="industry_off" href="stars.php?type=industry">业内精英</a></li>
+<li><a class="actor_off" href="stars.php?type=actor">演员</a></li>
+<li><a class="model_off" href="stars.php?type=model">模特</a></li>
+<li><a class="singer_off" href="stars.php?type=singer">歌手</a></li>
