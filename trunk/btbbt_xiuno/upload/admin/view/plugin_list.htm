@@ -1,0 +1,87 @@
+<!--{include header.htm}-->
+<div class="width">
+	<form action="?user-list-page-$page.htm" method="post" id="pluginform">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<h2>插件列表  <span class="clear">当前论坛版本: <b>$conf[version]</b></span></h2>
+		<div class="list">
+			<table class="table">
+				<tr class="header">
+					<td>插件名称</td>
+					<td width="80">插件版本</td>
+					<td width="80">支持论坛版本</td>
+					<td width="100">作者</td>
+					<td width="160">操作</td>
+				</tr>
+				<!--{loop $pluginlist $dir $pconf}-->
+				<tr valign="top" plugindir="$dir">
+					<td>【<b>$pconf[name]</b>】<!--{if !empty($pconf[stars])}--><img src="view/image/star_$pconf[stars].gif" width="63" height="11" align="middle" /><!--{/if}-->
+						<p class="grey"><!--{if !empty($pconf[icon])}--><img src="$pconf[icon]" width="64" align="left" /><!--{/if}-->$pconf[brief]</p>
+						<p class="grey"> 插件目录：$dir</p>
+					</td>
+					<td>$pconf[version]</td>
+					<td>$pconf[bbs_version]</td>
+					<td>
+					<!--{if !empty($pconf[author_homepage])}-->
+						<a href="$pconf[author_homepage]" target="_blank">$pconf[author]</a>
+					<!--{else}-->
+						$pconf[author]
+					<!--{/if}-->
+					
+						<br /><span class="grey">$pconf[email]</span></td>
+					<td>
+						<!--{if !empty($pconf[installed])}-->
+						<input type="button" value="卸载" class="button smallgrey unstall" />
+						<input type="button" value="安装" class="button smallblue install" style="display: none;" />
+						<!--{else}-->
+						<input type="button" value="卸载" class="button smallgrey unstall" style="display: none;" />
+						<input type="button" value="安装" class="button smallblue install" />
+						<!--{/if}-->
+						
+						<!--{if !empty($pconf[have_setting])}-->
+						<input type="button" value="设置" class="button smallblue setting" onclick="window.location='?plugin-setting-dir-$dir.htm'" />
+						<!--{/if}-->
+					 </td>
+				</tr>
+				<!--{/loop}-->
+			</table>
+		</div>
+	</form>
+</div>
+
+<!--{include footer.htm}-->
+
+<script type="text/javascript">
+$('#pluginform tr[plugindir]').each(function() {
+	var dir = $(this).attr('plugindir');
+	var _this = this;
+	$('td a.install', _this).click(function() {
+		// AJAX 请求开始安装
+		$.get('?plugin-install-dir-'+dir+'-ajax-1.htm', function(s) {
+			var json = json_decode(s);
+			if(error = json_error(json)) {alert(error); return false;}
+			if(json.status == 0) {alert(json.message); return false;}
+			json = json.message;
+			alert(json);
+			
+			$('td a.install', _this).hide();
+			$('td a.unstall', _this).show();
+		});
+	});
+	$('td a.unstall', this).click(function() {
+		// AJAX 请求开始安装
+		$.get('?plugin-unstall-dir-'+dir+'-ajax-1.htm', function(s) {
+			var json = json_decode(s);
+			if(error = json_error(json)) {alert(error); return false;}
+			if(json.status == 0) {alert(json.message); return false;}
+			json = json.message;
+			alert(json);
+			
+			$('td a.install', _this).show();
+			$('td a.unstall', _this).hide();
+		});
+	});
+	
+});
+</script>
+</body>
+</html>

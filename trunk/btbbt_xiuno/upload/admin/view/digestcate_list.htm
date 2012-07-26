@@ -1,0 +1,80 @@
+<!--{include header.htm}-->
+
+<link href="view/js/tree/tree.css" type="text/css" rel="stylesheet" />
+
+<div class="width">
+	<div class="div" style="width: 800px;">
+		<div class="header">编辑精华分类  </div>
+		<div class="body">
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="25%" class="bg2" valign="top">
+						<ul>
+							<li>支持无限级分类</li>
+							<li>编辑分类名称后点击页面空白处保存</li>
+						</ul>
+					</td>
+					<td width="75%" valign="top" class="bg1">
+						<div id="div1" class="tree"></div>
+						<br />
+						<input type="button" class="button smallblue" id="rebuildjs" value="重新生成JS缓存" /> 
+						<input type="button" class="button smallblue" id="viewdigest" value="查看精华分类" /> 
+					</td>
+				</tr>
+			</table>
+			
+			<!--{hook admin_digestcate_1.htm}-->
+		</div>
+		<div class="footer"></div>
+	</div>
+	</div>
+</div>
+
+<!--{include footer.htm}-->
+
+<script src="view/js/tree/tree.js" type="text/javascript"></script>
+<script src="?digestcate-script.htm" type="text/javascript"></script>
+
+<script type="text/javascript">
+$('#rebuildjs').click(function() {
+	window.location = '?digestcate-rebuildjs.htm';
+});
+
+$('#viewdigest').click(function() {
+	window.open('../?digest.htm');
+});
+
+$('#div1').tree(tree_data, {
+	mode: 'edit',
+	maxcateid: $maxcateid,
+	on_update: function(cateid, parentid, catename) {
+		$.get('?digestcate-update-cateid-'+cateid+'-parentid-'+parentid+'-name-'+encodeURIComponent(catename)+'-ajax-1.htm', function(s) {
+			var json = json_decode(s);
+			if(error = json_error(json)) {alert(error); return false;}
+
+		});
+		return true;
+	}, 
+	on_delete: function(cateid, parentid) {
+		$.get('?digestcate-delete-cateid-'+cateid+'-ajax-1.htm', function(s) {
+			var json = json_decode(s);
+			if(error = json_error(json)) {alert(error); return false;}
+			
+		});
+		return true;
+	}, 
+	on_top: function(cateid1, cateid2) {
+		$.get('?digestcate-top-cateid1-'+cateid1+'-cateid2-'+cateid2+'-ajax-1.htm', function(s) {
+			var json = json_decode(s);
+			if(error = json_error(json)) {alert(error); return false;}
+			
+		});
+		return true;
+	}
+});
+
+</script>
+
+<!--{hook admin_digestcate_2.htm}-->
+</body>
+</html>

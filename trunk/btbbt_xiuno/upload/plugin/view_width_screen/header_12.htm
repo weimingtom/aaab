@@ -1,0 +1,30 @@
+<span id="user">
+<!--{hook header_4.htm}-->
+<!--{if $_user['groupid'] == 0}-->
+	<a href="?user-login-ajax-1.htm" class="ajaxdialog" onclick="return false">登录</a>
+	<a href="?user-create-ajax-1.htm" class="ajaxdialog" onclick="return false">注册</a>
+<!--{else}-->
+	<a href="?my-profile.htm">$_user[username]</a>
+	<span class="small grey">($_user[groupname])</span>
+	
+	<!--{if $_user['groupid'] == 6}-->
+	<a href="?user-reactive.htm">重新获取激活码</a>
+	<!--{/if}-->
+	
+	<span id="pm">
+		<a href="?my-pm.htm" class="icon icon-pm" ></a>
+		<a href="?my-pm.htm" class="icon icon-newpm" style="display: none;"></a>
+	</span>
+	
+	<!--{if $_user['groupid'] < 5}-->
+	<a href="?mod.htm">版主管理</a>
+	<!--{/if}-->
+	
+	<!--{if $_user['groupid'] == 1}-->
+	<a href="admin/" target="_blank">后台管理</a>
+	<!--{/if}-->
+
+	<a href="?user-logout.htm" class="ajaxdialog" onclick="return false">退出</a>
+<!--{/if}-->
+<!--{hook header_5.htm}-->
+</span>

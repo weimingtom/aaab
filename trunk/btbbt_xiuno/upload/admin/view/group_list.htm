@@ -1,0 +1,171 @@
+<!--{include header.htm}-->
+
+<div class="width">
+	
+	<div style="width: 700px; margin: auto;">
+		<h2>会员用户组 <span style="font-size: 9pt; font-weight: normal;"> (可自动升级用户组)</span></h2>
+		<div class="list">
+			<table class="table">
+				<tr class="header">
+					<td>groupid</td>
+					<td>用户组名称</td>
+					<td>起始积分</td>
+					<td>截止积分</td>
+					<td>颜色</td>
+					<td>顶起楼层数</td>
+					<!--{hook admin_group_list_1.htm}-->
+					<td width="160">操作</td>
+				</tr>
+				<!--{loop $grouplist3 $group}-->
+				<form action="?group-update-groupid-$group[groupid].htm" method="post" id="group_form_$group[groupid]">
+					<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+					<tr align="center">
+						<td>$group[groupid]</td>
+						<td><input type="text" size="8" name="name" value="$group[name]" /></td>
+						<td><input type="text" size="8" name="creditsfrom" value="$group[creditsfrom]" /></td>
+						<td><input type="text" size="8" name="creditsto" value="$group[creditsto]" /></td>
+						<td><input type="text" size="8" name="color" value="$group[color]" /></td>
+						<td><input type="text" size="8" name="upfloors" value="$group[upfloors]" /></td>
+						<!--{hook admin_group_list_2.htm}-->
+						<td align="left">
+							<input type="button" value="确定" class="button smallblue" onclick="$('#group_form_$group[groupid]').submit();" />
+							<input type="button" value="删除" class="button smallgrey" onclick="if(window.confirm('删除用户组时，系统会自动调整改组用户，可能比较慢，确定删除该用户组吗？'))window.location='?group-delete-groupid-$group[groupid].htm'" />
+						 </td>
+					</tr>
+				</form>
+				<!--{/loop}-->
+				
+				<form action="?group-create.htm" method="post" id="group_create_$group[groupid]">
+					<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+					<tr align="center">
+						<td><input type="text" size="4" name="groupid" value="$newgroupid" style="text-align: center;" /></td>
+						<td><input type="text" size="8" name="name" value="" /></td>
+						<td><input type="text" size="8" name="creditsfrom" value="" /></td>
+						<td><input type="text" size="8" name="creditsto" value="" /></td>
+						<td><input type="text" size="8" name="color" value="" /></td>
+						<td><input type="text" size="8" name="upfloors" value="1" /></td>
+						<!--{hook admin_group_list_3.htm}-->
+						<td align="left">
+							<input type="button" value="新增" class="button smallblue" onclick="$('#group_create_$group[groupid]').submit();" />
+						 </td>
+					</tr>
+				</form>
+			</table>
+		</div>
+		<br />
+		
+		<h2>系统用户组 <span style="font-size: 9pt; font-weight: normal;"> (不可改变，顶起楼层数，0为顶到最前面)</span></h2>
+		<div class="list">
+			<table class="table">
+				<tr class="header">
+					<td>groupid</td>
+					<td>用户组名称</td>
+					<td>起始积分</td>
+					<td>截止积分</td>
+					<td>颜色</td>
+					<td>顶起楼层数</td>
+					<!--{hook admin_group_list_4.htm}-->
+					<td width="150">操作</td>
+				</tr>
+				<!--{loop $grouplist1 $group}-->
+				<form action="?group-update-groupid-$group[groupid].htm" method="post" id="group_form_$group[groupid]">
+					<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+					<tr align="center">
+						<td>$group[groupid]</td>
+						<td><input type="text" size="8" name="name" value="$group[name]" /></td>
+						<td><input type="text" size="8" name="creditsfrom" value="$group[creditsfrom]" disabled="disabled" /></td>
+						<td><input type="text" size="8" name="creditsto" value="$group[creditsto]" disabled="disabled" /></td>
+						<td><input type="text" size="8" name="color" value="$group[color]" /></td>
+						<td><input type="text" size="8" name="upfloors" value="$group[upfloors]" /></td>
+						<!--{hook admin_group_list_5.htm}-->
+						<td align="left">
+							<input type="button" value="确定" class="button smallblue" onclick="$('#group_form_$group[groupid]').submit();" />
+						 </td>
+					</tr>
+				</form>
+				<!--{/loop}-->
+			</table>
+		</div>
+		<br />
+		
+		<h2>特殊用户组 <span style="font-size: 9pt; font-weight: normal;"> (配合板块权限控制，预留给第三方扩展，一般不需要)</span></h2>
+		<div class="list">
+			<table class="table">
+				<tr class="header">
+					<td>groupid</td>
+					<td>用户组名称</td>
+					<td>起始积分</td>
+					<td>截止积分</td>
+					<td>颜色</td>
+					<td>顶起楼层数</td>
+					<!--{hook admin_group_list_6.htm}-->
+					<td width="150">操作</td>
+				</tr>
+				<!--{loop $grouplist2 $group}-->
+				<form action="?group-update-groupid-$group[groupid].htm" method="post" id="group_form_$group[groupid]">
+					<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+					<tr align="center">
+						<td>$group[groupid]</td>
+						<td><input type="text" size="8" name="name" value="$group[name]" /></td>
+						<td><input type="text" size="8" name="creditsfrom" value="$group[creditsfrom]" disabled="disabled" /></td>
+						<td><input type="text" size="8" name="creditsto" value="$group[creditsto]" disabled="disabled" /></td>
+						<td><input type="text" size="8" name="color" value="$group[color]" /></td>
+						<td><input type="text" size="8" name="upfloors" value="$group[upfloors]" /></td>
+						<!--{hook admin_group_list_7.htm}-->
+						<td align="left">
+							<input type="button" value="确定" class="button smallblue" onclick="$('#group_form_$group[groupid]').submit();" />
+							<input type="button" value="删除" class="button smallgrey" onclick="if(window.confirm('删除用户组时，系统会自动调整改组用户，可能比较慢，确定删除该用户组吗？'))window.location='?group-delete-groupid-$group[groupid].htm'" />
+						 </td>
+					</tr>
+				</form>
+				<!--{/loop}-->
+				<!--{if $newgroupid2 < 11}-->
+				<form action="?group-create.htm" method="post" id="group_create_$group[groupid]">
+					<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+					<tr align="center">
+						<td><input type="text" size="4" name="groupid" value="$newgroupid2" style="text-align: center;" /></td>
+						<td><input type="text" size="8" name="name" value="" /></td>
+						<td><input type="text" size="8" name="creditsfrom" value="0" disabled="disabled" /></td>
+						<td><input type="text" size="8" name="creditsto" value="0" disabled="disabled" /></td>
+						<td><input type="text" size="8" name="color" value="0" disabled="disabled" /></td>
+						<td><input type="text" size="8" name="upfloors" value="1" /></td>
+						<!--{hook admin_group_list_8.htm}-->
+						<td align="left">
+							<input type="button" value="新增" class="button smallblue" onclick="$('#group_create_$group[groupid]').submit();" />
+						 </td>
+					</tr>
+				</form>
+				<!--{/if}-->
+			</table>
+		</div>
+		<br />
+		
+		<!--{hook admin_group_list_9.htm}-->
+		
+		<div class="border bg1">
+			<p>【说明】：</p>
+			<p>　　　“顶起的楼层数”是指回帖后主题被顶起的层数，默认为0，被回复的主题被顶到最前面，这样防止一些老帖被顶起来。</p>
+			<p>　　　“颜色”是用户组在前台显示的颜色。</p>
+			<p>　　　“起始积分”，“截止积分”是用来根据积分范围划分用户组，支持用户通过发帖等行为动态升级。</p>
+		</div>
+		<br />
+	 </div>
+</div>
+<!--{include footer.htm}-->
+
+<script>
+$('#mdeletegroup').click(function() {
+	if(window.confirm('确定删除选中group吗？')) {
+		$('#groupform').submit();
+	}
+	return false;
+});
+$('#checkall').click(function() {
+	$('#groupform input[name="ids[]"]').attr('checked', this.checked);
+});
+</script>
+
+<!--{hook admin_group_list_10.htm}-->
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!--{json width:"550",title:"置顶操作"}-->
+<form action="?mod-top-fid-$fid-ajax-1.htm" method="post" id="mod_top_form">
+	<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+	<dl>
+		<dt><label for="top">置顶范围：</label></dt>
+		<dd>
+			<input type="radio" name="rank" id="top_0" value="0" checked="checked" /><label for="top_0">取消置顶</label>
+			<input type="radio" name="rank" id="top_1" value="1" /><span class="icon icon-top-1"></span><label for="top_1">版块置顶</label>
+			<input type="radio" name="rank" id="top_2" value="2" /><span class="icon icon-top-2"></span><label for="top_2">大区置顶</label>
+			<input type="radio" name="rank" id="top_3" value="3" /><span class="icon icon-top-3"></span><label for="top_3">全站置顶</label>
+		</dd>
+		<dt></dt>
+		<dd>
+			<input type="submit" class="button bigblue" id="mod_top_submit" value="确定" tabindex="5" />
+			<input type="button" class="button biggrey" value="关闭" id="mod_top_cancel"/>
+			<div class="notice" id="mod_top_notice" style="display: none;"></div>
+		</dd>
+	</dl>
+</form>
+
+<script type="text/javascript">
+var sep = $conf[urlrewrite] ? '?' : '&';
+var tidsurl = '$tidsurl';
+// 延迟执行的脚本，约定名字为：delay_execute()
+function delay_execute(dialog, recall) {
+	$('#mod_top_submit').click(function() {
+		$('#mod_top_notice').html('正在提交数据，请稍后 ...').show();
+		var postdata = $("#mod_top_form").serialize() + "&ajax=1";
+		$.post($('#mod_top_form').attr('action') + sep + tidsurl, postdata,  function(s){
+			$('#mod_top_notice').html('').hide();
+			
+			var json = json_decode(s);
+			if(error = json_error(json)) {alert(error); return false;}
+			if(!json.status) {
+				dialog.set_body('<div class="error">'+json.message+'！</div>');
+				return false;
+			}
+			dialog.set_body('<div class="ok">'+json.message+'！</div>');
+			setTimeout(function(){
+ 				dialog.close();
+	 			$('#create_notice').html('').hide();
+	 			if(recall) recall();
+	 		}, 1000);
+		  });
+		return false;
+	});
+	
+	$('#mod_top_cancel').click(function() {
+		dialog.close();
+	});
+}
+</script>

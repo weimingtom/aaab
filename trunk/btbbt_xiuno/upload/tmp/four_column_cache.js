@@ -1,0 +1,1 @@
+{"newthreadlist":[],"newpostlist":[],"newdigestlist":[],"newuserlist":{"user-uid-1":{"uid":"1","username":"admin","groupid":"1"}}}

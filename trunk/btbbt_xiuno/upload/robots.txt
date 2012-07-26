@@ -1,0 +1,3 @@
+Disallow: /clickd/
+User-agent: *
+Disallow: /user*
