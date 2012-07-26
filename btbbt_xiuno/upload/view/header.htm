@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<title><!--{loop $_title $title}-->$title <!--{/loop}--></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="keywords" content="$seo_keywords" />
+	<meta name="description" content="$seo_description " />
+
+	<meta name="generator" content="Xiuno BBS" />
+	<meta name="author" content="Xiuno Team" />
+	<meta name="copyright" content="2008-2012 xiuno.com" />
+	<meta name="MSSmartTagsPreventParsing" content="True" />
+	<meta http-equiv="MSThemeCompatible" content="Yes" />
+	<link href="view/common.css" type="text/css" rel="stylesheet" />
+	<!--{hook header_1.htm}-->
+	<script type="text/javascript">
+	var cookiepre = '$conf[cookiepre]';
+	</script>
+</head>
+<body>
+<!--{hook header_2.htm}-->
+<div id="header">
+	<table cellpadding="0" cellspacing="0" class="width">
+		<tr>
+			<td class="left">
+				<a href="./"><img src="view/image/logo.jpg" width="334" height="64" style="margin-right: 8px;" /></a>
+			</td>    
+			<td class="center"><!--{hook header_3.htm}--></td>
+			<td class="right">
+				<span id="user">
+				<!--{hook header_4.htm}-->
+				<!--{if $_user['groupid'] == 0}-->
+					<a href="?user-login-ajax-1.htm" class="ajaxdialog" onclick="return false">登录</a>
+					<a href="?user-create-ajax-1.htm" class="ajaxdialog" onclick="return false">注册</a>
+				<!--{else}-->
+					<a href="?my-profile.htm">$_user[username]</a>
+					<span class="small grey">($_user[groupname])</span>
+					
+					<!--{if $_user['groupid'] == 6}-->
+					<a href="?user-reactive.htm">重新获取激活码</a>
+					<!--{/if}-->
+					
+					<span id="pm">
+						<a href="?my-pm.htm" class="icon icon-pm" ></a>
+						<a href="?my-pm.htm" class="icon icon-newpm" style="display: none;"></a>
+					</span>
+					
+					<!--{if $_user['groupid'] < 5}-->
+					<a href="?mod.htm">版主管理</a>
+					<!--{/if}-->
+					
+					<!--{if $_user['groupid'] == 1}-->
+					<a href="admin/" target="_blank">后台管理</a>
+					<!--{/if}-->
+		
+					<a href="?user-logout.htm" class="ajaxdialog" onclick="return false">退出</a>
+				<!--{/if}-->
+				<!--{hook header_5.htm}-->
+				<span>
+			</td>
+		</tr>
+	</table>
+</div>
+<!--{hook header_6.htm}-->
+<div id="menu">
+	<table cellpadding="0" cellspacing="0" class="width">
+		<tr>
+			<td class="left"><!--{hook header_7.htm}--></td>
+			<td class="center">
+				<!--{hook header_8.htm}-->
+				<a href="./" $_checked[bbs] target="_top">论坛</a>				<span class="sep"></span>
+				<!--{hook header_9.htm}-->
+				<a href="?digest.htm" $_checked[digest] target="_top">精华手册</a>		<span class="sep"></span>
+				<!--{hook header_10.htm}-->
+			</td>
+			<td class="right">
+				<!--{hook header_11.htm}-->
+				<!--{if $conf[search_type]}-->
+				<form action="?search-index.htm" target="_blank" id="search_form" method="post">
+					<span id="search"><input type="text" id="search_keyword" name="keyword" /></span>
+				</form>
+				<!--{/if}-->
+				<!--{hook header_12.htm}-->
+			</td>
+		</tr>
+	</table>
+</div>
+
+<!--{hook header_13.htm}-->
+
+<div id="body">
+
+<!--{hook header_14.htm}-->

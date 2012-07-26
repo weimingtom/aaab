@@ -1,0 +1,58 @@
+<!--{include header.htm}-->
+
+<div class="width">
+	<form action="?user-access-uid-$user[uid].htm" method="post" id="user_access_form">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		
+		<div class="div" style="width: 700px;">
+			<div class="header">用户权限设置，会影响到用户全局的权限</div>
+			<div class="body">
+				<dl>
+					<dt><label for="allowthread">禁止发帖：</label></dt>
+					<dd>$input[allowthread]</dd>
+					
+					<dt><label for="allowpost">禁止回帖：</label></dt>
+					<dd>$input[allowpost]</dd>
+					
+					<dt><label for="allowattach">禁止附件：</label></dt>
+					<dd>$input[allowattach]</dd>
+					
+					<dt><label for="allowread">禁止访问：</label></dt>
+					<dd>$input[allowread] <span class="grey">(此项暂时无效)</span></dd>
+					
+					<dt><label for="expiry">截止日期：</label></dt>
+					<dd>$input[expiry] <span class="grey">日期格式：2012-5-1</span></dd>
+					
+					<dt></dt>
+					<dd>
+						<input type="submit" class="button bigblue" id="user_access_submit" value="修改用户权限" />
+						<input type="button" class="button biggrey" value="返回" onclick="history.back()" />
+						<div class="notice" id="notice" style="display: none;"></div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</form>
+</div>
+<!--{include footer.htm}-->
+
+<script type="text/javascript">
+$('#user_access_submit').click(function() {
+	$('#user_access_form').submit();
+	return false;
+});
+
+<!--{loop $error $k $v}-->
+<!--{if $v}-->
+		$('#$k').alert('$v');
+<!--{/if}-->
+<!--{/loop}-->
+
+<!--{if !empty($_POST) && empty($error)}-->
+	$('#notice').html('修改用户成功，<a href="?user-access-uid-$user[uid].htm">【点击查看】</a> <a href="?user-list.htm">【查看列表】</a>！').show();
+<!--{/if}-->
+
+</script>
+
+</body>
+</html>

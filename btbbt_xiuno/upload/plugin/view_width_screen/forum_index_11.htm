@@ -1,0 +1,58 @@
+
+<!--{if $forum[typelist]}-->
+<div class="page tab" style="" id="threadtype">
+	<a href="?forum-index-fid-$fid.htm" $_checked[typeid][0]>全部</a><!--{loop $forum[typelist] $_typeid $_typename}--><a href="?forum-index-fid-$fid-typeid-$_typeid.htm" $_checked[typeid][$_typeid]>$_typename</a><!--{/loop}-->
+</div>
+<!--{/if}-->
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="threadlist" style="table-layout: fixed;">
+	<tr>
+		<td width="4" height="13" class="td1"></td>
+		<td align="center" valign="top" class="td2">
+			<div style="height: 13px; overflow: hidden;">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" height="13">
+					<tr>
+						<td width="49%" class="td2_1"></td>
+						<td width="123"><div class="td2_2"></div></td>
+						<td width="49%" class="td2_3"></td>
+					</tr>
+				</table>
+			</div>
+		</td>
+		<td width="4" height="13" class="td3"></td>
+	</tr>
+	<tr>
+		<td class="td4"></td>
+		<td class="td5" valign="top">
+			<div style="overflow: hidden;" id="threadlist">
+				<!--{loop $threadlist_chunk $threadlist}-->
+				<div style="width:48%; float: left; font-size: 9pt; padding: 1%; padding-top:0px; overflow: hidden; ">
+					<!--{if $forum[listtype] == 0}-->
+						<!--{include forum_index_type_0.htm}-->
+					<!--{else}-->
+						<!--{include forum_index_type_1.htm}-->
+					<!--{/if}-->
+				</div>
+				<!--{/loop}-->
+			</div>
+		</td>
+		<td class="td6"></td>
+	</tr>
+	<tr>
+		<td width="4" height="10" class="td7"></td>
+		<td align="center">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" height="10">
+				<tr>
+					<td width="50%" class="td8_1"></td>
+					<td width="123"><div class="td8_2"></div></td>
+					<td width="50%" class="td8_3"></td>
+				</tr>
+			</table>
+		</td>
+		<td width="4" height="10" class="td9"></td>
+	</tr>
+</table>
+
+<div class="page" style="margin-top: 0px; text-align: center; clear: both;">$pages</div>
+	
+<!--{if 0}-->

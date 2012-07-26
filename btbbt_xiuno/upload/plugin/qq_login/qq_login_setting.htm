@@ -1,0 +1,59 @@
+<!--{include header.htm}-->
+
+<div class="width">
+	<form action="?plugin-setting-dir-$dir.htm" method="post" id="conf_form">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<div class="div" style="width: 700px;">
+			<div class="header">QQ互联设置</div>
+			<div class="body">
+				<dl>
+					<dt><label for="qq_appid">APPID：</label></dt>
+					<dd>$input[qq_appid]</dd>
+					
+					<dt><label for="qq_appkey">APPKEY：</label></dt>
+					<dd>$input[qq_appkey]</dd>
+					
+					<dt><label for="qq_appkey">APP META标签：</label></dt>
+					<dd>$input[qq_meta]</dd>
+					
+					<dt></dt>
+					<dd>
+						<input type="submit" class="button bigblue" id="conf_submit" value="确认设置" />
+						<input type="button" class="button biggrey" value="返回" onclick="window.location='?plugin-list.htm'" />
+						<div id="notice" class="notice" style="display: none;"></div>
+					</dd>
+					
+					<dt></dt>
+					<dd>
+						<p>如果您还没有APPID,APPKEY，可以<a href="http://connect.qq.com/login?from=http%3A%2F%2Fconnect.qq.com%2Fmanage%2F" target="_blank"><b>申请QQ互联</b></a> </p>
+					</dd>
+				</dl>
+				
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--{include footer.htm}-->
+
+<script type="text/javascript">
+$('#conf_submit').click(function() {
+	$('#conf_form').submit();
+	return false;
+});
+
+<!--{loop $error $k $v}-->
+$('#$k').alert('$v');
+<!--{/loop}-->
+
+<!--{if !empty($_POST)}-->
+<!--{if empty($error)}-->
+	$('#notice').html('设置成功！').show();
+<!--{else}-->
+	$('#notice').html('设置失败！').show();
+<!--{/if}-->
+<!--{/if}-->
+
+</script>
+</body>
+</html>

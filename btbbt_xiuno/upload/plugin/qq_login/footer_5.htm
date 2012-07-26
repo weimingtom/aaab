@@ -1,0 +1,30 @@
+<!--{if empty($_user[uid]) && !empty($conf['qq_appid'])}-->
+<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc.js#appId=$conf[qq_appid]" charset="utf-8"></script>
+<script type="text/javascript">
+if(!QC.Login.check()){
+	QC.Login({btnId:"qq_login_button", scope:"all", size: "B_S"}, function(dt) {
+		
+		var qq_name = dt.nickname;
+		var qqsex = dt.gender;	
+		var qqavatar = dt.figureurl_1;
+		//var cookie_id = $.cookie('__qc__k');
+		
+		QC.Login.getMe(function(openId, accessToken){
+	      		var getaddurl = '?user-qqlogin-qq_openid-'+openId+'-qq_name-'+encodeURIComponent(qq_name)+'-ajax-1.htm';
+			$.get(getaddurl, function(s) {
+				//alert(document.cookie);
+				var json = json_decode(s);
+				if(error = json_error(json)) {alert(error); return false;}
+				
+				//alert(json.message);
+				// 服务端判断了是否已经存在了 openid
+				$('#header_user').html('<a href="?my-profile.htm">' + qq_name + '</a>，<a href="?user-ajaxlogout.htm" class="ajaxdialog" onclick="return false">退出</a>');
+			});
+		});
+	   }, function(opts) {
+		alert('QQ登录 注销成功'); 
+	   }
+	);
+}
+</script>
+<!--{/if}-->

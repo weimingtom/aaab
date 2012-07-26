@@ -1,0 +1,82 @@
+<!--{include header.htm}-->
+
+<style>
+#body {width: 100%;}
+</style>
+
+<!-- Accordion -->
+<h3 style="width: 85%; padding: 4px; margin: 0px auto;"><a href="?index-main.htm" target="main">后台管理</a>&nbsp; <a href="../" target="_blank"><span style="font-size: 12px; font-weight: normal">【首页】</span></a></h3>
+<div id="accordion" class="bg1 border shadow" style="width: 85%; padding: 4px; margin: auto; _margin-top: 0px;">
+	<div>
+		<h3><a href="#">设置</a></h3>
+		<ul>
+			<li><a href="?conf-base.htm" target="main">基本设置</a></li>
+			<li><a href="?conf-mail.htm" target="main">SMTP设置</a></li>
+			<li><a href="?conf-pay.htm" target="main">支付设置</a></li>
+			<!--{hook admin_index_menu_1.htm}-->
+		</ul>
+	</div>
+	<div>
+		<h3><a href="#">用户/用户组</a></h3>
+		<ul>
+			<li><a href="?user-list.htm" target="main">会员管理</a></li>
+			<li><a href="?group-index.htm" target="main">用户组</a></li>
+			<!--{hook admin_index_menu_2.htm}-->
+		</ul>
+	</div>
+	<div>
+		<h3><a href="#">论坛</a></h3>
+		<ul>
+			<li><a href="?forum-list.htm" target="main">板块管理</a></li>
+			<li><a href="?forum-merge.htm" target="main">合并板块</a></li>
+			<li><a href="?digestcate-list.htm" target="main">精华分类</a></li>
+			<!--{hook admin_index_menu_3.htm}-->
+		</ul>
+	</div>
+	<div>
+		<h3><a href="#">帖子</a></h3>
+		<ul>
+			<li><a href="?thread-list.htm" target="main">批量删除</a></li>
+			<li><a href="?thread-list.htm" target="main">批量替换</a></li>
+			<!--{hook admin_index_menu_4.htm}-->
+		</ul>
+	</div>
+	<div>
+		<h3><a href="#">日志</a></h3>
+		<ul>
+			<li><a href="?log-login.htm" target="main">登录错误</a></li>
+			<li><a href="?log-phperror.htm" target="main">PHP错误日志</a></li>
+			<li><a href="?log-cron.htm" target="main">计划任务日志</a></li>
+			<!--{hook admin_index_menu_5.htm}-->
+		</ul>
+	</div>
+	<div>
+		<h3><a href="#">其他</a></h3>
+		<ul>
+			<li><a href="?stat-index.htm" target="main">统计信息</a></li>
+			<li><a href="?friendlink-list.htm" target="main">友情连接</a></li>
+			<li><a href="?conf-cache.htm" target="main">更新缓存</a></li>
+			<li><a href="?iptable.htm" target="main">IP访问规则</a></li>
+		</ul>
+	</div>
+	<div>
+		<h3><a href="#">插件</a></h3>
+		<ul>
+			<li><a href="?plugin-index.htm" target="main">插件管理</a></li>
+			<!--<li><a href="?plugin-shop.htm" target="main">插件商城</a></li>-->
+		</ul>
+	</div>
+	<!--{hook admin_index_menu_6.htm}-->
+</div>
+
+<script type="text/javascript" src="view/js/jquery-1.4.min.js"></script>
+<script type="text/javascript" src="view/js/accordion.js"></script>
+<script type="text/javascript">
+$(function() {
+	//$("#accordion").accordion({ header: "h3", collapsible: true});
+	$("#accordion").accordion({allshow:true});
+});
+</script>
+
+</body>
+</html>

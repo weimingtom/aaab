@@ -1,0 +1,27 @@
+<!-- 屏幕宽度检测 -->
+<script type="text/javascript">
+$(function(){
+	
+	function check_screen() {
+		// 测试 cookie
+		var window_width = $('div.width').width();	//  - ($.browser.msie ? 19 : 0)
+		window_width = Math.min(window_width, 1400);	// 最大 1000  
+		window_width = Math.max(window_width, 988);	// 最大 1000  
+		var window_height = $(window).height();
+		if(!$.cookie('window_width') || ($.cookie('window_width') && Math.abs(window_width - $.cookie('window_width')) > 40)) {
+			$.cookie('test_cookie', 'yes');
+			if($.cookie('test_cookie') != 'yes') {
+				return;
+			} else {
+				$.cookie('test_cookie', null);
+			}
+			
+			$.cookie('window_width', window_width);
+			$.cookie('window_height', window_height);
+			window.location.reload();
+		}
+	}
+	
+	check_screen();
+});
+</script>
