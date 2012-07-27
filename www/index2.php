@@ -241,17 +241,6 @@ include 'webadmin/include/config.inc.php';
         
     
 	</div>
-	<div id="friends">
-		<div class="friend_title"><h1>　友情链接</h1></div>
-		<div class="friend_text">
-			<?php
-			$links = $mysql->fetch_all("SELECT * FROM -table-link ORDER BY id ASC");
-			foreach ($links as $v) {
-			?>
-			<li><a href="<?php echo $v['url']?>" target="_blank"><?php echo $v['name']?></a></li>
-			<?php }?>
-		</div>
-	</div>
 	<!--内容结束-->
 	<?php include("footer.php");?>
 </div>
