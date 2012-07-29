@@ -1,0 +1,116 @@
+<!--{include header.htm}-->
+
+<div class="width">
+		
+	<form action="?friendlink-rank-page-$page.htm" method="post" id="rankform">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<div style="width: 780px;">
+			<div class="list">
+				<table class="table">
+					<tr class="header">
+						<td width="50"><input type="checkbox" value="" title="全选" id="checkall" /></td>
+						<td width="50">勋章名称</td>
+						<td width="120">图片</td>
+						<td width="70">领取方式</td>
+						<td width="200">描述</td>
+						<td width="150">操作</td>
+					</tr>
+					<!--{loop $medallist $medal}-->
+					<tr>
+						<td align="center"><input type="checkbox" name="medalId[]" value="{$medal[medalId]}" /></td>
+						<td>$medal[medalName]</td>
+						<td>$medal[picture]</td>
+						<td>$medal[receiveType]</td>
+						<td>$medal[description]</td>
+						<td align="center">
+							<input convert="true" type="button" value="编辑" class="button smallblue" onclick="window.location='?medal-update-medalId-$medal[medalId]-page-$page.htm'" />
+							<input convert="true" type="button" value="删除" class="button smallgrey" onclick="if(window.confirm('确定删除吗？'))window.location='?medal-delete-medalId-$medal[medalId]-page-$page.htm'" />
+						 </td>
+					</tr>
+					<!--{/loop}-->
+				</table>
+			</div>
+			<!--{if $pages}--><div class="page" style="margin-top: 4px;">$pages</div><!--{/if}-->
+			<div style="text-align: center; margin-top: 4px;">
+				<input type="button" value=" 批量删除 " class="button bigblue" id="mdeletefriendlink" />
+			</div>
+		</div>
+	</form>
+	<br />
+	<form action="?friendlink-create-type-$type-page-$page.htm" method="post" id="friendlink_create_form" enctype="multipart/form-data">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<div style="width: 780px; margin:0px;">
+			<div class="div">
+				<div class="header">添加勋章</div>
+				<div class="body">
+					<table id="addtable">
+						<tr>
+							<td width="50">勋章名称</td>
+							<td width="150">领取方式</td>
+							<td width="250">描述</td>
+							<td width="50">图片</td>
+						</tr>
+						<tr>
+							<td><input type="text" name="medalName[]" value="" style="width: 120px" /></td>
+							<td><select name="receiveType[]">
+								<option value="1">自动获取</option>
+								<option value="2">手动发放</option>
+							</select></td>
+							<td><input type="text" name="description[]" value="" style="width: 200px" /></td>
+							<td><input type="file" name="picture[]" value="" style="width: 50px" /></td>
+						</tr>
+					</table>
+					<p><a href="javascript:void(0)" id="addlink">[+]添加</a></p>
+				</div>
+			</div>
+			<div style="text-align: center; margin-top: 4px;">
+				<input type="submit" class="button bigblue" id="friendlink_create_submit" value="添加" />
+				<input type="button" class="button biggrey" value="取消" onclick="history.back()" />
+				<div class="notice" id="addnotice" style="display: none;"></div>
+			</div>
+		</div>
+	</form>
+</div>
+<!--{include footer.htm}-->
+
+<script>
+$('#setrank').click(function() {
+	$('#rankform').submit();
+	return false;
+});
+
+$('#mdeletefriendlink').click(function() {
+	if(window.confirm('确定删除选中项吗？')) {
+		$('#rankform').attr('action', '?friendlink-delete-page-$page.htm');
+		$('#rankform').submit();
+	}
+	return false;
+});
+
+$('#checkall').click(function() {
+	$('#rankform input[name="linkids[]"]').attr('checked', this.checked);
+});
+
+$('#type').change(function() {
+	var type = $("#type option:selected").val(); 
+	window.location = '?friendlink-list-page-$page-type-'+type+'.htm';
+});
+
+$('#addlink').click(function() {
+	for(var i=0; i<3; i++) {
+		var jtr = $('#addtable tr:last-child').clone().appendTo('#addtable');
+		$('input', jtr).val('');
+	}
+});
+
+$('#friendlink_create_submit').click(function() {
+	$('#friendlink_create_form').submit();
+});
+
+
+$('#friendlink_setting_submit').click(function() {
+	$('#friendlink_setting_form').submit();
+});
+</script>
+</body>
+</html>
