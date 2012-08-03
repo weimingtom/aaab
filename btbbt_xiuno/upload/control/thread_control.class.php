@@ -88,6 +88,8 @@ class thread_control extends common_control {
 		// 版主
 		$ismod = $this->is_mod($forum, $pforum, $this->_user);
 		
+		// 勋章
+		$medallist = $this->medal_user->get_user_medal($this->_user['uid']);
 		// userlist
 		
 		$this->view->assign('click_server', $click_server);
@@ -102,6 +104,7 @@ class thread_control extends common_control {
 		$this->view->assign('pforum', $pforum);
 		$this->view->assign('postlist', $postlist);
 		$this->view->assign('ismod', $ismod);
+		$this->view->assign('medallist', $medallist);
 		// hook thread_index_after.php
 		$this->view->display('thread_index.htm');
 	}
