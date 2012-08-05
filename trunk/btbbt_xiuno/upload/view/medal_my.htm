@@ -1,0 +1,32 @@
+<!--{include header.htm}-->
+
+<link href="view/my.css" type="text/css" rel="stylesheet" />
+
+<div class="width">
+	<div class="left border shadow bg2">
+		<ul class="left_menu">
+			<li class="checked"><a href="?medal-list.htm">勋章中心</a></li>
+			<li><a href="?medal-my.htm">我的勋章</a></li>
+		</ul>
+	</div>
+	
+	<div class="div">
+		<div class="header">勋章中心</div>
+		<div class="body">
+			<!--{loop $medaluserlist $v}-->
+			<div style="margin-top: 5px;padding-left:15px;padding-right:15px; line-height: 3;">
+				<img src="$v[picture]" /> &nbsp;&nbsp; 我在 <span class="grey">$v[createdtime]</span> 被授予了 【$v[medalname]】 勋章 <span class="grey">$v[expiredtime]</span>
+				
+			</div>
+			<!--{/loop}-->
+		<div class="footer"></div>
+	</div>
+	<div class="page" style="text-align: center;">$pages</div>
+</div>	
+
+<!--{include footer.htm}-->
+
+$conf[footer_js]
+
+</body>
+</html>

@@ -23,20 +23,11 @@ class medal_control extends admin_control {
 		$this->_title[] = '勋章列表';
 		$this->_nav[] = '<a href="">友情链接列表</a>';
 		
-		$pagesize = 10;
+		$pagesize = 30;
 		$page = misc::page();
 		$num = $this->medal->count();
 		$medallist = $this->medal->index_fetch(array(), array('seq'=>1), ($page - 1) * $pagesize, $pagesize);
-		foreach ($medallist as &$v) {
-			$v['picture'] = $this->conf['upload_path'].$v['picture'];
-			if ($v['receiveType'] == 1) {
-				$v['receiveType'] = '自动发放';
-			} elseif ($v['receiveType'] == 2) {
-				$v['receiveType'] = '手动发放';
-			} else {
-				$v['receiveType'] = '未定义';
-			}
-		}
+		$this->medal->medallist_form($medallist);
 		
 		$pages = misc::pages("?medal-list.htm", $num, $page, $pagesize);
 		
@@ -50,25 +41,25 @@ class medal_control extends admin_control {
 		$page  =core::gpc('page');
 		if($this->form_submit()) {
 			$seqArr = core::gpc('seq', 'P');
-			$medalNameArr = core::gpc('medalName', 'P');
-			$receiveTypeArr = core::gpc('receiveType', 'P');
+			$medalnameArr = core::gpc('medalname', 'P');
+			$receivetypeArr = core::gpc('receivetype', 'P');
 			$descriptionArr = core::gpc('description', 'P');
 			$pictureArr = core::gpc('picture', 'P');
 			
 			$logopath = $this->conf['upload_path'].'medal/';
 			
-			foreach ($medalNameArr as $k=>$medalName) {
+			foreach ($medalnameArr as $k=>$medalname) {
 				$arr = array(
-					'medalName'=>$medalName,
-					'receiveType'=>$receiveTypeArr[$k],
+					'medalname'=>$medalname,
+					'receivetype'=>$receivetypeArr[$k],
 					'description'=>$descriptionArr[$k],
 					'seq'=>$seqArr[$k],
-					'userId'=>$this->_user['uid'],
-					'createdTime'=>date('Y-m-d H:i:s'),
+					'uid'=>$this->_user['uid'],
+					'createdtime'=>date('Y-m-d H:i:s'),
 				);
 				
-				$medalId = $this->medal->create($arr);
-				if(!$medalId) continue;
+				$medalid = $this->medal->create($arr);
+				if(!$medalid) continue;
 				
 				$tmpfile = empty($_FILES['picture']['tmp_name'][$k]) ? '' : $_FILES['picture']['tmp_name'][$k];
 				if($tmpfile) {
@@ -76,11 +67,11 @@ class medal_control extends admin_control {
 					$ext = strrchr($filename, '.');
 					// 防止传马
 					if(!in_array($ext, array('.jpg', '.gif', '.png', '.bmp'))) continue;
-					$logofile = $logopath.$medalId.$ext;
-					$arr['picture'] = 'medal/'.$medalId.$ext;
+					$logofile = $logopath.$medalid.$ext;
+					$arr['picture'] = 'medal/'.$medalid.$ext;
 					if(is_file($tmpfile) && move_uploaded_file($tmpfile, $logofile)) {
 						image::thumb($logofile, $logofile, 88, 31);
-						$this->medal->update($medalId, $arr);
+						$this->medal->update($medalid, $arr);
 					}
 				}
 			}
@@ -92,11 +83,11 @@ class medal_control extends admin_control {
 		$this->_title[] = '勋章修改';
 		$page = core::gpc('page');
 		
-		$medalId = intval(core::gpc('medalId'));
-		$medal = $this->medal->get($medalId);
+		$medalid = intval(core::gpc('medalid'));
+		$medal = $this->medal->get($medalid);
 		
 		if ($this->form_submit()) {
-			$medalId = core::gpc('medalId');
+			$medalid = core::gpc('medalid');
 			$medalArr = core::gpc('medal', 'P');
 			
 			$logopath = $this->conf['upload_path'].'medal/';
@@ -106,8 +97,8 @@ class medal_control extends admin_control {
 				$ext = strrchr($filename, '.');
 				// 防止传马
 				if(!in_array($ext, array('.jpg', '.gif', '.png', '.bmp'))) continue;
-				$logofile = $logopath.$medalId.$ext;
-				$medalArr['picture'] = 'medal/'.$medalId.$ext;
+				$logofile = $logopath.$medalid.$ext;
+				$medalArr['picture'] = 'medal/'.$medalid.$ext;
 				if(is_file($tmpfile) && move_uploaded_file($tmpfile, $logofile)) {
 					image::thumb($logofile, $logofile, 88, 31);
 				}
@@ -116,7 +107,7 @@ class medal_control extends admin_control {
 			} else {
 				$medalArr['picture'] = $medal['picture'];
 			}
-			$this->medal->update($medalId, $medalArr);
+			$this->medal->update($medalid, $medalArr);
 			
 			$this->message('编辑成功', true, "?medal-list-page-$page.htm");
 		}
@@ -135,11 +126,11 @@ class medal_control extends admin_control {
 		$this->_nav[] = '删除勋章';
 		
 		$page = intval(core::gpc('page'));
-		$medalId = intval(core::gpc('medalId'));
-		$medalIds = empty($medalId) ? core::gpc('medalIds', 'P') : array($medalId);
-		foreach((array)$medalIds as $medalId) {
-			$medalId = intval($medalId);
-			$this->medal->_delete($medalId);
+		$medalid = intval(core::gpc('medalid'));
+		$medalids = empty($medalid) ? core::gpc('medalids', 'P') : array($medalid);
+		foreach((array)$medalids as $medalid) {
+			$medalid = intval($medalid);
+			$this->medal->_delete($medalid);
 		}
 		//$this->mcache->clear('medal');
 		
@@ -151,38 +142,42 @@ class medal_control extends admin_control {
 		$page = misc::page();
 		
 		if ($this->form_submit()) {
-			$medalId = core::gpc('medalId', 'P');
-			$medal = $this->medal->get($medalId);
+			$medalid = core::gpc('medalid', 'P');
+			$medal = $this->medal->get($medalid);
 			if (!$medal) {
 				$this->message('错误，勋章不存在。', false);
 			}
-			$userName = core::gpc('userName', 'P');
-			$userId = 0;
-			if (!$userName) {
+			$username = core::gpc('username', 'P');
+			$uid = 0;
+			if (!$username) {
 				$this->message('错误，用户名不能为空。', false);
 			} else {
-				$user = $this->user->get_user_by_username($userName);
+				$user = $this->user->get_user_by_username($username);
 				if (!$user) {
 					$this->message('错误，用户名不存在。', false);
 				} else {
-					$userId = $user['uid'];
+					$uid = $user['uid'];
 				}
 			}
+			$medaluser = $this->medal_user->get_medaluser_by_uid_medalid($uid, $medalid);
+			if ($medaluser) {
+				$this->message('勋章存在，不能重复颁发。', false);
+			}
 			
-			$expiredTime = core::gpc('expiredTime', 'P');
-			if ($expiredTime) {
-				$expiredTime = time()+86400*intval($expiredTime);
+			$expiredtime = core::gpc('expiredtime', 'P');
+			if ($expiredtime) {
+				$expiredtime = time()+86400*intval($expiredtime);
 			}
 			
 			$arr = array(
-				'medalId'=>$medalId,
-				'userName'=>$userName,
-				'userId'=>$userId,
-				'receiveType'=>$medal['receiveType'],
-				'expiredTime'=>$expiredTime,
-				'isApply'=>1,
-				'fuserId'=>$this->_user['uid'],
-				'createdTime'=>time()
+				'medalid'=>$medalid,
+				'username'=>$username,
+				'uid'=>$uid,
+				'receivetype'=>$medal['receivetype'],
+				'expiredtime'=>$expiredtime,
+				'isapply'=>1,
+				'fuid'=>$this->_user['uid'],
+				'createdtime'=>time()
 			);
 			$this->medal_user->create($arr);
 			
@@ -191,21 +186,8 @@ class medal_control extends admin_control {
 		
 		$pagesize = 10;
 		$num = $this->medal_user->count();
-		$medal_user_list = $this->medal_user->index_fetch(array('isApply'=>1), array('medalUserId'=>-1), ($page - 1) * $pagesize, $pagesize);
-		foreach ($medal_user_list as &$v) {
-			$medal = $this->medal->get($v['medalId']);
-			if ($medal) {
-				$v['medalName'] = $medal['medalName'];
-				$v['picture'] = $medal['picture'] ? $this->conf['upload_path'].$medal['picture'] : '';
-				if ($medal['receiveType'] == 1) {
-					$v['receiveType'] = '自动发放';
-				} elseif ($v['receiveType'] == 2) {
-					$v['receiveType'] = '手动发放';
-				} else {
-					$v['receiveType'] = '未定义';
-				}
-			}
-		}
+		$medal_user_list = $this->medal_user->index_fetch(array('isapply'=>1), array('muid'=>-1), ($page - 1) * $pagesize, $pagesize);
+		$this->medal_user->medaluserlist_form($medal_user_list);
 		
 		$pages = misc::pages("?medal-grant.htm", $num, $page, $pagesize);
 		
@@ -223,11 +205,11 @@ class medal_control extends admin_control {
 	// 回收勋章
 	public function on_recover() {
 		$page = intval(core::gpc('page'));
-		$medalUserId = intval(core::gpc('medalUserId'));
-		$medalUserIds = empty($medalUserId) ? core::gpc('medalUserIds', 'P') : array($medalUserId);
-		foreach((array)$medalUserIds as $medalUserId) {
-			$medalUserId = intval($medalUserId);
-			$this->medal_user->_delete($medalUserId);
+		$muid = intval(core::gpc('muid'));
+		$muids = empty($muid) ? core::gpc('muids', 'P') : array($muid);
+		foreach((array)$muids as $muid) {
+			$muid = intval($muid);
+			$this->medal_user->_delete($muid);
 		}
 		
 		$this->location("?medal-grant-page-$page.htm");
@@ -238,15 +220,8 @@ class medal_control extends admin_control {
 		$page = misc::page();
 		$pagesize = 10;
 		$num = $this->medal->count();
-		$medal_user_list = $this->medal_user->index_fetch(array('isApply'=>0), array('medalUserId'=>-1), ($page - 1) * $pagesize, $pagesize);
-		foreach ($medal_user_list as &$v) {
-			$medal = $this->medal->get($v['medalId']);
-			if ($medal) {
-				$v['medalName'] = $medal['medalName'];
-				$v['picture'] = $medal['picture'] ? $this->conf['upload_path'].$medal['picture'] : '';
-				$v['createdTime'] = date('Y-m-d', $v['createdTime']);
-			}
-		}
+		$medal_user_list = $this->medal_user->index_fetch(array('isapply'=>0), array('muid'=>-1), ($page - 1) * $pagesize, $pagesize);
+		$this->medal_user->medaluserlist_form($medal_user_list);
 		
 		$pages = misc::pages("?medal-apply.htm", $num, $page, $pagesize);
 				
@@ -261,23 +236,23 @@ class medal_control extends admin_control {
 	public function on_modApply() {
 		$page = misc::page();
 		$status = intval(core::gpc('status', 'P'));
-		$medalUserIds = core::gpc('medalUserIds', 'P');
+		$muids = core::gpc('muids', 'P');
 		
 		$message = '';
 		switch($status) {
 			case 1:
-				foreach ($medalUserIds as $medalUserId) {
-					$arr = $this->medal_user->get($medalUserId);
+				foreach ($muids as $muid) {
+					$arr = $this->medal_user->get($muid);
 					if ($arr) {
-						$arr['isApply'] = 1;
-						$this->medal_user->update($arr['medalUserId'], $arr);
+						$arr['isapply'] = 1;
+						$this->medal_user->update($arr['muid'], $arr);
 					}
 				}
 				$message = '通过操作成功。';
 				break;
 			default:
-				foreach ($medalUserIds as $medalUserId) {
-					$this->medal_user->_delete($medalUserId);
+				foreach ($muids as $muid) {
+					$this->medal_user->_delete($muid);
 				}
 				$message = '否决操作成功。';
 				break;
