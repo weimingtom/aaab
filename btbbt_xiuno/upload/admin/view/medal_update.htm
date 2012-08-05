@@ -1,20 +1,20 @@
 <!--{include header.htm}-->
 
 <div class="width">
-	<form action="?medal-update-medalId-$medal[medalId]-page-$page.htm" method="post" id="medal_update_form" enctype="multipart/form-data">
+	<form action="?medal-update-medalid-$medal[medalid]-page-$page.htm" method="post" id="medal_update_form" enctype="multipart/form-data">
 		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
 		<div class="div" style="width: 600px;">
 			<div class="header">编辑</div>
 			<div class="body">
 				<dl>
 					<dt>排序:</dt><dd><input type="text" name="medal[seq]" value="$medal[seq]" style="width: 50px" /></dd>
-					<dt>勋章名称:</dt><dd><input type="text" name="medal[medalName]" value="$medal[medalName]" style="width: 150px" /></dd>
+					<dt>勋章名称:</dt><dd><input type="text" name="medal[medalname]" value="$medal[medalname]" style="width: 150px" /></dd>
 					<dt>勋章描述:</dt><dd><input type="text" name="medal[description]" value="$medal[description]" style="width: 150px" /></dd>
 					<dt><label for="type">勋章类型：</label></dt>
 					<dd>
-						<select id="receiveType" name="medal[receiveType]">
-							<option value="1" {if $medal[receiveType]==1}selected="selected"{/if}>自动发放</option>
-							<option value="2" {if $medal[receiveType]==2}selected="selected"{/if}>手动发放</option>
+						<select id="receivetype" name="medal[receivetype]">
+							<option value="1" {if $medal[receivetype]==1}selected="selected"{/if}>自动发放</option>
+							<option value="2" {if $medal[receivetype]==2}selected="selected"{/if}>手动发放</option>
 						</select>
 					</dd>
 					<dt><label for="logo">勋章图片：</label></dt>

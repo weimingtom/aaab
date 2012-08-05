@@ -14,14 +14,14 @@
 				<dl>
 					<dt>勋章名称:</dt>
 					<dd>
-						<select name="medalId">
+						<select name="medalid">
 							<!--{loop $medal_list $v}-->
-							<option value="$v[medalId]">$v[medalName]</option>
+							<option value="$v[medalid]">$v[medalname]</option>
 							<!--{/loop}-->
 						</select>
 					</dd>
-					<dt>用户名:</dt><dd><input type="text" name="userName" value="" style="width: 100px" /></dd>
-					<dt>有效期：</dt><dd><select name="expiredTime"><option value="0">永久</option><option value="365">一年</option><option value="180">半年</option><option value="30">1月</option></select></dd>
+					<dt>用户名:</dt><dd><input type="text" name="username" value="" style="width: 100px" /></dd>
+					<dt>有效期：</dt><dd><select name="expiredtime"><option value="0">永久</option><option value="365">一年</option><option value="180">半年</option><option value="30">1月</option></select></dd>
 					<dt></dt>
 					<dd>
 						<input type="submit" class="button bigblue" id="medal_update_submit" value="确定" />
@@ -46,17 +46,19 @@
 						<td width="100">勋章名称</td>
 						<td width="80">图片</td>
 						<td width="60">领取方式</td>
+						<td width="60">有效期</td>
 						<td width="150">操作</td>
 					</tr>
 					<!--{loop $medal_user_list $v}-->
 					<tr>
-						<td align="center"><input type="checkbox" name="medalUserIds[]" value="{$v[medalUserId]}" /></td>
-						<td>$v[userName]</td>
-						<td>$v[medalName]</td>
+						<td align="center"><input type="checkbox" name="muids[]" value="{$v[muid]}" /></td>
+						<td>$v[username]</td>
+						<td>$v[medalname]</td>
 						<td><img src="$v[picture]" /></td>
-						<td>$v[receiveType]</td>
+						<td>$v[receivetype]</td>
+						<td>$v[expiredtime]</td>
 						<td align="center">
-							<input convert="true" type="button" value="收回勋章" class="button smallgrey" onclick="if(window.confirm('确定回收吗？'))window.location='?medal-recover-medalUserId-$v[medalUserId]-page-$page.htm'" />
+							<input convert="true" type="button" value="收回勋章" class="button smallgrey" onclick="if(window.confirm('确定回收吗？'))window.location='?medal-recover-muid-$v[muid]-page-$page.htm'" />
 						 </td>
 					</tr>
 					<!--{/loop}-->
@@ -86,7 +88,7 @@ $('#mdeletefriendlink').click(function() {
 });
 
 $('#checkall').click(function() {
-	$('#rankform input[name="medalUserIds[]"]').attr('checked', this.checked);
+	$('#rankform input[name="muids[]"]').attr('checked', this.checked);
 });
 </script>
 </body>

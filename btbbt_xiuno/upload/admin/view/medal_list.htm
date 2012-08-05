@@ -22,15 +22,15 @@
 					</tr>
 					<!--{loop $medallist $medal}-->
 					<tr>
-						<td align="center"><input type="checkbox" name="medalIds[]" value="{$medal[medalId]}" /></td>
+						<td align="center"><input type="checkbox" name="medalids[]" value="{$medal[medalid]}" /></td>
 						<td>$medal[seq]</td>
-						<td>$medal[medalName]</td>
+						<td>$medal[medalname]</td>
 						<td><img src="$medal[picture]" /></td>
-						<td>$medal[receiveType]</td>
+						<td>$medal[receivetype]</td>
 						<td>$medal[description]</td>
 						<td align="center">
-							<input convert="true" type="button" value="编辑" class="button smallblue" onclick="window.location='?medal-update-medalId-$medal[medalId]-page-$page.htm'" />
-							<input convert="true" type="button" value="删除" class="button smallgrey" onclick="if(window.confirm('确定删除吗？'))window.location='?medal-delete-medalId-$medal[medalId]-page-$page.htm'" />
+							<input convert="true" type="button" value="编辑" class="button smallblue" onclick="window.location='?medal-update-medalid-$medal[medalid]-page-$page.htm'" />
+							<input convert="true" type="button" value="删除" class="button smallgrey" onclick="if(window.confirm('确定删除吗？'))window.location='?medal-delete-medalid-$medal[medalid]-page-$page.htm'" />
 						 </td>
 					</tr>
 					<!--{/loop}-->
@@ -59,8 +59,8 @@
 						</tr>
 						<tr>
 							<td><input type="text" name="seq[]" value="0" style="width: 50px" /></td>
-							<td><input type="text" name="medalName[]" value="" style="width: 100px" /></td>
-							<td><select name="receiveType[]">
+							<td><input type="text" name="medalname[]" value="" style="width: 100px" /></td>
+							<td><select name="receivetype[]">
 								<option value="1">自动发放</option>
 								<option value="2">手动发放</option>
 							</select></td>
@@ -99,10 +99,6 @@ $('#checkall').click(function() {
 	$('#rankform input[name="linkids[]"]').attr('checked', this.checked);
 });
 
-$('#type').change(function() {
-	var type = $("#type option:selected").val(); 
-	window.location = '?friendlink-list-page-$page-type-'+type+'.htm';
-});
 
 $('#addlink').click(function() {
 	for(var i=0; i<3; i++) {

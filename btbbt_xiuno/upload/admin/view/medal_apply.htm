@@ -21,11 +21,11 @@
 					</tr>
 					<!--{loop $medal_user_list $v}-->
 					<tr>
-						<td align="center"><input type="checkbox" name="medalUserIds[]" value="{$v[medalUserId]}" /></td>
-						<td>$v[userName]</td>
-						<td>$v[medalName]</td>
+						<td align="center"><input type="checkbox" name="muids[]" value="{$v[muid]}" /></td>
+						<td>$v[username]</td>
+						<td>$v[medalname]</td>
 						<td><img src="$v[picture]" /></td>
-						<td>$v[createdTime]</td>
+						<td>$v[createdtime]</td>
 					</tr>
 					<!--{/loop}-->
 				</table>
@@ -66,7 +66,7 @@ $('#medal_veto').click(function() {
 });
 
 $('#checkall').click(function() {
-	$('#rankform input[name="medalUserIds[]"]').attr('checked', this.checked);
+	$('#rankform input[name="muids[]"]').attr('checked', this.checked);
 });
 </script>
 </body>
