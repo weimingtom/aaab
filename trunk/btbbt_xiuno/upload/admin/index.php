@@ -5,7 +5,7 @@
  */
 
 // 调试模式: 1 打开，0 关闭
-define('DEBUG', 1);
+define('DEBUG', 2);
 define('BBS_PATH', '../');
 define('FRAMEWORK_PATH', BBS_PATH.'framework2.3/');
 
