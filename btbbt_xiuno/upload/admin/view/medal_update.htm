@@ -12,11 +12,23 @@
 					<dt>勋章描述:</dt><dd><input type="text" name="medal[description]" value="$medal[description]" style="width: 150px" /></dd>
 					<dt><label for="type">勋章类型：</label></dt>
 					<dd>
-						<select id="receivetype" name="medal[receivetype]">
-							<option value="1" {if $medal[receivetype]==1}selected="selected"{/if}>自动发放</option>
-							<option value="2" {if $medal[receivetype]==2}selected="selected"{/if}>手动发放</option>
+						<select id="receivetype" name="medal[receivetype]" onchange="setautogrant(this.value)">
+							<!--{loop $receivetypelist $k $v}-->
+							<option value="$k" {if $medal[receivetype]==$k}selected="selected"{/if}>$v</option>
+							<!--{/loop}-->
 						</select>
 					</dd>
+					<div id="autograntBox" style="display:none">
+						<dt><label for="type">自动颁发规则：</label></dt>
+						<dd>
+							<select id="autogrant" name="medal[autogrant]">
+								<option value="0">请选择颁发规则</option>
+								<!--{loop $autograntlist $k $v}-->
+								<option value="$k" {if $medal[autogrant]==$k}selected="selected"{/if}>$v</option>
+								<!--{/loop}-->
+							</select>
+						</dd>
+					</div>
 					<dt><label for="logo">勋章图片：</label></dt>
 					<dd>
 						<!--{if $medal[picture]}-->
@@ -38,7 +50,19 @@
 </div>
 
 <!--{include footer.htm}-->
-<script>
+<script type="text/javascript">
+$(document).ready(function(){
+	setautogrant($medal[receivetype]);	
+});
+
+function setautogrant(v) {
+	if(v == 1) {
+		$('#autograntBox').show();
+	} else if(v == 2) {
+		$('#autograntBox').hide();
+	}
+}
+
 $('#medal_update_submit').click(function() {
 	$('#medal_update_form').submit();
 	return false;

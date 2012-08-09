@@ -1,8 +1,8 @@
 <?php
 
 return 	array (
-	'enable' => 0,			// 是否启用?
-	'installed' => 0,		// 已经安装?
+	'enable' => 1,			// 是否启用?
+	'installed' => 1,		// 已经安装?
 	'name'=>'勋章',		// 插件名
 	'brief'=>'勋章插件和xiuno一起努力',
 	'version'=>'1.0',		// 插件版本
@@ -13,7 +13,7 @@ return 	array (
 	'email'=>'252288762@qq.com',	// 插件的联系EMAIL
 	'verify_code' => '',		// 经过官方安全认证的标志。
 	'stars' => 3,			// 官方对插件的评级，1-5星级。
-	'setting_url' => '',		// 配置的URL。
+	'setting_url' => '/admin/?medal-list.htm',		// 配置的URL。
 );
 
 ?>

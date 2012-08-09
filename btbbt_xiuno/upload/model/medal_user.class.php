@@ -74,13 +74,7 @@ class medal_user extends base_model {
 				$v['createdtime'] = date('Y-m-d H:i:s', $v['createdtime']);
 				$v['expiredtime'] = $v['expiredtime'] ? '有效期至 '.date('Y-m-d', $v['expiredtime']) : '永久有效';
 				
-				if ($medal['receivetype'] == 1) {
-					$v['receivetype'] = '自动发放';
-				} elseif ($v['receivetype'] == 2) {
-					$v['receivetype'] = '手动发放';
-				} else {
-					$v['receivetype'] = '未定义';
-				}
+				$v['receivetype'] = $this->medal->receivetypelist[$medal['receivetype']];
 			}
 		}
 	}

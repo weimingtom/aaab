@@ -29,7 +29,7 @@
 						<td>$medal[receivetype]</td>
 						<td>$medal[description]</td>
 						<td align="center">
-							<input convert="true" type="button" value="编辑" class="button smallblue" onclick="window.location='?medal-update-medalid-$medal[medalid]-page-$page.htm'" />
+							<input convert="true" type="button" value="详情" class="button smallblue" onclick="window.location='?medal-update-medalid-$medal[medalid]-page-$page.htm'" />
 							<input convert="true" type="button" value="删除" class="button smallgrey" onclick="if(window.confirm('确定删除吗？'))window.location='?medal-delete-medalid-$medal[medalid]-page-$page.htm'" />
 						 </td>
 					</tr>
@@ -61,8 +61,9 @@
 							<td><input type="text" name="seq[]" value="0" style="width: 50px" /></td>
 							<td><input type="text" name="medalname[]" value="" style="width: 100px" /></td>
 							<td><select name="receivetype[]">
-								<option value="1">自动发放</option>
-								<option value="2">手动发放</option>
+								<!--{loop $receivetypelist $k $v}-->
+								<option value="$k">$v</option>
+								<!--{/loop}-->
 							</select></td>
 							<td><input type="text" name="description[]" value="" style="width: 200px" /></td>
 							<td><input type="file" name="picture[]" value="" style="width: 50px" /></td>

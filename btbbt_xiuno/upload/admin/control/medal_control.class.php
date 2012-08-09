@@ -34,6 +34,7 @@ class medal_control extends admin_control {
 		$this->view->assign('medallist', $medallist);
 		$this->view->assign('pages', $pages);
 		$this->view->assign('page', $page);
+		$this->view->assign('receivetypelist', $this->medal->receivetypelist);
 		$this->view->display('medal_list.htm');
 	}
 	
@@ -118,6 +119,8 @@ class medal_control extends admin_control {
 		
 		$this->view->assign('page', $page);
 		$this->view->assign('medal', $medal);
+		$this->view->assign('autograntlist', $this->medal->autograntlist);
+		$this->view->assign('receivetypelist', $this->medal->receivetypelist);
 		$this->view->display('medal_update.htm');
 	}
 	
