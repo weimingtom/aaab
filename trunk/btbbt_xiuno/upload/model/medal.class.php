@@ -77,34 +77,9 @@ class medal extends base_model {
 		return $medallist;
 	}
 	
-	// 勋章发放，用于计划任务
-	public function grant() 
-	{
-		// 定义执行长度
-		$pagesize = 100;
-		$page = 1;
-		
-		$isexecute = TRUE;
-		while ($isexecute) {
-			foreach ($this->autograntlist as $k=>$v) {
-				switch ($k){
-					case 1: // 积分大于5000分
-						$userlist = $this->user->index_fetch(array('credits'=>500), array(), $page * $pagesize, $pagesize);
-						if ($userlist) {
-							
-						} else {
-							$isexecute = FALSE;
-						}
-						break;
-					case 2: // 发帖数量超过100
-						break;
-					case 3: // 回帖数量超过1000
-						break;
-					case 4: // 精华帖子数量超过50
-						break;
-				}
-			}
-		}
+	public function get_medal($cond) {
+		$medallist = $this->index_fetch($cond, array('medalId'=>-1));
+		return $medallist ? array_pop($medallist) : array();
 	}
 }
 ?>
