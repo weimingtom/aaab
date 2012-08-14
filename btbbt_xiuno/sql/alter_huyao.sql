@@ -12,7 +12,7 @@ CREATE TABLE `bbs_medal` (
 	`uid` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',                       
 	`createdtime` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',             
 	PRIMARY KEY (`medalid`)                                                    
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='勋章信息表'
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='勋章信息表';
 
 drop table if exists `bbs_medal_user`;
 CREATE TABLE `bbs_medal_user` (                                                 
@@ -28,3 +28,17 @@ CREATE TABLE `bbs_medal_user` (
 	`createdtime` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',                
 	PRIMARY KEY (`muid`)                                                          
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户所得勋章表';
+
+drop table if exists `bbs_user_active`;
+CREATE TABLE `bbs_user_active` (                                                 
+	`uid` int(10) unsigned NOT NULL COMMENT '用户ID',             
+	`username` char(16) NOT NULL COMMENT '用户名',                                
+	`threads` mediumint(8) NOT NULL DEFAULT '0' COMMENT '发帖数',                
+	`posts` mediumint(8) NOT NULL DEFAULT '0' COMMENT '回帖数',                
+	`myposts` mediumint(8) NOT NULL DEFAULT '0' COMMENT '',                
+	`digests` mediumint(8) NOT NULL DEFAULT '0' COMMENT '精华帖子数',                
+	`credits` mediumint(8) NOT NULL DEFAULT '0' COMMENT '积分',                
+	`activetime` int(10) NOT NULL DEFAULT '0' COMMENT '活跃时间',                
+	`createdtime` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
+	PRIMARY KEY (`uid`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COMMENT='用户活跃表';
