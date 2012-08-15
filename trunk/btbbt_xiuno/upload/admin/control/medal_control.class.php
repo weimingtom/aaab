@@ -56,7 +56,7 @@ class medal_control extends admin_control {
 					'description'=>$descriptionArr[$k],
 					'seq'=>$seqArr[$k],
 					'uid'=>$this->_user['uid'],
-					'createdtime'=>date('Y-m-d H:i:s'),
+					'createdtime'=>time(),
 				);
 				
 				$medalid = $this->medal->create($arr);

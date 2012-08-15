@@ -79,6 +79,8 @@ class medal_user extends base_model {
 		}
 	}
 	
+	//--------------------------------------------------------------------以下用于计划任务
+	
 	// 用于计划任务，清除过期的用户勋章
 	public function cron_clear_expiredtime() {
 		$medal_userlist = $this->index_fetch(array('expiredtime'=>array('<'=>time())));
