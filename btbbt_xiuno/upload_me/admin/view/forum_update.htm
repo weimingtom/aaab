@@ -1,0 +1,267 @@
+<!--{include header.htm}-->
+<style type="text/css">
+dt{width: 15%;}
+dd{width: 84%;}
+</style>
+<div class="width">
+	<form action="?forum-update-fid-$forum[fid].htm" method="post" id="forum_update_form">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		
+		<div class="div" style="width: 700px;">
+			<div class="header">编辑<!--{if $forum[fup] != 0}-->板块<!--{else}-->大区<!--{/if}--> - $forum[name]</div>
+			<div class="body">
+				<dl class="dl28">
+					<!--{if $forum[fup] != 0}-->
+					<dt><label for="fup">上一级板块：</label></dt>
+					<dd>
+						<select name="fup" id="fup"> 
+							$forumoptions
+						</select>
+					</dd>
+					<!--{/if}-->
+					
+					<dt><label for="name">名称：</label></dt>
+					<dd><input type="text" name="name" id="name" value="$forum[name]" style="width: 150px" /> <a href="../?forum-index-fid-$forum[fid].htm" target="_blank">点击访问</a></dd>
+					
+					<dt><label for="status">是否显示：</label></dt>
+					<dd>$input[status] <span class="grey">隐藏后，仅管理员能通过上面连接进行访问。</span></dd>
+					
+					<dt><label for="rank">排序：</label></dt>
+					<dd><input type="text" name="rank" id="rank" value="$forum[rank]" style="width: 30px" /> <span class="grey">0-255, 倒序</span></dd>
+					
+					<!--{if $forum[fup] == 0}-->
+					<dt><label for="indexforums">首页横排：</label></dt>
+					<dd><input type="text" name="indexforums" id="indexforums" value="$forum[indexforums]" style="width: 30px" /> <span class="grey">0 为关闭，>1 为板块的横排数，一般设置为 3-4。</span></dd>
+					<!--{/if}-->
+					
+					<!--{if $forum[fup] != 0}-->
+					<div style="clear: both; overflow: hidden;">
+						<dt><label for="brief">版块简介：</label></dt>
+						<dd><textarea name="brief" id="brief" style="width: 400px; height: 40px; font-size: 12px;">$forum[brief]</textarea></dd>
+					</div>
+					<div style="clear: both; overflow: hidden;">
+						<dt><label for="rule">版规：</label></dt>
+						<dd><textarea name="rule" id="rule" style="width: 400px; height: 40px;  font-size: 12px;">$forum[rule]</textarea><br /><span class="grey">最多255个字符，支持HTML</span></dd>
+					</div>
+					<div style="clear: both; overflow: hidden;">
+						<dt>
+							<label for="icon">版块图标：</label>
+							<div><span class="forumicon_big" id="forumicon_big" style="float: right; {if $forum[forumicon_big]}background: url($forum[forumicon_big]);{/if}"></span></div>
+						</dt>
+						<dd>
+							<input type="button" class="button smallblue" id="forumicon_big_button" value="上传图片" />
+						</dd>
+					</div>
+					<!--{hook forum_update_0.htm}-->
+					<!--{/if}-->
+					
+					<div style="clear: both; overflow: hidden;">
+						<dt><label for="orderby">主题排序方式：</label></dt>
+						<dd>
+							$input[orderby]
+							<span class="grey">根据发帖时间排序比较耗费资源。</span>
+						</dd>
+					</div>
+					
+					<dt><label for="listtype">主题展示方式：</label></dt>
+					<dd>
+						$input[listtype]
+						<span class="grey">图文展示比较耗费资源。</span>
+					</dd>
+					
+					<dt><label for="recentthreads"><!--{if $forum[fup] == 0}-->大区<!--{/if}-->版主：</label></dt>
+					<dd>
+						<input type="text" name="modnames" id="modnames" value="$forum[modnames]" style="width: 200px" />
+						<span class="grey">最多 4 个，包含继承；用户名空格隔开；</span>
+					</dd>
+					
+					<dt><label for="seo_title">SEO 标题：</label></dt>
+					<dd><input type="text" name="seo_title" id="seo_title" value="$forum[seo_title]" style="width: 200px" /> <span class="grey">搜索引擎优化</span></dd>
+					
+					<dt><label for="seo_keywords">SEO 关键词：</label></dt>
+					<dd><input type="text" name="seo_keywords" id="seo_title" value="$forum[seo_keywords]" style="width: 200px" /> <span class="grey">搜索引擎优化，可以填写多个关键词</span></dd>
+					
+					<!--{hook forum_update_1.htm}-->
+					
+					<!--{if $forum[fup] != 0}-->
+					<h3 style="clear: both; padding-top: 16px;">设置主题分类</h3>
+					<p class="grey">
+						删除主题分类，程序会自动解除关联的主题<br />
+					</p>
+					<dt></dt>
+					<dd id="typelist">
+						<!--{loop $forum[typelist] $type}-->
+						<p class="typeid" typeid="$type[typeid]">
+							主题分类：<input type="text" name="typename[{$type[typeid]}]" value="$type[typename]" size="16" />
+							顺序：<input type="text" name="rank[{$type[typeid]}]" size="4" value="$type[rank]" />
+							<input type="button" class="button smallgrey delete" value="删除" />
+						</p>
+						<!--{/loop}-->
+						<p class="typeid">
+							主题分类：<input type="text" name="newtypename[]" value="" size="16" />
+							顺序：<input type="text" name="newrank[]" size="4" value="0" />
+						</p>
+						<p class="typeid" style="display: none;">
+							主题分类：<input type="text" name="newtypename[]" value="" size="16" />
+							顺序：<input type="text" name="newrank[]" size="4" value="0" />
+						</p>
+						<p>
+							<a href="javascript:void(0)" id="addtype">[+]添加分类</a>
+						</p>
+					</dd>
+					<!--{/if}-->
+					
+					<h3 style="clear: both; padding-top: 16px;">设置板块权限</h3>
+					<p class="grey">
+						可以对每个论坛设置用户组的各种权限：发帖，回帖，附件。因为不利于缓存，不建议设置，除非非常有必要<br />
+					</p>
+					
+					<dt><label for="accesson">设置权限：</label></dt>
+					<dd>
+						<input type="checkbox" name="accesson" id="accesson" value="1" {if $forum[accesson]}checked="checked"{/if} />
+						
+						<div class="list" id="accesstable" style="width: 480px; {if !$forum[accesson]}display: none;{/if}">
+							<table class="table">
+								<tr class="header">
+									<td width="100">用户组</td>
+									<td width="100"><input type="checkbox" id="checkread" />访问</td>
+									<td width="100"><input type="checkbox" id="checkpost" />回帖</td>
+									<td width="100"><input type="checkbox" id="checkthread" />发主题</td>
+									<td width="100"><input type="checkbox" id="checkattach" />上传附件</td>
+								</tr>
+								<!--{loop $grouplist $group}-->
+								
+								<!--{if $group[groupid] == 11}-->
+								<tr>
+									<td colspan="7">&nbsp;</td>
+								</tr>
+								<!--{/if}-->
+								
+								<tr align="center">
+									<td align="right">$group[name] <input type="hidden" name="groupids[]" value="$group[groupid]"></td>
+									<td><input type="checkbox" name="allowread[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowread']}checked="checked"{/if} /></td>
+									<td><input type="checkbox" name="allowpost[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowpost']}checked="checked"{/if} /></td>
+									<td><input type="checkbox" name="allowthread[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowthread']}checked="checked"{/if} /></td>
+									<td><input type="checkbox" name="allowattach[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowattach']}checked="checked"{/if} /></td>
+								</tr>
+								
+								<!--{if $group[groupid] == 0}-->
+								<tr>
+									<td colspan="7">&nbsp;</td>
+								</tr>
+								<!--{/if}-->
+								<!--{/loop}-->
+							</table>
+						</div>
+					</dd>
+					
+					<!--{if $forum[fup] == 0}-->
+					<dt><label for="applyson" class="red">应用到子版块：</label></dt>
+					<dd>
+						<input type="checkbox" name="applyson" id="applyson" value="1" />
+						<span class="grey"> 子版块继承大区的设置 </span>
+					</dd>
+					<!--{/if}-->
+					
+					<!--{hook forum_update_2.htm}-->
+					
+					<dt></dt>
+					<dd>
+						<input type="submit" class="button bigblue" id="forum_update_submit" value="编辑板块" />
+						<input type="button" class="button biggrey" value="返回" onclick="history.back()" />
+						<div class="notice" id="notice" style="display: none;"></div>
+					</dd>
+				</dl>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<!--{include footer.htm}-->
+
+<script type="text/javascript" src="../view/js/clipimg/swfupload.js"></script>
+<script type="text/javascript" src="../view/js/clipimg/clipimg.js"></script>
+<script type="text/javascript">
+$('#forumicon_big').clipimg({
+	postparams: null, 
+	buttonid: 'forumicon_big_button', 
+	uploadurl: '?forum-uploadicon-fid-$fid-$conf[cookiepre]sid-$_sid-$conf[cookiepre]auth-$_auth-ajax-1.htm',
+	clipurl: '?forum-clipicon-fid-$fid-ajax-1.htm',
+	baseurl: 'view/js/clipimg/',
+	success_recall: function(imgurl, pos) {
+		$('#notice').html('修改成功！').show().delay(3000).fadeOut('fast');
+		//$('#avatar_menu').css('background-image', $('#avatar').css('background-image').replace(/_big/ig, ''));
+	}
+});
+</script>
+
+<script type="text/javascript">
+$('#forum_update_submit').click(function() {
+	$('#forum_update_form').submit();
+	return false;
+});
+$('#forum_update_form input[name=fup][value={$forum[fup]}]').attr("checked", "checked");
+
+$('#accesson').click(function() {
+	if($(this).attr('checked')) {
+		$('#accesstable').show();
+	} else {
+		$('#accesstable').hide();
+	}
+});
+
+$('#checkread').click(function() {
+	$('#accesstable input[name^=allowread]').attr('checked', $(this).attr('checked'));
+});
+$('#checkpost').click(function() {
+	$('#accesstable input[name^=allowpost]').attr('checked', $(this).attr('checked'));
+});
+$('#checkthread').click(function() {
+	$('#accesstable input[name^=allowthread]').attr('checked', $(this).attr('checked'));
+});
+$('#checkattach').click(function() {
+	$('#accesstable input[name^=allowattach]').attr('checked', $(this).attr('checked'));
+});
+
+<!--{loop $error $k $v}-->
+<!--{if $v}-->
+	$('#$k').alert('$v');
+<!--{/if}-->
+<!--{/loop}-->
+
+<!--{if !empty($_POST)}-->
+<!--{if empty($error)}-->
+	$('#notice').html('编辑成功！').show();
+<!--{else}-->
+	$('#notice').html('编辑失败！').show();
+<!--{/if}-->
+<!--{/if}-->
+
+
+// 主题分类
+$('p.typeid').each(function() {
+	var _this = this;
+	var typeid = $(this).attr('typeid');
+	$('a.delete', this).click(function() {
+		if(window.confirm('您确定删除该主题分类吗？')) {
+			$.get('?forum-deletetype-typeid-'+typeid+'-ajax-1.htm', function(s) {
+				var json = json_decode(s);
+				if(error = json_error(json)) {alert(error); return false;}
+				if(json.status <= 0) {alert(json.message); return false;}
+				$(_this).remove();
+			});
+		}
+	});
+});
+$('#addtype').click(function() {
+	var newnode = $('p.typeid:last').clone().show();
+	$('input[name^=typename]', newnode).val('');
+	$('input[name^=rank]', newnode).val('0');
+	$('p.typeid:last').before(newnode);
+	return false;
+});
+</script>
+
+</body>
+</html>

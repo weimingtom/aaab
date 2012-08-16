@@ -1,0 +1,95 @@
+<!--{include header.htm}-->
+
+<div class="width">
+	<div class="page tab" style="width: 780px; margin: auto;">
+		<a href="?medaladmin-list.htm" $_checked[list]>勋章</a>
+		<a href="?medaladmin-grant.htm" $_checked[grant]>颁发</a>
+		<a href="?medaladmin-apply.htm" $_checked[grant]>审核</a>
+	</div>
+	<form action="?medaladmin-grant-page-$page.htm" method="post" id="medal_update_form">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<div class="div" style="width: 780px; margin:0px">
+			<div class="header">勋章发放</div>
+			<div class="body">
+				<dl>
+					<dt>勋章名称:</dt>
+					<dd>
+						<select name="medalid">
+							<!--{loop $medallist $v}-->
+							<option value="$v[medalid]">$v[medalname]</option>
+							<!--{/loop}-->
+						</select>
+					</dd>
+					<dt>用户名:</dt><dd><input type="text" name="username" value="" style="width: 100px" /></dd>
+					<dt>有效期：</dt><dd><select name="expiredtime"><option value="0">永久</option><option value="365">一年</option><option value="180">半年</option><option value="30">1月</option></select></dd>
+					<dt></dt>
+					<dd>
+						<input type="submit" class="button bigblue" id="medal_update_submit" value="确定" />
+						<input type="button" class="button biggrey" value="返回" onclick="history.back()" />
+						<div class="notice" id="notice" style="display: none;"></div>
+					</dd>
+					
+				</dl>
+			</div>
+		</div>
+	</form>
+	<br/>
+	<form action="?medaladmin-recover-page-$page.htm" method="post" id="rankform">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<div style="width: 780px;">
+			<div class="header">已发放勋章列表</div>
+			<div class="list">
+				<table class="table">
+					<tr class="header">
+						<td width="50"><input type="checkbox" value="" title="全选" id="checkall" /></td>
+						<td width="30">用户名</td>
+						<td width="100">勋章名称</td>
+						<td width="80">图片</td>
+						<td width="60">领取方式</td>
+						<td width="60">有效期</td>
+						<td width="150">操作</td>
+					</tr>
+					<!--{loop $medaluserlist $v}-->
+					<tr>
+						<td align="center"><input type="checkbox" name="muids[]" value="{$v[muid]}" /></td>
+						<td>$v[username]</td>
+						<td>$v[medalname]</td>
+						<td><img src="$v[picture]" /></td>
+						<td>$v[receivetype]</td>
+						<td>$v[expiredtime]</td>
+						<td align="center">
+							<input convert="true" type="button" value="收回勋章" class="button smallgrey" onclick="if(window.confirm('确定回收吗？'))window.location='?medaladmin-recover-muid-$v[muid]-page-$page.htm'" />
+						 </td>
+					</tr>
+					<!--{/loop}-->
+				</table>
+			</div>
+			<!--{if $pages}--><div class="page" style="margin-top: 4px;">$pages</div><!--{/if}-->
+			<div style="text-align: center; margin-top: 4px;">
+				<input type="button" value=" 批量收回勋章 " class="button bigblue" id="mdeletefriendlink" />
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--{include footer.htm}-->
+<script>
+$('#medal_update_submit').click(function() {
+	$('#medal_update_form').submit();
+	return false;
+});
+
+$('#mdeletefriendlink').click(function() {
+	if(window.confirm('确定回收选中项的勋章吗？')) {
+		$('#rankform').attr('action', '?medaladmin-recover-page-$page.htm');
+		$('#rankform').submit();
+	}
+	return false;
+});
+
+$('#checkall').click(function() {
+	$('#rankform input[name="muids[]"]').attr('checked', this.checked);
+});
+</script>
+</body>
+</html>

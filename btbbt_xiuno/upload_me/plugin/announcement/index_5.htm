@@ -1,0 +1,18 @@
+<!--{if !empty($toplist)}-->
+<div class="box border bg5" style="margin-bottom: 8px;">
+	<table cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td width="24" align="center"><span class="icon icon-volume"></span><td>
+			<td>
+				<div id="ann">
+					<ul>
+						<!--{loop $toplist $top}-->
+						<li><a href="?thread-index-fid-$top[fid]-tid-$top[tid].htm">$top[subject]</a></li>
+						<!--{/loop}-->
+					</ul>
+				</div>
+			<td>
+		</tr>
+	</table>
+</div>
+<!--{/if}-->

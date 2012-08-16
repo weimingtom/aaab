@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+	<title><!--{loop $_title $title}-->$title<!--{/loop}--></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="MSSmartTagsPreventParsing" content="True" />
+	<meta http-equiv="MSThemeCompatible" content="Yes" />
+	<link href="view/common.css" type="text/css" rel="stylesheet" />
+</head>
+<script type="text/javascript">
+var cookiepre = '$conf[cookiepre]';
+</script>
+
+<div id="body" style="padding-top: 0px;">
+	<div class="width" style="padding-top: 0px; width: 100%;">
+		<!--{if empty($postlist)}-->
+		
+		<div class="div">
+			<div class="header">最新精华主题</div>
+			<div class="body">
+				
+				<!--{if $digestlist}-->
+				<!--{loop $digestlist $thread}-->
+				<div style="line-height: 2.2;">
+					<span class="icon icon-digest-$thread[digest]" style="margin-right: 2px;"></span>
+					<a href="?forum-index-fid-$thread[fid].htm" target="_blank">【{$thread[forumname]}】</a>
+					<a href="?thread-index-fid-$thread[fid]-tid-$thread[tid].htm" target="_blank">$thread[subject]</a>
+				</div>
+				<hr />
+				<!--{/loop}-->
+				<!--{else}-->
+				无
+				<!--{/if}-->
+			</div>
+			<div class="footer"></div>
+		</div>
+		
+		<!--{else}-->
+		
+<!-- copy from postlist.htm -->
+	
+		<table id="nav" cellpadding="0" cellspacing="0" style="margin-bottom: 4px;">
+			<tr>
+				<td class="left"></td>
+				<td class="center">
+					<a class="icon icon-home" href="./" target="_blank"></a>
+					<span class="sep"></span>
+					<span>$pforum[name]</span>
+					<span class="sep"></span>
+					<span><a href="?forum-index-fid-$fid.htm" target="_blank">$forum[name]</a></span>
+					<span class="sep"></span>
+					<span>$thread[subject]</span>
+				</td>
+				<td width="160" align="right">
+				</td>
+				<td class="right"></td>
+			</tr>
+		</table>
+		
+		<!--{loop $postlist $post}-->
+		<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="margin-top: 4px;">
+			<tr>
+				<td class="post_td" valign="top">
+					<!--{if $ismod || $_user[uid] == $post[uid]}-->
+					<div class="div_admin" style="position: relative; float: right; width: 50px; text-align: right; z-index: 9; margin-bottom: -29px;  height: 25px; padding-top: 4px; display: none;">
+						<a href="?post-update-fid-$thread[fid]-pid-$post[pid]-ajax-1.htm" class="icon icon-post-update ajaxdialog" ajaxdialog="{fullicon: true}" onclick="return false;" style="margin-right: 4px;"></a><a href="?post-delete-fid-$fid-pid-$post[pid].htm" class="icon icon-post-delete" onclick="return window.confirm('您确定删除吗？');"></a> &nbsp;
+					</div>
+					<!--{/if}-->
+					<div class="bg1 border shadow post_div" style="padding: 8px;">
+						<!--{if $thread[firstpid] == $post[pid]}-->
+						<h2 id="subject_$tid" style="margin-top: 0px;">
+							<a href="?you-index-uid-$post[uid].htm" style="font-size: 14px;" target="_blank">$post[username]</a>：$thread[subject]
+						</h2>
+						<!--{/if}-->
+						
+						<div style="font-size: 14px;" id="message_$post[pid]">
+							<!--{if $thread[firstpid] != $post[pid]}-->
+							<a href="?you-index-uid-$post[uid].htm" style="font-size: 14px;" target="_blank">$post[username]</a>：
+							<!--{/if}-->
+							$post[message]
+						</div>
+					</div>
+				</td>
+			</tr>
+		</table>
+		<!--{/loop}-->
+		<div class="box">
+			<div class="page" style="text-align: center;">$pages</div>
+			<p style="text-align: center; padding: 8px;"><input type="button" value=" 查看原帖 " class="button bigblue" onclick="window.open('?thread-index-fid-$fid-tid-$tid.htm');" /> <input type="button" value=" 返回 " class="button bigblue" onclick="history.back()" /></p>
+		</div>
+		
+		<!--{/if}-->
+	
+	</div>
+</div>
+	 
+<script src="view/js/jquery-1.4.min.js" type="text/javascript" ></script>
+<script src="view/js/common.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+// 数据格式： {tids:{"2012-1-12":[1 2 3 4],"2012-1-13":[5 6 7 8]},fids:{1:1234567890,2:1234567890}}
+var tid = to_int('$tid');
+var fid = to_int('$fid');
+if(tid) tid_add_read(tid);
+if(fid) fid_update_lasttime(fid, $_SERVER[time]);
+
+</script>
+
+$conf[footer_js]
+
+</body>
+</html>
+
+<!-- copy end -->

@@ -1,0 +1,283 @@
+<!--{include header.htm}-->
+
+<!--{hook forum_index_1.htm}-->
+<div class="width">
+
+	<!--{hook forum_index_2.htm}-->
+	<table id="nav" cellpadding="0" cellspacing="0" style="margin-bottom: 4px;">
+		<tr>
+			<td class="left"></td>
+			<td class="center">
+				<a class="icon icon-home" href="./"></a>
+				<span class="sep"></span>
+				<a href="./" id="pforum_link">$pforum[name]</a>
+				<span class="sep"></span>
+				<span>$forum[name]</span>
+				<!--{hook forum_index_3.htm}-->
+			</td>
+			<!--{hook forum_index_4.htm}-->
+			<td width="60">
+				
+				<!--{hook forum_index_5.htm}-->
+				
+				<div class="border bg2" id="nav_orderby" style="padding-left: 6px; padding-top: 2px; width: 40px; float: left;">
+					<a href="?forum-index-fid-$fid-page-$page.htm" class="icon icon-orderby-0  $_checked[orderby][0]" title="顶贴时间排序" rel="nofollow"></a>
+					<a href="?forum-index-fid-$fid-page-$page.htm" class="icon icon-orderby-1  $_checked[orderby][1]" title="发帖时间排序" rel="nofollow"></a>
+				</div>
+				
+				<!--{hook forum_index_7.htm}-->
+				
+			</td>
+			<!--{hook forum_index_8.htm}-->
+			<td width="80"><input type="button" value=" 发新帖 " class="button smallblue ajaxdialog" href="?post-thread-fid-$fid-ajax-1.htm" ajaxdialog="{fullicon: true}" onclick="return false;" id="create_thread" /></td>
+			<!--{hook forum_index_9.htm}-->
+			<td class="right"></td>
+		</tr>
+	</table>
+	
+	<!--{hook forum_index_10.htm}-->
+	
+	<!--{if $page == 1 && empty($typeid)}-->
+	<div class="bg2 border shadow" style="padding: 6px; padding-top: 0px; margin-bottom: 4px;">
+		<h3>
+			<a href="javascript:void(0)" class="icon icon-min" style="float: right;" id="toggle_rule"></a>
+			$forum[name] &nbsp; 
+			<span class="clear">
+				<span class="grey">主题：</span><b>$forum[threads]</b> &nbsp; 
+				<span class="grey">今日：</span><b class="blue">$forum[todayposts]</b> &nbsp; 
+				<!--{if $pforum[modlist] || $forum[modlist]}-->
+				<span class="grey">版主：</span><!--{loop $pforum[modlist] $modid $modname}--><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}"><b title="大区版主"><span class="icon-group icon-group-2" style="width: 12px;"></span>$modname</b></a><!--{/loop}--><!--{loop $forum[modlist] $modid $modname}--><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}"><span class="icon-group icon-group-3" style="width: 12px;"></span>$modname</a><!--{/loop}-->
+				<!--{/if}-->
+			</span>
+		</h3>
+		<div id="rule" style="display: none;">
+			<!--{if $forum[rule]}-->
+			<hr style="margin-top: 2px;" />
+			<div style="margin-top: 4px; table-layout: fixed; overflow: hidden; " class="grey">
+			$forum[rule]
+			</div>
+			<!--{/if}-->
+		</div>
+	</div>
+	<!--{/if}-->
+	
+	<!--{hook forum_index_11.htm}-->
+	
+	<!--{if $forum[typelist]}-->
+	<div class="page tab" style="" id="threadtype">
+		<a href="?forum-index-fid-$fid.htm" $_checked[typeid][0]>全部</a><!--{loop $forum[typelist] $_typeid $_typename}--><a href="?forum-index-fid-$fid-typeid-$_typeid.htm" $_checked[typeid][$_typeid]>$_typename</a><!--{/loop}-->
+	</div>
+	<!--{/if}-->
+	<div class="div">
+		<div class="header" style="font-weight: normal;">
+			<table width="100%" cellspacing="0" cellpadding="0" style="word-break: break-all" >
+				<tr align="left">
+					<td valign="middle" class="subject">标题</td>
+					<td width="80" class="username">发帖</td>
+					<td width="80" class="views">回复/查看</td>
+					<td width="80" class="last">最后回复</td>
+				</tr>
+			</table>
+		</div>
+		<div class="body" id="threadlist">
+			<!--	文字列表模式	-->
+			<!--{if $forum[listtype] == 0}-->
+				<!--{include forum_index_type_0.htm}-->
+			<!--{/if}-->
+			
+			<!--	图文列表模式	-->
+			<!--{if $forum[listtype] == 1}-->
+				<!--{include forum_index_type_1.htm}-->
+			<!--{/if}-->
+	
+		</div>
+		<div class="footer"></div>
+	</div>
+	<div class="page" style="margin: auto; margin-top: 0px; text-align: center; clear: both;">$pages</div>
+	
+	<!--{hook forum_index_12.htm}-->
+	
+	<!--{if $ismod}-->
+	<div style="text-align: center; margin-top: 8px;">
+		<input type="checkbox" name="checkall" id="mod_checkall" /><label for="mod_checkall">全选</label>
+		<input type="button" class="button smallblue" id="mod_top"  value="置顶" />
+		<!--{if $forum[typelist]}-->
+		<input type="button" class="button smallblue" id="mod_type"  value="主题分类" />
+		<!--{/if}-->
+		<input type="button" class="button smallblue" id="mod_digest"  value="精华分类" />
+		<input type="button" class="button smallblue" id="mod_move"  value="移动" />
+		<input type="button" class="button smallblue" id="mod_delete"  value="删除" />
+		<!--{hook forum_index_13.htm}-->
+	</div>
+	<!--{/if}-->
+	
+	<!--{hook forum_index_14.htm}-->
+	
+</div>	
+
+<!--{include footer.htm}-->
+
+<!--{if $ismod}-->
+<script type="text/javascript">
+$('#mod_checkall').click(function() {
+	$('#body input[name="tidarr[]"]').attr('checked', this.checked);
+});
+
+var sep = $conf[urlrewrite] ? '?' : '&';
+
+// 置顶 弹出 dialog 设置为置顶
+$('#mod_top').click(function() {
+	var postdata = '';
+	$.each($('#body input[name="tidarr[]"]:checked'), function(k, v) {
+		postdata += '&tidarr[]='+v.value;
+	});
+	ajaxdialog_request('?mod-top-fid-$fid.htm'+sep+postdata, function() {
+		window.location.reload();
+	});
+});
+
+// 精华
+$('#mod_digest').click(function() {
+	var postdata = sep;
+	$.each($('#body input[name="tidarr[]"]:checked'), function(k, v) {
+		postdata += '&tidarr[]='+v.value;
+	});
+	ajaxdialog_request('?mod-digest-fid-$fid.htm'+sep+postdata, function() {
+		window.location.reload();
+	});
+});
+
+// 主题分类 
+$('#mod_type').click(function() {
+	var postdata = sep;
+	$.each($('#body input[name="tidarr[]"]:checked'), function(k, v) {
+		postdata += '&tidarr[]='+v.value;
+	});
+	ajaxdialog_request('?mod-type-fid-$fid.htm'+sep+postdata, function() {
+		window.location.reload();
+	});
+});
+
+// 删除
+$('#mod_delete').click(function() {
+	var postdata = sep;
+	$.each($('#body input[name="tidarr[]"]:checked'), function(k, v) {
+		postdata += '&tidarr[]='+v.value;
+	});
+	ajaxdialog_request('?mod-delete-fid-$fid.htm'+sep+postdata, function() {
+		window.location.reload();
+	});
+});
+
+// 移动
+$('#mod_move').click(function() {
+	var postdata = sep;
+	$.each($('#body input[name="tidarr[]"]:checked'), function(k, v) {
+		postdata += '&tidarr[]='+v.value;
+	});
+	ajaxdialog_request('?mod-move-fid-$fid.htm'+sep+postdata, function() {
+		window.location.reload();
+	});
+});
+
+</script>
+<!--{/if}-->
+
+
+<script type="text/javascript">
+// 鼠标背景变色
+$('#threadlist tr').bind('mouseover', function() {$(this).removeClass('bg1').addClass('bg2');});
+$('#threadlist tr').bind('mouseout', function() {$(this).removeClass('bg2').addClass('bg1');});
+
+// 最新贴，已读贴
+$('#body span.icon-post-blue').each(function(i) {
+	var tid = $(this).attr('tid');
+	if(tid_is_read(parseInt(tid))) {
+		$(this).addClass('xgrey');
+		$(this).parent().parent().addClass('grey');
+	}
+});
+
+// 登陆后才能发帖
+{if $_user[uid] == 0}
+$('#create_thread').click(function() {
+	ajaxdialog_request('?user-login-ajax-1.htm', function() {
+		$('#create_thread').unbind('click');
+		ajaxdialog_request($('#create_thread').attr('href'));
+		$('#create_thread').click(function() {
+			ajaxdialog_request($('#create_thread').attr('href'));
+		});
+	});
+	return false;
+});
+{/if}
+
+var thread_left = null;
+</script>
+<script type="text/javascript">
+
+// 点击服务器，火贴
+$.getScript('$click_server&'+Math.random(), function() {
+	if(!xn_json) return;
+	var json = xn_json;
+	for(tid in json) {
+		var jtable = $('#body table[tid='+tid+']');
+		$('tr td.views span:eq(1)', jtable).html(json[tid]);
+		if(json[tid] > $conf[threadlist_hotviews]) {
+			$('tr td.subject', jtable).append('<span class="icon icon-post-fire"></span>');
+		}
+	}
+});
+
+// 记录当前页码
+var fid_page = $.parseJSON($.pdata(cookiepre + 'fid_page'));
+if(!fid_page) fid_page = {};
+fid_page[''+$fid] = $page;
+$.pdata(cookiepre + 'fid_page', $.toJSON(fid_page));
+
+// orderby 切换
+$('#nav_orderby a').click(function() {
+	// 设置 cookie, 重新刷新页面
+	$.cookie('orderby', to_int($.cookie('orderby')) == 1 ? 0 : 1);
+	window.location.reload();
+});
+
+$('div.div div.body').find('hr:last').hide();// 隐藏最后一个 hr
+
+// 版规的切换
+var fid = $fid;
+var rules = $.parseJSON($.pdata('rule'));
+if(!rules) rules = [];
+if($.inArray(fid, rules) == -1) {
+	$('#toggle_rule').removeClass('icon-max').addClass('icon-min');
+	$('#rule').show();
+} else {
+	$('#toggle_rule').removeClass('icon-min').addClass('icon-max');
+	$('#rule').hide();
+}
+$('#toggle_rule').click(function() {
+	// 只记录收缩起来的；默认展开，不记录
+	if($.inArray(fid, rules) == -1) {
+		rules[fid] = fid;
+		$.pdata_keep('rule', fid, true);
+		$('#rule').hide('slow');
+		$('#toggle_rule').removeClass('icon-min').addClass('icon-max');
+	} else {
+		// 删除某个元素，拜jquery神器所赐，又是寥寥一行搞定。
+		rules = $.map(rules, function(n) {return n == fid ? null : n});
+		$.pdata_keep('rule', fid, false);
+		$('#rule').show('fast');
+		$('#toggle_rule').removeClass('icon-max').addClass('icon-min');
+	}
+});
+
+bind_document_keyup_page();
+
+</script>
+
+<!--{hook forum_index_15.htm}-->
+
+$conf[footer_js]
+
+</body>
+</html>

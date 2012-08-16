@@ -1,0 +1,90 @@
+<!--{include header.htm}-->
+	<dl>
+		<dd style="border: 1px solid #f00; position: relative;">xxxxxxxx<textarea name="message" id="update_message_0" style="width: 680px; height: 300px; border: 0px;">eeeeeeeeeeee$post[message_html]</textarea>xxxxxxxxxxx</dd>
+	</dl>
+<!--{include footer.htm}-->
+
+<link href="view/js/editor/editor.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+
+function attach_file_type(type) {
+	var type = type.substr(1);
+	var filetypes = $filetyps;
+	for(k in filetypes) {
+		if($.inArray(type, filetypes[k]) != -1) {
+			return k;
+		}
+	}
+	return 'unknown';
+}
+
+
+$(function() {
+
+	$.xload('view/js/editor/swfupload.js', "view/js/editor/editor.js?"+Math.random(), function() {
+		$('#update_message_$pid').editor({
+			onmax: function(_this) {
+				var width = $(window).width() * 90 / 100;
+				var height = $(window).height() - 165;
+				_this.set_width(width);
+				_this.set_height(height);
+			}, 
+			onmin: function(_this) {
+				_this.set_width(650);
+				_this.set_height(300);
+			},
+			onctrlenter: function(_this) {
+				$('#update_submit_$pid').trigger('click');
+			},
+			baseurl: 'view/js/editor/'});
+		
+			
+		
+		$('#update_message_$pid')[0].editor._focus();
+		$('#update_submit_$pid').click(function() {
+			$('div.alert').remove();
+			$('#update_notice_$pid').html('正在提交，请稍后 ...').show();
+			var postdata = $("#update_form_$pid").serialize();
+			$.post($('#update_form_$pid').attr('action'), postdata,  function(json){
+				$('#update_notice_$pid').html('').hide();
+				if(error = json_error(json)) {alert(error); return false;}
+	
+				json = json.message;
+				
+				if(json.subject) {
+					$('#update_subject_$pid').alert(json.subject).focus();
+					return false;
+				}
+				if(json.message) {
+					$('#update_message_$pid').parent().alert(json.message).focus();
+					return false;
+				}
+				
+				// 更新当前页面
+	<!--{if $isfirst}-->	$('#subject_$tid').html($('#update_subject_$pid').val());	<!--{/if}-->
+	 			$('#message_$pid').html($('#update_message_$pid').val());
+	 		
+	 			// 更新 pdata数据
+				$('#update_message_$pid')[0].editor.set('');
+				
+	 			// 销毁编辑器
+	 			dialog.set_body('<div class="ok">编辑成功！</div>');
+		 		setTimeout(function() {dialog.close();}, 500);
+				
+			  }, "json");
+			return false;
+		});
+		
+		$('#update_cancel_$pid').click(function() {
+			dialog.close();
+		});
+	});
+
+
+});
+</script>
+
+
+</body>
+</html>
+

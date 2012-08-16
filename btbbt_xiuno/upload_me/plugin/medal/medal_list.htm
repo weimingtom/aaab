@@ -1,0 +1,36 @@
+<!--{include header.htm}-->
+
+<link href="{$plugin_url}my.css" type="text/css" rel="stylesheet" />
+
+<div class="width">
+	<div class="left border shadow bg2">
+		<ul class="left_menu">
+			<li class="checked"><a href="?medal-list.htm">勋章中心</a></li>
+			<li><a href="?medal-my.htm">我的勋章</a></li>
+		</ul>
+	</div>
+	
+	<div class="div">
+		<div class="header">勋章中心</div>
+		<div class="body">
+			<table width="100%">			
+			<!--{loop $medallist $v}-->
+				<tr>
+				<td width="50"><img src="$v[picture]" /></td> 
+				<td width="140"><span class="grey">【$v[medalname]】</span> </td> 
+				<td width="440">$v[description]</td> 
+				<td><span class="grey" style="float:right">$v[receive]</span></td> 
+				</tr>
+			<!--{/loop}-->
+			</table>
+		<div class="footer"></div>
+	</div>
+	<div class="page" style="text-align: center;">$pages</div>
+</div>	
+
+<!--{include footer.htm}-->
+
+$conf[footer_js]
+
+</body>
+</html>

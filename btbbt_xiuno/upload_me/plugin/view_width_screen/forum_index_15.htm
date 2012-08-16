@@ -1,0 +1,10 @@
+<script type="text/javascript">
+// 默认5秒后，关闭版规
+setTimeout(function() {
+	rules[fid] = fid;
+	$.pdata_keep('rule', fid, true);
+	$('#toggle_rule').removeClass('icon-min').addClass('icon-max');
+	$('#rule').hide('slow');
+}, 8000);
+
+</script>
