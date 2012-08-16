@@ -5,7 +5,7 @@
 			<p style="line-height: 20px;"><span class="grey">注册时间：</span>$you[regdate_fmt]</p>
 			<p style="line-height: 20px;"><span class="grey">最后活跃：</span>$you[lastactive_fmt]</p>
 			<p style="line-height: 20px;"><span class="grey">在线状态：</span><!--{if $you[isonline]}--><span class="icon icon-online"></span><b class="red">在线</b><!--{else}--><span class="icon icon-offline"></span>离线<!--{/if}--></p>
-			<!--{hook you_info_1.htm}-->
+			<!--{hook you_info_td_1.htm}-->
 		</td>
 		<td width="40%">
 			<p style="line-height: 20px;"><span class="grey">主题：</span><a href="?you-post-uid-$you[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline">$you[myposts]</b></a><span class="small" title="回复"> / $you[posts]</span></p>
@@ -17,16 +17,16 @@
 			<!--{/if}-->
 			<!--{/if}-->
 			
-			<!--{hook you_info_2.htm}-->
+			<!--{hook you_info_td_2.htm}-->
 		</td>
 		<td width="15%">
 			<p style="line-height: 20px;"><span class="grey">关注：</span><a href="?you-follow-uid-$you[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline;">$you[follows]</b></a></p>
 			<p style="line-height: 20px;"><span class="grey">粉丝：</span><a href="?you-followed-uid-$you[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline;">$you[followeds]</b></a></p>
-			<!--{hook you_info_3.htm}-->
+			<!--{hook you_info_td_3.htm}-->
 		</td>
 	</tr>
 	
-	<!--{hook you_info_4.htm}-->
+	<!--{hook you_info_tr_1_after.htm}-->
 	
 	<!--{if $_user[groupid] == 1}-->
 	<tr>
@@ -44,7 +44,7 @@
 	</tr>
 	<!--{/if}-->
 	
-	<!--{hook you_info_5.htm}-->
+	<!--{hook you_info_tr_3_after.htm}-->
 	
 	<!--{if $you[signature]}-->
 	<tr>
@@ -57,7 +57,7 @@
 	</tr>
 	<!--{/if}-->
 	
-	<!--{hook you_info_6.htm}-->
+	<!--{hook you_info_5_after.htm}-->
 	
 	<tr>
 		<td colspan="3" height="10"><hr /></td>
@@ -79,7 +79,8 @@
 				<!--{/if}-->
 			<!--{/if}-->
 			
-			<!--{hook you_info_7.htm}-->
+			<!--{hook you_info_follow_after.htm}-->
+			
 			<!--{if $you[homepage]}-->
 			<a href="$you[homepage]" target="_blank"><span class="icon icon-myhome"></span>个人空间</a>
 			<!--{/if}-->
@@ -90,6 +91,6 @@
 		</td>
 	</tr>
 	
-	<!--{hook you_info_8.htm}-->
+	<!--{hook you_info_last_tr.htm}-->
 	
 </table>

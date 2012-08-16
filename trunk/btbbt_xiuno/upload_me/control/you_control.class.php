@@ -35,7 +35,7 @@ class you_control extends common_control {
 		$this->_title[] = $user['username'].'的个人资料';
 		$this->_nav[] = '个人资料';
 		
-		// hook you_index.php
+		// hook you_index_after.php
 		$this->view->display('you_index.htm');
 	}
 	
@@ -43,7 +43,7 @@ class you_control extends common_control {
 	public function on_profile() {
 
 		//$this->view->assign('mypostlist', $mypostlist);
-		// hook you_profile.php
+		// hook you_profile_after.php
 		$this->view->display('you_profile_ajax.htm');
 	}
 	
@@ -121,7 +121,7 @@ class you_control extends common_control {
 		$this->view->display('you_followed.htm');
 	}
 	
-	//hook you_control.php
+	//hook you_control_after.php
 }
 
 ?>

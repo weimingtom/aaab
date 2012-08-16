@@ -423,7 +423,11 @@ class core {
 				$paths = array_keys($plugins);
 				foreach($paths as $path) {
 					$controlfile = $path."{$control}_control.class.php";
-					if(is_file($controlfile)) break;
+					if(is_file($controlfile)) {
+						break;
+					} else {
+						$controlfile = '';
+					}
 				}
 			}
 			if(empty($controlfile)) {
@@ -431,7 +435,7 @@ class core {
 			}
 			
 			//empty($_SERVER['lang']) && $_SERVER['lang'] = include $this->conf['lang_file'].'lang.php';
-
+			
 			// 处理 hook  urlrewrite, static_url
 			if(!is_file($controlfile)) {
 				throw new Exception("您输入的URL 不合法，{$control} control 不存在。");

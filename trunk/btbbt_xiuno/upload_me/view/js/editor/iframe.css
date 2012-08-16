@@ -48,7 +48,7 @@ p {margin-top: 4px;}
 .grey, .grey a{color: #888888;}
 .grey2, .grey2 a{color: #444444;}
 .xgrey {opacity: 0.5; filter:Alpha(Opacity=50); }/* filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); FILTER: gray;  */
-.code, .quote, pre {border: 1px solid #AAAAAA; background: #D9D9D9; padding: 4px; font-size: 12px; margin-top: 4px; margin-bottom: 4px;}
+.code, .quote, pre {border: 1px solid #AAAAAA; background: #E9E9E9; padding: 4px; font-size: 12px; margin-top: 4px; margin-bottom: 4px;}
 i{color: #888888; font-family: Arial; font-size: 9px; font-style: none;} /* 专门用来显示小字号的数字 */
 .submit {margin-top: 4px;}
 

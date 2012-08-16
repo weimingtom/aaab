@@ -138,7 +138,7 @@ class search_control extends common_control {
 		}
 	}
 	
-	//hook search_control.php
+	//hook search_control_after.php
 }
 
 ?>

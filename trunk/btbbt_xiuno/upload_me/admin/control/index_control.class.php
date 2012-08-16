@@ -39,7 +39,7 @@ class index_control extends admin_control {
 		$this->view->assign('info', $info);
 		$this->view->assign('lastversion', $lastversion);
 		
-		// hook admin_index_main.php
+		// hook admin_index_main_view_before.php
 		
 		$this->view->display('index_main.htm');
 	}
@@ -64,7 +64,7 @@ class index_control extends admin_control {
 		}
         }
         
-        //hook index_control.php
+        //hook index_control_after.php
 
 }
 

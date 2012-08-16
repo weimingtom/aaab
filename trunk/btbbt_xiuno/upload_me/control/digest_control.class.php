@@ -56,6 +56,7 @@ class digest_control extends common_control {
 			$thread = $this->thread->get($fid, $tid);
 			$this->check_thread_exists($thread);
 			$this->thread->format($thread);
+			$thread['subject_cut'] = utf8::substr($thread['subject'], 0, 18);
 			
 			// 板块权限检查
 			//$forum = $this->forum->read($fid);
@@ -132,7 +133,7 @@ class digest_control extends common_control {
 		}
 	}
 	
-	//hook digest_control.php
+	//hook digest_control_after.php
 }
 
 ?>

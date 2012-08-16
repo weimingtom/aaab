@@ -29,7 +29,7 @@ class online_control extends common_control {
 		$this->view->display('online_ajax.htm');
 	}
 	
-	//hook online_control.php
+	//hook online_control_after.php
 	
 }
 

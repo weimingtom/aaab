@@ -1,8 +1,8 @@
 <?php
 
 return 	array (
-	'enable' => 1,			// 是否启用?
-	'installed' => 1,		// 已经安装?
+	'enable' => 0,			// 是否启用?
+	'installed' => 0,		// 已经安装?
 	'name'=>'防灌水机插件',		// 插件名
 	'brief'=>'防止机器发帖。',
 	'version'=>'1.0',		// 插件版本

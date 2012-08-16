@@ -11,15 +11,15 @@ window.onerror = function() {
 }
 */
 
-function isset(k) {
-	var t = typeof k;
-	return t != 'undefined' && t != 'unknown';
-}
-
 function htmlspecialchars(s) {
 	s = s.replace(/</gi, "&lt;" );
 	s = s.replace(/>/gi, "&gt;" );
 	return s;
+}
+
+function isset(k) {
+	var t = typeof k;
+	return t != 'undefined' && t != 'unknown';
 }
 
 function trace(s) {
@@ -60,7 +60,6 @@ function print_r_real(arrlist, level) {
 		return '';
 	}
 }
-
 
 // 转换为 int
 function to_int(s) {

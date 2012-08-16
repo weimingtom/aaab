@@ -12,15 +12,15 @@
 	<meta name="MSSmartTagsPreventParsing" content="True" />
 	<meta http-equiv="MSThemeCompatible" content="Yes" />
 	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-	<!--{hook header_0.htm}-->
+	<!--{hook header_css_before.htm}-->
 	<link href="view/common.css" type="text/css" rel="stylesheet" />
-	<!--{hook header_1.htm}-->
+	<!--{hook header_css_after.htm}-->
 	<script type="text/javascript">
 	var cookiepre = '$conf[cookiepre]';
 	</script>
 </head>
 <body>
-<!--{hook header_2.htm}-->
+<!--{hook header_header_before.htm}-->
 <div id="header">
 	<div class="width">
 		<table cellpadding="0" cellspacing="0" width="100%">
@@ -28,13 +28,13 @@
 				<td class="left">
 					<a href="./"><span id="logo"></span></a>
 				</td>    
-				<td class="center"><!--{hook header_3.htm}--></td>
+				<td class="center"><!--{hook header_logo_after.htm}--></td>
 				<td class="right">
 					<span id="user">
-					<!--{hook header_4.htm}-->
+					<!--{hook header_user_start.htm}-->
 					<!--{if $_user['groupid'] == 0}-->
-						<a href="?user-login-ajax-1.htm" class="ajaxdialog" onclick="return false">登录</a>
-						<a href="?user-create-ajax-1.htm" class="ajaxdialog" onclick="return false">注册</a>
+						<a href="?user-login-ajax-1.htm" class="ajaxdialog" onclick="return false" rel="nofollow">登录</a>
+						<a href="?user-create-ajax-1.htm" class="ajaxdialog" onclick="return false" rel="nofollow">注册</a>
 					<!--{else}-->
 						<a href="?my-profile.htm">$_user[username]</a>
 						<span class="small grey">($_user[groupname])</span>
@@ -58,42 +58,44 @@
 			
 						<a href="?user-logout.htm" class="ajaxdialog" onclick="return false">退出</a>
 					<!--{/if}-->
-					<!--{hook header_5.htm}-->
+					<!--{hook header_user_end.htm}-->
 					</span>
 				</td>
 			</tr>
 		</table>
 	</div>
 </div>
-<!--{hook header_6.htm}-->
+
+<!--{hook header_header_after.htm}-->
+
 <div id="menu">
 	<div class="width">
 		<table cellpadding="0" cellspacing="0" width="100%">
 			<tr>
-				<td class="left"><!--{hook header_7.htm}--></td>
+				<td class="left"><!--{hook header_menu_td_left.htm}--></td>
 				<td class="center">
-					<!--{hook header_8.htm}-->
+					<!--{hook header_menu_start.htm}-->
 					<a href="./" $_checked[bbs] target="_top">论坛</a>				<span class="sep"></span>
-					<!--{hook header_9.htm}-->
+					<!--{hook header_menu_middle.htm}-->
 					<a href="?digest.htm" $_checked[digest] target="_top">精华手册</a>
-					<!--{hook header_10.htm}-->
+					<!--{hook header_menu_end.htm}-->
 				</td>
 				<td class="right">
-					<!--{hook header_11.htm}-->
+					<!--{hook header_menu_search_before.htm}-->
 					<!--{if $conf[search_type]}-->
 					<form action="?search-index.htm" target="_blank" id="search_form" method="post">
 						<span id="search"><input type="text" id="search_keyword" name="keyword" /></span>
 					</form>
 					<!--{/if}-->
-					<!--{hook header_12.htm}-->
+					<!--{hook header_menu_search_after.htm}-->
 				</td>
 			</tr>
 		</table>
 	</div>
 </div>
 
-<!--{hook header_13.htm}-->
+<!--{hook header_menu_after.htm}-->
 
 <div id="body">
 
-<!--{hook header_14.htm}-->
+<!--{hook header_body_start.htm}-->

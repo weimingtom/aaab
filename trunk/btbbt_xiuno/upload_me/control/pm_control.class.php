@@ -48,12 +48,12 @@ class pm_control extends common_control {
 		if($user['newpms'] > 0) {
 			$userlist = $this->pmnew->get_new_userlist($uid);
 			
-			// hook pm_new_1.php
+			// hook pm_new_before.php
 			
 			$this->message($userlist, 1);
 		} else {
 			
-			// hook pm_new_2.php
+			// hook pm_new_no_before.php
 			$this->message('没有短消息', 2);
 		}
 		
@@ -226,7 +226,7 @@ class pm_control extends common_control {
 		
 	}
 	
-	//hook pm_control.php
+	//hook pm_control_after.php
 	
 }
 

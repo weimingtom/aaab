@@ -1,5 +1,5 @@
 	<!--{loop $threadlist $thread}-->
-		<!--{hook forum_index_type_0_1.htm}-->
+		<!--{hook forum_index_type_0_start.htm}-->
 		<table width="100%" cellspacing="0" cellpadding="0" tid="$thread[tid]" style="table-layout: fixed;">
 			<tr height="32">
 				<td valign="middle" class="subject">
@@ -16,11 +16,11 @@
 					</a>
 					
 					<!--{if $thread[top]}-->
-					<span class="icon icon-top-$thread[top]" style="margin-right: 2px;"></span>
+					<span class="icon icon-top-$thread[top]" style="margin-right: 2px;" title="置顶主题"></span>
 					<!--{/if}-->
 				
 					<!--{if $thread[digest]}-->
-					<span class="icon icon-digest-$thread[digest]" style="margin-right: 2px;"></span>
+					<span class="icon icon-digest-$thread[digest]" style="margin-right: 2px;" title="精华主题"></span>
 					<!--{loop $thread[catelist] $cateid $catename}-->
 					<a href="?digest.htm#$cateid-$thread[fid]-$thread[tid]" target="_blank" class="small{if $thread[digest]} digest_$thread[digest]{/if}">[$catename]</a>
 					<!--{/loop}-->
@@ -30,11 +30,11 @@
 					 [<a href="?forum-index-fid-$fid-typeid-$thread[typeid].htm" target="_blank">$thread[typename]</a>]
 				 	<!--{/if}-->
 				 	
-					 <!--{hook forum_index_type_0_2.htm}-->
+					 <!--{hook forum_index_type_0_subject_before.htm}-->
 					<a href="?thread-index-fid-$thread[fid]-tid-$thread[tid].htm"{if $thread[digest]} class="digest_$thread[digest]"{/if} title="$thread[subject]">$thread[subject]</a>
-					<!--{hook forum_index_type_0_3.htm}-->
+					<!--{hook forum_index_type_0_subject_after.htm}-->
 				</td>
-				<!--{hook forum_index_type_0_4.htm}-->
+				<!--{hook forum_index_type_0_username_before.htm}-->
 				<td width="80" class="grey username">
 					<a href="?you-profile-uid-$thread[uid]-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}" title="$thread[username]">$thread[username]</a><br />
 					<i>$thread[dateline_fmt]</i>
@@ -48,6 +48,6 @@
 				</td>
 			</tr>
 		</table>
-		<!--{hook forum_index_type_0_5.htm}-->
+		<!--{hook forum_index_type_0_end.htm}-->
 		<hr />
 	<!--{/loop}-->

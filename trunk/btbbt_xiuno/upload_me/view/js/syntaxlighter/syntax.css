@@ -359,6 +359,7 @@
   color: #2a00ff !important;
 }
 div.syntaxhighlighter div.toolbar {display: none !important; }
-div.syntaxhighlighter {border: 1px solid #AAAAAA;}
+div.syntaxhighlighter {border: 1px solid #AAAAAA; margin-top: 4px !important;}
 .syntaxhighlighter .line.alt1 {background: #E9E9E9 !important;}
 .syntaxhighlighter .line.alt2 {background: #E9E9E9 !important;}
+.syntaxhighlighter table td.code {background: #E9E9E9 !important;}

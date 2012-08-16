@@ -41,7 +41,7 @@ class follow_control extends common_control {
 		$this->message('成功。', 1);
 	}
 
-	//hook follow_control.php
+	//hook follow_control_after.php
 }
 
 ?>

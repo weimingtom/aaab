@@ -67,7 +67,7 @@ class stat_control extends admin_control {
 		$newthreadslist = $this->statlist_fmt($statlist, 'newthreads');
 		$newuserslist = $this->statlist_fmt($statlist, 'newusers');
 		
-		// hook admin_stat_index.php
+		// hook admin_stat_index_view_before.php
 		
 		$this->view->assign('startdate', $startdate);
 		$this->view->assign('enddate', $enddate);
@@ -109,7 +109,7 @@ class stat_control extends admin_control {
 		return $return;
 	}
 	
-	//hook stat_control.php
+	//hook stat_control_after.php
 }
 
 ?>

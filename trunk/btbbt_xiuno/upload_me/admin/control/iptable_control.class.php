@@ -61,7 +61,7 @@ class iptable_control extends admin_control {
 		$this->view->assign('input', $input);
 		$this->view->assign('error', $error);
 		
-		// hook admin_iptable_black.php
+		// hook admin_iptable_black_view_before.php
 		
 		$this->view->display('iptable.htm');
 	}
@@ -104,7 +104,7 @@ class iptable_control extends admin_control {
 		$this->view->assign('input', $input);
 		$this->view->assign('error', $error);
 		
-		// hook admin_iptable_white.php
+		// hook admin_iptable_white_view_before.php
 		
 		$this->view->display('iptable.htm');
 	}
@@ -113,7 +113,7 @@ class iptable_control extends admin_control {
 		return preg_match('#^\d+\.\d+\.\d+\.\d+$#', $ip) || preg_match('#^\d+\.\d+\.\d+$#', $ip) || preg_match('#^\d+\.\d+$#', $ip);
 	}
 	
-	//hook iptable_control.php
+	//hook iptable_control_after.php
 }
 
 ?>

@@ -17,9 +17,13 @@ class user_control extends common_control {
 	// ajax 登录
 	public function on_login() {
 		
-		// hook user_login_1.php
-		
-		if($this->form_submit()) {
+		// hook user_login_start.php
+		if(!$this->form_submit()) {
+			
+			// hook user_login_before.php
+			$this->view->display('user_login_ajax.htm');
+		} else {
+			
 			$userdb = $error = array();
 			$email = core::gpc('email', 'P');
 			$password = core::gpc('password', 'P');
@@ -29,8 +33,7 @@ class user_control extends common_control {
 				$this->message($error);
 			}
 			
-			// hook user_login_before_check.php
-			
+			// hook user_login_check_before.php
 			$uid = $this->user->get_uid_by_email($email);
 			$userdb = $this->user->get($uid);
 			if(empty($userdb)) {
@@ -49,8 +52,7 @@ class user_control extends common_control {
 				$this->message($error);
 			}
 			
-			// hook user_login_after.php
-			
+			// hook user_login_check_after.php
 			if(misc::values_empty($error)) {
 				$error = array();
 				$error['user']['username'] =  $userdb['username'];
@@ -64,25 +66,22 @@ class user_control extends common_control {
 				$this->update_online();
 			}
 			$this->message($error);
-		} else {
 			
-			// hook user_login_before.php
-			$this->view->display('user_login_ajax.htm');
 		}
 	}
 	
 	public function on_logout() {
-		// hook user_logout_1.php
+		
+		// hook user_logout_start.php
 		$error = array();
-		if($this->form_submit()) {
-			
-			// hook user_logout_after.php
-			misc::set_cookie($this->conf['cookiepre'].'auth', '', 0, '/');
-			$this->message($error);
-		} else {
+		if(!$this->form_submit()) {
 			
 			// hook user_logout_before.php
 			$this->view->display('user_logout_ajax.htm');
+		} else {
+			// hook user_logout_after.php
+			misc::set_cookie($this->conf['cookiepre'].'auth', '', 0, '/');
+			$this->message($error);
 		}
 	}
 	
@@ -91,8 +90,14 @@ class user_control extends common_control {
 		if(!$this->conf['reg_on']) {
 			$this->message('当前注册功能已经关闭。');
 		}
-		// hook user_create_1.php
-		if($this->form_submit()) {
+		
+		// hook user_create_start.php
+		if(!$this->form_submit()) {
+			
+			// hook user_create_before.php
+			$this->view->display('user_create_ajax.htm');
+		} else {
+			
 			// 接受数据
 			$userdb = $error = array();
 			$email = core::gpc('email', 'P');
@@ -166,10 +171,6 @@ class user_control extends common_control {
 				}
 			}
 			$this->message($error);
-		} else {
-			
-			// hook user_create_before.php
-			$this->view->display('user_create_ajax.htm');
 		}
 	}
 	
@@ -189,7 +190,7 @@ class user_control extends common_control {
 			$error = array();
 			try {
 				
-				// hook user_reactive.php
+				// hook user_reactive_before.php
 				$this->send_active_mail($user['uid'], $user['username'], $user['email'], $error);
 				
 				// 更新最后发送的时间，防止重复发送
@@ -248,7 +249,7 @@ class user_control extends common_control {
 		$user['groupid'] = 11;
 		$this->user->update($uid, $user);
 		
-		// hook user_active.php
+		// hook user_active_after.php
 		
 		// 手工设置 cookie.
 		$this->user->set_login_cookie($user);
@@ -269,7 +270,7 @@ class user_control extends common_control {
 		$arr = image::thumb($_FILES['Filedata']['tmp_name'], $destfile, 800, 800);
 		$json = array('width'=>$arr['width'], 'height'=>$arr['height'], 'body'=>$desturl);
 		
-		// hook user_uploadavatar.php
+		// hook user_uploadavatar_after.php
 		$this->message($json, 1);
 	}
 	
@@ -305,7 +306,7 @@ class user_control extends common_control {
 			$user['avatar'] = $_SERVER['time'];
 			$this->user->update($uid, $user);
 			
-			// hook user_clipavatar.php
+			// hook user_clipavatar_after.php
 			$this->message($bigurl, 1);
 		} else {
 			$this->message('保存失败', 0);
@@ -326,11 +327,11 @@ class user_control extends common_control {
 			您在本站注册的账号还需一步完成注册，请点击以下链接激活您的账号：<br />
 			<a href=\"$url\">$url</a>";
 		
-		// hook user_send_active_mail.php
+		// hook user_send_active_mail_after.php
 		$error['emailsend'] = $this->mmisc->sendmail($username, $email, $subject, $message);
 	}
 	
-	//hook user_control.php
+	// hook user_control_after.php
 	
 }
 

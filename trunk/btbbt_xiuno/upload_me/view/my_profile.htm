@@ -19,7 +19,7 @@
 				<tr>
 					<td width="128" valign="top" align="center">
 						<a href="?you-index-uid-$_user[uid].htm" target="_blank"><span class="avatar_big border" style="{if $_user[avatar_big]}background-image: url($_user[avatar_big]);{/if}"></span></a>
-						<!--{hook my_base_1.htm}-->
+						<!--{hook my_base_avatar_after.htm}-->
 					</td>
 					<td valign="top">
 					
@@ -30,7 +30,7 @@
 									<p style="line-height: 20px;"><span class="grey">注册时间：</span>$_user[regdate_fmt]</p>
 									<p style="line-height: 20px;"><span class="grey">最后活跃：</span>$_user[lastactive_fmt]</p>
 									<p style="line-height: 20px;"><span class="grey">在线状态：</span><!--{if $_user[isonline]}--><span class="icon icon-online"></span><b class="red">在线</b><!--{else}--><span class="icon icon-offline"></span>离线<!--{/if}--></p>
-									<!--{hook my_base_2.htm}-->
+									<!--{hook my_base_td_1_end.htm}-->
 								</td>
 								<td width="40%">
 									<p style="line-height: 20px;"><span class="grey">主题：</span><a href="?you-post-uid-$_user[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline">$_user[myposts]</b></a><span class="small" title="回复"> / $_user[posts]</span></p>
@@ -40,16 +40,16 @@
 									<p style="line-height: 20px;"><span class="grey">金币：</span><b style="font-size: 14px;">$_user[golds]</b>枚<!--{if $_user[uid] && $_user[uid] == $_user[uid]}--> &nbsp; <input type="button" class="button smallblue" value="转换" target="_blank" href="?my-exchange.htm" /><!--{/if}--></p>
 									<!--{/if}-->
 									
-									<!--{hook my_base_3.htm}-->
+									<!--{hook my_base_td_2_end.htm}-->
 								</td>
 								<td width="15%">
 									<p style="line-height: 20px;"><span class="grey">关注：</span><a href="?you-follow-uid-$_user[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline;">$_user[follows]</b></a></p>
 									<p style="line-height: 20px;"><span class="grey">粉丝：</span><a href="?you-followed-uid-$_user[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline;">$_user[followeds]</b></a></p>
-									<!--{hook my_base_4.htm}-->
+									<!--{hook my_base_td_3_end.htm}-->
 								</td>
 							</tr>
 							
-							<!--{hook my_base_5.htm}-->
+							<!--{hook my_base_tr_1_after.htm}-->
 							
 							<!--{if $_user[groupid] == 1}-->
 							<tr>
@@ -70,7 +70,7 @@
 							</tr>
 							<!--{/if}-->
 
-							<!--{hook my_base_6.htm}-->
+							<!--{hook my_base_tr_3_after.htm}-->
 							
 							<!--{if $_user[signature]}-->
 							<tr>
@@ -83,21 +83,21 @@
 							</tr>
 							<!--{/if}-->
 							
-							<!--{hook my_base_7.htm}-->
+							<!--{hook my_base_tr_5_after.htm}-->
 						</table>
 						
-						<!--{hook my_base_8.htm}-->
+						<!--{hook my_base_end.htm}-->
 					</td>
 				</tr>
 			</table>
-			<!--{hook my_base_9.htm}-->
+			<!--{hook my_base_table_end.htm}-->
 		</div>
 	</div>
 </div>
 
 <!--{include footer.htm}-->
 
-<!--{hook my_base_10.htm}-->
+<!--{hook my_base_end.htm}-->
 
 $conf[footer_js]
 

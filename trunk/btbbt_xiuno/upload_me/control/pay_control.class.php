@@ -30,7 +30,7 @@ class pay_control extends common_control {
 			$golds = $this->conf['pay_rate'] * $money;
 		}
 		
-		// hook pay_select.php
+		// hook pay_select_after.php
 		$this->view->assign('money', $money);
 		$this->view->assign('golds', $golds);
 		$this->view->display('pay_select.htm');
@@ -60,7 +60,7 @@ class pay_control extends common_control {
 			}
 		} else {
 			
-			// hook pay_callapi.php
+			// hook pay_callapi_after.php
 			
 			$pay = array(
 				'uid'=>$uid,
@@ -238,7 +238,7 @@ EOT;
 					$this->user->update($uid, $user);
 				}
 				
-				// hook pay_alipayrecall.php
+				// hook pay_alipayrecall_after.php
 				echo 'succeed';
 				log::write('支付成功: payid :'.$payid);
 			// 支付失败
@@ -285,7 +285,7 @@ EOT;
 					//$user['golds'] += $this->conf['pay_rate'] * $v_amount;
 					$this->user->update($uid, $user);
 					
-					// hook pay_ebankrecall.php
+					// hook pay_ebankrecall_after.php
 					$this->message("支付成功，您当前的金币为：<b>$user[money]</b>", 1, "?my-pay.htm");
 				} else {
 					$this->message('已经支付成功。');				
@@ -318,11 +318,11 @@ EOT;
 		// 过滤敏感信息
 		$pay2 = array('payid'=>$pay['payid'], 'uid'=>$pay['uid'], 'dateline'=>$pay['dateline'], 'payamount'=>$pay['payamount'], 'paytype'=>$pay['paytype'], 'status'=>$pay['status'], 'money'=>$user['money']);
 		
-		// hook pay_status.php
+		// hook pay_status_after.php
 		$this->message($pay2, 1);
 	}
 
-	//hook pay_control.php
+	//hook pay_control_after.php
 	
 }
 

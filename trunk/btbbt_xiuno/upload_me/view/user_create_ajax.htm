@@ -1,4 +1,7 @@
 <!--{json width:"500",title:"用户注册"}-->
+
+<!--{hook user_create_start.htm}-->
+
 <form action="?user-create-ajax-1.htm" method="post" id="create_form">
 	<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
 	<dl>
@@ -10,18 +13,18 @@
 		<dd><input type="password" name="password" id="create_password" size="24" value="" title="请输入密码" tabindex="3" style="width: 250px;" /></dd>
 		<dt><label for="create_password2">重复密码：</label></dt>
 		<dd><input type="password" name="password2" id="create_password2" size="24" value="" title="请输入密码" tabindex="4" style="width: 250px;" /></dd>
-		<!--{hook user_create_1.htm}-->
+		<!--{hook user_create_submit_before.htm}-->
 		<dt></dt>
 		<dd>
 			<input type="submit" class="button bigblue" id="create_submit_ajax" value="注册" tabindex="5" />
 			<input type="button" class="button biggrey" value="关闭" id="create_cancel"/>
 			<div class="notice" id="create_notice" style="display: none;"></div>
 		</dd>
-		<!--{hook user_create_2.htm}-->
+		<!--{hook user_create_submit_after.htm}-->
 	</dl>
 </form>
 
-<!--{hook user_create_3.htm}-->
+<!--{hook user_create_end.htm}-->
 
 <script type="text/javascript">
 
@@ -123,6 +126,6 @@ function delay_execute(dialog, recall) {
 		dialog.close();
 	});
 	
-	// hook user_create_delay_execute.htm
+	// hook user_create_delay_execute_js.htm
 }
 </script>
