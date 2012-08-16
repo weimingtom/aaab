@@ -1,0 +1,12 @@
+<!--{if !empty($toplist) && count($toplist) > 2}-->
+<script type="text/javascript">
+function auto_scroll(obj) {
+        $(obj).find("ul:first").animate({
+                marginTop:"-21px"
+        },500, function(){
+                $(this).css({marginTop:"0px"}).find("li:first").appendTo(this);
+        });
+}
+setInterval('auto_scroll("#ann")', 2000);
+</script>
+<!--{/if}-->
