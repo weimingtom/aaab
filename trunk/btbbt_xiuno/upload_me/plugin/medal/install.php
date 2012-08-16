@@ -54,7 +54,7 @@ CREATE TABLE `{$tablepre}user_active` (
 	`activetime` int(10) NOT NULL DEFAULT '0' COMMENT '活跃时间',                
 	`createdtime` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
 	PRIMARY KEY (`uid`)
-	KEY `activetime` (`activetime`),
+	KEY `activetime` (`activetime`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='用户活跃表';
 	";
 	$sqlarr = explode(';', $s);
