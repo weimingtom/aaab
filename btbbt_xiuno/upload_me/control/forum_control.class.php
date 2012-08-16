@@ -43,7 +43,7 @@ class forum_control extends common_control {
 		$this->_seo_keywords = $forum['seo_keywords'] ?  $forum['seo_keywords'] : $forum['name'];
 		//$this->_seo_keywords .= ' '.($pforum['seo_keywords'] ?  $pforum['seo_keywords'] : $pforum['name']);
 		
-		// hook forum_index_1.php
+		// hook forum_index_page_before.php
 		
 		$pagesize = $this->conf['pagesize'];
 		$page = misc::page();
@@ -129,7 +129,7 @@ class forum_control extends common_control {
 		}
 	}
 	
-	//hook forum_control.php
+	//hook forum_control_after.php
 }
 
 ?>

@@ -26,7 +26,7 @@ class my_control extends common_control {
 	
 	public function on_index() {
 		
-		// hook my_index.php
+		// hook my_index_before.php
 		$this->on_profile();
 	}
 	
@@ -42,7 +42,7 @@ class my_control extends common_control {
 		$_user = $this->_user;
 		$uid = $_user['uid'];
 			
-		// hook my_profile.php
+		// hook my_profile_after.php
 		$this->view->display('my_profile.htm');
 	}
 	
@@ -78,7 +78,7 @@ class my_control extends common_control {
 		
 		$this->view->assign('error', $error);
 		
-		// hook my_homepage.php
+		// hook my_homepage_after.php
 		$this->view->display('my_homepage.htm');
 	}
 	
@@ -118,7 +118,7 @@ class my_control extends common_control {
 		}
 		
 		$this->view->assign('error', $error);
-		// hook my_password.php
+		// hook my_password_after.php
 		$this->view->display('my_password.htm');
 	}
 	
@@ -132,7 +132,7 @@ class my_control extends common_control {
 		$_user = $this->_user;
 		$uid = $_user['uid'];
 		
-		// hook my_avatar.php
+		// hook my_avatar_after.php
 		$this->view->display('my_avatar.htm');
 	}
 	
@@ -187,7 +187,7 @@ class my_control extends common_control {
 		$this->view->assign('pages', $pages);
 		$this->view->assign('userlist', $followlist);
 		
-		// hook my_follow.php
+		// hook my_follow_after.php
 		$this->view->display('my_follow.htm');
 		
 	}
@@ -210,7 +210,7 @@ class my_control extends common_control {
 		$this->view->assign('pages', $pages);
 		$this->view->assign('userlist', $followedlist);
 		
-		// hook my_followed.php
+		// hook my_followed_after.php
 		$this->view->display('my_followed.htm');
 	}
 	
@@ -431,7 +431,7 @@ class my_control extends common_control {
 	
 	// --------------------> 版主管理日志
 	
-	//hook my_control.php
+	//hook my_control_after.php
 }
 
 ?>

@@ -20,11 +20,11 @@
 						<!--{/if}-->
 					
 					<!--{if $thread[top]}-->
-					<span class="icon icon-top-$thread[top]" style="margin-right: 2px;"></span>
+					<span class="icon icon-top-$thread[top]" style="margin-right: 2px;" title="置顶主题"></span>
 					<!--{/if}-->
 					
 					<!--{if $thread[digest]}-->
-					<span class="icon icon-digest-$thread[digest]" style="margin-right: 2px;"></span>
+					<span class="icon icon-digest-$thread[digest]" style="margin-right: 2px;" title="精华主题"></span>
 					<!--{loop $thread[catelist] $cateid $catename}-->
 					<a href="?digest.htm#$cateid-$thread[fid]-$thread[tid]" target="_blank" class="small{if $thread[digest]} digest_$thread[digest]{/if}">[$catename]</a>
 					<!--{/loop}-->
@@ -34,7 +34,7 @@
 					<div class="grey" style="line-height: 18px; margin-top: 0px; padding-left: 2px; padding-right: 2px; white-space: normal;">$thread[brief]</div>
 					
 				</td>
-				<!--{hook forum_index_type_0_4.htm}-->
+				<!--{hook forum_index_type_0_username_before.htm}-->
 				<td width="80" class="grey username">
 					<a href="?you-profile-uid-$thread[uid]-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}" title="$thread[username]">$thread[username]</a><br />
 					<i>$thread[dateline_fmt]</i>

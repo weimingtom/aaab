@@ -1,18 +1,21 @@
+
+<!--{hook header_body_end.htm}-->
+
 </div>
 
-<!--{hook footer_1.htm}-->
+<!--{hook footer_start.htm}-->
 
 <div id="footer">
 	<div style="height: 35px; padding: 8px;" class="width">
 		<div style="width: 40%; float: left;">
 			$conf[app_copyright]<br />
 			Powered by  <a href="http://www.xiuno.com" target="_blank" class="grey">Xiuno BBS <b>$conf[version]</b></a>
-			<!--{hook footer_2.htm}-->
+			<!--{hook footer_version_after.htm}-->
 		</div>
 		<div style="width: 60%; float: right; text-align: right;">
 			$conf[china_icp]<br />
 			$_SERVER[time_fmt], 耗时:<!--{php echo number_format(microtime(1) - $_SERVER['starttime'], 4);}-->s
-			<!--{hook footer_3.htm}-->
+			<!--{hook footer_time_after.htm}-->
 		</div>
 	</div>
 	<!--{include footer_debug.htm}-->
@@ -81,7 +84,7 @@ function newpm() {
 				
 				if(json.status == 1) {
 					
-					// hook footer_newpm.htm
+					// hook footer_newpm_show_before.htm
 					
 					var userlist = json.message;
 					g_newpm_userlist = userlist;
@@ -117,4 +120,4 @@ newpm_instance.run();
 // 鼠标放在上面，显示最后联系的5个人。
 </script>
 
-<!--{hook footer_4.htm}-->
+<!--{hook footer_end.htm}-->

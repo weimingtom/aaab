@@ -1,18 +1,20 @@
 <!--{json width:"400",height:"200",title:"用户退出"}-->
 
+<!--{hook user_logout_start.htm}-->
+
 <h2 style="text-align: center; margin: 32px;"> 您确定退出吗？</h2>
 <div style="text-align: center">
 	<form action="?user-logout-ajax-1.htm" method="post" id="logout_form">
 		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
-		<!--{hook user_logout_1.htm}-->
+		<!--{hook user_logout_submit_before.htm}-->
 		<input type="submit" class="button bigblue" id="logout_submit" value="退出" tabindex="3" />
 		<input type="button" class="button biggrey" value="关闭" id="logout_cancel"/>
 		<div class="notice" id="logout_notice" style="display: none;"></div>
-		<!--{hook user_logout_2.htm}-->
+		<!--{hook user_logout_submit_after.htm}-->
 	</form>
 </div>
 
-<!--{hook user_logout_3.htm}-->
+<!--{hook user_logout_end.htm}-->
 
 <script type="text/javascript">
 
@@ -51,6 +53,6 @@ function delay_execute(dialog, recall) {
 		dialog.close();
 	});
 	
-	// hook user_logout_delay_execute.htm
+	// hook user_logout_delay_execute_js.htm
 }
 </script>

@@ -52,7 +52,7 @@ dd{width: 84%;}
 							<input type="button" class="button smallblue" id="forumicon_big_button" value="上传图片" />
 						</dd>
 					</div>
-					<!--{hook forum_update_0.htm}-->
+					<!--{hook forum_update_forumicon_after.htm}-->
 					<!--{/if}-->
 					
 					<div style="clear: both; overflow: hidden;">
@@ -81,7 +81,7 @@ dd{width: 84%;}
 					<dt><label for="seo_keywords">SEO 关键词：</label></dt>
 					<dd><input type="text" name="seo_keywords" id="seo_title" value="$forum[seo_keywords]" style="width: 200px" /> <span class="grey">搜索引擎优化，可以填写多个关键词</span></dd>
 					
-					<!--{hook forum_update_1.htm}-->
+					<!--{hook forum_update_threadtype_before.htm}-->
 					
 					<!--{if $forum[fup] != 0}-->
 					<h3 style="clear: both; padding-top: 16px;">设置主题分类</h3>
@@ -163,7 +163,7 @@ dd{width: 84%;}
 					</dd>
 					<!--{/if}-->
 					
-					<!--{hook forum_update_2.htm}-->
+					<!--{hook forum_update_submit_before.htm}-->
 					
 					<dt></dt>
 					<dd>

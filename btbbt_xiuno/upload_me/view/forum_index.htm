@@ -1,55 +1,54 @@
 <!--{include header.htm}-->
 
-<!--{hook forum_index_1.htm}-->
+<!--{hook forum_index_start.htm}-->
 <div class="width">
 
-	<!--{hook forum_index_2.htm}-->
+	<!--{hook forum_index_nav_before.htm}-->
 	<table id="nav" cellpadding="0" cellspacing="0" style="margin-bottom: 4px;">
 		<tr>
 			<td class="left"></td>
 			<td class="center">
 				<a class="icon icon-home" href="./"></a>
 				<span class="sep"></span>
-				<a href="./" id="pforum_link">$pforum[name]</a>
+				<a href="?index-forum-fid-$pforum[fid].htm" id="pforum_link">$pforum[name]</a>
 				<span class="sep"></span>
 				<span>$forum[name]</span>
-				<!--{hook forum_index_3.htm}-->
+				<!--{hook forum_index_nav_center.htm}-->
 			</td>
-			<!--{hook forum_index_4.htm}-->
+			<!--{hook forum_index_nav_td_center_after.htm}-->
 			<td width="60">
 				
-				<!--{hook forum_index_5.htm}-->
+				<!--{hook forum_index_orderby_before.htm}-->
 				
 				<div class="border bg2" id="nav_orderby" style="padding-left: 6px; padding-top: 2px; width: 40px; float: left;">
 					<a href="?forum-index-fid-$fid-page-$page.htm" class="icon icon-orderby-0  $_checked[orderby][0]" title="顶贴时间排序" rel="nofollow"></a>
 					<a href="?forum-index-fid-$fid-page-$page.htm" class="icon icon-orderby-1  $_checked[orderby][1]" title="发帖时间排序" rel="nofollow"></a>
 				</div>
 				
-				<!--{hook forum_index_7.htm}-->
+				<!--{hook forum_index_orderby_after.htm}-->
 				
 			</td>
-			<!--{hook forum_index_8.htm}-->
+			<!--{hook forum_index_nav_td_post_before.htm}-->
 			<td width="80"><input type="button" value=" 发新帖 " class="button smallblue ajaxdialog" href="?post-thread-fid-$fid-ajax-1.htm" ajaxdialog="{fullicon: true}" onclick="return false;" id="create_thread" /></td>
-			<!--{hook forum_index_9.htm}-->
+			<!--{hook forum_index_nav_td_right_before.htm}-->
 			<td class="right"></td>
 		</tr>
 	</table>
 	
-	<!--{hook forum_index_10.htm}-->
+	<!--{hook forum_index_nav_after.htm}-->
 	
 	<!--{if $page == 1 && empty($typeid)}-->
 	<div class="bg2 border shadow" style="padding: 6px; padding-top: 0px; margin-bottom: 4px;">
-		<h3>
+		<p>
 			<a href="javascript:void(0)" class="icon icon-min" style="float: right;" id="toggle_rule"></a>
-			$forum[name] &nbsp; 
-			<span class="clear">
+			<span>
 				<span class="grey">主题：</span><b>$forum[threads]</b> &nbsp; 
 				<span class="grey">今日：</span><b class="blue">$forum[todayposts]</b> &nbsp; 
 				<!--{if $pforum[modlist] || $forum[modlist]}-->
-				<span class="grey">版主：</span><!--{loop $pforum[modlist] $modid $modname}--><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}"><b title="大区版主"><span class="icon-group icon-group-2" style="width: 12px;"></span>$modname</b></a><!--{/loop}--><!--{loop $forum[modlist] $modid $modname}--><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}"><span class="icon-group icon-group-3" style="width: 12px;"></span>$modname</a><!--{/loop}-->
+				<span class="grey">版主：</span><!--{loop $pforum[modlist] $modid $modname}--><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}" rel="nofollow"><b title="大区版主"><span class="icon-group icon-group-2" style="width: 12px;"></span>$modname</b></a><!--{/loop}--><!--{loop $forum[modlist] $modid $modname}--><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}" rel="nofollow"><span class="icon-group icon-group-3" style="width: 12px;"></span>$modname</a><!--{/loop}-->
 				<!--{/if}-->
 			</span>
-		</h3>
+		</p>
 		<div id="rule" style="display: none;">
 			<!--{if $forum[rule]}-->
 			<hr style="margin-top: 2px;" />
@@ -61,11 +60,11 @@
 	</div>
 	<!--{/if}-->
 	
-	<!--{hook forum_index_11.htm}-->
+	<!--{hook forum_index_threadlist_before.htm}-->
 	
 	<!--{if $forum[typelist]}-->
 	<div class="page tab" style="" id="threadtype">
-		<a href="?forum-index-fid-$fid.htm" $_checked[typeid][0]>全部</a><!--{loop $forum[typelist] $_typeid $_typename}--><a href="?forum-index-fid-$fid-typeid-$_typeid.htm" $_checked[typeid][$_typeid]>$_typename</a><!--{/loop}-->
+		<a href="?forum-index-fid-$fid.htm" $_checked[typeid][0] rel="nofollow">全部</a><!--{loop $forum[typelist] $_typeid $_typename}--><a href="?forum-index-fid-$fid-typeid-$_typeid.htm" $_checked[typeid][$_typeid] rel="nofollow">$_typename</a><!--{/loop}-->
 	</div>
 	<!--{/if}-->
 	<div class="div">
@@ -95,7 +94,7 @@
 	</div>
 	<div class="page" style="margin: auto; margin-top: 0px; text-align: center; clear: both;">$pages</div>
 	
-	<!--{hook forum_index_12.htm}-->
+	<!--{hook forum_index_threadlist_after.htm}-->
 	
 	<!--{if $ismod}-->
 	<div style="text-align: center; margin-top: 8px;">
@@ -107,11 +106,11 @@
 		<input type="button" class="button smallblue" id="mod_digest"  value="精华分类" />
 		<input type="button" class="button smallblue" id="mod_move"  value="移动" />
 		<input type="button" class="button smallblue" id="mod_delete"  value="删除" />
-		<!--{hook forum_index_13.htm}-->
+		<!--{hook forum_index_mode_middle.htm}-->
 	</div>
 	<!--{/if}-->
 	
-	<!--{hook forum_index_14.htm}-->
+	<!--{hook forum_index_mod_after.htm}-->
 	
 </div>	
 
@@ -275,7 +274,7 @@ bind_document_keyup_page();
 
 </script>
 
-<!--{hook forum_index_15.htm}-->
+<!--{hook forum_index_end.htm}-->
 
 $conf[footer_js]
 

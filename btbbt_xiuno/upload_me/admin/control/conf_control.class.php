@@ -90,7 +90,7 @@ class conf_control extends admin_control {
 			$post['site_pv'] = intval(core::gpc('site_pv', 'P'));
 			$post['site_runlevel'] = intval(core::gpc('site_runlevel', 'P'));
 			
-			// hook admin_conf_base_1.php
+			// hook admin_conf_base_gpc_after.php
 			
 			// check 数据格式
 			$error['app_name'] = $this->check_app_name($post['app_name']);
@@ -150,7 +150,7 @@ class conf_control extends admin_control {
 				$this->mconf->set_to('site_pv', $post['site_pv']);
 				$this->mconf->set_to('site_runlevel', $post['site_runlevel']);
 				
-				// hook admin_conf_base_2.php
+				// hook admin_conf_base_set_after.php
 				
 				//$this->mconf->set_to('tmp_path', $post['tmp_path']);
 				$this->mconf->save();
@@ -200,7 +200,7 @@ class conf_control extends admin_control {
 		$input['site_pv'] = form::get_text('site_pv', $bbs['site_pv'], 70);
 		$input['site_runlevel'] = form::get_radio('site_runlevel', array(0=>'所有人可访问', 1=>'会员可访问', 2=>'版主可访问', 3=>'管理员可访问'), $bbs['site_runlevel']);
 		
-		// hook admin_conf_base_3.php
+		// hook admin_conf_base_input_after.php
 		
 		$maxtid = $this->thread->maxid();
 		
@@ -244,7 +244,7 @@ class conf_control extends admin_control {
 				$this->conf['pay_rate'] = $pay_rate;
 			}
 			
-			// hook admin_conf_pay_1.php
+			// hook admin_conf_pay_after.php
 			
 			include $bbsconfile;
 			
@@ -275,7 +275,7 @@ class conf_control extends admin_control {
 					$s = $this->replace_key_value('key', $key, $s);
 					file_put_contents($conffile, $s);
 					
-					// hook admin_conf_3.php
+					// hook admin_conf_ebank_submit_after.php
 					
 					$this->mconf->set_to('ebank_on', $ebank_on, $bbsconfile);
 					$this->mconf->save($bbsconfile);
@@ -284,7 +284,7 @@ class conf_control extends admin_control {
 				}
 			}
 			
-			// hook admin_conf_pay_2.php
+			// hook admin_conf_pay_view_before.php
 			
 			include $conffile;
 			$input['v_mid'] = form::get_text('v_mid', $v_mid, 300);
@@ -324,7 +324,7 @@ class conf_control extends admin_control {
 				}
 			}
 			
-			// hook admin_conf_pay_3.php
+			// hook admin_conf_pay_view_before.php
 
 			include $conffile;
 			$input['partner'] = form::get_text('partner', $partner, 300);
@@ -360,14 +360,14 @@ class conf_control extends admin_control {
 			
 			$input['banklist_on'] = form::get_radio_yes_no('banklist_on', $this->conf['banklist_on']);
 			
-			// hook admin_conf_pay_4.php
+			// hook admin_conf_pay_view_before.php
 			
 		} elseif($tab == 'sms') {
 			
-			// hook admin_conf_pay_5.php
+			// hook admin_conf_pay_sms_view_before.php
 		}
 		
-		// hook admin_conf_pay_6.php
+		// hook admin_conf_pay_view_before.php
 		
 		$this->view->assign('error', $error);
 		$this->view->assign('input', $input);
@@ -417,7 +417,7 @@ return array(
 			file_put_contents($conffile, $s);
 			$mail_smtplist = $smtplist;
 			
-			// hook admin_conf_mail_1.php
+			// hook admin_conf_mail_view_before.php
 			
 		}
 		
@@ -428,7 +428,7 @@ return array(
 		$this->view->assign('smtplist', $smtplist);
 		$this->view->assign('input', $input);
 		
-		// hook admin_conf_mail_2.php
+		// hook admin_conf_mail_view_before.php
 		
 		$this->view->display('conf_mail.htm');
 	}
@@ -493,7 +493,7 @@ return array(
 			$n = $this->online->count();
 			$this->runtime->update_bbs('onlines', $n);
 		}
-		// hook admin_conf_cache.php
+		// hook admin_conf_cache_view_before.php
 		
 		$this->view->display('conf_cache.htm');
 	}

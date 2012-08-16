@@ -2,6 +2,8 @@
 
 <link href="view/my.css" type="text/css" rel="stylesheet" />
 
+<!--{hook my_avatar_before.htm}-->
+
 <div class="width">
 
 	<!--{include my_nav_widget.htm}-->
@@ -16,7 +18,7 @@
 
 		<div class="bg1 border shadow">
 			<div style="width: 400px; padding: 8px;">
-				<!--{hook my_avatar_1.htm}-->
+				<!--{hook my_avatar_start.htm}-->
 				<div>
 					<span class="avatar_big border" style="{if $_user[avatar_big]}background-image: url($_user[avatar_big]);{/if}" id="avatar_big"></span>
 				</div>
@@ -24,15 +26,13 @@
 					<input type="button" class="button smallblue" id="avatar_button" value="修改头像" />
 					<div class="notice" id="notice" style="display: none;"></div>
 				</div>
-				<!--{hook my_avatar_2.htm}-->
+				<!--{hook my_avatar_end.htm}-->
 			</div>
 		</div>
 	</div>
 </div>	
 
 <!--{include footer.htm}-->
-
-<!--{hook my_avatar_3.htm}-->
 
 <script type="text/javascript" src="view/js/clipimg/swfupload.js"></script>
 <script type="text/javascript" src="view/js/clipimg/clipimg.js"></script>
@@ -50,7 +50,7 @@ $('#avatar_big').clipimg({
 });
 </script>
 
-<!--{hook my_avatar_4.htm}-->
+<!--{hook my_avatar_after.htm}-->
 
 $conf[footer_js]
 

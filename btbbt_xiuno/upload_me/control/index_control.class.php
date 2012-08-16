@@ -17,7 +17,7 @@ class index_control extends common_control {
 	
 	// 给插件预留个位置
 	public function on_index() {
-		// hook index_index.php
+		// hook index_index_before.php
 		
 		$this->on_bbs();
 	}
@@ -58,7 +58,37 @@ class index_control extends common_control {
 		$this->view->display('index.htm');
 	}
 	
-	//hook index_control.php
+	// 显示某个大区下的板块
+	public function on_forum() {
+		
+		// hook index_forum_before.php
+		
+		$this->_title[] = $this->conf['seo_title'] ? $this->conf['seo_title'] : $this->conf['app_name'];
+		$this->_seo_keywords = $this->conf['seo_keywords'];
+		$this->_seo_description = $this->conf['seo_description'];
+		
+		$fid = intval(core::gpc('fid'));
+		// 版块数据
+		$catelist = $this->mcache->read('forumlist');
+		if(empty($catelist["forum-fid-$fid"])) {
+			$this->message('板块不存在。');
+		}
+		$cate = $catelist["forum-fid-$fid"];
+		$col = $cate['indexforums'];
+		if($col > 0) {
+			$cate['forumlist_chunk'] = array_chunk($cate['forumlist'], $col);
+			$last = ceil(count($cate['forumlist']) / $col);
+			$cate['forumlist_chunk'][$last - 1] = array_pad($cate['forumlist_chunk'][$last - 1], $col, array());
+			$cate['width'] = ceil(100 / $col).'%';	// 百分比
+		}
+		$this->view->assign('cate', $cate);
+		
+		// hook index_forum_after.php
+		
+		$this->view->display('index_forum.htm');
+	}
+	
+	//hook index_control_after.php
 }
 
 ?>

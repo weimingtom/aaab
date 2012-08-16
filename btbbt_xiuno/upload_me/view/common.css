@@ -32,7 +32,7 @@ p {margin-top: 4px;}
 /* 区块定义，四种区块样式 */
 .box {padding: 4px;}
 .border {overflow: hidden; _zoom: 1; border-color: #D9D9D9; border-style: solid; border-width: 1px; border-radius: 4px; -moz-border-radius: 4px 4px 4px 4px; -khtml-border-radius: 4px;-webkit-border-radius: 4px; }
-.shadow {/*filter: progid:DXImageTransform.Microsoft.Shadow(color='#AAAAAA', Direction=135, Strength=3);*/ box-shadow: rgba(0,0,0,0.3) 0 1px 3px; -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); -webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;}
+.shadow {/*filter: progid:DXImageTransform.Microsoft.Shadow(color='#AAAAAA', Direction=135, Strength=3);*/ box-shadow: rgba(0,0,0,0.1) 0 2px 2px; -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35); -webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;}
 .bg1 {background: #FFFFFF}
 .bg2 {background: #FAFAFA;}
 .bg3 {background: #E9E9E9} 
@@ -48,8 +48,8 @@ p {margin-top: 4px;}
 .grey, .grey a{color: #888888;}
 .grey2, .grey2 a{color: #444444;}
 .xgrey {opacity: 0.5; filter:Alpha(Opacity=50); }/* filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1); FILTER: gray;  */
-.code, .quote, pre {border: 1px solid #AAAAAA; background: #D9D9D9; padding: 4px; font-size: 12px; margin-top: 4px; margin-bottom: 4px;}
-i{color: #888888; font-family: Arial; font-size: 9px; font-style: none;} /* 专门用来显示小字号的数字 */
+.code, .quote, pre {border: 1px solid #AAAAAA; background: #E9E9E9; padding: 4px; font-size: 12px; margin-top: 4px; margin-bottom: 4px;}
+i{color: #888888; font-family: Arial; font: none; font-size: 9px;} /* 专门用来显示小字号的数字 */
 .submit {margin-top: 4px;}
 
 /* 表单结果提示，醒目，比较大 <div class="error"> */
@@ -194,7 +194,7 @@ a.button.smallgrey:active span{background-position: 0 -550px;}
 /* 常见的组合 */
 
 /* 一块内容的样式 */
-div.div {margin: auto; margin-bottom: 8px; background: #FAFAFA url(image/bg5.gif) repeat-x; overflow: hidden; _zoom: 1; border: 1px solid #D9D9D9; border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; -webkit-border-radius: 4px;}
+div.div {margin: auto; margin-bottom: 12px; background: #FAFAFA url(image/bg5.gif) repeat-x; overflow: hidden; _zoom: 1; border: 1px solid #D9D9D9; border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; -webkit-border-radius: 4px;}
 div.div div.header {padding: 4px; border-bottom: 1px solid #D9D9D9; font-weight: 800; height: 20px; line-height: 20px; overflow: hidden; text-shadow: 1px 1px 0 #FFFFFF; }
 div.div div.header span.left {}
 div.div div.header span.right {width: 300px; float: right; text-align: right;}
@@ -274,7 +274,7 @@ span.nopic {width: 54px; height: 54px; background: url(image/nopic.gif) no-repea
 	#user #pm_userlist a {color: #454545; display: block; float: left; width: 100%; padding: 4px 0px; text-indent: 4px; text-decoration: none;}
 	#user #pm_userlist a:hover {background: #BB0000; color: #FFFFFF;}
 	#user #pm_userlist a:hover b{background: #BB0000; color: #FFFFFF;}
-#body {width: 100%; margin: auto; background: #F5F6F7 url(image/body_bg.jpg) repeat-x; overflow: hidden; padding-top: 8px; padding-bottom: 8px;}
+#body {width: 100%; margin: auto; background: #FAFAFC url(image/body_bg.jpg) repeat-x; overflow: hidden; padding-top: 8px; padding-bottom: 8px;}
 	#nav {width: 100%; margin: auto; height: 31px; text-shadow: 1px 1px 0 #FFFFFF; }
 	#nav td{background: url(image/nav.gif) 0px 31px;}
 	#nav td.left {width: 10px; background-position: 0px 0px;}

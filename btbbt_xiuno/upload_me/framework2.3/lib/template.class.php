@@ -90,7 +90,11 @@ class template {
 				$paths = array_keys($plugins);
 				foreach($paths as $path) {
 					$file = $path.$filename;
-					if(is_file($file)) break;
+					if(is_file($file)) {
+						break;
+					} else {
+						$file = '';
+					}
 				}
 			}
 			if(empty($file)) {

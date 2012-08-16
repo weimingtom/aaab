@@ -32,6 +32,7 @@ class thread_type extends base_model {
 	// 对 tid +1 -1
 	public function count_threads($typeid, $n) {
 		$arr = $this->read($typeid);
+		if(empty($arr)) return;
 		$arr['threads'] += $n;
 		$this->update($typeid, $arr);
 	}

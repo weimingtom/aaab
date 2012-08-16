@@ -1,4 +1,7 @@
 <!--{json width:"540",height:"300",title:"用户登录"}-->
+
+<!--{hook user_login_start.htm}-->
+
 <form action="?user-login-ajax-1.htm" method="post" id="login_form">
 	<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
 	<dl>
@@ -8,7 +11,7 @@
 		<dt><label for="login_password">密　码：</label></dt>
 		<dd><input type="password" name="password" id="login_password" size="24" value="" title="请输入密码" tabindex="11" style="width: 250px;" /></dd>
 		
-		<!--{hook user_login_1.htm}-->
+		<!--{hook user_login_submit_before.htm}-->
 		
 		<dt></dt>
 		<dd>
@@ -17,11 +20,11 @@
 			<div class="notice" id="login_notice" style="display: none;"></div>
 		</dd>
 		
-		<!--{hook user_login_2.htm}-->
+		<!--{hook user_login_submit_after.htm}-->
 	</dl>
 </form>
 
-<!--{hook user_login_3.htm}-->
+<!--{hook user_login_end.htm}-->
 
 <script type="text/javascript">
 

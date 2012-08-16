@@ -23,14 +23,14 @@ class common_control extends base_control {
 	protected $_cron_1_run = 0;	// 计划任务1 是否被激活, 15 分钟执行一次
 	protected $_cron_2_run = 0;	// 计划任务2 是否被激活, 每天0点执行一次
 	
-	// hook common_control.php
+	// hook common_control_before.php
 	
 	// 初始化 _sid, _user, _title, _nav
 	function __construct() {
-		
-		// hook common_control_before_construct.php
+		// hook common_control_construct_before.php
 		parent::__construct();
-		// hook common_control_after_construct.php
+		// hook common_control_construct_after.php
+		
 		
 		$this->init_timezone();
 		$this->conf['runtime'] = &$this->runtime->read_bbs();	// 析构函数会比 mysql 的析构函数早。所以不用担心mysql被释放。
@@ -43,7 +43,8 @@ class common_control extends base_control {
 		$this->init_cron();
 		$this->init_online();
 		
-		// hook common_control_after_init.php
+		
+		// hook common_control_init_after.php
 	}
 	
 	private function init_timezone() {
@@ -59,7 +60,7 @@ class common_control extends base_control {
 		list($y, $n, $d) = explode('-', $arr[0]);
 		$_SERVER['time_today'] = gmmktime(0, 0, 0, $n, $d, $y) - $offset * 3600;	// -8 hours
 		
-		// hook common_control_after_init_timezone.php
+		// hook common_control_init_timezone_after.php
 	}
 	
 	private function init_view() {
@@ -71,7 +72,7 @@ class common_control extends base_control {
 		$this->view->assign('_checked', $this->_checked);
 		$this->view->assign('cron_1_run', $this->_cron_1_run);
 		
-		// hook common_control_after_init_view.php
+		// hook common_control_init_view_after.php
 	}
 	
 	// 初始化 sid
@@ -87,7 +88,7 @@ class common_control extends base_control {
 		
 		define('FORM_HASH', misc::form_hash($this->conf['public_key']));
 		
-		// hook common_control_after_init_sid.php
+		// hook common_control_init_sid_after.php
 	}
 	
 	private function init_pm() {
@@ -98,7 +99,7 @@ class common_control extends base_control {
 		elseif($this->conf['site_pv'] >= 6000000) { $pm_delay = 5500; }
 		$this->view->assign('pm_delay', $pm_delay);
 		
-		// hook common_control_after_init_pm.php
+		// hook common_control_init_pm_after.php
 	}
 	
 	// 初始化 _user, 解密 cookie
@@ -132,7 +133,7 @@ class common_control extends base_control {
 			$this->message('站点当前设置：只有管理员才能访问。', 0);
 		}
 		
-		// hook common_control_after_init_user.php
+		// hook common_control_init_user_after.php
 	}
 	
 	// 检查IP
@@ -164,7 +165,7 @@ class common_control extends base_control {
 			}
 		}
 		
-		// hook common_control_after_check_ip.php
+		// hook common_control_check_ip_after.php
 	}
 	
 	// 检查域名，如果不在安装域名下，跳转到安装域名。
@@ -195,7 +196,7 @@ class common_control extends base_control {
 		}
 		$this->view->assign('cron_1_run', $this->_cron_1_run);
 		
-		// hook common_control_after_init_cron.php
+		// hook common_control_init_cron_after.php
 	}
 	
 	private function init_online() {
@@ -215,7 +216,7 @@ class common_control extends base_control {
 			$this->user->update_group($user);
 		}
 		
-		// hook common_control_after_init_online.php
+		// hook common_control_init_online_after.php
 	}
 	
 	// 初始化在线，
@@ -249,7 +250,7 @@ class common_control extends base_control {
 	 */
 	public function message($message, $status = 1, $goto = '') {
 		
-		// hook common_control_message.php
+		// hook common_control_message_before.php
 		
 		if(core::gpc('ajax', 'R')) {
 			// 可能为窗口，也可能不为。
@@ -272,6 +273,7 @@ class common_control extends base_control {
 	}
 	
 	public function form_submit() {
+		// hook form_submit_after.php
 		return misc::form_submit($this->conf['public_key']);
 	}
 	

@@ -34,7 +34,7 @@ class log_control extends admin_control {
 		$this->view->assign('loglist', $loglist);
 		$this->view->assign('pages', $pages);
 		
-		// hook admin_log_phperror.php
+		// hook admin_log_phperror_view_before.php
 		
 		$this->view->display('log_list.htm');
 	}
@@ -59,7 +59,7 @@ class log_control extends admin_control {
 		$this->view->assign('loglist', $loglist);
 		$this->view->assign('pages', $pages);
 		
-		// hook admin_log_login.php
+		// hook admin_log_login_view_before.php
 		
 		$this->view->display('log_list.htm');
 	}
@@ -84,7 +84,7 @@ class log_control extends admin_control {
 		$this->view->assign('loglist', $loglist);
 		$this->view->assign('pages', $pages);
 		
-		// hook admin_log_cron.php
+		// hook admin_log_cron_view_before.php
 		
 		$this->view->display('log_list.htm');
 	}
@@ -96,7 +96,7 @@ class log_control extends admin_control {
 		$logfile = $this->conf['log_path'].$file.'.php';
 		is_file($logfile) && unlink($logfile) && touch($logfile);
 		
-		// hook admin_truncate.php
+		// hook admin_truncate_after.php
 		
 		$this->message('日志文件'.$logfile.'清空完毕。', 1, "?log-$file.htm");
 	}
@@ -121,7 +121,7 @@ class log_control extends admin_control {
 		return $return;
 	}
 	
-	//hook log_control.php
+	//hook log_control_after.php
 	
 }
 

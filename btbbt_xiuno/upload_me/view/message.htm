@@ -1,10 +1,12 @@
 <!--{include header.htm}-->
 
+<!--{hook message_before.htm}-->
+
 <div class="width">
 	<div class="box bg2 border shadow">
 		<div style="margin: 2em;">
 			
-			<!--{hook message_1.htm}-->
+			<!--{hook message_start.htm}-->
 			
 			<h1 style="text-align: center;">
 				<!--{if is_array($message)}-->
@@ -24,11 +26,11 @@
 			<p style="text-align: center; margin-top: 40px; margin-bottom: 40px;"><input type="button" value=" 点击这里跳转 " class="button bigblue" onclick="window.location='$goto'" /></p>
 			<!--{/if}-->
 			
-			<!--{hook message_3.htm}-->
+			<!--{hook message_end.htm}-->
 		</div>
 	</div>
 	
-	<!--{hook message_4.htm}-->
+	<!--{hook message_box_after.htm}-->
 </div>
 
 <!--{include footer.htm}-->
@@ -38,6 +40,8 @@
 setTimeout(function() {window.location='$goto'}, 3000);
 </script>
 <!--{/if}-->
+
+<!--{hook message_end.htm}-->
 
 $conf[footer_js]
 

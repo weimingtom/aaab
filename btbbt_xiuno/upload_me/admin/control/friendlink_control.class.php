@@ -50,7 +50,7 @@ class friendlink_control extends admin_control {
 		$this->view->assign('page', $page);
 		$this->view->assign('friendlinklist', $friendlinklist);
 		
-		// hook admin_friendlink_list.php
+		// hook admin_friendlink_list_view_before.php
 		
 		$this->view->display('friendlink_list.htm');
 	}
@@ -72,7 +72,7 @@ class friendlink_control extends admin_control {
 			$this->mcache->clear('friendlink');
 		}
 		
-		// hook admin_friendlink_rank.php
+		// hook admin_friendlink_rank_after.php
 		
 		$this->location('?friendlink-list-page-'.$page.'.htm');
 	}
@@ -125,7 +125,7 @@ class friendlink_control extends admin_control {
 			$this->mcache->clear('friendlink');
 		}
 		
-		// hook admin_friendlink_create.php
+		// hook admin_friendlink_create_after.php
 		
 		$this->location("?friendlink-list-type-$type-page-$page.htm");
 		
@@ -188,7 +188,7 @@ class friendlink_control extends admin_control {
 		$this->view->assign('friendlink', $friendlink);
 		$this->view->assign('error', $error);
 		
-		// hook admin_friendlink_create.php
+		// hook admin_friendlink_create_view_before.php
 		
 		$this->view->display('friendlink_update.htm');
 	}
@@ -206,7 +206,7 @@ class friendlink_control extends admin_control {
 		}
 		$this->mcache->clear('friendlink');
 		
-		// hook admin_friendlink_delete.php
+		// hook admin_friendlink_delete_after.php
 		
 		$this->location("?friendlink-list-page-$page.htm");
 	}
@@ -226,7 +226,7 @@ class friendlink_control extends admin_control {
 		}
 		$random = rand(1, 10000000);
 		
-		// hook admin_friendlink_setting.php
+		// hook admin_friendlink_setting_after.php
 		
 		$this->location("?friendlink-list-page-$page-random-$random.htm");
 	}
@@ -237,7 +237,7 @@ class friendlink_control extends admin_control {
 		}
 	}
 	
-	//hook friendlink_control.php
+	//hook friendlink_control_after.php
 }
 
 ?>

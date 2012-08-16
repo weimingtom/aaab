@@ -27,7 +27,7 @@ class digestcate_control extends admin_control {
 		$maxcateid = $this->digestcate->maxid();
 		$this->view->assign('maxcateid', $maxcateid);
 		
-		// hook admin_digest_list.php
+		// hook admin_digest_list_view_before.php
 		
 		$this->view->display('digestcate_list.htm');
 	}
@@ -83,13 +83,13 @@ class digestcate_control extends admin_control {
 			$this->digestcate->maxid(intval($cateid));
 		}
 		
-		// hook admin_digest_update_1.php
+		// hook admin_digest_update_before.php
 		
 		$this->digestcate->update($cateid, $cate);
 		
 		$this->cache_cate_json();
 		
-		// hook admin_digest_update_2.php
+		// hook admin_digest_update_after.php
 		
 		$this->message('更新成功！');
 		
@@ -98,7 +98,7 @@ class digestcate_control extends admin_control {
 	// 重新生成js
 	public function on_rebuildjs() {
 		
-		// hook admin_digest_rebuildjs.php
+		// hook admin_digest_rebuildjs_before.php
 		
 		$this->cache_cate_json();
 		$this->message('更新js成功！', 1, '?digestcate.htm');
@@ -159,7 +159,7 @@ class digestcate_control extends admin_control {
 		$this->digestcate->update($cateid1, $cate1);
 		$this->digestcate->update($cateid2, $cate2);
 		
-		// hook admin_digest_top.php
+		// hook admin_digest_top_after.php
 		
 		$this->message('删除成功！');
 	}
@@ -200,6 +200,6 @@ class digestcate_control extends admin_control {
 		file_put_contents($file, $json);
 	}
 	
-	//hook digestcate_control.php
+	//hook digestcate_control_after.php
 }
 ?>

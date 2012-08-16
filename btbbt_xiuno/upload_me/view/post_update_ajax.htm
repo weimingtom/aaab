@@ -6,7 +6,7 @@ form dd {width: 91%;}
 <form action="?post-update-fid-$fid-pid-$pid-ajax-1.htm" method="post" id="update_form_$pid" target="_blank" class="update_form">
 	<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
 	<dl>
-		<!--{hook post_update_1.htm}-->
+		<!--{hook post_update_subject_before.htm}-->
 		<!--{if $isfirst}-->
 		<dt>
 			<label for="update_subject">标题：</label>
@@ -18,18 +18,18 @@ form dd {width: 91%;}
 		<input type="text" name="subject" id="update_subject_$pid" value="$thread[subject]" style="width: 600px;" /> <span class="small grey">(200字)</span></dd>
 		<!--{/if}-->
 		
-		<!--{hook post_update_2.htm}-->
+		<!--{hook post_update_subject_after.htm}-->
 		
 		<dt><label for="update_message">内容：</label></dt>
 		<dd style="position: relative;"><textarea name="message" id="update_message_$pid" style="width: 780px; height: 400px;">$post[message_html]</textarea></dd>
 		
-		<!--{hook post_update_3.htm}-->
+		<!--{hook post_update_message_after.htm}-->
 		
 		<dt></dt>
 		<dd>
 			<input type="submit" class="button bigblue" id="update_submit_$pid" value="编辑" />
-			<!--{hook post_update_4.htm}-->
 			<input type="button" class="button biggrey" value="取消" id="update_cancel_$pid" />
+			<!--{hook post_update_button_end.htm}-->
 			<div class="notice" id="update_notice_$pid" style="display: none;"></div>
 		</dd>
 	</dl>
@@ -477,7 +477,7 @@ function delay_execute(dialog, recall) {
 			}
 			
 			
-			 // hook post_update_5.htm
+			 // hook post_update_submit_after_js
 			 
 			// 更新当前页面
 <!--{if $isfirst}-->	$('#subject_$tid').html($('#update_subject_$pid').val());	<!--{/if}-->
@@ -493,7 +493,7 @@ function delay_execute(dialog, recall) {
 			
 		  });
 		  
-		 // hook post_update_6.htm
+		 // hook post_update_js_end.htm
 	});// end xload()
 	
 	$('#update_cancel_$pid').click(function() {

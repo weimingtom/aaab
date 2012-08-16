@@ -8,8 +8,6 @@
 
 include BBS_PATH.'control/common_control.class.php';
 
-//hook attach_control.php
-
 class attach_control extends common_control {
 	
 	function __construct() {
@@ -36,7 +34,7 @@ class attach_control extends common_control {
 		$this->_user['golds'] = $user['golds'];
 		
 		$this->view->assign('attach', $attach);
-		// hook attach_dialog.php
+		// hook attach_dialog_view_before.php
 		$this->view->display('attach_dialog_ajax.htm');
 	}
 	
@@ -95,6 +93,7 @@ class attach_control extends common_control {
 			
 			// 不允许多线程下载
 			
+			// 启动双 ob, 获取gzip压缩后的尺寸，文件尺寸不准！
 			ob_end_clean();
 			ob_start();
 			core::ob_start();
@@ -116,12 +115,12 @@ class attach_control extends common_control {
 				header('Content-Type: application/octet-stream');
 			}
 			
-			// hook attach_download_gold.php
+			// hook attach_download_gold_after.php
 			readfile($this->conf['upload_path'].'attach/'.$attach['filename']);
 			exit;
 		} else {
 			
-			// hook attach_download_free.php
+			// hook attach_download_free_after.php
 			$this->attach->format($attach);
 			header('Location: '.$this->conf['upload_url'].'attach/'.$attach['filename']);
 			exit;
@@ -203,7 +202,7 @@ class attach_control extends common_control {
 			$arr['filename'] = $r['fileurl'];
 			$this->attach->update($aid, $arr);
 			
-			// hook attach_uploadimage.php
+			// hook attach_uploadimage_after.php
 			$this->message('<img src="'.$uploadurl.$r['fileurl'].'" width="'.$arr['width'].'" height="'.$arr['height'].'"/>');
 			
 		} else {
@@ -282,7 +281,7 @@ class attach_control extends common_control {
 			
 			if(move_uploaded_file($file['tmp_name'], $destfile)) {
 				
-				// hook attach_uploadfile.php
+				// hook attach_uploadfile_after.php
 				$arr['desturl'] = $desturl;
 				$this->message($arr);
 			} else {
@@ -310,7 +309,7 @@ class attach_control extends common_control {
 			$this->attach->update($aid, $attach);
 			if(move_uploaded_file($file['tmp_name'], $this->conf['upload_path'].'attach/'.$attach['filename'])) {
 				
-				// hook attach_updatefile.php
+				// hook attach_updatefile_after.php
 				$this->message($attach);
 			} else {
 				$this->message('保存失败！', 0);
@@ -343,7 +342,7 @@ class attach_control extends common_control {
 		// 下载（购买）历史，如果最后一次购买的时间在24小时以内，附件不能被删除。保护购买人的权利，否则还没来得及下载，已经被删除。
 		$this->attach->_delete($aid);
 		
-		// hook attach_deletefile.php
+		// hook attach_deletefile_after.php
 		$this->message('删除成功');
 	}
 	
@@ -362,7 +361,7 @@ class attach_control extends common_control {
 			}
 		}
 		
-		// hook attach_updategold.php
+		// hook attach_updategold_after.php
 		$this->message('更新附件售价成功。');
 	}
 
@@ -380,6 +379,7 @@ class attach_control extends common_control {
 		file_put_contents($file, $aids);
 	}
 	
+	// hook attach_control_after.php
 }
 
 ?>

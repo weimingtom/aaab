@@ -313,7 +313,7 @@ class mod_control extends common_control {
 					}
 				}
 				
-				// hook mod_digest_loop.php
+				// hook mod_digest_loop_after.php
 			}
 			
 			if(empty($cateidarr)) {
@@ -403,7 +403,7 @@ class mod_control extends common_control {
 				if(empty($thread)) continue;
 				
 				if($thread['typeid'] != $typeid) {
-					$this->thread_type->count_threads($thread['typeid'], -1);
+					!empty($thread['typeid']) && $this->thread_type->count_threads($thread['typeid'], -1);
 					$this->thread_type->count_threads($typeid, 1);
 				}
 				
@@ -554,7 +554,7 @@ class mod_control extends common_control {
 					'action'=>'move',
 				));
 				
-				// hook mod_move_loop.php
+				// hook mod_move_loop_after.php
 			}
 			
 			// 更新 digest
@@ -629,7 +629,7 @@ class mod_control extends common_control {
 					'action'=>'delete',
 				));
 				
-				// hook mod_delete_loop.php
+				// hook mod_delete_loop_after.php
 				
 				$this->thread->xdelete($fid, $tid, TRUE);
 			}
@@ -657,7 +657,7 @@ class mod_control extends common_control {
 		return implode($sep, $arr2);
 	}
 	
-	//hook mod_control.php
+	//hook mod_control_after.php
 }
 
 ?>

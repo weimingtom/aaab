@@ -62,7 +62,7 @@ class user_control extends admin_control {
 		$this->view->assign('pages', $pages);
 		$this->view->assign('userlist', $userlist);
 		
-		// hook admin_user_list.php
+		// hook admin_user_list_view_before.php
 		
 		$this->view->display('user_list.htm');
 	}
@@ -103,7 +103,7 @@ class user_control extends admin_control {
 		$this->view->assign('user', $user);
 		$this->view->assign('error', $error);
 		
-		// hook admin_user_create.php
+		// hook admin_user_create_view_before.php
 		
 		$this->view->display('user_create.htm');
 	}
@@ -162,7 +162,7 @@ class user_control extends admin_control {
 		$this->view->assign('user', $user);
 		$this->view->assign('error', $error);
 		
-		// hook admin_user_update.php
+		// hook admin_user_update_view_before.php
 		
 		$this->view->display('user_update.htm');
 	}
@@ -179,7 +179,7 @@ class user_control extends admin_control {
 		$this->user->format($user);
 		$this->view->assign('user', $user);
 		
-		// hook admin_user_read.php
+		// hook admin_user_read_view_before.php
 		
 		$this->view->display('user_read.htm');
 	}
@@ -197,7 +197,7 @@ class user_control extends admin_control {
 		} else {
 			$this->user->xdelete($uid);
 			
-			// hook admin_user_delete.php
+			// hook admin_user_delete_after.php
 			
 			$this->message('删除用户成功！', TRUE, $_SERVER['HTTP_REFERER']);
 		}
@@ -249,12 +249,12 @@ class user_control extends admin_control {
 		$this->view->assign('user', $user);
 		$this->view->assign('error', $error);
 		
-		// hook admin_user_access.php
+		// hook admin_user_access_view_before.php
 		
 		$this->view->display('user_access.htm');
 	}
 	
-	//hook user_control.php
+	//hook user_control_after.php
 	
 }
 

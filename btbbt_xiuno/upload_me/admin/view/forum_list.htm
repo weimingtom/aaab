@@ -30,7 +30,7 @@ h3 {height: 30px;}
 							<span class="small grey">顺序:</span><input type="text" name="rank[{$cate[fid]}]" value="$cate[rank]" style="width: 30px" title="数字顺序，0-255，越大越靠前" /> 
 							<input type="button" class="button smallblue" value="编辑" onclick="window.location='?forum-update-fid-$cate[fid].htm'" /> 
 							<input type="button" class="button smallgrey" value="删除" onclick="if(window.confirm('您确定删除 $cate[name] 吗？')) {if(window.confirm('您确定删除 $cate[name] 吗？')) window.location='?forum-delete-fid-$cate[fid].htm'}" />
-							<!--{hook admin_forum_list_1.htm}-->
+							<!--{hook admin_forum_list_cate_end.htm}-->
 						</h3>
 						<ul class="forumlist">
 						<!--{loop $cate[forumlist] $forum}-->
@@ -39,7 +39,7 @@ h3 {height: 30px;}
 								<span class="small grey">顺序:</span><input type="text" name="rank[{$forum[fid]}]" value="$forum[rank]" style="width: 30px" title="数字顺序，1-255，越大越靠前" />
 								<input type="button" class="button smallblue" value="编辑" onclick="window.location='?forum-update-fid-$forum[fid].htm'" /> 
 								<input type="button" class="button smallgrey" value="删除" onclick="if(window.confirm('您确定删除 $forum[name] 吗？')) window.location='?forum-delete-fid-$forum[fid].htm'" />
-								<!--{hook admin_forum_list_2.htm}-->
+								<!--{hook admin_forum_list_forum_end.htm}-->
 							</li>
 						<!--{/loop}-->
 							<li id="forumaddlink_$cate[fid]" style="clear: both;">
@@ -66,14 +66,14 @@ h3 {height: 30px;}
 		<input type="text" name="newname[]" size="16" value="板块名称" />
 		<input type="hidden" name="newfup[]" value="0" />
 		<span class="small grey">顺序:</span><input type="text" name="newrank[]" value="0" style="width: 30px" title="数字顺序，0-255，越大越靠前" />
-		<!--{hook admin_forum_list_3.htm}-->
+		<!--{hook admin_forum_list_cate_clone_end.htm}-->
 	</li>
 	
 	<h3 id="cateadddiv" style="display: none;">
 		<input type="text" name="newname[]" value="分类名称" size="16" style="font-size: 14px; font-weight: 800" />
 		<input type="hidden" name="newfup[]" value="0" />
 		<span class="small grey">顺序:</span><input type="text" name="newrank[{$cate[fid]}]" value="0" style="width: 30px" title="数字顺序，0-255，越大越靠前" /> 
-		<!--{hook admin_forum_list_4.htm}-->
+		<!--{hook admin_forum_list_forum_clone_end.htm}-->
 	</h3>
 	
 </div>
@@ -111,7 +111,7 @@ $('#mdeleteforum').click(function() {
 
 </script>
 
-<!--{hook admin_forum_list_5.htm}-->
+<!--{hook admin_forum_list_end.htm}-->
 
 </body>
 </html>

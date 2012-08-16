@@ -1,8 +1,8 @@
 <?php
 
 return 	array (
-	'enable' => 1,			// 是否启用?
-	'installed' => 1,		// 已经安装?
+	'enable' => 0,			// 是否启用?
+	'installed' => 0,		// 已经安装?
 	'name'=>'灯鹭-第三方登录插件',		// 插件名
 	'brief'=>'整合了QQ登录、新浪微薄、MSN、人人、开心等16家网站的登录接口。',
 	'version'=>'1.0',		// 插件版本

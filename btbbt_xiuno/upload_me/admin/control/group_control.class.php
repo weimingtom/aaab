@@ -36,7 +36,7 @@ class group_control extends admin_control {
 				$this->mcache->clear('grouplist');
 				$this->mcache->clear('miscarr');
 				
-				// hook admin_group_list_1.php
+				// hook admin_group_list_submit_after.php
 			}
 		}
 		
@@ -70,7 +70,7 @@ class group_control extends admin_control {
 		$this->view->assign('grouplist3', $grouplist3);
 		$this->view->assign('grouplist', $grouplist);
 		
-		// hook admin_group_list_2.php
+		// hook admin_group_list_view_before.php
 		
 		$this->view->display('group_list.htm');
 	}
@@ -107,7 +107,7 @@ class group_control extends admin_control {
 				$error = array();
 				$this->group->create($post, $post['groupid']);
 				
-				// hook admin_group_create.php
+				// hook admin_group_create_after.php
 				
 				$this->mcache->clear('grouplist');
 				$this->mcache->clear('miscarr');
@@ -151,7 +151,7 @@ class group_control extends admin_control {
 				$error = array();
 				$group = array_merge($group, $post);
 				
-				// hook admin_group_update.php
+				// hook admin_group_update_before.php
 				
 				$this->group->update($groupid, $group);
 			
@@ -178,7 +178,7 @@ class group_control extends admin_control {
 		
 		$this->view->assign('group', $group);
 		
-		// hook admin_group_read.php
+		// hook admin_group_read_view_before.php
 		
 		$this->view->display('group_read.htm');
 	}
@@ -204,7 +204,7 @@ class group_control extends admin_control {
 		// 调整用户组所有用户，自动升级的时候调整，此处不调整。
 		// $uids = $this->user->fetch_index_id();
 		
-		// hook admin_group_delete.php
+		// hook admin_group_delete_after.php
 		
 		$this->location("?group-list.htm");
 	}
@@ -215,6 +215,6 @@ class group_control extends admin_control {
 		}
 	}
 	
-	//hook group_control.php
+	//hook group_control_after.php
 }
 ?>

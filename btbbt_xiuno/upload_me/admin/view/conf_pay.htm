@@ -21,7 +21,7 @@
 					<dt><label for="pay_rate">兑换比率：</label></dt>
 					<dd>$input[pay_rate] <span class="grey">1元金钱 =  N金币。</span></dd>
 					
-					<!--{hook admin_conf_pay_1.htm}-->
+					<!--{hook admin_conf_pay_submit_before.htm}-->
 					
 					<dt></dt>
 					<dd>
@@ -50,7 +50,7 @@
 					<dt><label for="key">key：</label></dt>
 					<dd>$input[key]</dd>
 					
-					<!--{hook admin_conf_pay_2.htm}-->
+					<!--{hook admin_conf_ebank_submit_before.htm}-->
 					
 					<dt></dt>
 					<dd>
@@ -86,7 +86,7 @@
 					<dt><label for="seller_email">seller_email：</label></dt>
 					<dd>$input[seller_email]</dd>
 					
-					<!--{hook admin_conf_pay_3.htm}-->
+					<!--{hook admin_conf_alipay_submit_before.htm}-->
 					
 					<dt></dt>
 					<dd>
@@ -117,7 +117,7 @@
 					<dt><label for="banklist">银行列表：</label></dt>
 					<dd style="position: relative;"><textarea style="width: 500px; height: 300px;" id="banklist" name="banklist">$banklist</textarea></dd>
 					
-					<!--{hook admin_conf_pay_4.htm}-->
+					<!--{hook admin_conf_banklist_submit_before.htm}-->
 					
 					<dt></dt>
 					<dd>
@@ -132,7 +132,7 @@
 	</div>
 	<!--{/if}-->
 	
-	<!--{hook admin_conf_pay_5.htm}-->
+	<!--{hook admin_conf_pay_end.htm}-->
 </div>
 
 <!--{include footer.htm}-->

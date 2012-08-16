@@ -41,7 +41,7 @@ class thread_control extends common_control {
 		$this->_title[] = $forum['name'];
 		$this->_seo_keywords = $thread['seo_keywords'] ? $thread['seo_keywords'] : $thread['subject'];
 		
-		// hook thread_index_2.php
+		// hook thread_index_fetch_before.php
 		
 		// 只缓存了 第一页20个pid，超出则查询 db
 		if($this->conf['cache_pid'] && $this->conf['pagesize'] <= 20 && $page == 1) {
@@ -110,7 +110,7 @@ class thread_control extends common_control {
 		$this->view->display('thread_index.htm');
 	}
 	
-	//hook thread_control.php
+	//hook thread_control_after.php
 }
 
 ?>

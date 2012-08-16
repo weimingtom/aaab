@@ -112,7 +112,7 @@ return array (
 	'urlrewrite' => 0,
 	
 	// 加密KEY，
-	'public_key' => '9cd27df355a24adf79d0dfc088c6842e',
+	'public_key' => '8073e5f79d2cd44d01a9304331f7ef47',
 	
 	'timeoffset' => '+8',
 	'pagesize' => 20,			// 帖子详情页的每页回复数，一旦定下来，不能修改！

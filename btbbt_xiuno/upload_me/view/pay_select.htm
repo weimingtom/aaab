@@ -1,14 +1,17 @@
 <!--{include header.htm}-->
+
+<!--{hook pay_select_start.htm}-->
+
 <div class="width">
 	<form action="?pay-callapi.htm" method="post" id="pay_form" target="_blank">
 		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
 		<div class="div" style="width: 600px;">
 			<div class="header"> 充值 </div>
 			<div class="body">
-				<!--{hook pay_select_1.htm}-->
+				<!--{hook pay_select_body_start.htm}-->
 				<dt>充值金钱：</dt><dd><input type="text" id="money" name="money" value="$money" style="width: 50px;" /> 元</dd>
 				<dt>可兑换金币：</dt><dd><input type="text" id="golds" name="golds" value="$golds" style="width: 50px;" disabled="disabled" readonly="readonly" /></dd>
-				<!--{hook pay_select_2.htm}-->
+				<!--{hook pay_select_gold_after.htm}-->
 				<dt>支付方式：</dt>
 				<dd>
 					<table>
@@ -29,11 +32,11 @@
 								<!--{/if}-->
 							</td>
 							
-							<!--{hook pay_select_3.htm}-->
+							<!--{hook pay_select_paytype_after.htm}-->
 						</tr>
 					</table>
 				</dd>
-				<!--{hook pay_select_4.htm}-->
+				<!--{hook pay_select_body_end.htm}-->
 		
 				<div style="text-align: center; margin-top: 4px;">
 					<input convert="true" type="submit" class="button bigblue" id="pay_submit" value="开始支付" />
@@ -99,6 +102,8 @@ $('#money').keyup(function() {
 	$('#golds').val($('#money').val() * pay_rate);
 });
 </script>
+
+<!--{hook pay_select_end.htm}-->
 
 </body>
 </html>

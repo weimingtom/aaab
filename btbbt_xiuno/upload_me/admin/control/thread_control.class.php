@@ -77,7 +77,7 @@ class thread_control extends admin_control {
 		$this->view->assign('keyword_url', $keyword_url);
 		$this->view->assign('threadlist', $threadlist);
 		
-		// hook admin_thread_list.php
+		// hook admin_thread_list_view_before.php
 		
 		$this->view->display('thread_list.htm');
 	}
@@ -116,7 +116,7 @@ class thread_control extends admin_control {
 			}
 		}
 		
-		// hook admin_thread_replace.php
+		// hook admin_thread_replace_after.php
 		
 		$this->message('替换完毕', 1, "?thread-list-uid-$uid-tidfrom-$tidfrom-tidto-$tidto-srchstring-$srchstring_url-replacestring-$replacestring_url.htm");
 	}
@@ -137,7 +137,7 @@ class thread_control extends admin_control {
 			$thread = $this->thread->read($fid, $tid);
 			if(empty($thread)) continue;
 			
-			// hook admin_thread_delete.php
+			// hook admin_thread_delete_after.php
 			
 			$this->thread->xdelete($fid, $tid, TRUE);
 		}
@@ -147,7 +147,7 @@ class thread_control extends admin_control {
 		$this->message('删除完毕', 1, "?thread-list-uid-$uid-tidfrom-$tidfrom-tidto-$tidto.htm");
 	}
 	
-	//hook admin_thread_control.php
+	//hook admin_thread_control_after.php
 	
 }
 ?>

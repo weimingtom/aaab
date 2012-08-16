@@ -31,7 +31,7 @@ class forum_control extends admin_control {
 			$namearr = core::gpc('name', 'P');
 			$rankarr = core::gpc('rank', 'P');
 			
-			// hook admin_forum_list_1.php
+			// hook admin_forum_list_gpc_after.php
 			
 			if(!empty($namearr)) {
 				foreach($namearr as $fid=>$name) {
@@ -101,7 +101,7 @@ class forum_control extends admin_control {
 			$this->forum->format($forum);
 		}
 		
-		// hook admin_forum_list_2.php
+		// hook admin_forum_list_view_before.php
 		
 		$this->view->assign('error', $error);
 		$this->view->assign('forumlist', $forumlist);
@@ -361,7 +361,7 @@ class forum_control extends admin_control {
 		$listtypearr = array(0=>'标题列表排列', 1=>'图文排列');
 		$orderbyarr = array(0=>'顶贴时间排序', 1=>'发帖时间排序');
 		
-		// hook admin_forum_listtype.php
+		// hook admin_forum_update_listtype_before.php
 		
 		$input = array();
 		$input['status'] = form::get_radio_yes_no('status', $forum['status']);
@@ -400,11 +400,11 @@ class forum_control extends admin_control {
 					$this->forum_access->update($sonforum['fid'], $access['groupid'], $access);
 				}
 			}
-			// hook admin_forum_appy_to_son_update.php
+			// hook admin_forum_appy_to_son_update_before.php
 			
 			$this->forum->update($sonforum['fid'], $sonforum);
 			
-			// hook admin_forum_appy_to_son.php
+			// hook admin_forum_appy_to_son_after.php
 		}
 	}
 	
@@ -457,7 +457,7 @@ class forum_control extends admin_control {
 						list($table, $_, $_, $_, $_tid) = explode('-', $key);
 						$_tid = intval($_tid);
 						// $_fid $_tid
-						// hook admin_forum_delete_tid.php
+						// hook admin_forum_delete_tid_before.php
 						$return2 = $this->thread->xdelete($_fid, $_tid, FALSE);
 						$this->thread->xdelete_merge_return($return, $return2);
 					}
@@ -470,7 +470,7 @@ class forum_control extends admin_control {
 			}
 		}
 		
-		// hook admin_forum_delete.php
+		// hook admin_forum_delete_after.php
 		
 		// 删除首页的缓存
 		$this->message('删除完毕', 1, '?forum-list.htm');
@@ -489,7 +489,7 @@ class forum_control extends admin_control {
 		$arr = image::thumb($_FILES['Filedata']['tmp_name'], $destfile, 800, 600);
 		$json = array('width'=>$arr['width'], 'height'=>$arr['height'], 'body'=>$desturl);
 		
-		// hook admin_forum_updateicon.php
+		// hook admin_forum_updateicon_after.php
 		
 		$this->message($json);
 	}
@@ -522,7 +522,7 @@ class forum_control extends admin_control {
 			$this->mcache->clear('forum', $fid);
 			$this->mcache->clear('forumlist');
 			
-			// hook admin_forum_clipicon.php
+			// hook admin_forum_clipicon_after.php
 			
 			$this->message($bigurl);
 		} else {
@@ -569,7 +569,7 @@ class forum_control extends admin_control {
 		if(count($threadlist) == 1000) {
 			$this->message('该主题分类下主题过多，不能直接删除改分类，建议您改名。', 0);
 		} else {
-			foreach($threadlist as $thread) {
+			foreach($threadlist as $key) {
 				$thread = $this->thread->get($key);
 				$thread['typeid'] = 0;
 				$thread['typename'] = '';
@@ -621,7 +621,7 @@ class forum_control extends admin_control {
 		$this->message('ok');
 	}*/
 	
-	//hook forum_control.php
+	//hook forum_control_after.php
 	
 }
 ?>

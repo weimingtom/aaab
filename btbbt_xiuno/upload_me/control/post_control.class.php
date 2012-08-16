@@ -97,12 +97,13 @@ class post_control extends common_control {
 			if(misc::values_empty($error)) {
 				$error = array();
 				
-				// hook post_thread_thread_create_before.php
+				// hook post_thread_create_before.php
+				
 				$tid = $thread['tid'] = $this->thread->create($fid, $thread);
 				if(!$thread['tid']) {
 					$this->message('发帖过程中保存数据错误，请联系管理员。');
 				}
-				// hook post_thread_thread_create_after.php
+				// hook post_thread_create_after.php
 				
 				// -----------> 添加到 post
 				$page = 1;
@@ -402,7 +403,7 @@ class post_control extends common_control {
 		$this->check_forum_access($forum, $pforum, 'post');
 		
 		$post = $this->post->read($fid, $pid);
-		$tid = $post['tid'];
+		$tid = intval($post['tid']);
 		
 		$thread = $this->thread->get($fid, $tid);
 		$this->check_thread_exists($fid, $thread);
@@ -461,12 +462,16 @@ class post_control extends common_control {
 				
 				// 更新精华的标题
 				if($subject != $thread['subject']) {
-					// 
+					$digestlist = $this->digest->get_list_by_fid_tid($fid, $tid);
+					foreach($digestlist as $digest) {
+						$digest['subject'] = $subject;
+						$this->digest->update($digest['digestid'], $digest);
+					}
 				}
 				
 				// 更新 threadtype.threads
-				if($typeid && $thread['typeid'] != $typeid) {
-					$this->thread_type->count_threads($thread['typeid'], -1);
+				if($thread['typeid'] != $typeid) {
+					!empty($thread['typeid']) && $this->thread_type->count_threads($thread['typeid'], -1);
 					$this->thread_type->count_threads($typeid, 1);
 				}
 				$thread['typeid'] = $typeid;
@@ -516,10 +521,10 @@ class post_control extends common_control {
 					$thread['imagenum'] += $imagenum;
 					$thread['brief'] = $brief;
 				}
-				// hook post_update_thread_update__before.php
+				// hook post_update_thread_update_before.php
 				$this->thread->update($fid, $tid, $thread);
 				$this->post->update($fid, $pid, $post);
-				// hook post_update_thread_update__after.php
+				// hook post_update_thread_update_after.php
 				
 				$this->clear_forum_cache($fid);
 				
@@ -631,7 +636,7 @@ class post_control extends common_control {
 		$this->view->assign_value('pid', $pid);// 给编辑器附件列表使用
 	}
 
-	//hook post_control.php
+	//hook post_control_after.php
 }
 
 ?>
