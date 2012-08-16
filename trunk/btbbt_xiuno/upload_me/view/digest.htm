@@ -1,0 +1,164 @@
+<!--{include header.htm}-->
+
+<style>
+#body .left {padding: 8px 8px; width: 224px; float: left; overflow: hidden; margin-left: 8px; _margin-left: 4px; margin-right: 8px; _margin-right: 4px; display: inline; /* fix ie6 */}
+#body .center {overflow: hidden; _zoom: 1;}
+</style>
+
+
+<link href="view/js/tree/tree.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript">
+function iframe_onload(iframe) {
+	var bHeight = iframe.contentWindow.document.body.scrollHeight;
+	var dHeight = 0;	//iframe.contentWindow.document.documentElement.scrollHeight;
+	var height = Math.max(bHeight, dHeight);
+	iframe.height =  height;
+	iframe.contentWindow.document.getElementById('body').style.height =  height + 'px';
+	//iframe.contentWindow.document.body.overflow =  'hidden';
+}
+</script>
+<div class="width">
+	<div class="left border shadow bg2" id="body_left">
+		<div id="digestcate" class="tree"></div>
+	</div>
+	
+	<div class="center"> 
+		<iframe src="?digest-main-cateid-$cateid-fid-$fid-tid-$tid.htm" name="main" width="100%" border="0" scrolling="no" frameborder="0" id="digestframe" onload="iframe_onload(this)"></iframe>
+	</div>
+</div>
+
+<!--{include footer.htm}-->
+
+<script src="view/js/tree/tree.js" type="text/javascript"></script>
+<script src="upload/digestcate.js?$jstime" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+var left_width = $('#body_left').width();
+var mouseovered = 0;
+$('#body_left').hover(
+	function() {
+		if(mouseovered == 1) return;
+		mouseovered = 1;
+		$(this).animate({'width': '420px'}, 'fast');
+	}, function() {
+		$(this).animate({'width': left_width+'px'}, 'fast', '', function() {mouseovered = 0;});
+	}
+);
+
+// 翻页算法
+function xn_pages(url, num, pagesize, page) {
+	var pages = Math.ceil(num / pagesize);
+	var s = '<span class="minipage">';
+	var sep = url.indexOf('?') != '-1' ? '&' : '?';
+	for(var i=1; i <= pages; i++) {
+		s += '<a href="'+url+sep+'page='+i+'">'+i+'</a>';
+	}
+	s += '</span>';
+	return s;
+}
+
+function xn_add_node(tree, cateid, digestlist) {
+	for(var k in digestlist) {
+		var o = digestlist[k];
+		var url = "?digest-main-cateid-"+o['cateid']+"-fid-"+o['fid']+"-tid-"+o['tid']+".htm";
+		var topurl = "#"+o['cateid']+"-"+o['fid']+"-"+o['tid']; //?digest.htm
+		var digesticon = "<span class=\"icon icon-digest-"+o['digest']+"\" style=\"vertical-align:bottom;\"></span>";
+		// chrome 会刷新！
+		var changehash = $.browser.webkit ? '' : " onclick=\"top.location.hash='"+topurl+"'\""; // " onclick=\"top.window.location.href='#"+topurl+"'\""
+		tree.add_node(cateid, ["<a href=\""+url+"\" target=\"main\" "+changehash+" title="+o['subject']+">"+digesticon+o['subject']+"</a>", 0, cateid]);
+	}
+}
+
+var _cateid = to_int('$cateid');
+var lastcateid = $.pdata('lastcateid');
+if(!_cateid) {
+	_cateid = lastcateid;
+}
+function get_note_html(tree, cateid) {
+	// 增加 loading 节点
+	tree.add_node(cateid, ['<span class="ticon loading"></span>', 0, cateid]);
+	var jpli = $('#'+tree._id(cateid));
+	
+	// ajax request 请求精华主题列表
+	$.get('?digest-list-cateid-'+cateid+'-ajax-1.htm', function(s){
+		var json = json_decode(s);
+		if(error = json_error(json)) {alert(error); return false;}
+	
+		json = json.message;
+		
+		tree.remove_child(cateid);
+		if(!to_int(json[0])) {
+			tree.add_node(cateid, ["<span class=\"grey\">无数据</span>", 0, cateid]);
+		} else {
+			var num = json[0];
+			var digestlist = json[1];
+			
+			xn_add_node(tree, cateid, digestlist);
+			
+			// 添加分页节点。
+			var pagesize = 20;	//写死了
+			var pagediv = '';
+			if(num > pagesize) {
+				var s = xn_pages('?digest-list-cateid-'+cateid+'-ajax-1.htm', num, pagesize, 1);
+				var jli = tree.add_node(cateid, [s, 0, cateid]); // page 所在的 li
+				$('a', jli).bind('click', function() {
+					
+					// 添加 loading...
+					tree.add_node(cateid, ['<span class="ticon loading"></span>', 0, cateid]);
+					
+					$('a', jli).removeClass('bold');
+					$(this).addClass('bold');
+					var url = $(this).attr('href');
+					$.get(url, function(s) {
+						var json2 = json_decode(s);
+						if(error = json_error(json2)) {alert(error); return false;}
+						json2 = json2.message;
+						
+						// 删除所有的 li节点，保留 li
+						//jpli.attr('haschild', '0');
+						$('>ul >li', jpli).not(jli).remove();
+						
+						// 开始添加节点
+						var num = json2[0];
+						var digestlist = json2[1];
+						xn_add_node(tree, cateid, digestlist);
+						
+						// 跟最后一个 li 交换位置
+						$('>ul', jpli).append(jli);
+						jli.prev().removeClass('islast');
+						jli.addClass('islast');
+					});
+					return false;
+				});
+			}
+			
+		}
+		$.pdata('lastcateid', cateid);
+	});
+}
+
+/* ajax loading example */
+$('#digestcate').tree(tree_data, {
+	on_selected: function(jli, tree) {
+		var cateid = jli.attr('cateid');
+		get_note_html(tree, cateid);
+	}
+});
+$(function() {
+	var tree = $('#digestcate')[0].tree;
+	if(_cateid > 0) {
+		tree.close_all();
+		get_note_html($('#digestcate')[0].tree, _cateid);
+		tree.toggle_node($('#' + tree._id(_cateid)), true, true);
+	}
+	var jroot = $('#' + tree._id('0') + '[parentid="-1"]');
+	$('>span.text', jroot).html('<a href="?digest-main.htm" target="main">精华首页</a>');
+});
+</script>
+
+$conf[footer_js]
+
+</body>
+</html>

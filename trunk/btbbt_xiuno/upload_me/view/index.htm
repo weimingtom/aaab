@@ -1,0 +1,200 @@
+<!--{include header.htm}-->
+
+<!--{hook index_1.htm}-->
+
+<div class="width">
+
+
+	<!--{hook index_2.htm}-->
+	
+	<table id="nav" cellpadding="0" cellspacing="0" style="margin-bottom: 4px;">
+		<tr>
+			<td class="left"></td>
+			<td class="center">
+				<a class="icon icon-home" href="./"></a>
+				<span class="sep"></span>
+				<span>首页</span>
+				<!--{hook index_3.htm}-->
+			</td>
+			<td class="right"><!--{hook index_4.htm}--></td>
+		</tr>
+	</table>
+	
+	<!--{hook index_5.htm}-->
+	
+	<div style="margin-top: 4px; line-height: 12px; margin-bottom: 2px;" class="small">
+		<span class="icon icon-stat"></span> 
+		<span class="grey">帖子:</span> $runtime[posts] (<span class="blue bold">$runtime[todayposts]</span>)
+		<span class="grey">会员:</span> $runtime[users] (<span class="blue bold">$runtime[todayusers]</span>)
+		<!--{if $runtime[newusername]}-->
+		<span class="grey">新会员:</span> <a href="?you-profile-uid-$runtime[newuid]-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}">$runtime[newusername]</a>
+		<!--{/if}-->
+		<!--{hook index_6.htm}-->
+	</div>
+	
+	<!--{hook index_7.htm}-->
+
+	<!--{loop $catelist $cate}-->
+	<!--{if $cate[forumlist]}-->
+	<div class="div">
+		<div class="header">
+			<span class="left">$cate[name]<!--{hook index_8.htm}--></span>
+			<span class="right clear">
+			<!--{hook index_9.htm}-->
+			<!--{loop $cate[modlist] $modid $modname}-->
+				<span class="grey">大区版主：</span><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog grey" ajaxdialog="{position: 6, modal: false}">$modname</a>
+			<!--{/loop}-->
+			</span>
+		</div>
+		<div class="body" style="padding: 0px;">
+			<!--{if isset($cate[forumlist_chunk])}-->
+			
+			<!--{loop $cate[forumlist_chunk] $chunk}-->
+			<table width="100%" cellspacing="4" cellpadding="0">
+				<tr>
+					<!--{loop $chunk $forum}-->
+					<td style="width: {$cate[width]}">
+					<!--{if !empty($forum)}-->
+						<a href="?forum-index-fid-$forum[fid].htm"><span class="forumicon_big{if !$forum[todayposts]} xgrey{/if}" style="float: left; {if $forum[forumicon_big]}background-image: url($forum[forumicon_big]);{/if}"></span></a>
+						<div style="margin-left: 56px; padding-left: 4px; lie-height: 2;">
+							<p>
+								<a href="?forum-index-fid-$forum[fid].htm" style="font-size: 14px; display: inline-block;"><b>$forum[name]</b></a>
+								<!--{if $forum[todayposts]}-->
+								<span class="blue" title="今日发帖：$forum[todayposts]">(<b>$forum[todayposts]</b>)</span>
+								<!--{/if}-->
+							</p>
+							<p class="grey">
+								主题: <span class="grey">$forum[threads]</span> 贴数: <span class="grey"> $forum[posts]</span>
+							</p>
+							<!--{if $forum[lastsubject]}-->
+							<p><a href="?thread-index-fid-$forum[fid]-tid-$forum[lasttid].htm">最后发帖：$forum[lastpost_fmt]</a></p>
+							<!--{/if}-->	
+						</div>
+					<!--{/if}-->
+					</td>
+					<!--{/loop}-->
+				</tr>
+			</table>
+			<hr style="margin-left: 4px; margin-right: 4px; margin-bottom: 2px; margin-top: 2px;" />
+			<!--{/loop}-->
+			
+			<!--{else}-->
+			
+			<!--{loop $cate[forumlist] $forum}-->
+			<table cellpadding="2" cellspacing="0" width="100%" class="forum">
+				<tr valign="top"> 
+					<td width="70" align="center"><a href="?forum-index-fid-$forum[fid].htm"><span class="forumicon_big{if !$forum[todayposts]} xgrey{/if}" {if $forum[forumicon_big]}style="background-image: url($forum[forumicon_big]);"{/if}></span></a></td>
+					<td>
+						<a href="?forum-index-fid-$forum[fid].htm" style="font-size: 14px; display: inline-block;"><b>$forum[name]</b></a>
+					
+						<!--{if $forum[todayposts]}-->
+						<span class="blue" title="今日发帖：$forum[todayposts]">(<b>$forum[todayposts]</b>)</span>
+						<!--{/if}-->
+					
+						<!--{if $forum[brief]}-->
+						<p class="grey">$forum[brief]</p>
+						<!--{/if}-->
+					
+						<!--{if $forum[modlist]}-->
+						<p class="grey">
+							<b>版主:</b>
+							<!--{loop $forum[modlist] $modid $modname}-->
+							<a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}">$modname</a>
+							<!--{/loop}-->
+						</p>
+						<!--{/if}-->
+					
+						<!--{hook index_10.htm}-->
+					
+					</td>
+					
+					<!--{hook index_11.htm}-->
+					
+					<td width="80" valign="middle" align="center" title="版块贴数">
+						<span class="blue">$forum[threads]</span> <span class="grey">/ $forum[posts]</span>
+					</td>
+					<td width="200" valign="middle">
+						<!--{if $forum[lastsubject]}-->
+						<a href="?thread-index-fid-$forum[fid]-tid-$forum[lasttid].htm" target="_blank">$forum[lastsubject]</a><br />
+						<span class="grey">
+							$forum[lastpost_fmt]
+							<a href="?you-profile-uid-$forum[lastuid]-ajax-1.htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}" onclick="return false;">$forum[lastusername]</a>
+						</span>
+						<!--{/if}-->	
+					</td>
+				</tr>
+			</table>
+			<hr style="margin-left: 4px; margin-right: 4px; margin-bottom: 2px; margin-top: 2px;" />
+			<!--{/loop}-->
+			
+			<!--{/if}-->
+		</div>
+		<div class="footer"></div>
+	</div>
+	<!--{/if}-->
+	<!--{/loop}-->
+	
+	<!--{hook index_12.htm}-->
+	
+	<div class="div">
+		<div class="header">在线用户 <span class="clear"> (<b>$runtime[onlines]</b> 人)</span></div>
+		<div class="body grey" id="onlinelist">
+			<!--{if !$onlinelist}-->无<!--{/if}-->
+			<!--{loop $onlinelist $online}-->
+			<a href="?you-profile-uid-$online[uid].htm" target="_blank" class="ajaxdialog" ajaxdialog="{position: 6, modal: false}" onclick="return false;"><span class="icon-group icon-group-$online[groupid]" style="width: 12px;"></span>$online[username]</a>
+			<!--{/loop}-->
+			<!--{if $runtime[onlines] > 500}--><a href="?online-list-ajax-1.htm" class="ajaxdialog" target="_blank">查看全部</a><!--{/if}-->
+		</div>
+		<div class="footer"></div>
+	</div>
+	
+	<!--{hook index_13.htm}-->
+	
+	<!--{if $conf[friendlink_on]}-->
+	<div class="div">
+		<div class="header">友情链接</div>
+		<div class="body grey">
+			<!--{if $friendlinklist[1]}-->
+			<div id="friendlink_img">
+				<!--{loop $friendlinklist[1] $friendlink}-->
+				<a href="$friendlink[url]" target="_blank" title="$friendlink[sitename]"><img src="$friendlink[logourl]" width="88" height="31" class="xgrey" /></a>
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+			
+			<!--{if $friendlinklist[0]}-->
+			<div id="friendlink_text">
+				<!--{loop $friendlinklist[0] $friendlink}-->
+				<a href="$friendlink[url]" target="_blank" class="grey2">$friendlink[sitename]</a>
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+		</div>
+		<div class="footer"></div>
+	</div>
+	<!--{/if}-->
+	
+	<!--{hook index_14.htm}-->
+	
+</div>
+
+<!--{hook index_15.htm}-->
+
+<!--{include footer.htm}-->
+
+<script type="text/javascript">
+$('#friendlink_img img').hover(function() {$(this).removeClass('xgrey')}, function() {$(this).addClass('xgrey')});
+$('div.div div.body').find('hr:last').hide();// 隐藏最后一个 hr
+
+// 鼠标背景变色
+$('table.forum').bind('mouseover', function() {$('td:gt(0)', this).removeClass('bg1').addClass('bg2');});
+$('table.forum').bind('mouseout', function() {$('td:gt(0)', this).removeClass('bg2').addClass('bg1');});
+
+</script>
+
+<!--{hook index_16.htm}-->
+
+$conf[footer_js]
+
+</body>
+</html>

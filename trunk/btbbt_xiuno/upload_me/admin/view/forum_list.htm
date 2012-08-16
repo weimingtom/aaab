@@ -1,0 +1,117 @@
+<!--{include header.htm}-->
+
+<style type="text/css">
+h3 {height: 30px;}
+.forumlist {padding-left: 0px; margin-left: 32px;}
+.forumlist li{
+	height: 30px; list-style: none; padding-left: 0px; margin-left: 0px;
+}
+</style>
+<div class="width">
+	<form action="?forum-list.htm" method="post" id="forumform">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<div class="div" style="width: 780px;">
+			<div class="header">管理板块</div>
+			<div class="body">
+				
+			<table width="100%" cellspacing="0" cellpadding="0">
+				<tr>
+					<td width="25%" class="bg2" valign="top">
+						<ul>
+							<li>支持二级分类</li>
+						</ul>
+					</td>
+					<td width="75%" valign="top" class="bg1">
+						
+					<!--{loop $forumlist $cate}-->
+						<h3>
+							
+							<input type="text" name="name[{$cate[fid]}]" value="$cate[name]" size="16" style="font-size: 14px; font-weight: 800" />
+							<span class="small grey">顺序:</span><input type="text" name="rank[{$cate[fid]}]" value="$cate[rank]" style="width: 30px" title="数字顺序，0-255，越大越靠前" /> 
+							<input type="button" class="button smallblue" value="编辑" onclick="window.location='?forum-update-fid-$cate[fid].htm'" /> 
+							<input type="button" class="button smallgrey" value="删除" onclick="if(window.confirm('您确定删除 $cate[name] 吗？')) {if(window.confirm('您确定删除 $cate[name] 吗？')) window.location='?forum-delete-fid-$cate[fid].htm'}" />
+							<!--{hook admin_forum_list_1.htm}-->
+						</h3>
+						<ul class="forumlist">
+						<!--{loop $cate[forumlist] $forum}-->
+							<li>
+								<input type="text" name="name[{$forum[fid]}]" value="$forum[name]" size="16" />
+								<span class="small grey">顺序:</span><input type="text" name="rank[{$forum[fid]}]" value="$forum[rank]" style="width: 30px" title="数字顺序，1-255，越大越靠前" />
+								<input type="button" class="button smallblue" value="编辑" onclick="window.location='?forum-update-fid-$forum[fid].htm'" /> 
+								<input type="button" class="button smallgrey" value="删除" onclick="if(window.confirm('您确定删除 $forum[name] 吗？')) window.location='?forum-delete-fid-$forum[fid].htm'" />
+								<!--{hook admin_forum_list_2.htm}-->
+							</li>
+						<!--{/loop}-->
+							<li id="forumaddlink_$cate[fid]" style="clear: both;">
+								<a href="javascript: void(0)" onclick="addforum($cate[fid])" class="red" style="_margin-left: 32px;">[+]添加板块：</a>
+							</li>
+						</ul>
+					<!--{/loop}-->
+						<h3 id="cateaddlink">
+							<a href="javascript: void(0)" onclick="addcate($cate[fid])" class="red">[+]添加分类：</a>	
+						</h3>
+						<div class="box" style="text-align: center; margin-top: 4px;">
+							<input type="submit" value=" 保存修改 " class="button bigblue" id="mdeleteforum" />
+							<div id="notice" class="notice" style="display: none;"></div>
+						</div>
+					</td>
+				</tr>
+			</table>
+			</div>
+		</div>
+	</form>
+	
+	<!-- 需要克隆的节点放在表单外面，防止被提交。 -->
+	<li id="forumadddiv" style="display: none;">
+		<input type="text" name="newname[]" size="16" value="板块名称" />
+		<input type="hidden" name="newfup[]" value="0" />
+		<span class="small grey">顺序:</span><input type="text" name="newrank[]" value="0" style="width: 30px" title="数字顺序，0-255，越大越靠前" />
+		<!--{hook admin_forum_list_3.htm}-->
+	</li>
+	
+	<h3 id="cateadddiv" style="display: none;">
+		<input type="text" name="newname[]" value="分类名称" size="16" style="font-size: 14px; font-weight: 800" />
+		<input type="hidden" name="newfup[]" value="0" />
+		<span class="small grey">顺序:</span><input type="text" name="newrank[{$cate[fid]}]" value="0" style="width: 30px" title="数字顺序，0-255，越大越靠前" /> 
+		<!--{hook admin_forum_list_4.htm}-->
+	</h3>
+	
+</div>
+<!--{include footer.htm}-->
+
+<script type="text/javascript">
+function addcate(fid) {
+	$('#cateadddiv').clone().insertBefore('#cateaddlink').show();
+}
+
+function addforum(fid) {
+	var jdiv = $('#forumadddiv').clone();
+	jdiv.insertBefore('#forumaddlink_' + fid).show();
+	$('input[name="newfup\[\]"]', jdiv).val(fid);
+}
+
+$('#mdeleteforum').click(function() {
+	$('#forumform').submit();
+	return false;
+});
+
+<!--{loop $error $k $v}-->
+<!--{if $v}-->
+	$('#$k').alert('$v');
+<!--{/if}-->
+<!--{/loop}-->
+
+<!--{if !empty($_POST)}-->
+<!--{if empty($error)}-->
+	$('#notice').html('保存成功！').show();
+<!--{else}-->
+	$('#notice').html('保存失败！').show();
+<!--{/if}-->
+<!--{/if}-->
+
+</script>
+
+<!--{hook admin_forum_list_5.htm}-->
+
+</body>
+</html>

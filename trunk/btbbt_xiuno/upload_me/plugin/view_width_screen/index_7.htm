@@ -1,0 +1,47 @@
+	<!--{loop $catelist $cate}-->
+	<div class="div">
+		<div class="header">
+			<span class="left">$cate[name]<!--{hook index_8.htm}--></span>
+			<span class="right clear">
+			<!--{hook index_9.htm}-->
+			<!--{loop $cate[modlist] $modid $modname}-->
+				<span class="grey">大区版主：</span><a href="?you-profile-uid-$modid-ajax-1.htm" target="_blank" class="ajaxdialog grey" ajaxdialog="{position: 6, modal: false}">$modname</a>
+			<!--{/loop}-->
+			</span>
+		</div>
+		<div class="body" style="padding: 0px;">
+			<!--{loop $cate[forumlist_chunk] $chunk}-->
+			<table width="100%" cellspacing="4" cellpadding="0">
+				<tr>
+					<!--{loop $chunk $forum}-->
+					<td style="width: {$forum_width}px;">
+					<!--{if !empty($forum)}-->
+						<a href="?forum-index-fid-$forum[fid].htm"><span class="forumicon_middle{if !$forum[todayposts]} xgrey{/if}" style="float: left; {if $forum[forumicon_big]}background-image: url($forum[forumicon_big]);{/if}"></span></a>
+						<div style="margin-left: 56px; padding-left: 4px; lie-height: 2;">
+							<p>
+								<a href="?forum-index-fid-$forum[fid].htm" style="font-size: 14px; display: inline-block;"><b>$forum[name]</b></a>
+								<!--{if $forum[todayposts]}-->
+								<span class="blue" title="今日发帖：$forum[todayposts]">(<b>$forum[todayposts]</b>)</span>
+								<!--{/if}-->
+							</p>
+							<p class="grey">
+								主题: <span class="grey">$forum[threads]</span> 贴数: <span class="grey"> $forum[posts]</span>
+							</p>
+							<!--{if $forum[lastsubject]}-->
+							<p><a href="?thread-index-fid-$forum[fid]-tid-$forum[lasttid].htm">最后发帖：$forum[lastpost_fmt]</a></p>
+							<!--{/if}-->	
+						</div>
+					<!--{/if}-->
+					</td>
+					<!--{/loop}-->
+				</tr>
+			</table>
+			<hr style="margin-left: 4px; margin-right: 4px; margin-bottom: 2px; margin-top: 2px;" />
+			<!--{/loop}-->
+		</div>
+		<div class="footer"></div>
+	</div>
+	<!--{/loop}-->
+
+
+<!--{if 0}-->

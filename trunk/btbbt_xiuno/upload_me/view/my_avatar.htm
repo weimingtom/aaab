@@ -1,0 +1,58 @@
+<!--{include header.htm}-->
+
+<link href="view/my.css" type="text/css" rel="stylesheet" />
+
+<div class="width">
+
+	<!--{include my_nav_widget.htm}-->
+
+	<div class="left border shadow bg2">
+		<!--{include my_menu_widget.htm}-->
+	</div>
+	
+	<div class="right">
+		
+		<!--{include my_profile_nav_widget.htm}-->
+
+		<div class="bg1 border shadow">
+			<div style="width: 400px; padding: 8px;">
+				<!--{hook my_avatar_1.htm}-->
+				<div>
+					<span class="avatar_big border" style="{if $_user[avatar_big]}background-image: url($_user[avatar_big]);{/if}" id="avatar_big"></span>
+				</div>
+				<div class="submit">
+					<input type="button" class="button smallblue" id="avatar_button" value="修改头像" />
+					<div class="notice" id="notice" style="display: none;"></div>
+				</div>
+				<!--{hook my_avatar_2.htm}-->
+			</div>
+		</div>
+	</div>
+</div>	
+
+<!--{include footer.htm}-->
+
+<!--{hook my_avatar_3.htm}-->
+
+<script type="text/javascript" src="view/js/clipimg/swfupload.js"></script>
+<script type="text/javascript" src="view/js/clipimg/clipimg.js"></script>
+<script type="text/javascript">
+$('#avatar_big').clipimg({
+	postparams:null, 
+	buttonid: 'avatar_button', 
+	uploadurl: '?user-uploadavatar-$conf[cookiepre]sid-$_sid-$conf[cookiepre]auth-$_auth-ajax-1.htm',
+	clipurl: '?user-clipavatar-ajax-1.htm',
+	baseurl: 'view/js/clipimg/',
+	success_recall: function(imgurl, pos) {
+		$('#notice').html('头像修改成功！').show().delay(3000).fadeOut('fast');
+		$('#avatar_menu').css('background-image', $('#avatar_big').css('background-image'));
+	}
+});
+</script>
+
+<!--{hook my_avatar_4.htm}-->
+
+$conf[footer_js]
+
+</body>
+</html>

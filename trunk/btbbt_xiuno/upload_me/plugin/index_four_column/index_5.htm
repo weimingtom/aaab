@@ -1,0 +1,45 @@
+<style type="text/css">
+#newlist ul, #newlist li {margin: 0px; padding: 0px; line-height: 20px; text-indent: 16px; list-style: none; white-space: nowrap; overflow: hidden;}
+#newlist ul.newlist {background: url(view/image/li.gif) no-repeat;}
+#newlist ul.digestlist li, #newlist ul.userlist li{text-indent: 0px;}
+</style>
+<div class="list" id="newlist">
+	<table class="table" style="table-layout: fixed;">
+		<tr class="header">
+			<td width="28%">最新主题</td>
+			<td width="28%">最新回复</td>
+			<td width="28%">最新精华</td>
+			<td width="16%">最新用户</td>
+		</tr>
+		<tr valign="top">
+			<td>
+				<ul class="newlist">
+					<!--{loop $newthreadlist $thread}-->
+					<li><a href="?thread-index-fid-$thread[fid]-tid-$thread[tid].htm" target="_blank" title="$thread[subject]">$thread[subject]</a></li>
+					<!--{/loop}-->
+				</ul>
+			</td>
+			<td>
+				<ul class="newlist">
+					<!--{loop $newpostlist $thread}-->
+					<li><a href="?thread-index-fid-$thread[fid]-tid-$thread[tid].htm" target="_blank" title="$thread[subject]">$thread[subject]</a></li>
+					<!--{/loop}-->
+				</ul>
+			</td>
+			<td>
+				<ul class="digestlist">
+					<!--{loop $newdigestlist $thread}-->
+					<li><span class="icon icon-digest-$thread[digest]"></span><a href="?thread-index-fid-$thread[fid]-tid-$thread[tid].htm" target="_blank" title="$thread[subject]">$thread[subject]</a></li>
+					<!--{/loop}-->
+				</ul>
+			</td>
+			<td>
+				<ul class="userlist">
+					<!--{loop $newuserlist $user}-->
+					<li><span class="icon icon-user-user"></span><a href="?you-index-uid-$user[uid].htm" target="_blank">$user[username]</a></li>
+					<!--{/loop}-->
+				</ul>
+			</td>
+		</tr>
+	</table>
+</div>

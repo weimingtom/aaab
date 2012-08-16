@@ -1,0 +1,105 @@
+<!--{include header.htm}-->
+
+<link href="view/my.css" type="text/css" rel="stylesheet" />
+
+<div class="width">
+
+	<!--{include my_nav_widget.htm}-->
+
+	<div class="left border shadow bg2">
+		<!--{include my_menu_widget.htm}-->
+	</div>
+	
+	<div class="right">
+		
+		<!--{include my_profile_nav_widget.htm}-->
+		
+		<div class="bg1 border shadow">
+			<table cellpadding="0" cellspacing="0" width="576" style="table-layout: fixed; margin-top: 8px;">
+				<tr>
+					<td width="128" valign="top" align="center">
+						<a href="?you-index-uid-$_user[uid].htm" target="_blank"><span class="avatar_big border" style="{if $_user[avatar_big]}background-image: url($_user[avatar_big]);{/if}"></span></a>
+						<!--{hook my_base_1.htm}-->
+					</td>
+					<td valign="top">
+					
+						<table cellpadding="0" cellspacing="4" width="96%" align="center">
+							<tr valign="top">
+								<td>
+									<p style="line-height: 20px;"><span class="grey">　用户组：</span>$_user[groupname]</p>
+									<p style="line-height: 20px;"><span class="grey">注册时间：</span>$_user[regdate_fmt]</p>
+									<p style="line-height: 20px;"><span class="grey">最后活跃：</span>$_user[lastactive_fmt]</p>
+									<p style="line-height: 20px;"><span class="grey">在线状态：</span><!--{if $_user[isonline]}--><span class="icon icon-online"></span><b class="red">在线</b><!--{else}--><span class="icon icon-offline"></span>离线<!--{/if}--></p>
+									<!--{hook my_base_2.htm}-->
+								</td>
+								<td width="40%">
+									<p style="line-height: 20px;"><span class="grey">主题：</span><a href="?you-post-uid-$_user[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline">$_user[myposts]</b></a><span class="small" title="回复"> / $_user[posts]</span></p>
+									<p style="line-height: 20px;"><span class="grey">积分：</span><b style="font-size: 14px;">$_user[credits]</b></p>
+									<!--{if $conf[pay_on]}-->
+									<p style="line-height: 20px;"><span class="grey">金钱：</span><b style="font-size: 14px;">$_user[money]</b>元<!--{if $_user[uid] && $_user[uid] == $_user[uid]}--> &nbsp; <input type="button" class="button smallblue" value="充值" target="_blank" href="?pay-select.htm" /><!--{/if}--></p>
+									<p style="line-height: 20px;"><span class="grey">金币：</span><b style="font-size: 14px;">$_user[golds]</b>枚<!--{if $_user[uid] && $_user[uid] == $_user[uid]}--> &nbsp; <input type="button" class="button smallblue" value="转换" target="_blank" href="?my-exchange.htm" /><!--{/if}--></p>
+									<!--{/if}-->
+									
+									<!--{hook my_base_3.htm}-->
+								</td>
+								<td width="15%">
+									<p style="line-height: 20px;"><span class="grey">关注：</span><a href="?you-follow-uid-$_user[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline;">$_user[follows]</b></a></p>
+									<p style="line-height: 20px;"><span class="grey">粉丝：</span><a href="?you-followed-uid-$_user[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline;">$_user[followeds]</b></a></p>
+									<!--{hook my_base_4.htm}-->
+								</td>
+							</tr>
+							
+							<!--{hook my_base_5.htm}-->
+							
+							<!--{if $_user[groupid] == 1}-->
+							<tr>
+								<td colspan="3" height="10"><hr /></td>
+							</tr>
+							<tr>
+								<td>
+									$_user[email] 
+								</td>
+								<td>
+									<span class="grey">注册IP：</span>$_user[regip] 
+								</td>
+								<td>
+									<!--{if $_user[homepage]}-->
+									<a href="$_user[homepage]" target="_blank"><span class="icon icon-myhome"></span>个人空间</a>
+									<!--{/if}-->
+								</td>
+							</tr>
+							<!--{/if}-->
+
+							<!--{hook my_base_6.htm}-->
+							
+							<!--{if $_user[signature]}-->
+							<tr>
+								<td colspan="3" height="10"><hr /></td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<span class="grey">签名: </span>$_user[signature] 
+								</td>
+							</tr>
+							<!--{/if}-->
+							
+							<!--{hook my_base_7.htm}-->
+						</table>
+						
+						<!--{hook my_base_8.htm}-->
+					</td>
+				</tr>
+			</table>
+			<!--{hook my_base_9.htm}-->
+		</div>
+	</div>
+</div>
+
+<!--{include footer.htm}-->
+
+<!--{hook my_base_10.htm}-->
+
+$conf[footer_js]
+
+</body>
+</html>
