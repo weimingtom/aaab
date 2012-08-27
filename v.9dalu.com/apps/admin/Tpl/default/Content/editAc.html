@@ -1,0 +1,30 @@
+<include file="../Public/_header" />
+ 
+
+<div class="so_main">
+  <div id="editTpl_div">
+  	<div class="page_tit"><eq name="type" value="edit">编辑<else/>添加</eq>分类</div>
+	
+	<div class="form2">
+	<form method="post" action="{:U('admin/Content/doEditAc')}">
+	<eq name="type" value="edit"><input type="hidden" name="ac_id" value="{$ac_id}"></eq>
+    <dl class="lineD">
+      <dt>名称：</dt>
+      <dd>
+        <input name="title" type="text" value="{$title}"> *
+	  </dd>
+    </dl>
+	
+	 
+	
+     
+	
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+	</form>
+  </div>
+  </div>
+</div>
+ 
+<include file="../Public/_footer" />

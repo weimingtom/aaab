@@ -1,0 +1,38 @@
+
+
+
+<div class="footer_bg">
+<div class="footer">
+	<div class="menu">
+		<php>
+		foreach($ts['footer_document'] as $k => $v) {
+			$v['url'] = isset($v['url']) ? $v['url'] : U('home/Public/document',array('id'=>$v['document_id']));
+			$ts['footer_document'][$k] = '<a href="'.$v['url'].'" target="_blank">'.$v['title'].'</a>';
+		}
+		echo implode('&nbsp;&nbsp;|&nbsp;&nbsp', $ts['footer_document']);
+		</php>
+	</div>
+ <div> Copyright © {$ts['site']['site_name']} {$ts['site']['site_icp']} Powered by <a href="http://www.thinksns.com" target="_blank">ThinkSNS</a> 2.3
+   <php> if( isMobile() ){ </php> <a href="{:U('home/Public/towap')}">访问WAP版</a> <php>}</php></div>
+</div>
+</div>
+<div class="copyright2">
+  <p>版权所有 &copy; 2010-2011 <a href="/">{$ts['site']['site_name']}</a> - {$ts['site']['site_slogan']} All rights reserved. <script language="javascript" type="text/javascript" src="http://js.users.51.la/4535016.js"></script>
+<noscript><a href="http://www.51.la/?4535016" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/4535016.asp" style="border:none" /></a></noscript></p>
+        <ul>
+            <li class="blogo">
+               <a href="http://www.mmwj.cn/new/110/index.php" target="_blank"><img src="__THEME__/images/chacha_4409.gif" width="40" height="57" border="0" /> <img src="__THEME__/images/jinjin_4409.gif" width="40" height="57" border="0" /></a> <a href="http://210.76.65.188/webrecord/innernet/Welcome.jsp?bano=4409013020543" target="_blank"><img src="__THEME__/images/waicon.gif" border=0 /></a> <a href="http://210.76.65.188" target="_blank"><img src="__THEME__/images/gt.gif" border=0 /></a>            </li>
+            
+        </ul>
+</div>
+
+</div>
+<php>if (!empty($ts['cnzz'])) {</php>
+<div style="display:none;">
+<script src="http://s87.cnzz.com/stat.php?id={$ts['cnzz']['cnzz_id']}&web_id={$ts['cnzz']['cnzz_id']}" language="JavaScript" charset="gb2312"></script>
+</div>
+<php>}</php>
+
+
+</body>
+</html>

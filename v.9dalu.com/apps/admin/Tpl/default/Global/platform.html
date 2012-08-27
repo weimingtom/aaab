@@ -1,0 +1,64 @@
+<include file="../Public/_header" />
+<div class="so_main">
+  <div class="page_tit">平台配置</div>
+  
+  <div class="form2">
+  	<form method="post" action="{:U('admin/Global/platform')}">
+    <dl class="lineD">
+      <dt>新浪WB_AKEY：</dt>
+      <dd>
+        <input name="sina_wb_akey" type="text" value="{$sina_wb_akey}">
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>新浪WB_SKEY：</dt>
+      <dd>
+        <input name="sina_wb_skey" type="text" value="{$sina_wb_skey}">
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>豆瓣Key：</dt>
+      <dd>
+        <input name="douban_key" type="text" value="{$douban_key}">
+      </dd>
+    </dl>
+    <dl class="">
+      <dt>豆瓣密钥：</dt>
+      <dd>
+        <input name="douban_secret" type="text" value="{$douban_secret}">
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>腾讯Key：</dt>
+      <dd>
+        <input name="qq_key" type="text" value="{$qq_key}">
+      </dd>
+    </dl>
+    <dl class="">
+      <dt>腾讯密钥：</dt>
+      <dd>
+        <input name="qq_secret" type="text" value="{$qq_secret}">
+      </dd>
+    </dl>
+	
+	<dl class="lineD">
+      <dt>淘宝Key：</dt>
+      <dd>
+        <input name="taobao_key" type="text" value="{$taobao_key}">
+      </dd>
+    </dl>
+    <dl class="">
+      <dt>淘宝密钥：</dt>
+      <dd>
+        <input name="taobao_secret" type="text" value="{$taobao_secret}">
+      </dd>
+    </dl>  
+	
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+    </form>
+  </div>
+
+</div>
+<include file="../Public/_footer" />
