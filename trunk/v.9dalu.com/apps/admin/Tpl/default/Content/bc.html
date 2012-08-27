@@ -1,0 +1,188 @@
+<include file="../Public/_header" />
+<div class="so_main">
+
+  <div id="search_div" <neq name="isSearch" value="1">style="display:none;"</neq>>
+    <div class="page_tit">搜索子类 [ <a href="javascript:void(0);" onclick="searchDenounce();">隐藏</a> ]</div>
+    <div class="form2">
+    <form method="post" action="{:U('admin/Content/doSearchBc')}">
+    <input type="hidden" name="isSearch" value="1"/>
+    <dl class="lineD">
+      <dt>子类ID：</dt>
+      <dd>
+        <input name="bc_id" type="text" value="{$bc_id}">
+        <p>多个时使用英文的“,”分割</p>
+      </dd>
+    </dl>
+    <dl class="lineD">
+      <dt>大类ID：</dt>
+      <dd>
+        <input name="ac_id" type="text" value="{$ac_id}">
+        <p>多个时使用英文的“,”分割</p>
+      </dd>
+    </dl>
+   <php>if($type != 'searchUser') $uid = '';</php>
+    <dl class="lineD">
+      <dt>用户ID：</dt>
+      <dd>
+        <input name="uid" type="text" value="{$uid}">
+        <p>用户ID,多个时使用英文的","分割</p>
+      </dd>
+    </dl>
+    
+   <dl class="lineD">
+      <dt>标题：</dt>
+      <dd>
+        <input name="title" type="text" value="{$title}">
+        <p>使用标题关键字进行模糊查询</p>
+      </dd>
+    </dl>
+    
+    
+    <div class="page_btm">
+      <input type="submit" class="btn_b" value="确定" />
+    </div>
+    </form>
+  </div>
+  </div>
+  
+  <div class="page_tit">子类管理</div>
+  <div class="Toolbar_inbox">
+    <div class="page right">{$html}</div>
+    <a href="javascript:void(0);" class="btn_a" onclick="searchDenounce();">
+        <span class="search_action"><neq name="isSearch" value="1">搜索子类<else/>搜索完毕</neq></span>
+    </a>
+    <a href="javascript:void(0);" class="btn_a" onclick="deleteRecord();"><span>删除记录</span></a>
+  </div>
+  <div class="list">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <th style="width:30px;">
+        <input type="checkbox" id="checkbox_handle" onclick="checkAll(this)" value="0">
+        <label for="checkbox"></label>
+    </th>
+    <th class="line_l">子类ID</th>
+    <th class="line_l">大类ID</th>
+    <th class="line_l">用户ID</th>
+    <th class="line_l">用户名</th>
+    <th class="line_l">子类名字</th>
+    <th class="line_l">创建时间</th>
+    <th class="line_l">操作</th>
+  </tr>
+  <volist id="vo" name="data">
+      <tr overstyle='on' id="bcshow_{$vo.bc_id}">
+        <td><input type="checkbox" name="checkbox" id="checkbox2" onclick="checkon(this)" value="{$vo.bc_id}"></td>
+        <td>{$vo.bc_id}</td>
+        <td>{$vo.ac_id}</td>
+        <td>{$vo.uid}</td>
+        <td>{$vo.uid|getUserName}</td>
+        <td>{$vo.title}</td>
+        <td>{$vo.ctime|date="Y-m-d H:i",###}</td>
+        <td><a href="javascript:void(0);" class="btn_a" onclick="deleteRecord({$vo.bc_id});">删除</a></td>
+      </tr>
+  </volist>
+  </table>
+  </div>
+  <div class="Toolbar_inbox">
+    <div class="page right">{$html}</div>
+    <a href="javascript:void(0);" class="btn_a" onclick="searchDenounce();">
+        <span class="search_action"><neq name="isSearch" value="1">搜索子类<else/>搜索完毕</neq></span>
+    </a>
+    <a href="javascript:void(0);" class="btn_a" onclick="deleteRecord();"><span>删除记录</span></a>
+  </div>
+</div>
+
+<script>
+    //鼠标移动表格效果
+    $(document).ready(function(){
+        $("tr[overstyle='on']").hover(
+          function () {
+            $(this).addClass("bg_hover");
+          },
+          function () {
+            $(this).removeClass("bg_hover");
+          }
+        );
+    });
+    
+    function checkon(o){
+        if( o.checked == true ){
+            $(o).parents('tr').addClass('bg_on') ;
+        }else{
+            $(o).parents('tr').removeClass('bg_on') ;
+        }
+    }
+    
+    function checkAll(o){
+        if( o.checked == true ){
+            $('input[name="checkbox"]').attr('checked','true');
+            $('tr[overstyle="on"]').addClass("bg_on");
+        }else{
+            $('input[name="checkbox"]').removeAttr('checked');
+            $('tr[overstyle="on"]').removeClass("bg_on");
+        }
+    }
+
+    //获取已选择用户的ID数组
+    function getChecked() {
+        var ids = new Array();
+        $.each($('table input:checked'), function(i, n){
+            ids.push( $(n).val() );
+        });
+        return ids;
+    }
+    
+    function deleteRecord(ids) {
+    	
+        var length = 0;
+    	if(ids) {
+    		length = 1;    		
+    	}else {
+    		ids    = getChecked();
+    		length = ids.length;
+            ids    = ids.toString();
+    	}
+    	if(ids=='') {
+    		ui.error('请先选择一个后台日志');
+    		return ;
+    	}
+    	if(confirm('您将删除'+length+'条记录，确定继续？')) {
+    		$.post("{:U('admin/Content/doDeleteBc')}",{ids:ids},function(res){
+    			if(res=='1') {
+    				ui.success('删除成功');
+    				if( length == 1){
+    					$('#bcshow_'+ids).remove();
+    				}else{
+    					removeItem(ids);
+    				}
+    			}else {
+    				ui.error('删除失败');
+    			}
+    		});
+    	}
+    }
+    
+ 
+    
+    function removeItem(ids) {
+    	ids = ids.split(',');
+        for(i = 0; i < ids.length; i++) {
+            $('#bcshow_'+ids[i]).remove();
+        }
+    }
+    
+    //搜索用户
+    var isSearchHidden = <neq name="isSearch" value="1">1<else/>0</neq>;
+    function searchDenounce() {
+        if(isSearchHidden == 1) {
+            $("#search_div").slideDown("fast");
+            $(".search_action").html("搜索完毕");
+            isSearchHidden = 0;
+        }else {
+            $("#search_div").slideUp("fast");
+            $(".search_action").html("搜索子类");
+            isSearchHidden = 1;
+        }
+    }
+</script>
+
+<include file="../Public/_footer" />

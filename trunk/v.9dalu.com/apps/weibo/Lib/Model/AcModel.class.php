@@ -1,0 +1,1 @@
+<?php class AcModel extends Model{	var $tableName = 'weibo_ac';}?>

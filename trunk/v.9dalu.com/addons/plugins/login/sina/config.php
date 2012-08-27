@@ -1,0 +1,1 @@
+<?php$key = model('Xdata')->lget('platform');define('WB_AKEY', $key['sina_wb_akey']);define('WB_SKEY', $key['sina_wb_skey']);

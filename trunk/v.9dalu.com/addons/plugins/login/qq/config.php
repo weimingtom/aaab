@@ -1,0 +1,1 @@
+<?php$key = model('Xdata')->lget('platform');define('QQWB_AKEY', $key['qq_key']);define('QQWB_SKEY', $key['qq_secret']);

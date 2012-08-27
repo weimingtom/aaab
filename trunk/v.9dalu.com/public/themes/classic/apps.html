@@ -1,0 +1,40 @@
+<div class="user_app"><!-- 用户组件列表 begin -->
+	
+    <div class="user_app_box">
+	 <div class="user_app_list" style="position:relative;">
+  	
+		<h3><i class="cover_right_h3">勋章</i></h3>
+  </div>
+  <div class="user_app_list">
+  	
+        {:W('Medal',array('async'=>1))}
+  </div>
+  
+  <div class="clearfix"></div>
+  <div class="celerity_menu app_line">
+  	<ul>
+	<li><a href="{:U('home/user/atme')}" {:getMenuState('user/atme')}><img src="__THEME__/images/002.gif" align="absmiddle"> 提到我的
+	
+	<span id="app_left_count_atme"><gt name="userCount['atme']" value="0">(<font color="red">{$userCount.atme}</font>)</gt></span>
+	</a></li>
+    <li><a href="{:U('home/user/collection')}" {:getMenuState('user/collection')}><img src="__THEME__/images/003.png" align="absmiddle"> 我的收藏</a></li>
+    <li><a href="{:U('home/user/comments')}" {:getMenuState('user/comments')}><img src="__THEME__/images/004.png" align="absmiddle"> 我的评论
+    
+   <span id="app_left_count_comment"><gt name="userCount['comment']" value="0">(<font color="red">{$userCount.comment}</font>)</gt></span>
+    </a></li>
+  	</ul>
+  </div>
+  
+
+
+    </div>
+	<div class="user_app_btm"></div>
+	</div><!-- 用户组件列表 end -->
+<php>
+function getMenuState($type){
+	$type = split('/',$type);
+	if( strtolower(MODULE_NAME)==strtolower($type[0]) && ( strtolower(ACTION_NAME)==strtolower($type[1]) || $type[1]=='*') ){
+		return 'class="on"';
+	}
+}
+</php>
