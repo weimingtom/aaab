@@ -20,7 +20,7 @@ CREATE TABLE `{$tablepre}medal` (
 	`uid` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',                      
 	`createdtime` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',            
 	PRIMARY KEY (`medalid`),                                                  
-KEY `seq` (`seq`)                  
+	KEY `seq` (`seq`)                  
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='勋章信息表';
 
 drop table if exists `{$tablepre}medal_user`;
@@ -53,7 +53,7 @@ CREATE TABLE `{$tablepre}user_active` (
 	`credits` mediumint(8) NOT NULL DEFAULT '0' COMMENT '积分',                
 	`activetime` int(10) NOT NULL DEFAULT '0' COMMENT '活跃时间',                
 	`createdtime` int(10) NOT NULL DEFAULT '0' COMMENT '创建时间',
-	PRIMARY KEY (`uid`)
+	PRIMARY KEY (`uid`),
 	KEY `activetime` (`activetime`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='用户活跃表';
 	";
