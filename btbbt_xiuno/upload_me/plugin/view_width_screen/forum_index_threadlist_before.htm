@@ -25,8 +25,8 @@
 		<td class="td4"></td>
 		<td class="td5" valign="top">
 			<div style="overflow: hidden;" id="threadlist">
-				<!--{loop $threadlist_chunk $threadlist}-->
-				<div style="width:48%; float: left; font-size: 9pt; padding: 1%; padding-top:0px; overflow: hidden; ">
+				<!--{loop $threadlist_chunk $i $threadlist}-->
+				<div style="width:48%; {if $i == 1}*width:47.9% !important; *width: 47.9%;{/if} float: left; font-size: 9pt; padding: 1%; padding-top:0px; overflow: hidden; ">
 					<!--{if $forum[listtype] == 0}-->
 						<!--{include forum_index_type_0.htm}-->
 					<!--{else}-->

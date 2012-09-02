@@ -5,7 +5,7 @@
  */
 
 // 调试模式: 0:关闭; 1 打开; 2: 详细调试模式;
-define('DEBUG', 0);
+define('DEBUG', 2);
 
 // 站点根目录，在单元测试时候，此文件可能被包含
 //define('BBS_PATH', str_replace('\\', '/', getcwd()).'/');	// iis 6 + php5.2 getcwd() 返回错误地址

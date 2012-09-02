@@ -77,8 +77,8 @@
 	background: #eee;
 }
 
-.editor .menu .fontsize {width: 260px; height: 300px; background: #FFFFFF; border: 1px solid #DDDDDD;}
-.editor .menu .fontsize a{display: block; width: 254px; height: 1.5; *height: 1.5em; line-height: 1.5; margin: auto; border: 1px solid #DDD; margin-top: 4px; text-indent: 4px; text-decoration: none;}
+.editor .menu .fontsize {width: 260px; height: auto; overflow: visible; background: #FFFFFF; border: 1px solid #DDDDDD;}
+.editor .menu .fontsize a{display: block; width: 254px; line-height: 1.5; margin: auto; border: 1px solid #DDD; margin-top: 4px; text-indent: 4px; text-decoration: none;}
 .editor .menu .fontsize a:hover{background: #1E70CF; border: 1px solid #214773; color: #FFFFFF;}
 
 .editor .menu .fontcolor {width:184px; height: 182px; background: #FFFFFF; border: 1px solid #DDDDDD;}

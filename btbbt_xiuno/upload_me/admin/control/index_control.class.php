@@ -36,7 +36,15 @@ class index_control extends admin_control {
 		$info['SERVER_SOFTWARE'] = core::gpc('SERVER_SOFTWARE', 'S');
 		$lastversion = $this->get_last_version();
 		
+		$stat = array();
+		$stat['threads'] = $this->thread->count();
+		$stat['posts'] = $this->post->count();
+		$stat['users'] = $this->user->count();
+		$stat['attachs'] = $this->attach->count();
+		$stat['disk_free_space'] = misc::humansize(disk_free_space('./'));
+		
 		$this->view->assign('info', $info);
+		$this->view->assign('stat', $stat);
 		$this->view->assign('lastversion', $lastversion);
 		
 		// hook admin_index_main_view_before.php
@@ -47,9 +55,10 @@ class index_control extends admin_control {
 	
         private function get_last_version() {
         	$lastfile = $this->conf['tmp_path'].'last_version.lock';
-        	!is_file($lastfile) && touch($lastfile);
+        	$isfile = is_file($lastfile);
+        	!$isfile && touch($lastfile);
         	$last_version = filemtime($lastfile);
-		if(empty($last_version) || ($_SERVER['time'] - $last_version > 86400)) {
+		if(!$isfile || ($_SERVER['time'] - $last_version > 86400)) {
 			@unlink($lastfile);	
 			@touch($lastfile);
 			$sitename = urlencode($this->conf['app_name']);

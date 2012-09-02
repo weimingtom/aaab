@@ -4,8 +4,8 @@
 // 风格插件的命名规范为： view_xxx
 
 return 	array (
-	'enable' => 1,			// 是否启用?
-	'installed' => 1,		// 已经安装?
+	'enable' => 0,			// 是否启用?
+	'installed' => 0,		// 已经安装?
 	'name'=>'Xiuno BBS 蓝色风格插件',		// 插件名
 	'brief'=>'',
 	'version'=>'1.0',		// 插件版本

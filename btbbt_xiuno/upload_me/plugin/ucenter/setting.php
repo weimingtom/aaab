@@ -23,6 +23,37 @@ if($this->form_submit()) {
 	$this->mconf->set_to('uc_appid', $pconf['uc_appid'], $file);
 	$this->mconf->set_to('uc_appkey', $pconf['uc_appkey'], $file);
 	$this->mconf->save($file);
+	
+	// 把管理员插入到 ucenter 数据库
+	$user = $this->user->read(1);
+	
+	$ucconf = $pconf;
+	$dbconf = array (
+		'master'=>array(
+			'host'=>$ucconf['uc_host'],
+			'user'=>$ucconf['uc_user'],
+			'password'=>$ucconf['uc_password'],
+			'name'=>$ucconf['uc_name'],
+			'charset'=>$ucconf['uc_charset'],
+			'tablepre'=>$ucconf['uc_tablepre'],
+		), 
+		'slave'=>array()
+	);
+	try {
+		$uc = new db_mysql($dbconf);
+		$arr = array (
+			'uid'=>$user['uid'],
+			'username'=>$user['username'],
+			'password'=>$user['password'],
+			'email'=>$user['email'],
+			'regip'=>$user['regip'],
+			'regdate'=>$user['regdate'],
+			'salt'=>$user['salt'],
+		);
+		$uc->set("members-uid-1", $arr);	// 插入到 uc db 中
+	} catch (Exception $e) {
+		throw new Exception('初始化 UCenter 管理员账号密码失败！错误信息：'.$e->getMessage());
+	}
 }
 
 $input['host'] = form::get_text('host', $pconf['uc_host'], 200);

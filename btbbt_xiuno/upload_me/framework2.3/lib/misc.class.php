@@ -177,10 +177,12 @@ class misc {
 	}
 	
 	public static function humansize($num) {
-		if($num > 1000000) {
-			return number_format($num / 1000000, 2, '.', '').'M';
-		} elseif($num > 1000) {
-			return number_format($num / 1000, 2, '.', '').'K';
+		if($num > 1073741824) {
+			return number_format($num / 1073741824, 2, '.', '').'G';
+		} elseif($num > 1048576) {
+			return number_format($num / 1048576, 2, '.', '').'M';
+		} elseif($num > 1024) {
+			return number_format($num / 1024, 2, '.', '').'K';
 		} else {
 			return $num.'B';
 		}

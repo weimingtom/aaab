@@ -99,16 +99,27 @@ function get_env(&$env, &$write) {
 }
 
 function xn_writable($file) {
-	//return is_writable($file);
 	// 主要是兼容 windows
-	if(is_file($file)) {
-		return is_writable($file);
-	} elseif(is_dir($file)) {
-		$tmpfile = $file.'/____tmp.tmp';
-		$touch = @touch($tmpfile);
-		$isfile = is_file($tmpfile);
-		$isfile && unlink($tmpfile);
-		return $isfile;
+	try {
+		if(is_file($file)) {
+			if(strpos(strtoupper(PHP_OS), 'WIN') !== FALSE) {
+				$fp = fopen($file, 'rb+');
+				fclose($fp);
+				return $fp;
+			} else {
+				return is_writable($file);
+			}
+		} elseif(is_dir($file)) {
+			$tmpfile = $file.'/____tmp.tmp';
+			$fp = fopen($tmpfile, 'wb+');
+			fwrite($fp, 'a');
+			fclose($fp);
+			$isfile = is_file($tmpfile);
+			unlink($tmpfile);
+			return $fp;
+		}
+	} catch(Exception $e) {
+		return false;
 	}
 }
 

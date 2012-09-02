@@ -55,11 +55,12 @@ class my_control extends common_control {
 		
 		$_user = $this->_user;
 		$uid = $_user['uid'];
+		$user = $this->user->read($uid);
 		
 		$error = array();
 		if($this->form_submit()) {
-			$homepage = core::gpc('homepage', 'P');
-			$signature = core::gpc('signature', 'P');
+			$user['homepage'] = $homepage = core::gpc('homepage', 'P');
+			$user['signature'] = $signature = core::gpc('signature', 'P');
 			
 			$error['homepage'] = $this->user->check_homepage($homepage);
 			$error['signature'] = $this->user->check_signature($signature);
@@ -67,8 +68,8 @@ class my_control extends common_control {
 			// hook my_homepage_before.php
 			if(misc::values_empty($error)) {
 				$user = $this->user->read($uid);
-				$_user['homepage'] = $user['homepage'] = $homepage;
-				$_user['signature'] = $user['signature'] = $signature;
+				$user['homepage'] = $homepage;
+				$user['signature'] = $signature;
 				$this->user->update($uid, $user);
 				$error = array();
 				// hook my_homepage_after.php
@@ -76,6 +77,7 @@ class my_control extends common_control {
 		}
 		$this->user->format($user);
 		
+		$this->view->assign('user', $user);
 		$this->view->assign('error', $error);
 		
 		// hook my_homepage_after.php

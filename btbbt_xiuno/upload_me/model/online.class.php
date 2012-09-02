@@ -75,6 +75,11 @@ class online extends base_model {
 			}
 			if(count($onlinelist) < $pagesize) break; // 如果不足，则停止
 		}
+		
+		// 搜索引擎等无cookie浏览者会导致这种情况，需要处理，否则在线人数会变成负数。
+		if($n > $this->conf['runtime']['onlines']) {
+			$n = $this->online->count();
+		}
 		$this->runtime->update_bbs('onlines', "-$n");
 		
 	}

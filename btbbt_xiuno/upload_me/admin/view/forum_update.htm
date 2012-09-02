@@ -27,7 +27,7 @@ dd{width: 84%;}
 					<dd>$input[status] <span class="grey">隐藏后，仅管理员能通过上面连接进行访问。</span></dd>
 					
 					<dt><label for="rank">排序：</label></dt>
-					<dd><input type="text" name="rank" id="rank" value="$forum[rank]" style="width: 30px" /> <span class="grey">0-255, 倒序</span></dd>
+					<dd><input type="text" name="rank" id="rank" value="$forum[rank]" style="width: 30px" /> <span class="grey">0-255, 正序</span></dd>
 					
 					<!--{if $forum[fup] == 0}-->
 					<dt><label for="indexforums">首页横排：</label></dt>
@@ -120,14 +120,15 @@ dd{width: 84%;}
 					<dd>
 						<input type="checkbox" name="accesson" id="accesson" value="1" {if $forum[accesson]}checked="checked"{/if} />
 						
-						<div class="list" id="accesstable" style="width: 480px; {if !$forum[accesson]}display: none;{/if}">
+						<div class="list" id="accesstable" style="width: 580px; {if !$forum[accesson]}display: none;{/if}">
 							<table class="table">
 								<tr class="header">
-									<td width="100">用户组</td>
-									<td width="100"><input type="checkbox" id="checkread" />访问</td>
-									<td width="100"><input type="checkbox" id="checkpost" />回帖</td>
-									<td width="100"><input type="checkbox" id="checkthread" />发主题</td>
-									<td width="100"><input type="checkbox" id="checkattach" />上传附件</td>
+									<td width="90">用户组</td>
+									<td width="90"><input type="checkbox" id="checkread" />访问</td>
+									<td width="90"><input type="checkbox" id="checkpost" />回帖</td>
+									<td width="90"><input type="checkbox" id="checkthread" />发主题</td>
+									<td width="90"><input type="checkbox" id="checkattach" />上传</td>
+									<td width="90"><input type="checkbox" id="checkdown" />下载</td>
 								</tr>
 								<!--{loop $grouplist $group}-->
 								
@@ -143,6 +144,7 @@ dd{width: 84%;}
 									<td><input type="checkbox" name="allowpost[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowpost']}checked="checked"{/if} /></td>
 									<td><input type="checkbox" name="allowthread[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowthread']}checked="checked"{/if} /></td>
 									<td><input type="checkbox" name="allowattach[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowattach']}checked="checked"{/if} /></td>
+									<td><input type="checkbox" name="allowdown[{$group[groupid]}]" value="1" {if isset($accesslist[$group['groupid']]) && $accesslist[$group['groupid']]['allowdown']}checked="checked"{/if} /></td>
 								</tr>
 								
 								<!--{if $group[groupid] == 0}-->
@@ -222,6 +224,9 @@ $('#checkthread').click(function() {
 });
 $('#checkattach').click(function() {
 	$('#accesstable input[name^=allowattach]').attr('checked', $(this).attr('checked'));
+});
+$('#checkdown').click(function() {
+	$('#accesstable input[name^=allowdown]').attr('checked', $(this).attr('checked'));
 });
 
 <!--{loop $error $k $v}-->

@@ -31,7 +31,6 @@ class common_control extends base_control {
 		parent::__construct();
 		// hook common_control_construct_after.php
 		
-		
 		$this->init_timezone();
 		$this->conf['runtime'] = &$this->runtime->read_bbs();	// 析构函数会比 mysql 的析构函数早。所以不用担心mysql被释放。
 		$this->init_view();
@@ -42,7 +41,6 @@ class common_control extends base_control {
 		$this->check_domain();
 		$this->init_cron();
 		$this->init_online();
-		
 		
 		// hook common_control_init_after.php
 	}
@@ -213,7 +211,7 @@ class common_control extends base_control {
 			
 			// 更新用户组
 			$user = $this->user->read($this->_user['uid']);
-			$this->user->update_group($user);
+			$this->user->update_group($user, $this->_user['groupid']);
 		}
 		
 		// hook common_control_init_online_after.php
@@ -312,10 +310,11 @@ class common_control extends base_control {
 	
 	// 检测权限
 	protected function check_forum_access($forum, $pforum, $action = 'post') {
-		$lang = array('read'=>'读贴', 'post'=>'发帖', 'thread'=>'发主题', 'attach'=>'上传附件');
+		$lang = array('read'=>'读贴', 'post'=>'发帖', 'thread'=>'发主题', 'attach'=>'上传附件', 'down'=>'下载附件');
 		if($this->is_mod($forum, $pforum, $this->_user)) {
 			return TRUE;
 		}
+		// 如果没有权限限制，默认是允许
 		if(!$forum['accesson']) {
 			return TRUE;
 		}
@@ -326,7 +325,8 @@ class common_control extends base_control {
 		if($access['allow'.$action]) {
 			return TRUE;
 		} else {
-			$this->message('您没有对该论坛的<b>'.$lang[$action].'</b>权限！', 0);
+			$loginadd = empty($this->_user['uid']) ? ' <a href="?user-login-ajax-1.htm" class="ajaxdialog" onclick="return false" rel="nofollow">登录</a>' : '';
+			$this->message('您没有对该板块的(<b>'.$lang[$action].'</b>)权限！'.$loginadd, 0);
 		}
 	}
 	

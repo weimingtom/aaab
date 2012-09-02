@@ -167,7 +167,7 @@ class post_control extends common_control {
 					$user['threads']++;
 					$user['posts']++;
 					$user['credits'] += $this->conf['credits_policy_thread'];
-					$user['money'] += $this->conf['gold_policy_thread'];
+					$user['golds'] += $this->conf['gold_policy_thread'];
 					$groupid = $user['groupid'];
 					$user['groupid'] = $this->group->get_groupid_by_credits($user['groupid'], $user['credits']);
 					
@@ -234,7 +234,7 @@ class post_control extends common_control {
 		
 		// 帖子存在检查
 		$thread = $this->thread->get($fid, $tid);
-		$this->check_thread_exists($fid, $thread);
+		$this->check_thread_exists($thread);
 		$this->check_user_access($user, 'post');
 		
 		// 帖子回复数不能超过 10000
@@ -324,7 +324,7 @@ class post_control extends common_control {
 				$user = $this->user->read($uid);
 				$user['posts']++;
 				$user['credits'] += $this->conf['credits_policy_post'];
-				$user['money'] += $this->conf['gold_policy_post'];
+				$user['golds'] += $this->conf['gold_policy_post'];
 				$groupid = $user['groupid'];
 				$user['groupid'] = $this->group->get_groupid_by_credits($user['groupid'], $user['credits']);
 				
@@ -403,10 +403,11 @@ class post_control extends common_control {
 		$this->check_forum_access($forum, $pforum, 'post');
 		
 		$post = $this->post->read($fid, $pid);
+		$this->check_post_exists($post);
 		$tid = intval($post['tid']);
 		
 		$thread = $this->thread->get($fid, $tid);
-		$this->check_thread_exists($fid, $thread);
+		$this->check_thread_exists($thread);
 		
 		$ismod = $this->is_mod($forum, $pforum, $this->_user);
 		// 编辑权限检查：管理员，版主，可以编辑
@@ -562,7 +563,7 @@ class post_control extends common_control {
 		$tid = $post['tid'];
 		
 		$thread = $this->thread->get($fid, $tid);
-		$this->check_thread_exists($fid, $thread);
+		$this->check_thread_exists($thread);
 		
 		// 编辑权限检查：管理员，版主，可以编辑
 		if($post['uid'] != $this->_user['uid']) {

@@ -10,11 +10,11 @@
 				<tr align="center">
 					<td width="33%">
 						<a href="http://custom.xiuno.com/view/image/style_default.jpg" target="_blank"><img src="view_default_icon.jpg" /></a>
-						<br /> <input type="radio" name="style" value="default" /> <b>默认黑色风格</b>
+						<br /> <input type="radio" name="style" value="default" checked="checked" /> <b>默认黑色风格</b>
 					</td>
 					<td width="33%">
 						<a href="http://custom.xiuno.com/view/image/style_blue.jpg" target="_blank"><img src="../plugin/view_blue/icon.jpg" /></a>
-						<br /> <input type="radio" name="style" value="blue" checked="checked" /> <b>蓝色风格</b>
+						<br /> <input type="radio" name="style" value="blue" /> <b>蓝色风格</b>
 					</td>
 					<td width="33%">
 						<a href="http://custom.xiuno.com/view/image/style_width.jpg" target="_blank"><img src="../plugin/view_width_screen/icon.jpg" /></a>
@@ -32,6 +32,7 @@
 			</ul>
 		</div>
 		<p style="text-align: center;">
+			<input type="button" value=" 上一步" onclick="history.go(-2);"/>
 			<input type="submit" value=" 下一步" name="formsubmit" />
 		</p>
 		<?php if(core::gpc('formsubmit', 'P')) { ?>
