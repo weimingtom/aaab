@@ -84,11 +84,12 @@ class cron extends base_model {
 				);
 				$this->stat->create($stat);
 			}
-			
+		
 			// 清空
 			$this->runtime->update_bbs('todayposts', 0);
 			$this->runtime->update_bbs('todaythreads', 0);
 			$this->runtime->update_bbs('todayusers', 0);
+			$this->runtime->update_bbs('onlines', $this->online->count());	// 校对
 			$this->runtime->save_bbs(); //析构函数会自动执行
 		}
 		

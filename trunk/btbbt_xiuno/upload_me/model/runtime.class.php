@@ -72,15 +72,15 @@ class runtime extends base_model {
 		if(!empty($s)) {
 			$arr = explode("|", $s);
 			$r = array (
-				'onlines'=>$arr[0],
-				'posts'=>$arr[1],
-				'threads'=>$arr[2],
-				'users'=>$arr[3],
-				'todayposts'=>$arr[4],
-				'todayusers'=>$arr[5],
-				'cron_1_next_time'=>$arr[6],
-				'cron_2_next_time'=>$arr[7],
-				'newuid'=>$arr[8],
+				'onlines'=>max(1, intval($arr[0])),
+				'posts'=>intval($arr[1]),
+				'threads'=>intval($arr[2]),
+				'users'=>intval($arr[3]),
+				'todayposts'=>intval($arr[4]),
+				'todayusers'=>intval($arr[5]),
+				'cron_1_next_time'=>intval($arr[6]),
+				'cron_2_next_time'=>intval($arr[7]),
+				'newuid'=>intval($arr[8]),
 				'newusername'=>$arr[9],
 				'toptids'=>$arr[10],
 			);

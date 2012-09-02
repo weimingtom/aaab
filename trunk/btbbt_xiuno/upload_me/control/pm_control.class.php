@@ -24,12 +24,11 @@ class pm_control extends common_control {
 		$user = $this->user->read($uid);
 		
 		// 可能用户被删除，退出登录，用户组变更？
-		/*
 		if(empty($user)) {
 			misc::set_cookie($this->conf['cookiepre'].'auth', '', 0, '/');
-			$this->message('');
+			$this->message('用户不存在，或者已经被删除。', 0);
 			exit;
-		}*/
+		}
 		
 		// 更新在线表，标示是否在线, $this->conf['online_hold_time']
 		// 五分钟更新一次
@@ -42,7 +41,7 @@ class pm_control extends common_control {
 		}
 		
 		// 如果用户组发生改变，此处更新。
-		$this->user->update_group($user);
+		$this->user->update_group($user, $this->_user['groupid']);
 		
 		// 获取最新消息
 		if($user['newpms'] > 0) {

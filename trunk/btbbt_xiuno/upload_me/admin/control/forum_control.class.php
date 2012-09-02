@@ -282,6 +282,7 @@ class forum_control extends admin_control {
 			$allowposts = (array)core::gpc('allowpost', 'P');
 			$allowthreads = (array)core::gpc('allowthread', 'P');
 			$allowattachs = (array)core::gpc('allowattach', 'P');
+			$allowdowns = (array)core::gpc('allowdown', 'P');
 			
 			// 版主
 			$modids = $modnames = '';
@@ -311,11 +312,14 @@ class forum_control extends admin_control {
 					!isset($allowposts[$groupid]) && $allowposts[$groupid] = 0;
 					!isset($allowthreads[$groupid]) && $allowthreads[$groupid] = 0;
 					!isset($allowattachs[$groupid]) && $allowattachs[$groupid] = 0;
+					!isset($allowdowns[$groupid]) && $allowdowns[$groupid] = 0;
 					$access = $this->forum_access->read($groupid, $fid);
 					$access['allowread'] = intval($allowreads[$groupid]);
 					$access['allowpost'] = intval($allowposts[$groupid]);
 					$access['allowthread'] = intval($allowthreads[$groupid]);
+					$access['allowdown'] = intval($allowdowns[$groupid]);
 					$access['allowattach'] = intval($allowattachs[$groupid]);
+					$access['allowdown'] = intval($allowdowns[$groupid]);
 					$access['fid'] = $fid;
 					$access['groupid'] = intval($groupid);
 					$this->forum_access->update($fid, $groupid, $access);

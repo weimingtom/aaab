@@ -506,7 +506,8 @@ return array(
 	}
 
 	public function truncate_tpl_cache() {
-		
+		$this->clear_cache($this->conf['tmp_path'], 'bbs_');
+		$this->clear_cache($this->conf['tmp_path'], 'bbsadmin_');
 	}
 	
 	private function clear_cache($dir, $pre) {

@@ -35,9 +35,9 @@
 								<td width="40%">
 									<p style="line-height: 20px;"><span class="grey">主题：</span><a href="?you-post-uid-$_user[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline">$_user[myposts]</b></a><span class="small" title="回复"> / $_user[posts]</span></p>
 									<p style="line-height: 20px;"><span class="grey">积分：</span><b style="font-size: 14px;">$_user[credits]</b></p>
+									<p style="line-height: 20px;"><span class="grey">金币：</span><b style="font-size: 14px;">$_user[golds]</b>枚<!--{if $conf[pay_on] && $_user[uid] && $_user[uid] == $_user[uid]}--> &nbsp; <input type="button" class="button smallblue" value="转换" target="_blank" href="?my-exchange.htm" /><!--{/if}--></p>
 									<!--{if $conf[pay_on]}-->
 									<p style="line-height: 20px;"><span class="grey">金钱：</span><b style="font-size: 14px;">$_user[money]</b>元<!--{if $_user[uid] && $_user[uid] == $_user[uid]}--> &nbsp; <input type="button" class="button smallblue" value="充值" target="_blank" href="?pay-select.htm" /><!--{/if}--></p>
-									<p style="line-height: 20px;"><span class="grey">金币：</span><b style="font-size: 14px;">$_user[golds]</b>枚<!--{if $_user[uid] && $_user[uid] == $_user[uid]}--> &nbsp; <input type="button" class="button smallblue" value="转换" target="_blank" href="?my-exchange.htm" /><!--{/if}--></p>
 									<!--{/if}-->
 									
 									<!--{hook my_base_td_2_end.htm}-->

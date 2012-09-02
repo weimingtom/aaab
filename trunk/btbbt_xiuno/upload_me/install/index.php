@@ -64,6 +64,9 @@ if(empty($step) || $step == 'checklicense') {
 		$pass = core::gpc('pass', 'P');
 		$name = core::gpc('name', 'P');
 		$tablepre = core::gpc('tablepre', 'P');
+		$adminuser = core::gpc('adminuser', 'P');
+		$adminpass = core::gpc('adminpass', 'P');
+		$adminpass2 = core::gpc('adminpass2', 'P');
 		$error = '';
 		if($type == 'mysql') {
 			$link = @mysql_connect($host, $user, $pass, TRUE);
@@ -93,6 +96,9 @@ if(empty($step) || $step == 'checklicense') {
 						'slaves' => array (
 						)
 					);
+					//$conf['db']['type'] = 'mysql';
+					//$conf['db']['master'] = $c['master'];
+					//$conf['db']['slaves'] = $c['slaves'];
 					$db = new db_mysql($c);
 					
 					$s = file_get_contents(BBS_PATH.'install/install_mysql.sql');
@@ -132,6 +138,10 @@ if(empty($step) || $step == 'checklicense') {
 				'slaves' => array (
 				)
 			);
+			
+			//$conf['db']['type'] = 'mongodb';
+			//$conf['db']['master'] = $c['master'];
+			//$conf['db']['slaves'] = $c['slaves'];
 			
 			// 主要是建立索引
 			try {
@@ -182,8 +192,8 @@ if(empty($step) || $step == 'checklicense') {
 			// 预设 count maxid
 			$db->count('group', 16);
 			$db->maxid('group-groupid', 15);
-			$db->count('user', 2);
-			$db->maxid('user-uid', 2);
+			$db->count('user', 1);
+			$db->maxid('user-uid', 1);
 			$db->count('forum', 3);
 			$db->maxid('forum-fid', 3);
 			$db->count('digestcate', 6);
@@ -216,7 +226,13 @@ if(empty($step) || $step == 'checklicense') {
 			$s = preg_replace('#\'installed\'\s*=\>\s*\'?.*?\'?,#is', "'installed' => 1,", $s);
 			file_put_contents($configfile, $s);
 			
-			// 
+			// 修改密码
+			$muser = new user();
+			$u = $db->get("user-uid-1");
+			$u['username'] = $adminuser;
+			$u['password'] = $muser->md5_md5($adminpass, $u['salt']);
+			$db->set("user-uid-1", $u);
+			
 			// 生成 public_key 写入文件
 			
 			!is_dir($conf['upload_path'].'forum') && mkdir($conf['upload_path'].'forum', 0777);
@@ -331,10 +347,8 @@ if(empty($step) || $step == 'checklicense') {
 	*/
 	header('Content-Type: text/html; charset=UTF-8');
 	include './header.inc.php';	
-	echo '<h1>安装完成！请您登陆后及时修改密码！！！</h1>';
-	echo '<br /><p style="font-size: 16px;">初始化管理账号：<b class="red">admin</b> <br />初始化密码：<b class="red">1</b> <br /> </p>';
-	echo '<br /><p><a href="../" style="font-size: 18px; font-weight: 800;">【跳转到首页】</a><p>';
-	echo '<script type="text/javascript">alert("安装完成，为了安全请删除 install 目录，管理员账号为：admin, 初始密码：1，请登陆后进行修改！！！");</script>';
+	echo '<h1>安装完成，点击<a href="../">【跳转到首页】</a>！</h1>';
+	echo '<h3>安装完成，为了安全请删除 install 目录</h3>';
 	include './footer.inc.php';
 	touch($conf['upload_path'].'install.lock');
 	exit;

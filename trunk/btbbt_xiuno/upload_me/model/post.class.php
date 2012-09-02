@@ -85,7 +85,7 @@ class post extends base_model {
 		$uid = $post['uid'];
 		$return = array (
 			'forum'=>array($fid => array('posts'=>0)),
-			'user' => array($uid => array('posts'=>0, 'credits'=>0, 'money'=>0, 'myposts'=>0)),
+			'user' => array($uid => array('posts'=>0, 'credits'=>0, 'golds'=>0, 'myposts'=>0)),
 			'thread' => array("$fid-$tid" => array('posts'=>0)),
 			'fidtidpid' => array("$fid-$tid-$pid" => $post['page'])	// 最小 page
 		);
@@ -109,7 +109,7 @@ class post extends base_model {
 		// 更新 $user
 		$ruser['posts']++;
 		$ruser['credits'] += $this->conf['credits_policy_post'];
-		$ruser['money'] += $this->conf['gold_policy_post'];
+		$ruser['golds'] += $this->conf['gold_policy_post'];
 		
 		// 更新 $thread
 		$rthread['posts']++;
@@ -131,7 +131,7 @@ class post extends base_model {
 			if(!isset($return['user'][$uid])) { $return['user'][$uid] = $arr; continue; }
 			$return['user'][$uid]['posts'] += $arr['posts'];
 			$return['user'][$uid]['credits'] += $arr['credits'];
-			$return['user'][$uid]['money'] += $arr['money'];
+			$return['user'][$uid]['golds'] += $arr['golds'];
 			$return['user'][$uid]['myposts'] += $arr['myposts'];
 		}
 		foreach($return2['forum'] as $fid=>$arr) {
@@ -163,7 +163,7 @@ class post extends base_model {
 				$user = $this->user->read($uid);
 				$user['posts'] -= $arr['posts'];
 				$user['credits'] -= $arr['credits'];
-				$user['money'] -= $arr['money'];
+				$user['golds'] -= $arr['golds'];
 				$user['myposts'] -= $arr['myposts'];
 				$this->user->update($uid, $user);
 			}

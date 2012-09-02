@@ -215,6 +215,7 @@ class core {
 			$s = preg_replace('# \S*[/\\\\](.+?\.php)#', ' \\1', $s);
 			if(self::gpc('ajax', 'R')) {
 				ob_end_clean();
+				core::ob_start();
 				//$s = preg_replace('#[\\x80-\\xff]{2}#', '?', $s);// 替换掉 gbk， 否则 json_encode 会报错！
 				echo self::json_encode(array('servererror'=>$s));
 				exit;

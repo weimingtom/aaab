@@ -76,11 +76,13 @@ class forum_access extends base_model {
 				$access['allowpost'] = 0;
 				$access['allowthread'] = 0;
 				$access['allowattach'] = 0;
+				$access['allowdown'] = 0;
 			} else {
 				$access['allowread'] = 1;
 				$access['allowpost'] = 1;
 				$access['allowthread'] = 1;
 				$access['allowattach'] = 1;
+				$access['allowdown'] = 1;
 			}
 		}
 	}

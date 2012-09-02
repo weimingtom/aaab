@@ -19,7 +19,7 @@ return 	array (
 	'uc_host' => 'localhost',
 	'uc_user' => 'root',
 	'uc_password' => 'root',
-	'uc_name' => 'dz7',
+	'uc_name' => 'btbbt_xiuno',
 	'uc_charset' => 'utf8',		// 这里固定为utf8! 不管UC为什么编码。
 	'uc_tablepre' => 'cdb_uc_',	// 不要加 dbname.
 	'uc_engine'=>'MyISAM',

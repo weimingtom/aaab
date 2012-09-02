@@ -120,6 +120,7 @@ CREATE TABLE bbs_forum_access (				# 字段中文名			# 控件属性					# 字�
   allowthread tinyint(1) unsigned NOT NULL default '0',	# 允许发主题			# type="radio" default="0"			# 允许发主题
   allowpost tinyint(1) unsigned NOT NULL default '0',	# 允许发帖			# type="radio" default="0"			# 允许发帖
   allowattach tinyint(1) unsigned NOT NULL default '0',	# 允许附件			# type="radio" default="0"			# 允许发帖
+  allowdown tinyint(1) unsigned NOT NULL default '0',	# 允许下载			# type="radio" default="0"			# 允许下载
   PRIMARY KEY  (fid, groupid),
   KEY  (fid)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;

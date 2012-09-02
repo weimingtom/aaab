@@ -10,12 +10,12 @@
 		<td width="40%">
 			<p style="line-height: 20px;"><span class="grey">主题：</span><a href="?you-post-uid-$you[uid].htm" target="_blank"><b style="font-size: 14px; text-decoration: underline">$you[myposts]</b></a><span class="small" title="回复"> / $you[posts]</span></p>
 			<p style="line-height: 20px;"><span class="grey">积分：</span><b style="font-size: 14px;">$you[credits]</b></p>
-			<!--{if $_user[groupid] == 1 || $_user[uid] && $_user[uid] == $you[uid]}-->
+		<!--{if $_user[groupid] == 1 || $_user[uid] && $_user[uid] == $you[uid]}-->
+			<p style="line-height: 20px;"><span class="grey">金币：</span><b style="font-size: 14px;">$you[golds]</b>枚</p>
 			<!--{if $conf[pay_on]}-->
 			<p style="line-height: 20px;"><span class="grey">金钱：</span><b style="font-size: 14px;">$you[money]</b>元</p>
-			<p style="line-height: 20px;"><span class="grey">金币：</span><b style="font-size: 14px;">$you[golds]</b>枚</p>
 			<!--{/if}-->
-			<!--{/if}-->
+		<!--{/if}-->
 			
 			<!--{hook you_info_td_2.htm}-->
 		</td>

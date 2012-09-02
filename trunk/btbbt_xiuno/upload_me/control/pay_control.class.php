@@ -234,7 +234,7 @@ EOT;
 					// 更新用户积分，重复通知？
 					$uid = $pay['uid'];
 					$user = $this->user->read($uid);
-					$user['money'] += $this->conf['pay_rate'] * $v_amount;
+					$user['golds'] += $this->conf['pay_rate'] * $v_amount;
 					$this->user->update($uid, $user);
 				}
 				

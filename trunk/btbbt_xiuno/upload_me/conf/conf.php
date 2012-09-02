@@ -20,7 +20,7 @@ return array (
 					'host' => 'localhost',
 					'user' => 'root',
 					'password' => 'root',
-					'name' => 'xiuno',
+					'name' => 'btbbt_xiuno',
 					'charset' => 'utf8',
 					'tablepre' => 'bbs_',
 					'engine'=>'MyISAM',
@@ -78,13 +78,13 @@ return array (
 	'app_starttime' => '2012-1-12',
 		
 	// 应用的路径，用于多模板互相包含，需要时，填写绝对路径： 如: http://www.domain.com/bbs/
-	'app_url' => 'http://xiuno2.self.cn/',
+	'app_url' => 'http://xiuno.self.cn/',
 	
 	// CDN 缓存的静态域名，如 http://static.domain.com/
-	'static_url' => 'http://xiuno2.self.cn/',
+	'static_url' => 'http://xiuno.self.cn/',
 	
 	// 模板使用的目录，按照顺序搜索，这样可以支持风格切换,结果缓存在 tmp/bbs_xxx_control.htm.php
-	'view_path' => array(BBS_PATH.'plugin/view_blue/', BBS_PATH.'view/'), 
+	'view_path' => array(BBS_PATH.'view/'), 
 	
 	// 数据模块的路径，按照数组顺序搜索目录
 	'model_path' => array(BBS_PATH.'model/'),
@@ -99,7 +99,7 @@ return array (
 	'upload_path' => BBS_PATH.'upload/',
 	
 	// 模板的URL，用作CDN时请填写绝对路径，需要时，填写绝对路径： 如: http://www.domain.com/bbs/upload/
-	'upload_url' => 'http://xiuno2.self.cn/upload/',
+	'upload_url' => 'http://xiuno.self.cn/upload/',
 	
 	// 日志目录，需要可写，如果您不需要日志，留空即可
 	'log_path' => BBS_PATH.'log/',
@@ -112,7 +112,7 @@ return array (
 	'urlrewrite' => 0,
 	
 	// 加密KEY，
-	'public_key' => '8073e5f79d2cd44d01a9304331f7ef47',
+	'public_key' => '2955bf752972fc270b185e9c7cf98a57',
 	
 	'timeoffset' => '+8',
 	'pagesize' => 20,			// 帖子详情页的每页回复数，一旦定下来，不能修改！
@@ -150,7 +150,7 @@ return array (
 	'footer_js' => '',			// 页脚额外的代码，放用于统计JS之类代码。
 	
 	// 点击服务器
-	'click_server' => 'http://xiuno2.self.cn/clickd/',	// 记录主题点击数，论坛点击数
+	'click_server' => 'http://xiuno.self.cn/clickd/',	// 记录主题点击数，论坛点击数
 	
 	// 搜索相关
 	'search_type' => 'title',			// title|baidu|google|bing|sphinx

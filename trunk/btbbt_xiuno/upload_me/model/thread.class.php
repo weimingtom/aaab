@@ -89,7 +89,7 @@ class thread extends base_model {
 		// 受影响的值。
 		$return = array(
 			'forum'=>array($fid=>array('threads'=>0, 'posts'=>0, 'digests'=>0)),
-			'user' => array($uid=>array('threads'=>0, 'posts'=>0, 'myposts'=>0, 'digests'=>0, 'credits'=>0, 'money'=>0))
+			'user' => array($uid=>array('threads'=>0, 'posts'=>0, 'myposts'=>0, 'digests'=>0, 'credits'=>0, 'golds'=>0))
 		);
 		$rforum = &$return['forum'][$fid];
 		$ruser = &$return['user'];
@@ -101,7 +101,7 @@ class thread extends base_model {
 			$postlist = $this->post->index_fetch(array('fid'=>$fid, 'tid'=>$tid, 'page'=>$i), array(), 0, $pagesize);
 			foreach($postlist as $post) {
 				
-				!isset($ruser[$post['uid']]) && $ruser[$post['uid']] = array('threads'=>0, 'posts'=>0, 'credits'=>0, 'money'=>0, 'digests'=>0, 'myposts'=>0);
+				!isset($ruser[$post['uid']]) && $ruser[$post['uid']] = array('threads'=>0, 'posts'=>0, 'credits'=>0, 'golds'=>0, 'digests'=>0, 'myposts'=>0);
 				
 				// 删除 attach
 				$post['attachnum'] && $this->attach->xdelete($post['fid'], $post['pid']);
@@ -116,7 +116,7 @@ class thread extends base_model {
 				
 				$ruser[$post['uid']]['posts']++;
 				$ruser[$post['uid']]['credits'] += $this->conf['credits_policy_post'];
-				$ruser[$post['uid']]['money'] += $this->conf['gold_policy_post'];
+				$ruser[$post['uid']]['golds'] += $this->conf['gold_policy_post'];
 			}
 		}
 		
@@ -131,7 +131,7 @@ class thread extends base_model {
 			// 用户积分，精华数
 			$ruser[$uid]['digests']++;
 			$ruser[$uid]['credits'] += $this->conf['credits_policy_digest_'.$thread['digest']];
-			$ruser[$uid]['money'] += $this->conf['gold_policy_digest_'.$thread['digest']];
+			$ruser[$uid]['golds'] += $this->conf['gold_policy_digest_'.$thread['digest']];
 		}
 		
 		// 删除置顶
@@ -183,7 +183,7 @@ class thread extends base_model {
 			$return['user'][$uid]['myposts'] += $arr['myposts'];
 			$return['user'][$uid]['digests'] += $arr['digests'];
 			$return['user'][$uid]['credits'] += $arr['credits'];
-			$return['user'][$uid]['money'] += $arr['money'];
+			$return['user'][$uid]['golds'] += $arr['golds'];
 		}
 		foreach($return2['forum'] as $fid=>$arr) {
 			if(!$fid) continue;
@@ -206,7 +206,7 @@ class thread extends base_model {
 				$user['myposts'] -= $arr['myposts'];
 				$user['digests'] -= $arr['digests'];
 				$user['credits'] -= $arr['credits'];
-				$user['money'] -= $arr['money'];
+				$user['golds'] -= $arr['golds'];
 				$this->user->update($uid, $user);
 			}
 		}

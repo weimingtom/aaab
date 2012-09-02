@@ -100,7 +100,7 @@ $.editor = function(textarea, settings) {
 					\
 					<a class="video" href="javascript:void(0)"></a>\
 					<a class="image" href="javascript:void(0)" title="上传图片"></a>\
-					<a class="imageloading" href="javascript:void(0)" title="上传图片进度"><img src="view/js/editor/loading.gif" width="18" height="18" /><span class="imageprocess"><span class="imageprocess_body"></span></span></a>\
+					<a class="imageloading" href="javascript:void(0)" title="上传图片进度"><span class="imageprocess"><span class="imageprocess_body"></span></span><img src="view/js/editor/loading.gif" width="18" height="18" /></a>\
 					<a class="file" href="javascript:void(0)" title="上传文件"></a>\
 					\
 				</div>\
@@ -438,6 +438,7 @@ $.editor = function(textarea, settings) {
 		$(_doc).keydown(function(e) {return _this.fix_tab(e);});
 		
 		// ie / ff onpaste 不一样，jquery 已经帮我们解决。
+		
 		/*
 		if($.browser.opera) {
 			$(_body).bind('keydown',function(e){
@@ -448,7 +449,8 @@ $.editor = function(textarea, settings) {
 		}
 		*/
 		
-		$(_body).bind(is_ie ? 'beforepaste' : 'paste',  function(e) {
+		$(_body).bind('paste',  function(e) {
+			var e = e ? e : window.event;
 			_this.clear_paste(e);
 			//return false;
 		});
@@ -477,66 +479,102 @@ $.editor = function(textarea, settings) {
 				pdialog.settings.onmax = function() {_this.settings.onmax(_this);};
 			}
 		}
-		
-		// 仅针对IE，非常粗暴，导致IE9在外部复制内容粘贴到编辑器会不正常
-		/*
-		if(is_ie) {
-			$(_doc).bind('beforedeactivate', function() {
-				_this.save_bookmark();
-			});
-		}
-		*/
+
 		return true;
 	}
 	
 	this.clear_paste = function(e) {
-		if(is_pasting) return false;
-		is_pasting = true;
-		
-		var bookmark = _this.save_bookmark();
-		var node = is_ie ? 'pre' : 'div';
-		var jdiv = $('<'+node+' class="xn-paste" style="display: none; position: absolute; width: 1px; height: 1px; overflow: hidden; left: -2000px; top: '+bookmark.top+'px; white-space: nowrap;">\uFEFF\uFFFF</'+node+'>', _doc).appendTo(_doc.body);
-			
-		//var jdiv = $('<textarea class="xn-paste">\uFEFF\uFFFF</textarea>', _doc).appendTo(_doc.body)
-		var div = jdiv[0];
-		jdiv.css('top', $(_body).scrollTop());
-	
-		var sel = _this.get_selection();
-		var rng = _this.create_range();
-		
 		if(is_ie) {
+			var bookmark = _this.save_bookmark();
 			
-			rng.moveToElementText(div);
+			var __iframe = _doc.createElement('iframe');
+			__iframe.id = "__iframeid";
+			__iframe.style.width = "1px";
+			__iframe.style.height = "1px";
+			__iframe.style.position = "absolute";
+			__iframe.style.border = "none";
+			__iframe.style.left = "-1000px";
+			__iframe.style.top = $(_body).scrollTop() + 'px';
+			_body.appendChild(__iframe);
+			__win = __iframe.contentWindow;
+			__doc = __win.document;
+			__body = __doc.body;
+			__doc.designMode = "On";
+			__doc.open();
+			__doc.write("<html><body></body></html>");
+			__doc.close();
+			__win.focus();
 			
-			//rng.execCommand("SelectAll"); 
-			rng.select();	// 这个时候会将rng中的内容放入 div
-			//rng.execCommand('paste');
+			/* ie 工作不正常
+			__doc.write("<html><body><div id=\"pasteid\">xxxx</div></body></html>");
+			var pastid = __doc.getElementById('pasteid');
+			var rng = __doc.body.createTextRange();
+			rng.moveToElementText(pastid);
+			rng.collapse(true);
+			rng.select();
+			*/
 			
-			// 阻止冒泡！
-			if(e.preventDefault) e.preventDefault();
-			e.returnValue = false;
+			__doc.execCommand("Paste", false, null);
+			_win.focus();
+			var s = __doc.body.innerHTML;
 			
-		} else {
-			rng.selectNodeContents(div);
-			sel.removeAllRanges();
-			sel.addRange(rng);
-		}
-		// fix IE bug, 不能不说IE BUG无限！
-		setTimeout(function() {
-			
-			var jdiv = $('.xn-paste', _doc.body);
-			var s = jdiv.html();
-			s = s.replace(/^[\s\uFEFF]+|[\s\uFFFF]+$/g, '');
 			s = _this.fix_link(s);
 			s = _this.fix_officeword(s);
 			
-			jdiv.remove();
+			var rng = bookmark.rng;
+			rng.select();
+			rng.pasteHTML(s);
 			
-			_this.load_bookmark();
-			_this.paste(s);
-			is_pasting = false;
+			if(e.preventDefault) e.preventDefault();
+			if(e.returnValue) e.returnValue = false;
+		
+			_this.save();
+		} else {
 			
-		}, 100);
+			var __div = _doc.createElement('div');
+			__div.id = "__iframeid";
+			__div.style.width = "1px";
+			__div.style.height = "1px";
+			__div.style.position = "absolute";
+			__div.style.border = "none";
+			__div.style.left = "-1000px";
+			__div.style.top = $(_body).scrollTop() + 'px';
+			__div.innerHTML = '\uFEFF';
+			_doc.body.appendChild(__div);
+			
+			_win.focus();
+			var oldsel = _win.getSelection();
+			var oldrng = oldsel.getRangeAt(0);
+			var newrng = _doc.createRange();	// 创建新的 Range 对象
+			
+			newrng.selectNodeContents(__div);
+			//newrng.setStart(__div.firstChild, 0);
+			//newrng.setEnd(__div.firstChild, 1);
+			oldsel.removeAllRanges();
+			oldsel.addRange(newrng);
+			
+			setTimeout(function() {
+				var s = _doc.getElementById('__iframeid').innerHTML;
+				if (__div.innerHTML === '\uFEFF') {
+					var s = '';
+					_doc.body.removeChild(__div);
+					return;
+				}
+				s = _this.fix_link(s);
+				s = _this.fix_officeword(s);
+				
+				// resotre old range
+				oldsel.removeAllRanges();
+				oldsel.addRange(oldrng);
+			
+				__div.innerHTML = s;
+				
+				_doc.execCommand('inserthtml', false, s);
+				_doc.body.removeChild(__div);
+			}, 0);
+			
+		}
+		
 	}
 	
 	this.save_bookmark = function() {
@@ -560,7 +598,9 @@ $.editor = function(textarea, settings) {
 			}
 			$(_body).scrollTop(window.xn_bookmark.top);
 			window.xn_bookmark =  null;
+			return rng;
 		}
+		return null;
 	}
 	
 	this.get_selection = function() {
@@ -636,7 +676,7 @@ $.editor = function(textarea, settings) {
 	this.save = function() {
 		var s = _this.get();
 		if(_issource) {
-			$(_body).html(s);
+			$(_doc.body).html(s);
 		} else {
 			$(textarea).val(s);
 		}
@@ -656,7 +696,7 @@ $.editor = function(textarea, settings) {
 			textarea.focus();
 		} else {
 			if($.browser.msie) {
-				_body.focus();
+				_doc.body.focus();
 			} else {
 				_win.focus();
 			}
@@ -710,6 +750,7 @@ $.editor = function(textarea, settings) {
 					alert(e.message);
 				}
 				
+				// 会转义 \n 到 <br/> 影响代码高亮插件！
 				//_doc.execCommand('InsertHtml' , '' , s);
 			}
 		}
@@ -750,7 +791,7 @@ $.editor = function(textarea, settings) {
 	
 	this.add_video = function(url) {
 		var s = "<embed wmode=\"transparent\" src=\""+url+"\" style=\"z-index:0;\" width=\"600\" height=\"400\" type=\"application/x-shockwave-flash\" class=\"border\" />";
-		_this.paste('<a href="' + url + '" target="_blank">' + s + '</a>');
+		_this.paste(s);
 		$('div.video', _this.menu).hide();
 	};
 	

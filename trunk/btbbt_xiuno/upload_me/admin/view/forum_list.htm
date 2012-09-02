@@ -27,7 +27,7 @@ h3 {height: 30px;}
 						<h3>
 							
 							<input type="text" name="name[{$cate[fid]}]" value="$cate[name]" size="16" style="font-size: 14px; font-weight: 800" />
-							<span class="small grey">顺序:</span><input type="text" name="rank[{$cate[fid]}]" value="$cate[rank]" style="width: 30px" title="数字顺序，0-255，越大越靠前" /> 
+							<span class="small grey">顺序:</span><input type="text" name="rank[{$cate[fid]}]" value="$cate[rank]" style="width: 30px" title="数字顺序，0-255，正序" /> 
 							<input type="button" class="button smallblue" value="编辑" onclick="window.location='?forum-update-fid-$cate[fid].htm'" /> 
 							<input type="button" class="button smallgrey" value="删除" onclick="if(window.confirm('您确定删除 $cate[name] 吗？')) {if(window.confirm('您确定删除 $cate[name] 吗？')) window.location='?forum-delete-fid-$cate[fid].htm'}" />
 							<!--{hook admin_forum_list_cate_end.htm}-->

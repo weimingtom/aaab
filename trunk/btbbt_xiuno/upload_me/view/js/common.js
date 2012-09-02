@@ -738,6 +738,8 @@ function pages_add_event(url, totalpage, page, jshowdiv, jpagediv) {
 
 function json_decode(s) {
 	try {
+		// 去掉广告代码。这行代码挺无语的，为了照顾国内很多人浏览器中广告病毒的事实。
+		s = s.replace(/\}\s*<script[^>]*>[\s\S]*?<\/script>\s*$/ig, '}');
 		var json = $.parseJSON(s);
 		return json;
 	} catch(e) {

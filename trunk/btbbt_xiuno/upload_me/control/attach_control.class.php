@@ -23,15 +23,23 @@ class attach_control extends common_control {
 	
 	// ajax 弹出下载对话框内容
 	public function on_dialog() {
-		$this->check_login();
 		$uid = $this->_user['uid'];
 		
 		$aid = intval(core::gpc('aid'));
 		$attach = $this->attach->read($aid);
 		$this->attach->format($attach);
 		
-		$user = $this->user->read($uid);
-		$this->_user['golds'] = $user['golds'];
+		// 权限检测
+		$forum = $this->forum->read($attach['fid']);
+		$pforum = $this->forum->read($forum['fup']);
+		$havepriv = ($attach['uid'] == $uid || $this->check_forum_access($forum, $pforum, 'down'));	// 是否有权限下载。
+		
+		if($uid) {
+			$user = $this->user->read($uid);
+			$this->_user['golds'] = $user['golds'];
+		} else {
+			$this->_user['golds'] = 0;
+		}
 		
 		$this->view->assign('attach', $attach);
 		// hook attach_dialog_view_before.php
@@ -39,7 +47,6 @@ class attach_control extends common_control {
 	}
 	
 	public function on_download() {
-		$this->check_login();
 		$uid = $this->_user['uid'];
 		
 		$aid = intval(core::gpc('aid'));
@@ -47,49 +54,69 @@ class attach_control extends common_control {
 		if(empty($attach)) {
 			$this->message('附件不存在。');
 		}
-		$attach['downloads']++;
-		$this->attach->update($aid, $attach);
 		
-		// 版主
+		// 权限检测
 		$forum = $this->forum->read($attach['fid']);
 		$pforum = $this->forum->read($forum['fup']);
-		$havepriv = $this->is_mod($forum, $pforum, $this->_user) || $attach['uid'] == $uid;	// 是否有权限下载。
 		
-		$user = $this->user->read($uid);
-		if($user['golds'] < $attach['golds'] && !$havepriv) {
-			$this->message("此附件需要(<b>$attach[golds]</b>)金币，您的金币($user[golds])不足，您可以<a href=\"?pay-select.htm\">充值</a>来增加金币。");
+		// 如果不是斑竹，并且不是自己，开始判断权限
+		if(!$this->is_mod($forum, $pforum, $this->_user) && $attach['uid'] != $uid) {
+			if($forum['accesson']) {
+				$access = $this->forum_access->read($forum['fid'], $this->_user['groupid']);
+				if(!$access['allowdown']) {
+					$this->message('您所在的用户组不允许在本板块('.$forum['name'].')下载附件。');
+				}
+			} else {
+				if(!$uid) {
+					$this->message('请登录以后再下载此附件。');
+				}
+			}
+			
+			if($attach['golds'] > 0) {
+				if($uid) {
+					$user = $this->user->read($uid);
+					$down = $this->attach_download->read($uid, $aid);
+					if(empty($down)) {
+						if($user['golds'] < $attach['golds']) {
+							$this->message("此附件需要(<b>$attach[golds]</b>)金币，您的金币($user[golds])不足，您可以<a href=\"?pay-select.htm\">充值</a>来增加金币。");
+						}
+						// 扣除金币
+						$user['golds'] -= $attach['golds'];
+						
+						// 如果购买过，可以一直有权下载, uid, aid 为唯一索引
+						$this->attach_download->create(array(
+							'aid' => $aid,
+							'uid' => $uid,
+							'uploaduid' => $attach['uid'],
+							'dateline' => $_SERVER['time'],
+							'golds' => $attach['golds'],
+						));
+						
+						// 更新用户金币数
+						$this->user->update($uid, $user);
+						
+						// 所有者加金币
+						$owner = $this->user->read($attach['uid']);
+						$owner['golds'] += $attach['golds'];
+						$this->user->update($owner['uid'], $owner);
+					}
+				} else {
+					$this->message('请登录以后再下载此附件。');
+				}
+			}
 		}
-		
+			
 		$attachpath = $this->conf['upload_path'].'attach/'.$attach['filename'];
 		if(!is_file($attachpath)) {
 			$this->message('附件不存在，如果有问题请联系管理员。');
 		}
 		$filesize = filesize($attachpath);
 		
-		// 扣除金币
-		if($attach['golds'] > 0) {
-			$down = $this->attach_download->read($uid, $aid);
-			if(empty($down) && !$havepriv) {
-				// 扣除金币
-				$user['golds'] -= $attach['golds'];
-				
-				// 如果购买过，可以一直有权下载, uid, aid 为唯一索引
-				$this->attach_download->create(array(
-					'aid' => $aid,
-					'uid' => $uid,
-					'uploaduid' => $attach['uid'],
-					'dateline' => $_SERVER['time'],
-					'golds' => $attach['golds'],
-				));
-				
-				// 更新用户金币数
-				$this->user->update($uid, $user);
-				
-				// 所有者加金币
-				$owner = $this->user->read($attach['uid']);
-				$owner['golds'] += $attach['golds'];
-				$this->user->update($owner['uid'], $owner);
-			}
+		$attach['downloads']++;
+		$this->attach->update($aid, $attach);
+		
+		// 不管是否为收费附件，隐藏附件真实地址！
+		if($attach['golds'] > 0 || 1) {
 			
 			// 不允许多线程下载
 			
@@ -97,15 +124,19 @@ class attach_control extends common_control {
 			ob_end_clean();
 			ob_start();
 			core::ob_start();
-    
+			
 			// 头部
 			header('Date: '.gmdate('D, d M Y H:i:s', $attach['dateline']).' GMT');
 			header('Last-Modified: '.gmdate('D, d M Y H:i:s', $attach['dateline']).' GMT');
-			header('Content-Encoding: none');
 			header('Expiries: 0');
 			header('Cache-control: must-revalidate, post-check=0, pre-check=0');
 			header('Content-transfer-encoding: binary');
-			header('Content-Encoding: none');	// gzip
+			//header('Content-Encoding: gzip');	// gzip
+		
+			// hook attach_download_gold_after.php
+			readfile($this->conf['upload_path'].'attach/'.$attach['filename']);
+			
+			ob_end_flush();
 			header('Content-Length: '.ob_get_length());	// ob_get_length(), not $filesize
 			if($attach['filetype'] == 'image') {
 				header('Content-Disposition: inline; filename='.$attach['orgfilename']);
@@ -114,9 +145,8 @@ class attach_control extends common_control {
 				header('Content-Disposition: attachment; filename='.$attach['orgfilename']);
 				header('Content-Type: application/octet-stream');
 			}
+			ob_end_flush();
 			
-			// hook attach_download_gold_after.php
-			readfile($this->conf['upload_path'].'attach/'.$attach['filename']);
 			exit;
 		} else {
 			

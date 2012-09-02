@@ -64,7 +64,7 @@ class forum extends base_model {
 	// 取板块列表，二级
 	public function get_forum_list() {
 		$forumlist = array();
-		$catelist = $this->index_fetch(array('fup'=>0), array('rank'=>-1), 0, 1000);
+		$catelist = $this->index_fetch(array('fup'=>0), array('rank'=>1), 0, 1000);
 		foreach($catelist as &$cate) {
 			$cate['forumlist'] = $this->index_fetch(array('fup'=>$cate['fid']), array('rank'=>-1), 0, 1000);
 		}
@@ -78,7 +78,7 @@ class forum extends base_model {
 	
 	// 取子版块
 	public function get_forumlist_by_fup($fup) {
-		return $this->index_fetch(array('fup'=>intval($fup)), array('rank'=>-1), 0, 1000);
+		return $this->index_fetch(array('fup'=>intval($fup)), array('rank'=>1), 0, 1000);
 	}
 	
 	// 生成 <option>

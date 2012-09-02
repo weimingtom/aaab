@@ -29,7 +29,7 @@ class friendlink_control extends admin_control {
 		
 		$page = misc::page();
 		$friendlinks = $this->friendlink->count();
-		$friendlinklist = $this->friendlink->index_fetch(array('type'=>$type), array('rank'=>-1), ($page - 1) * $pagesize, $pagesize);
+		$friendlinklist = $this->friendlink->index_fetch(array('type'=>$type), array('rank'=>1), ($page - 1) * $pagesize, $pagesize);
 		foreach($friendlinklist as &$friendlink) {
 			$this->friendlink->format($friendlink);
 		}

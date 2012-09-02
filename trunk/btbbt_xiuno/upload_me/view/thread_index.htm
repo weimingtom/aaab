@@ -35,7 +35,7 @@
 	<table border="0" cellpadding="0" cellspacing="0" width="100%" align="center" style="margin-top: 4px; margin-bottom: 8px; table-layout: fixed;">
 		<tr>
 			<!--{hook thread_index_post_td_1_before.htm}-->
-			<td width="150" valign="top">
+			<td width="154" valign="top">
 				<div class="bg2 border shadow" style="width: 120px; padding: 15px; padding-top: 4px; padding-bottom: 4px;">
 					<p>
 						<a href_real="?you-index-uid-$u[uid].htm" target="_blank" href="?you-profile-uid-$u[uid]-ajax-1.htm" class="ajaxdialog_hover" ajaxdialog="{position: 5, modal: false, timeout: 1000, showtitle: false}" onclick="return false;" style="display: block" rel="nofollow">
@@ -98,15 +98,15 @@
 					
 					<!--{hook thread_index_attachlist_after.htm}-->
 					
-					<div class="grey signature" style="display: none; {if !$u[signature]}background: none;{/if}">
-						<!--{if $u[signature]}-->$u[signature]<!--{else}-->&nbsp;<!--{/if}-->
-						
-						<span style="margin-left: 4px; width: 145px; float: right; text-align: right; _margin-top: -16px;">
+					<div class="grey signature" style="display: none; overflow: hidden; {if !$u[signature]}background: none; padding-top: 0px;{/if}">
+					<span style="float: left"><!--{if $u[signature]}-->$u[signature]<!--{else}-->&nbsp;<!--{/if}--></span>
+					<span style="margin-left: 4px; width: 145px; float: right; text-align: right;">
 							<!--{if $ismod || $_user[uid] == $post[uid]}-->	
 							<a href="?post-update-fid-$thread[fid]-pid-$post[pid]-ajax-1.htm" class="ajaxdialog" ajaxdialog="{fullicon: true, modal: false, cache: false}" onclick="return false;"><span class="icon icon-post-update" style="vertical-align: bottom; margin-bottom: -2px; margin-right: 2px;"></span>编辑</a> <a href="?post-delete-fid-$fid-pid-$post[pid].htm" onclick="return window.confirm('您确定删除吗？');"><span class="icon icon-post-delete" style="vertical-align: bottom; margin-bottom: -2px;"></span>删除</a>
 							<!--{/if}-->
 							#$post[floor]楼
 						<span>
+						
 					</div>
 				</div>
 			</td>

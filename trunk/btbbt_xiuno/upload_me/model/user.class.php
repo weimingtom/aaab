@@ -86,9 +86,9 @@ class user extends base_model{
 	}
 	
 	// 更新用户用户组
-	public function update_group($user) {
+	public function update_group($user, $cookie_groupid = 0) {
 		$groupid = $this->group->get_groupid_by_credits($user['groupid'], $user['credits']);
-		if($groupid != $user['groupid']) {
+		if($groupid != $user['groupid'] || ($cookie_groupid && $cookie_groupid != $user['groupid'])) {
 			$this->set_login_cookie($user);
 		}
 	}
