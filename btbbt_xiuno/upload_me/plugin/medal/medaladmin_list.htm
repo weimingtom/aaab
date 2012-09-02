@@ -3,7 +3,7 @@
 	<div class="page tab" style="width: 780px; margin: auto;">
 		<a href="?medaladmin-list.htm" $_checked[list]>勋章</a>
 		<a href="?medaladmin-grant.htm" $_checked[grant]>颁发</a>
-		<a href="?medaladmin-apply.htm" $_checked[grant]>审核</a>
+		<!--<a href="?medaladmin-apply.htm" $_checked[grant]>审核</a>-->
 	</div>
 	<form action="?medaladmin-delete-page-$page.htm" method="post" id="rankform">
 		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
@@ -54,7 +54,7 @@
 							<td width="50">勋章名称</td>
 							<td width="100">领取方式</td>
 							<td width="250">描述</td>
-							<td width="50">图片</td>
+							<td>图片</td>
 						</tr>
 						<tr>
 							<td><input type="text" name="seq[]" value="0" style="width: 50px" /></td>
@@ -65,7 +65,7 @@
 								<!--{/loop}-->
 							</select></td>
 							<td><input type="text" name="description[]" value="" style="width: 200px" /></td>
-							<td><input type="file" name="picture[]" value="" style="width: 50px" /></td>
+							<td><input type="file" name="picture[]" value="" /></td>
 						</tr>
 					</table>
 					<p><a href="javascript:void(0)" id="addlink">[+]添加</a></p>

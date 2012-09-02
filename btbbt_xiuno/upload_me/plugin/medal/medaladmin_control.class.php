@@ -122,12 +122,11 @@ class medaladmin_control extends admin_control {
 		}
 				
 		if ($medal && $medal['picture']) {
-			$medal['picture'] = $this->conf['upload_path'].$medal['picture'];
+			$medal['picture'] = $this->conf['upload_url'].$medal['picture'].'?'.rand(1,100);
 		}
 		
 		$this->view->assign('page', $page);
 		$this->view->assign('medal', $medal);
-		$this->view->assign('autograntlist', $this->medal->autograntlist);
 		$this->view->assign('receivetypelist', $this->medal->receivetypelist);
 		$this->view->display('medaladmin_update.htm');
 	}
@@ -223,50 +222,5 @@ class medaladmin_control extends admin_control {
 		}
 		
 		$this->location("?medaladmin-grant-page-$page.htm");
-	}
-	
-	// 审核列表
-	public function on_apply() {
-		$page = misc::page();
-		$pagesize = 10;
-		$num = $this->medal_user->count();
-		$medaluserlist = $this->medal_user->get_medaluserlist_by_isapply(0, $page, $pagesize);
-		$this->medal_user->medaluserlist_format($medaluserlist);
-		
-		$pages = misc::pages("?medaladmin-apply.htm", $num, $page, $pagesize);
-				
-		$this->view->assign('medaluserlist', $medaluserlist);
-		$this->view->assign('pages', $pages);
-		$this->view->assign('page', $page);
-		
-		$this->view->display('medaladmin_apply.htm');
-	}
-	
-	// 通过或者否决
-	public function on_modapply() {
-		$page = misc::page();
-		$status = intval(core::gpc('status', 'P'));
-		$muids = core::gpc('muids', 'P');
-		
-		$message = '';
-		switch($status) {
-			case 1:
-				foreach ($muids as $muid) {
-					$arr = $this->medal_user->get($muid);
-					if ($arr) {
-						$arr['isapply'] = 1;
-						$this->medal_user->update($arr['muid'], $arr);
-					}
-				}
-				$message = '通过操作成功。';
-				break;
-			default:
-				foreach ($muids as $muid) {
-					$this->medal_user->_delete($muid);
-				}
-				$message = '否决操作成功。';
-				break;
-		}
-		$this->message($message, true, "?medaladmin-apply-page-$page.htm");
 	}
 }

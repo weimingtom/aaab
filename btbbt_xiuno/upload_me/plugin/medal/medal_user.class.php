@@ -14,13 +14,6 @@ class medal_user extends base_model {
 		$this->maxcol = 'muid';
 	}
 	
-	/*
-		$arr = array(
-			'subject'=>'aaa',
-			'message'=>'bbb',
-			'dateline'=>'bbb',
-		);
-	*/
 	public function create($arr) {
 		$arr['muid'] = $this->maxid('+1');
 		if($this->set($arr['muid'], $arr)) {
@@ -103,48 +96,6 @@ class medal_user extends base_model {
 		$medaluserlist = $this->index_fetch(array('expiredtime'=>array('<'=>time())));
 		foreach ($medaluserlist as $medaluser) {
 			$this->_delete($medaluser['muid']);
-		}
-	}
-	
-	// 计划任务，勋章发放
-	public function cron_medal_grant() {
-		foreach ($this->medal->autograntlist as $k=>$v) {
-			switch ($k){
-				case 1: // 积分大于5000分
-					$this->user_grant($k, array('credits'=>array('>'=>500)));
-					break;
-				case 2: // 发帖数量超过100
-					$this->user_grant($k, array('threads'=>array('>'=>100)));
-					break;
-				case 3: // 回帖数量超过1000
-					$this->user_grant($k, array('posts'=>array('>'=>1000)));
-					break;
-				case 4: // 精华帖子数量超过50
-					$this->user_grant($k, array('digests'=>array('>'=>50)));
-					break;
-			}
-		}
-	}
-	
-	private function user_grant($grantid, $cond) {
-		$medal = $this->medal->get_medal(array('autogrant'=>$grantid));
-		if ($medal) {
-			$userlist = $this->user_active->index_fetch($cond);
-			if ($userlist) {
-				foreach ($userlist as $user) {
-					$arr = array(
-						'medalid'=>$medal['medalid'],
-						'uid'=>$user['uid'],
-						'username'=>$user['username'],
-						'receivetype'=>$medal['receivetype'],
-						'autogrant'=>$k,
-						'expiredtime'=>time() + $medal['expiredtime'] * 86400,
-						'isapply'=>1,
-					);
-					$this->create($arr);
-					$this->user_active->_delete($user['uid']);
-				}
-			} 
 		}
 	}
 }

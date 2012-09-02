@@ -1,43 +1,40 @@
 <!--{include header.htm}-->
-
+<link href="plugin/medal/my.css" type="text/css" rel="stylesheet" />
 <div class="width">
-	<div class="page tab" style="width: 780px; margin: auto;">
-		<a href="?medaladmin-list.htm" $_checked[list]>勋章</a>
-		<a href="?medaladmin-grant.htm" $_checked[grant]>颁发</a>
-		<!--<a href="?medaladmin-apply.htm" $_checked[grant]>审核</a>-->
+	<div class="left border shadow bg2">
+		<!--{include mod_menu_widget.htm}-->
 	</div>
-	<form action="?medaladmin-grant-page-$page.htm" method="post" id="medal_update_form">
-		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
-		<div class="div" style="width: 780px; margin:0px">
-			<div class="header">勋章发放</div>
-			<div class="body">
-				<dl>
-					<dt>勋章名称:</dt>
-					<dd>
-						<select name="medalid">
-							<!--{loop $medallist $v}-->
-							<option value="$v[medalid]">$v[medalname]</option>
-							<!--{/loop}-->
-						</select>
-					</dd>
-					<dt>用户名:</dt><dd><input type="text" name="username" value="" style="width: 100px" /></dd>
-					<dt>有效期：</dt><dd><select name="expiredtime"><option value="0">永久</option><option value="365">一年</option><option value="180">半年</option><option value="30">1月</option></select></dd>
-					<dt></dt>
-					<dd>
-						<input type="submit" class="button bigblue" id="medal_update_submit" value="确定" />
-						<input type="button" class="button biggrey" value="返回" onclick="history.back()" />
-						<div class="notice" id="notice" style="display: none;"></div>
-					</dd>
-					
-				</dl>
+	<div class="right">
+		<form action="?mod-medalgrant-page-$page.htm" method="post" id="medal_update_form">
+			<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+			<div class="div" style="margin:0px">
+				<div class="header">勋章发放</div>
+				<div class="body">
+					<dl>
+						<dt>勋章名称:</dt>
+						<dd>
+							<select name="medalid">
+								<!--{loop $medallist $v}-->
+								<option value="$v[medalid]">$v[medalname]</option>
+								<!--{/loop}-->
+							</select>
+						</dd>
+						<dt>用户名:</dt><dd><input type="text" name="username" value="" style="width: 100px" /></dd>
+						<dt>有效期：</dt><dd><select name="expiredtime"><option value="0">永久</option><option value="365">一年</option><option value="180">半年</option><option value="30">1月</option></select></dd>
+						<dt></dt>
+						<dd>
+							<input type="submit" class="button bigblue" id="medal_update_submit" value="确定" />
+							<input type="button" class="button biggrey" value="返回" onclick="history.back()" />
+							<div class="notice" id="notice" style="display: none;"></div>
+						</dd>
+						
+					</dl>
+				</div>
 			</div>
-		</div>
-	</form>
-	<br/>
-	<form action="?medaladmin-recover-page-$page.htm" method="post" id="rankform">
-		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
-		<div style="width: 780px;">
-			<div class="header">已发放勋章列表</div>
+		</form>
+		<br/>
+		<form action="?mod-medalrecover-page-$page.htm" method="post" id="rankform">
+			<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
 			<div class="list">
 				<table class="table">
 					<tr class="header">
@@ -68,8 +65,8 @@
 			<div style="text-align: center; margin-top: 4px;">
 				<input type="button" value=" 批量收回勋章 " class="button bigblue" id="mdeletefriendlink" />
 			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </div>
 
 <!--{include footer.htm}-->
@@ -81,7 +78,7 @@ $('#medal_update_submit').click(function() {
 
 $('#mdeletefriendlink').click(function() {
 	if(window.confirm('确定回收选中项的勋章吗？')) {
-		$('#rankform').attr('action', '?medaladmin-recover-page-$page.htm');
+		$('#rankform').attr('action', '?mod-medalrecover-page-$page.htm');
 		$('#rankform').submit();
 	}
 	return false;
