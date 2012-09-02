@@ -197,15 +197,15 @@ $(document).ready(function(){
 </session> 
 <a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Welcome' && ACTION_NAME == 'index' && $_GET['order']!=='all')echo 'class="current"';</php> href="{:U('home/Welcome/index')}">热门采集</a>
 <span class="dot" id="menu-hot"></span>
-<a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Welcome' && ACTION_NAME == 'index' && $_GET['order']=='all')echo 'class="current"';</php> href="{:U('home/Welcome/index', array('order'=>all))}">最近采集</a>
+<a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Welcome' && ACTION_NAME == 'index' && $_GET['order']=='all')echo 'class="current"';</php> href="{:U('home/Welcome/index', array('order'=>all))}">最近发布</a>
 <span class="dot" id="menu-hot"></span>
-<a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Boards' && ACTION_NAME == 'index')echo 'class="current"';</php> href="{:U('home/Boards/index')}">热门图格</a>
+<a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Boards' && ACTION_NAME == 'index')echo 'class="current"';</php> href="{:U('home/Boards/index')}">主题图格</a>
 <span class="dot" id="menu-hot"></span>
-<a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Shopping' && ACTION_NAME == 'index')echo 'class="current"';</php> href="{:U('home/Shopping/index')}">创意商城</a>
+<a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Shopping' && ACTION_NAME == 'index')echo 'class="current"';</php> href="{:U('home/Shopping/index')}">周边商城</a>
 <span class="dot" id="menu-hot"></span>
 <a <php>if(APP_NAME == 'home' && MODULE_NAME == 'Video' && ACTION_NAME == 'index')echo 'class="current"';</php> href="{:U('home/Video/index')}">视频</a>
 <span class="dot" id="menu-hot"></span>
-<a class="newicon <php>if(APP_NAME == 'home' && MODULE_NAME == 'User' && ACTION_NAME == 'topics')echo 'current';</php>" href="{:U('apps/group', array('domain'=>group))}">群组</a></div>
+<a class="newicon <php>if(APP_NAME == 'home' && MODULE_NAME == 'User' && ACTION_NAME == 'topics')echo 'current';</php>" href="http://bbs.9dalu.com" target="_blank">社区</a></div>
 </div>
 </div>
 </div>
