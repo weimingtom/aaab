@@ -1,3 +1,7 @@
 <?php 
-phpinfo();
+phpinfo();exit;
+$s = '
+{"data":[{"ct":"a","cs":"2148","logo":"http:\/\/g3.ykimg.com\/11270F1F46503F7F027C500123193C84DF38AD-5DB4-5D03-DB79-940D5919388A","seed":7492,"tags":["\u822a\u73ed","\u8d2a\u5b98"],"categories":"91","videoid":"111268287","vidEncoded":"XNDQ1MDczMTQ4","username":"\u6d59\u6c5f\u5e7f\u7535\u96c6\u56e2","userid":"30769932","title":"\u822a\u73ed\u6298\u8fd4\u4e3a\u6293\u8d2a\u5b98\uff1f  \u4e0d\u9760\u8c31\uff01[\u4e5d\u70b9\u534a]","up":28,"down":15,"ts":"IiQCIjd7Iwk3MRFDARAzFRM","tsup":"IiQE0DR7Iwk3MRFDAuI1FRM","key1":"bd7d567a","key2":"0ab3c09a17921903","tt":"0","videoSource":"5","seconds":"46.25","streamfileids":{"mp4":"16*30*16*16*16*7*16*46*16*16*40*16*30*33*17*19*33*33*33*61*40*56*16*46*25*40*7*30*16*24*65*65*30*30*36*46*17*36*64*17*16*46*30*64*24*56*24*53*64*65*61*40*7*64*17*53*7*46*30*24*53*33*52*25*36*16*","flv":"16*30*16*16*16*65*16*46*16*16*40*16*30*33*17*25*36*65*33*61*40*56*16*46*25*40*7*30*16*24*65*65*30*30*36*46*17*36*64*17*16*46*30*64*24*56*24*53*64*65*61*40*7*64*17*53*7*46*30*24*53*33*52*25*36*16*"},"segs":{"mp4":[{"no":0,"size":"3156262","seconds":"46","k":"15cb72988f4b1fa6261c899f","k2":"1bae50f7c3e9db2d4"}],"flv":[{"no":0,"size":"1666640","seconds":"46","k":"6fbb1d1129c9c9f624111f5f","k2":"1a004b978ba09d07d"}]},"streamsizes":{"mp4":"3156262","flv":"1666640"},"stream_ids":{"mp4":"83745724","flv":"83745345"},"streamlogos":{"mp4":"1","flv":"1"},"streamtypes":["mp4","flv"],"streamtypes_o":["flvhd","mp4"]}],"user":{"id":0},"controller":{"search_count":true,"mp4_restrict":1,"stream_mode":1,"share_disabled":false,"download_disabled":false,"video_capture":true,"area_code":110000,"dma_code":9394,"continuous":1,"playmode":"normal"}}';
+$r = json_decode($s);
+print_r($r);
 ?>
