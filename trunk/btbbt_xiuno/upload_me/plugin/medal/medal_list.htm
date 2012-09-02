@@ -1,6 +1,6 @@
 <!--{include header.htm}-->
 
-<link href="{$plugin_url}my.css" type="text/css" rel="stylesheet" />
+<link href="plugin/medal/my.css" type="text/css" rel="stylesheet" />
 
 <div class="width">
 	<div class="left border shadow bg2">
@@ -17,12 +17,13 @@
 			<!--{loop $medallist $v}-->
 				<tr>
 				<td width="50"><img src="$v[picture]" /></td> 
-				<td width="140"><span class="grey">【$v[medalname]】</span> </td> 
+				<td width="110"><span class="grey">【$v[medalname]】</span> </td> 
 				<td width="440">$v[description]</td> 
-				<td><span class="grey" style="float:right">$v[receive]</span></td> 
+				<td>&nbsp;</td>
 				</tr>
 			<!--{/loop}-->
 			</table>
+		</div>
 		<div class="footer"></div>
 	</div>
 	<div class="page" style="text-align: center;">$pages</div>

@@ -9,17 +9,8 @@
 
 class medal extends base_model {
 	
-	// 自动发放勋章规则
-	public $autograntlist = array(
-		1=>'积分大于5000分',
-		2=>'发帖数量超过100',
-		3=>'回帖数量超过1000',
-		4=>'精华帖子数量超过50',
-	);
-	
 	public $receivetypelist = array(
-		1=>'自动颁发',
-		2=>'手动颁发',
+		1=>'手动颁发',
 	);
 		
 	function __construct() {
@@ -29,13 +20,6 @@ class medal extends base_model {
 		$this->maxcol = 'medalid';
 	}
 	
-	/*
-		$arr = array(
-			'subject'=>'aaa',
-			'message'=>'bbb',
-			'dateline'=>'bbb',
-		);
-	*/
 	public function create($arr) {
 		$arr['medalid'] = $this->maxid('+1');
 		if($this->set($arr['medalid'], $arr)) {
@@ -95,37 +79,6 @@ class medal extends base_model {
 	public function get_medal($cond) {
 		$medallist = $this->index_fetch($cond, array('medalId'=>-1));
 		return $medallist ? array_pop($medallist) : array();
-	}
-	
-	// 用户页面出现领取按钮
-	public function is_receive($user, $medal) {
-		$isreceive = false;
-		$medaluser = $this->medal_user->get_medaluser_by_uid_medalid($user['uid'], $medal['medalid']);
-		if (!$medaluser) {
-			switch ($medal['autogrant']){
-				case 1: // 积分大于5000分
-					if ($user['credits'] >= 500) {
-						$isreceive = true;
-					}
-					break;
-				case 2: // 发帖数量超过100
-					if ($user['threads'] >= 100) {
-						$isreceive = true;
-					}
-					break;
-				case 3: // 回帖数量超过1000
-					if ($user['posts'] >= 1000) {
-						$isreceive = true;
-					}
-					break;
-				case 4: // 精华帖子数量超过50
-					if ($user['digests'] >= 50) {
-						$isreceive = true;
-					}
-					break;
-			}
-		}
-		return $isreceive;
 	}
 }
 ?>
