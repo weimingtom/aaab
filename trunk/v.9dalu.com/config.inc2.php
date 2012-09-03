@@ -14,6 +14,7 @@ return array(
 	'DB_FIELDS_CACHE'	=>	true,				// 启用字段缓存
 	//'COOKIE_DOMAIN'	=>	'.thinksns.com',	//cookie域,请替换成你自己的域名 以.开头
 
+	'URL_ROUTER_ON' => true,
 	/* 默认应用 */
-    'DEFAULT_APPS'		=> array('api','admin','home','myop','weibo','wap'),
+	'DEFAULT_APPS'		=> array('api','admin','home','myop','weibo','wap'),
 );

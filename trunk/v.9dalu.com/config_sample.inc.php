@@ -16,11 +16,11 @@ return array(
 	//'COOKIE_DOMAIN'	=>	'.thinksns.com',	//cookie域,请替换成你自己的域名 以.开头
 
 	// 默认应用
-    'DEFAULT_APPS'		=> array('api', 'admin', 'home', 'myop', 'weibo', 'wap'),
+	'DEFAULT_APPS'		=> array('api', 'admin', 'home', 'myop', 'weibo', 'wap'),
     
-    // 是否开启URL Rewrite
-	'URL_ROUTER_ON'		=> false,
+	// 是否开启URL Rewrite
+	'URL_ROUTER_ON'		=> true,
     
-    // 是否开启调试模式 (开启AllInOne模式时该配置无效, 将自动置为false)
+	// 是否开启调试模式 (开启AllInOne模式时该配置无效, 将自动置为false)
 	'APP_DEBUG'			=> false,
 );
