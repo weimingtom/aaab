@@ -1,8 +1,8 @@
 <?php
 
 return 	array (
-	'enable' => 0,			// 是否启用
-	'installed' => 0,		// 已经安装
+	'enable' => 1,			// 是否启用
+	'installed' => 1,		// 已经安装
 	'name'=>'暴布流同步登录插件',		// 插件名
 	'brief'=>'xiuno一起努力',
 	'version'=>'1.0',		// 插件版本
@@ -16,13 +16,13 @@ return 	array (
 	'setting_url' => '',		// 配置的URL。
 
         // db 相关 --------->
-	'db_host' => 'localhost',
-	'db_user' => 'root',
-	'db_password' => 'root',
-	'db_name' => 'btbbt_xiuno',
+	'db_host' => '122.228.213.140',
+	'db_user' => 'dev',
+	'db_password' => 'dev',
+	'db_name' => 'thinksns',
 	'db_charset' => 'utf8',		// 这里固定为utf8! 不管UC为什么编码。
 	'db_tablepre' => 'ts_',         // 不要加 dbname.
 	'db_engine'=>'MyISAM',
-        'cookie_domain'=>'v.9dalu.com',
+        'cookie_domain' => '9dalu.com',
 );
 ?>

@@ -2,7 +2,7 @@
 
 //! defined ( 'IN_ROOT' ) && exit ( 'Access Denied' );
 
-class db 
+class huabandb 
 {
 	public $querynum = 0;
 	public $histories;
@@ -226,10 +226,12 @@ class db
 			$this->connect ( $this->dbhost, $this->dbuser, $this->dbpw, $this->dbname, $this->dbcharset, $this->pconnect, $this->tablepre, $this->time );
 			$this->query ( $sql );
 		} else {
-			$s = '<b>Error:</b>' . $error . '<br />';
-			$s .= '<b>Errno:</b>' . $errorno . '<br />';
-			$s .= '<b>SQL:</b>:' . $sql;
-			exit ( $s );
+			$s = 'Error:' . $error . ' ';
+			$s .= 'Errno:' . $errorno . ' ';
+			$s .= 'SQL::' . $sql."\r\n";
+			$fp = fopen('sqlerror.log', 'a+');
+			fwrite($fp, $s);
+			fclose($fp);
 		}
 	}
 }
