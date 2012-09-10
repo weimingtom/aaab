@@ -1,0 +1,67 @@
+<!--{include header.htm}-->
+
+<div class="width">
+	<form action="?plugin-setting-dir-$dir.htm" method="post" id="conf_form">
+		<input type="hidden" name="FORM_HASH" value="{FORM_HASH}" />
+		<div class="div" style="width: 700px;">
+			<div class="header">基本信息设置</div>
+			<div class="body">
+				<dl>
+					<dt><label for="host">数据库主机：</label></dt>
+					<dd>$input[host] <span class="grey">如果非 3306 端口，格式为：127.0.0.1:6603</span></dd>
+					
+					<dt><label for="username">用户名：</label></dt>
+					<dd>$input[username]</dd>
+					
+					<dt><label for="password">密码：</label></dt>
+					<dd>$input[password]</dd>
+					
+					<dt><label for="name">数据库名：</label></dt>
+					<dd>$input[name]</dd>
+					
+					<dt><label for="charset">字符集：</label></dt>
+					<dd>$input[charset] <span class="grey">这里固定为 <b>utf8</b></span></dd>
+					
+					<dt><label for="tablepre">表前缀：</label></dt>
+					<dd>$input[tablepre] <span class="grey">不要填写 database. 前缀！</span></dd>
+						
+                                         <dt><label for="domain">cookie域名：</label></dt>
+					<dd>$input[domain]</dd>
+                                        
+					<dt></dt>
+					<dd>
+						<input type="submit" class="button bigblue" id="conf_submit" value="确认设置" />
+						<input type="button" class="button biggrey" value="返回" onclick="window.location='?plugin-list.htm'" />
+						<div id="notice" class="notice" style="display: none;"></div>
+					</dd>
+					
+					<dt></dt>
+				</dl>
+			</div>
+		</div>
+	</form>
+</div>
+
+<!--{include footer.htm}-->
+
+<script type="text/javascript">
+$('#conf_submit').click(function() {
+	$('#conf_form').submit();
+	return false;
+});
+
+<!--{loop $error $k $v}-->
+$('#$k').alert('$v');
+<!--{/loop}-->
+
+<!--{if !empty($_POST)}-->
+<!--{if empty($error)}-->
+	$('#notice').html('设置成功！').show();
+<!--{else}-->
+	$('#notice').html('设置失败！').show();
+<!--{/if}-->
+<!--{/if}-->
+
+</script>
+</body>
+</html>
