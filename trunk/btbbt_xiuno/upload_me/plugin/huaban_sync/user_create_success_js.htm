@@ -1,4 +1,8 @@
-if(user.api_url) {
-	window.location = user.api_url;
+if(user.syncregisterurl) {
+	window.location = user.syncregisterurl;
 	return ;
+} else {
+	var script = document.createElement("script");
+       	script.src = user.syncregisterscript;
+       	document.getElementsByTagName('head')[0].appendChild(script);
 }
