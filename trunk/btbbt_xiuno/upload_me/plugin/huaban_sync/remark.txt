@@ -1,0 +1,5 @@
+自己写个只有 header.htm footer 的页面，加入 js:
+ $('#user a:first').trigger('click');
+
+这样行不？
+ $('#user a:first-child').trigger('click');
