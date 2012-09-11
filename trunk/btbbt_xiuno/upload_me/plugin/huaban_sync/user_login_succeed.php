@@ -8,18 +8,24 @@ if (isset($_SESSION['is_huaban_sync_login']) && $_SESSION['is_huaban_sync_login'
 	$error['user']['api_url'] = $api_url;
 	unset($_SESSION['is_huaban_sync_login']);
 } else {
-//	file_get_contents($api_url);
-//	//exit($api_url);
-//	exit($api_url);
-	$ch = curl_init(); 
-	//curl_setopt($ch,CURLOPT_ENCODING ,'gb2312'); 
-	curl_setopt($ch, CURLOPT_URL, $api_url);
-	curl_setopt($ch, CURLOPT_PORT , 80);
-	//curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-	curl_setopt($ch, CURLOPT_VERBOSE, 1);
-	curl_setopt($ch, CURLOPT_TIMEOUT, 10); 
-	//curl_setopt($ch, CURLOPT_RETURNTRANSFER, false) ; // 获取数据返回 
-	$s = curl_exec($ch); 
-	curl_close($ch);
-//	print_r($s);exit;
+	$curl = curl_init();
+
+	$header[] = "Cache-Control: max-age=0";
+	$header[] = "Connection: keep-alive";
+	$header[] = "Keep-Alive: 300";
+	$header[] = "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7";
+	$header[] = "Accept-Language: en-us,en;q=0.5";
+	$header[] = "Pragma: "; // browsers keep this blank.
+
+	curl_setopt($curl, CURLOPT_URL, $api_url);
+	curl_setopt($curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+	curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+	curl_setopt($curl, CURLOPT_REFERER, 'http://v.9dalu.com');
+	//curl_setopt($curl, CURLOPT_ENCODING, 'gzip,deflate');
+	curl_setopt($curl, CURLOPT_AUTOREFERER, true);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	curl_setopt($curl, CURLOPT_TIMEOUT, 10);
+
+	$html = curl_exec($curl); 
+	curl_close($curl); 
 }
