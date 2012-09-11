@@ -1,0 +1,9 @@
+<!--{if isset($huaban_sync_type) && $huaban_sync_type == 1}-->
+<script type="text/javascript">
+$('#user a:first-child').trigger('click');
+</script>
+<!--{elseif isset($huaban_sync_type) && $huaban_sync_type == 2}-->
+<script type="text/javascript">
+$('#user a').eq(1).trigger('click');
+</script>
+<!--{/if}-->
