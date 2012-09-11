@@ -16,7 +16,7 @@ if ($email && $uname) {
 	$key = isset($_GET['key']) ? $_GET['key'] : '';
 	$localkey = md5($email.$pconf['api_key']);
 	if ($localkey != $key) {
-		exit('401');
+		exit('//401');
 	}
 	
 	// 数据处理
@@ -42,14 +42,8 @@ if ($email && $uname) {
 	setcookie('mid', $huabanuid, time()+86400*365, '/');
 	setcookie('uname', $uname, time()+86400*365, '/');
 	
-//	$_COOKIE['mid'] = $huabanuid;
-//	$_COOKIE['uname'] = $uname;
-	
-//	header("Location:/index.php");
-	echo $huabanuid.'|'.$uname;
-	print_r($_COOKIE);
-	echo 200;
+	echo '//200';
 } else {
-	echo 400;
+	echo '//400';
 }
 ?>
