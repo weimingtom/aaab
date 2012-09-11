@@ -39,9 +39,14 @@ if ($email && $uname) {
 		$uname = $huaban_user['uname'];
 	}
 	
-	setcookie('mid', $huabanuid, 0, '/');
-	setcookie('uname', $uname, 0, '/');
-
+	setcookie('mid', $huabanuid, time()+86400*365, '/');
+	setcookie('uname', $uname, time()+86400*365, '/');
+	
+//	$_COOKIE['mid'] = $huabanuid;
+//	$_COOKIE['uname'] = $uname;
+	
+//	header("Location:/index.php");
+	echo $huabanuid.'|'.$uname;
 	print_r($_COOKIE);
 	echo 200;
 } else {
