@@ -1,8 +1,8 @@
 <?php
 
 return 	array (
-	'enable' => 1,			// 是否启用
-	'installed' => 1,		// 已经安装
+	'enable' => 0,			// 是否启用
+	'installed' => 0,		// 已经安装
 	'name'=>'暴布流同步登录插件',		// 插件名
 	'brief'=>'xiuno一起努力',
 	'version'=>'1.0',		// 插件版本
