@@ -1,8 +1,8 @@
-<!--{if isset($huaban_sync_type) && $huaban_sync_type == 1}-->
+<!--{if isset($huaban_sync_type) && $huaban_sync_type == 'login'}-->
 <script type="text/javascript">
 $('#user a:first-child').trigger('click');
 </script>
-<!--{elseif isset($huaban_sync_type) && $huaban_sync_type == 2}-->
+<!--{elseif isset($huaban_sync_type) && $huaban_sync_type == 'register'}-->
 <script type="text/javascript">
 $('#user a').eq(1).trigger('click');
 </script>
