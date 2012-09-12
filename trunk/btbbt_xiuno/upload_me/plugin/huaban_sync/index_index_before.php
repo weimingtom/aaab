@@ -8,11 +8,11 @@ if ($synctype && empty($this->_user['uid']))
 	session_start();
 	
 	switch ($synctype) {
-		case 1:	// 登录
+		case 'login':	// 登录
 			$_SESSION['is_huaban_sync_login'] = 1;
 			$this->view->assign('huaban_sync_type', $synctype);
 			break;
-		case 2: // 注册
+		case 'register': // 注册
 			$_SESSION['is_huaban_sync_register'] = 1;
 			$this->view->assign('huaban_sync_type', $synctype);
 			break;
