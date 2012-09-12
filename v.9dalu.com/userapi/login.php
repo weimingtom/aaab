@@ -42,7 +42,12 @@ if ($email && $uname) {
 	setcookie('mid', $huabanuid, time()+86400*365, '/');
 	setcookie('uname', $uname, time()+86400*365, '/');
 	
-	echo '//200';
+	$isto = isset($_GET['isto']) ? $_GET['isto'] : '';
+	if ($isto) {
+		header("Location:/index.php");
+	} else {
+		echo '//200';
+	}
 } else {
 	echo '//400';
 }
