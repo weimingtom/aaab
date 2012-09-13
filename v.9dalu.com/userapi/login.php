@@ -39,12 +39,16 @@ if ($email && $uname) {
 		$uname = $huaban_user['uname'];
 	}
 	
-	setcookie('mid', $huabanuid, time()+86400*365, '/');
-	setcookie('uname', $uname, time()+86400*365, '/');
+	session_start();
+	setcookie('mid', $huabanuid, time()+86400*365, '/', '.9dalu.com');
+	setcookie('uname', $uname, time()+86400*365, '/', '.9dalu.com');
+	
+	$_SESSION['mid'] = $huabanuid;
+	$_SESSION['uname'] = $uname;
 	
 	$isto = isset($_GET['isto']) ? $_GET['isto'] : '';
 	if ($isto) {
-		header("Location:/index.php");
+		header("Location:http://www.9dalu.com/index.php");
 	} else {
 		echo '//200';
 	}
