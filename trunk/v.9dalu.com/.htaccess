@@ -18,7 +18,7 @@ RewriteEngine On
 RewriteBase /
 
 rewriteCond %{http_host} ^9dalu.com [NC]
-rewriteRule ^(.*)$ http://v.9dalu.com/$1 [R=301,L]
+rewriteRule ^(.*)$ http://www.9dalu.com/$1 [R=301,L]
 
 
 
@@ -188,7 +188,7 @@ RewriteRule ^/?app/group/([0-9]+)/member/?$ 		          index.php?app=group&mod=
 # 非法链接
 RewriteRule ^/?([a-zA-Z0-9]+)$                                index.php?app=home&mod=Public&act=error404&%{QUERY_STRING} [L]
 
-RewriteCond %{HTTP_HOST} ^v.9dalu.com$
+RewriteCond %{HTTP_HOST} ^www.9dalu.com$
 RewriteCond %{REQUEST_URI} !^/welcome
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
