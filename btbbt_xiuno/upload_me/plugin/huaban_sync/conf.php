@@ -1,8 +1,8 @@
 <?php
 
 return 	array (
-	'enable' => 0,			// 是否启用
-	'installed' => 0,		// 已经安装
+	'enable' => 1,			// 是否启用
+	'installed' => 1,		// 已经安装
 	'name'=>'暴布流同步登录插件',		// 插件名
 	'brief'=>'xiuno一起努力',
 	'version'=>'1.0',		// 插件版本
@@ -17,6 +17,6 @@ return 	array (
 
         // 接口 相关 --------->
         'api_key' => 'ETBS56@134@!',
-        'api_url' => 'http://v.9dalu.com',
+        'api_url' => 'http://www.9dalu.com',
 );
 ?>
