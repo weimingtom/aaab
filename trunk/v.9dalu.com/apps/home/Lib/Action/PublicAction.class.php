@@ -444,8 +444,12 @@ class PublicAction extends Action{
 
 	public function logout() {
 		service('Passport')->logoutLocal();
-		$this->assign('jumpUrl',U('home/index'));
-		$this->success('成功退出'. ( (UC_SYNC)?uc_user_synlogout():'' ) );
+		$this->assign('jumpUrl', U('home/index'));
+		
+		$dalusync = '<script src="http://www.9dalu.com/userapi/logout.php"></script>';
+		$dalusync .= '<script src="http://bbs.9dalu.com/?user-logout.htm?ishuabanlogout=1"></script>';
+		
+		$this->success('成功退出'. ( (UC_SYNC)?uc_user_synlogout():'' ). $dalusync);
 	}
 
 	public function logoutAdmin() {

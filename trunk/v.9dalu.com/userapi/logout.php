@@ -2,11 +2,17 @@
 /**
  * xiuno论坛和本系统同步登录接口
  */
-$uid = isset($_GET['uid']) ? $_GET['uid'] : '';
-$uname = isset($_GET['uname']) ? $_GET['uname'] : '';
+session_start();
+$_SESSION['mid'] = '';
+$_SESSION['uname'] = '';
+$_SESSION['userInfo'] = '';
 
-if ($uid && $uname) {
-	session_start();
-	$_SESSION['mid'] = $uid;
-	$_SESSION['uname'] = $uname;
-}
+unset($_SESSION['userInfo']);
+unset($_SESSION['mid']);
+unset($_SESSION['uname']);
+
+setcookie('dalu_mid', '', time()-1, '/');
+setcookie('dalu_uname', '', time()-1, '/');
+
+unset($_COOKIE['dalu_mid']);
+unset($_COOKIE['dalu_uname']);
