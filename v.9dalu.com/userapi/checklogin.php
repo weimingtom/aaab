@@ -1,14 +1,11 @@
 <?php
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
+session_start();
 
-//$sync_mid = isset($_COOKIE['mid']) ? $_COOKIE['mid'] : '';
-//$sync_uname = isset($_COOKIE['uname']) ? $_COOKIE['uname'] : '';
-//
-//if ($sync_mid && $sync_uname) {
-//	session_start();
-//	$_SESSION['mid'] = $sync_mid;
-//	$_SESSION['uname'] = $sync_uname;
-//	
-//	setcookie('mid', null, time()-1, '/');
-//	setcookie('uname', null, time()-1, '/');
-//}
+$sync_mid = isset($_COOKIE['dalu_mid']) ? $_COOKIE['dalu_mid'] : '';
+$sync_uname = isset($_COOKIE['dalu_uname']) ? $_COOKIE['dalu_uname'] : '';
+
+if ($sync_mid && $sync_uname) {
+	$_SESSION['mid'] = $sync_mid;
+	$_SESSION['uname'] = $sync_uname;
+}

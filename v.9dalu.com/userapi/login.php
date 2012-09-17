@@ -1,4 +1,7 @@
 <?php
+header("Content-Type:text/html; charset=utf-8");
+date_default_timezone_set('Asia/Shanghai');
+
 error_reporting(E_ALL);
 /**
  * xiuno论坛和本系统同步登录接口
@@ -40,8 +43,8 @@ if ($email && $uname) {
 	}
 	
 	session_start();
-	setcookie('mid', $huabanuid, time()+86400*365, '/', '.9dalu.com');
-	setcookie('uname', $uname, time()+86400*365, '/', '.9dalu.com');
+	setcookie('dalu_mid', $huabanuid, time() + 86400 * 31, '/');
+	setcookie('dalu_uname', $uname, time() + 86400 * 31, '/');
 	
 	$_SESSION['mid'] = $huabanuid;
 	$_SESSION['uname'] = $uname;
