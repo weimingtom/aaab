@@ -13,6 +13,6 @@ return 	array (
 	'email'=>'252288762@qq.com',	// 插件的联系EMAIL
 	'verify_code' => '',		// 经过官方安全认证的标志。
 	'stars' => 3,			// 官方对插件的评级，1-5星级。
-	'setting_url' => '/?medaladmin-list.htm',		// 配置的URL。
+	'setting_url' => '?medaladmin-list.htm',		// 配置的URL。
 );
 ?>

@@ -10,9 +10,9 @@ if($this->conf['db']['type'] == 'mysql') {
 drop table if exists `{$tablepre}medal`;
 CREATE TABLE `{$tablepre}medal` (                                                   
 	`medalid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '勋章ID',      
-	`medalname` varchar(30) NOT NULL COMMENT '勋章名称',                      
-	`description` varchar(255) NOT NULL COMMENT '勋章描述',                   
-	`picture` varchar(255) NOT NULL COMMENT '图片地址',                       
+	`medalname` char(30) NOT NULL COMMENT '勋章名称',                      
+	`description` char(255) NOT NULL COMMENT '勋章描述',                   
+	`picture` char(255) NOT NULL COMMENT '图片地址',                       
 	`receivetype` tinyint(1) NOT NULL DEFAULT '0' COMMENT '领取方式',         
 	`autogrant` tinyint(1) NOT NULL DEFAULT '0' COMMENT '自动发放规则',       
 	`seq` tinyint(1) NOT NULL DEFAULT '0' COMMENT '排序',                     

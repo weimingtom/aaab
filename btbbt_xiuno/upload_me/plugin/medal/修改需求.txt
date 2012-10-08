@@ -1,1 +1,21 @@
-是不是应该有个勋章列表？每个勋章已经获取的人数？
+1、是不是应该有个勋章列表？每个勋章已经获取的人数？
+
+2、
+CREATE TABLE `{$tablepre}medal` (                                                   
+	`medalid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '勋章ID',      
+	`medalname` varchar(30) NOT NULL COMMENT '勋章名称',                      
+	`description` varchar(255) NOT NULL COMMENT '勋章描述',                   
+	`picture` varchar(255) NOT NULL COMMENT '图片地址',                       
+	`receivetype` tinyint(1) NOT NULL DEFAULT '0' COMMENT '领取方式',         
+	`autogrant` tinyint(1) NOT NULL DEFAULT '0' COMMENT '自动发放规则',       
+	`seq` tinyint(1) NOT NULL DEFAULT '0' COMMENT '排序',                     
+	`isopen` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否启用',              
+	`uid` int(10) NOT NULL DEFAULT '0' COMMENT '用户ID',                      
+	`createdtime` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',            
+	PRIMARY KEY (`medalid`),                                                  
+	KEY `seq` (`seq`)                  
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8 COMMENT='勋章信息表';
+
+这些直接 char() 吧。多占点空间，速度快。
+
+3、
