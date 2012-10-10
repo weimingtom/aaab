@@ -102,7 +102,7 @@ if(empty($step)) {
 } elseif($step == 'upgrade_postpage') {
 	upgrade_postpage();
 } elseif($step == 'upgrade_medal') {
-	upgrade_postpage_medal();
+	upgrade_medal();
 } elseif($step == 'laststep') {
 	laststep();
 }
@@ -244,7 +244,6 @@ function upgrade_forum() {
 			
 			$db->set("forum-fid-$fid", $arr);
 		}
-		
 		$start += $limit;
 		message("正在升级 forum, 一共: $count, 当前: $start...", "?step=upgrade_forum&start=$start", 0);
 	} else {	
@@ -659,7 +658,7 @@ function upgrade_postpage() {
 		}
 		message("正在升级 post.page, 进度 thread: $start / $count, post: $start2 / $count2...", "?step=upgrade_postpage&start=$start&start2=$start2&count2=$count2", 0);
 	} else {	
-		message('升级 upgrade_postpage 完成，接下来清理工作...', '?step=laststep&start=0');
+		message('升级 upgrade_postpage 完成，接下来升级勋章...', '?step=upgrade_medal&start=0');
 	}
 }
 
@@ -1040,44 +1039,82 @@ function dx2_unserialize($s, $dbcharset) {
 }
 
 // huyao 升级勋章
-function upgrade_postpage_medal() {
-	global $start, $conf;
+function upgrade_medal() {
+	global $start;
 	
 	$dx2 = get_dx2();
 	$db = get_db();
 	
-	// 导入勋章数据
-	$medallist = $dx2->index_fetch('forum_medal', 'medalid', array(), array());
-	if ($medallist) {
-		foreach ($medallist as $medal) {
-			$arr = array(
-				'medalid'=>$medal['medalid'],
-				'medalname'=>$medal['name'],
-				'picture'=>'medal/'.$medal['image'],
-				'description'=>$medal['description'],
-				'autogrant'=>1,
-				'seq'=>$medal['displayorder'],
-				'isopen'=>1,
-				'uid'=>0,
-				'createdtime'=>time()
-			);
-			$db->set('medal-medalid-'.$arr['medalid'], $arr);
-			
-			// 转移勋章图片
-			
+	$count = $dx2->native_count('forum_medallog');
+	
+	if (empty($start)) {
+		// 导入勋章数据
+		$medallist = $dx2->index_fetch('forum_medal', 'medalid', array(), array(), 1, 1000);
+		if ($medallist) {
+			foreach ($medallist as $medal) {
+				
+				$arr = array(
+					'medalid'=>$medal['medalid'],
+					'medalname'=>$medal['name'],
+					'picture'=>'medal/'.$medal['image'],
+					'description'=>$medal['description'],
+					'receivetype'=>1,
+					'autogrant'=>0,
+					'seq'=>$medal['displayorder'],
+					'isopen'=>1,
+					'uid'=>0,
+					'createdtime'=>time()
+				);
+				$db->set('medal-medalid-'.$arr['medalid'], $arr);
+				
+				// 转移勋章图片
+				$image = $medal['image'];
+				
+				$dx2_medal_path = DX2_PATH.'static/image/common/';
+				$xiuno_medal_path = BBS_PATH.'upload/medal';
+				
+				if (!file_exists($xiuno_medal_path)) {
+					mkdir($xiuno_medal_path, 0777);
+				}
+				// 复制勋章
+				copy($dx2_medal_path.$image, $xiuno_medal_path.$image);
+			}
 		}
 	}
 	
 	// 导入勋章颁发数据
-	$count = $dx2->native_count('forum_medallog');
 	if($start < $count) {
-		$limit = DEBUG ? 20 : 2000;	// 每次升级 100
+		$limit = DEBUG ? 20 : 200;	// 每次升级 100
 		$arrlist = $dx2->index_fetch_id('forum_medallog', 'id', array(), array(), $start, $limit);
 		foreach($arrlist as $key) {
 			list($table, $keyname, $id) = explode('-', $key);
-			$data = $dx2->get("forum_medallog-id-$aid");
-			
+			$medallog = $dx2->get("forum_medallog-id-$id");
+			if ($medallog) {
+				
+				$username = '';
+				$user = $db->get("user-uid-$uid");
+				if ($user) {
+					$username = $user['username'];
+				}
+				
+				$arr = array(
+					'muid'=>$id,
+					'medalid'=>$medallog['medalid'],
+					'uid'=>$medallog['uid'],
+					'username'=>$username,
+					'receivetype'=>1,
+					'autogrant'=>0,
+					'expiredtime'=>$medallog['expiration'],
+					'isapply'=>0,
+					'fuid'=>0,
+					'createdtime'=>$medallog['dateline']
+				);
+			}
 		}
+		$start += $limit;
+		message("正在升级 勋章, 进度 medal: $start / $count ...", "?step=upgrade_medal&start=$start", 0);
+	} else {	
+		message('升级 upgrade_medal 完成，接下来清理工作...', '?step=laststep&start=0');
 	}
 }
 ?>
