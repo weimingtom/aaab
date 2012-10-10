@@ -101,6 +101,8 @@ if(empty($step)) {
 	upgrade_stat();
 } elseif($step == 'upgrade_postpage') {
 	upgrade_postpage();
+} elseif($step == 'upgrade_medal') {
+	upgrade_postpage_medal();
 } elseif($step == 'laststep') {
 	laststep();
 }
@@ -1037,4 +1039,45 @@ function dx2_unserialize($s, $dbcharset) {
 	return $arr;
 }
 
+// huyao 升级勋章
+function upgrade_postpage_medal() {
+	global $start, $conf;
+	
+	$dx2 = get_dx2();
+	$db = get_db();
+	
+	// 导入勋章数据
+	$medallist = $dx2->index_fetch('forum_medal', 'medalid', array(), array());
+	if ($medallist) {
+		foreach ($medallist as $medal) {
+			$arr = array(
+				'medalid'=>$medal['medalid'],
+				'medalname'=>$medal['name'],
+				'picture'=>'medal/'.$medal['image'],
+				'description'=>$medal['description'],
+				'autogrant'=>1,
+				'seq'=>$medal['displayorder'],
+				'isopen'=>1,
+				'uid'=>0,
+				'createdtime'=>time()
+			);
+			$db->set('medal-medalid-'.$arr['medalid'], $arr);
+			
+			// 转移勋章图片
+			
+		}
+	}
+	
+	// 导入勋章颁发数据
+	$count = $dx2->native_count('forum_medallog');
+	if($start < $count) {
+		$limit = DEBUG ? 20 : 2000;	// 每次升级 100
+		$arrlist = $dx2->index_fetch_id('forum_medallog', 'id', array(), array(), $start, $limit);
+		foreach($arrlist as $key) {
+			list($table, $keyname, $id) = explode('-', $key);
+			$data = $dx2->get("forum_medallog-id-$aid");
+			
+		}
+	}
+}
 ?>
