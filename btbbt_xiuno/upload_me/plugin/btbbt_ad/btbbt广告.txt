@@ -1,0 +1,28 @@
+富媒体升窗广告，用户关闭后每1个小时出现一次。
+<!-- 广告位：BT之家 -->
+<script type="text/javascript" >BAIDU_CLB_SLOT_ID = "479761";</script>
+<script type="text/javascript" src="http://cbjs.baidu.com/js/o.js"></script>
+
+弹窗包月11-16，12小时一次。
+<script language='javascript' src='http://play.unionsky2.cn/shw/?p=150727'></script>
+
+音速启动，帖子内容主题上方横幅，放在帖子标题上方就OK了。
+<!-- 广告位：btbbt_750x60_5wIP -->
+<script type="text/javascript" >BAIDU_CLB_SLOT_ID = "424870";</script>
+<script type="text/javascript" src="http://cbjs.baidu.com/js/o.js"></script>
+=====================对联有两个广告。GOOGLE，BAIDU轮换显示就行
+全局对联：GOOGLE，
+google（左）
+<iframe src="http://www.yingkong.net/a/parent20120205.html" height="500" width="120" frameborder="0" scrolling="no"></iframe>
+
+google(右）
+<iframe src="http://www.yingkong.net/a/parent20120205.html" height="500" width="120" frameborder="0" scrolling="no"></iframe>
+
+BAIDU的，这个是左右代码一起的，跟GOOGLE轮换就行。
+
+<script type="text/javascript">
+/*120*270，创建于2012-10-18*/
+var cpro_id = "u1094212";
+</script>
+<script src="http://cpro.baidustatic.com/cpro/ui/f.js" type="text/javascript"></script>
+
