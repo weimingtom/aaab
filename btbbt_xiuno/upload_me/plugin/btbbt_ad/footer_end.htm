@@ -1,3 +1,25 @@
-<!-- 广告位：BT之家 富媒体升窗广告，用户关闭后每1个小时出现一次-->
-<script type="text/javascript" >BAIDU_CLB_SLOT_ID = "479761";</script>
+<script type="text/javascript" src="plugin/btbbt_ad/common.js"></script>
+
+<!-- 全局-右下角：BT之家 富媒体升窗广告，用户关闭后每1个小时出现一次-->
+<script type="text/javascript" >
+var mediaad = getcookiead('isshowmediaad');
+if(mediaad == 1) {
+	BAIDU_CLB_SLOT_ID = "0";
+} else {
+	BAIDU_CLB_SLOT_ID = "479761";
+	setcookiead('isshowmediaad', 1, 3600000);
+}
+</script>
 <script type="text/javascript" src="http://cbjs.baidu.com/js/o.js"></script>
+
+<!-- 全局：中间弹出广告位 -->
+<div id="layerCenterAd" class="layer_center_ad" style="display:none;">
+	<div style="position:absolute;top:0px;right:0px">
+		<img src="plugin/btbbt_ad/page_center_show_ad/x.png" style="cursor:pointer;" title="关闭" onclick="document.getElementById('layerCenterAd').style.display='none'" />
+	</div>
+	<iframe src="http://www.yingkong.net/a/parent20120423.html" height="280" width="336" frameborder="0" scrolling="no"></iframe>
+</div>
+<script type="text/javascript" src="plugin/btbbt_ad/page_center_show_ad/center_ad_show.js"></script>
+
+<!-- 全局：对联 -->
+<script language=JavaScript src="plugin/btbbt_ad/duilian/index.js"></script>
