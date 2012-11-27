@@ -99,6 +99,10 @@
 	<script type="text/javascript">noticeTitle();</script>
 <!--{/if}-->
 
+<!--{if empty($_G['uid'])}-->
+	<script type="text/javascript" src="/static/ad/tc/tc.js"></script>
+<!--{/if}-->
+
 <!--{eval userappprompt();}-->
 <!--{if $_G['basescript'] != 'userapp'}-->
 <span id="scrolltop" onclick="window.scrollTo('0','0')">{lang scrolltop}</span>
